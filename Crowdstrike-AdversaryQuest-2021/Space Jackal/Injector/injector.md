@@ -4,11 +4,32 @@
 The decrypted forum messages revealed that a disgruntled employee at one of our customers joined SPACE JACKAL and backdoored a host at their employer before they quit. Our customer provided us with a snapshot of that machine.
 Please identify the backdoor and validate your findings against our test instance of that host, which is available at injector.challenges.adversary.zone.
 
-## todo: start snapshot with qemu, emurate network services, compare to target server
-starting up image with run.sh / qemu
+## pre-req
+install qemu
+```
+sudo apt install qemu-system-x86
+```
 
-tcp/4321 -> nginx, serving default page
-tcp/3322 -> sshd
+start image
+```
+./run.sh 
+Restoring snapshot compromised (art_ctf_injector_local.qcow2)
+Press Return...
+```
+
+## todo: emurate network services, compare to target server
+```
+root@injector-local:~# netstat -pantu
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      363/systemd-resolve 
+tcp        0      0 0.0.0.0:3322            0.0.0.0:*               LISTEN      377/sshd: /usr/sbin 
+tcp        0      0 0.0.0.0:4321            0.0.0.0:*               LISTEN      379/nginx: master p 
+tcp6       0      0 :::3322                 :::*                    LISTEN      377/sshd: /usr/sbin 
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           363/systemd-resolve 
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           591/dhclient
+```
+
 
 ## Nmap Scan of Backdoored Target Server
 ```
@@ -25,10 +46,14 @@ PORT     STATE SERVICE
 ```
 
 ## todo: find backdoor loader in /tmp/.hax/injector.sh
-as easy and lucky as in find / -name *injector*
-moar clever way?
+might have been luck?
+```
+root@injector-local:~# find / -name *injector*
+/tmp/.hax/injector.sh
+```
 
-## todo: refactor shellscript
+
+## todo: refactor shellscript /tmp/.hax/injector.sh
 ```
 #!/bin/bash
 
@@ -202,16 +227,18 @@ call system with string param pointed to by rbx (the rce command)
 
 ## todo: verify backdoor in local image
 test sshd/nginx processes in qemu image for having been injected
-
+```
 nc 0 4321
 cmd{echo bla > /tmp/bla}
+```
 
+```
 root@injector-local:/tmp# ls -la
 total 48
 drwxrwxrwt 11 root     root     4096 Jan 21 22:20 .
 drwxr-xr-x 19 root     root     4096 Dec 21 16:20 ..
 -rw-rw-rw-  1 www-data www-data    4 Jan 21 22:20 bla
-
+```
 -> seems like nginx has been injected with the shellcode
 
 ## todo: it's a blind rce
