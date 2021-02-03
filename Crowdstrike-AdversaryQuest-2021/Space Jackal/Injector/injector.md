@@ -120,7 +120,7 @@ ia5Uuboh $1
 ```
 
 ## todo: refactor/deobfuscate/comment shellscript /tmp/.hax/injector.sh
-```
+```bash
 #!/bin/bash
 
 set -e
