@@ -53,7 +53,7 @@ root@injector-local:~# find / -name *injector*
 ```
 
 ## todo: script is obfuscated
-```
+```bash
 #!/bin/bash
 
 set -e
