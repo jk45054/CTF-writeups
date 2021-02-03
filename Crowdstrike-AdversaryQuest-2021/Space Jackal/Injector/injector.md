@@ -215,71 +215,65 @@ then that
 
 ## todo: disassemble base shellcode (without dynamic substitutions from shellscript
 ```
-ndisasm -b 64 shellcode_unpatched.bin
-00000000  48B8414141414141  mov rax,0x4141414141414141
-         -4141
-0000000A  4155              push r13
-0000000C  49BD434343434343  mov r13,0x4343434343434343
-         -4343
-00000016  4154              push r12
-00000018  4989FC            mov r12,rdi
-0000001B  55                push rbp
-0000001C  53                push rbx
-0000001D  4C89E3            mov rbx,r12
-00000020  52                push rdx
-00000021  FFD0              call rax
-00000023  4889C5            mov rbp,rax
-00000026  48B8444444444444  mov rax,0x4444444444444444
-         -4444
-00000030  48C70000000000    mov qword [rax],0x0
-00000037  4883FD05          cmp rbp,byte +0x5
-0000003B  7661              jna 0x9e
-0000003D  803B63            cmp byte [rbx],0x63
-00000040  7554              jnz 0x96
-00000042  807B016D          cmp byte [rbx+0x1],0x6d
-00000046  754E              jnz 0x96
-00000048  807B0264          cmp byte [rbx+0x2],0x64
-0000004C  7548              jnz 0x96
-0000004E  807B037B          cmp byte [rbx+0x3],0x7b
-00000052  7542              jnz 0x96
-00000054  C60300            mov byte [rbx],0x0
-00000057  488D7B04          lea rdi,[rbx+0x4]
-0000005B  488D55FC          lea rdx,[rbp-0x4]
-0000005F  4889F8            mov rax,rdi
-00000062  8A08              mov cl,[rax]
-00000064  4889C3            mov rbx,rax
-00000067  4889D5            mov rbp,rdx
-0000006A  488D4001          lea rax,[rax+0x1]
-0000006E  488D52FF          lea rdx,[rdx-0x1]
-00000072  8D71E0            lea esi,[rcx-0x20]
-00000075  4080FE5E          cmp sil,0x5e
-00000079  771B              ja 0x96
-0000007B  80F97D            cmp cl,0x7d
-0000007E  7508              jnz 0x88
-00000080  C60300            mov byte [rbx],0x0
-00000083  41FFD5            call r13
-00000086  EB0E              jmp short 0x96
-00000088  4883FA01          cmp rdx,byte +0x1
-0000008C  75D4              jnz 0x62
-0000008E  BD01000000        mov ebp,0x1
-00000093  4889C3            mov rbx,rax
-00000096  48FFC3            inc rbx
-00000099  48FFCD            dec rbp
-0000009C  EB99              jmp short 0x37
-0000009E  48B8424242424242  mov rax,0x4242424242424242
-         -4242
-000000A8  4C89E7            mov rdi,r12
-000000AB  FFD0              call rax
-000000AD  48B8555555555555  mov rax,0x5555555555555555
-         -5555
-000000B7  48A3444444444444  mov [qword 0x4444444444444444],rax
-         -4444
-000000C1  58                pop rax
-000000C2  5B                pop rbx
-000000C3  5D                pop rbp
-000000C4  415C              pop r12
-000000C6  415D              pop r13
-000000C8  C3                ret
+r2 -a x86 -b 64 -qc pd shellcode_unpatched.bin
+            0x00000000      48b841414141.  movabs rax, 0x4141414141414141 ; 'AAAAAAAA'
+            0x0000000a      4155           push r13
+            0x0000000c      49bd43434343.  movabs r13, 0x4343434343434343 ; 'CCCCCCCC'
+            0x00000016      4154           push r12
+            0x00000018      4989fc         mov r12, rdi
+            0x0000001b      55             push rbp
+            0x0000001c      53             push rbx
+            0x0000001d      4c89e3         mov rbx, r12
+            0x00000020      52             push rdx
+            0x00000021      ffd0           call rax
+            0x00000023      4889c5         mov rbp, rax
+            0x00000026      48b844444444.  movabs rax, 0x4444444444444444 ; 'DDDDDDDD'
+            0x00000030      48c700000000.  mov qword [rax], 0
+        ┌─> 0x00000037      4883fd05       cmp rbp, 5
+       ┌──< 0x0000003b      7661           jbe 0x9e
+       │╎   0x0000003d      803b63         cmp byte [rbx], 0x63 ; 'c'
+      ┌───< 0x00000040      7554           jne 0x96
+      ││╎   0x00000042      807b016d       cmp byte [rbx + 1], 0x6d ; 'm'
+     ┌────< 0x00000046      754e           jne 0x96
+     │││╎   0x00000048      807b0264       cmp byte [rbx + 2], 0x64 ; 'd'
+    ┌─────< 0x0000004c      7548           jne 0x96
+    ││││╎   0x0000004e      807b037b       cmp byte [rbx + 3], 0x7b ; '{
+   ┌──────< 0x00000052      7542           jne 0x96
+   │││││╎   0x00000054      c60300         mov byte [rbx], 0
+   │││││╎   0x00000057      488d7b04       lea rdi, [rbx + 4]
+   │││││╎   0x0000005b      488d55fc       lea rdx, [rbp - 4]
+   │││││╎   0x0000005f      4889f8         mov rax, rdi
+  ┌───────> 0x00000062      8a08           mov cl, byte [rax]
+  ╎│││││╎   0x00000064      4889c3         mov rbx, rax
+  ╎│││││╎   0x00000067      4889d5         mov rbp, rdx
+  ╎│││││╎   0x0000006a      488d4001       lea rax, [rax + 1]
+  ╎│││││╎   0x0000006e      488d52ff       lea rdx, [rdx - 1]
+  ╎│││││╎   0x00000072      8d71e0         lea esi, [rcx - 0x20]
+  ╎│││││╎   0x00000075      4080fe5e       cmp sil, 0x5e               ; 94
+  ────────< 0x00000079      771b           ja 0x96
+  ╎│││││╎   0x0000007b      80f97d         cmp cl, 0x7d                ; '}'
+  ────────< 0x0000007e      7508           jne 0x88
+  ╎│││││╎   0x00000080      c60300         mov byte [rbx], 0
+  ╎│││││╎   0x00000083      41ffd5         call r13
+  ────────< 0x00000086      eb0e           jmp 0x96
+  ────────> 0x00000088      4883fa01       cmp rdx, 1
+  └───────< 0x0000008c      75d4           jne 0x62
+   │││││╎   0x0000008e      bd01000000     mov ebp, 1
+   │││││╎   0x00000093      4889c3         mov rbx, rax
+  ─└└└└───> 0x00000096      48ffc3         inc rbx
+       │╎   0x00000099      48ffcd         dec rbp
+       │└─< 0x0000009c      eb99           jmp 0x37
+       └──> 0x0000009e      48b842424242.  movabs rax, 0x4242424242424242 ; 'BBBBBBBB'
+            0x000000a8      4c89e7         mov rdi, r12
+            0x000000ab      ffd0           call rax
+            0x000000ad      48b855555555.  movabs rax, 0x5555555555555555 ; 'UUUUUUUU'
+            0x000000b7      48a344444444.  movabs qword [0x4444444444444444], rax ; [0x4444444444444444:8]=-1
+            0x000000c1      58             pop rax
+            0x000000c2      5b             pop rbx
+            0x000000c3      5d             pop rbp
+            0x000000c4      415c           pop r12
+            0x000000c6      415d           pop r13
+            0x000000c8      c3             ret
 ```
 
 ## todo: analyzse shellcode
