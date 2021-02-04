@@ -59,21 +59,23 @@ PORT     STATE SERVICE
 
 # Nmap done at Wed Jan 20 00:15:34 2021 -- 1 IP address (1 host up) scanned in 111.64 seconds
 ```
+So far, so good.
 
-## todo: find backdoor loader in /tmp/.hax/injector.sh
-might have been luck?
+## Find Backdoor Loader in /tmp/.hax/
+The challenge name is **injector**, so there could be a mechanism of (code) injection inside of the image. For reasons lost to space or time, searching the filesystem for a file with a name containing **injector** yields a hit. CTFs are what they are. ;-)
 ```
 root@injector-local:~# find / -name *injector*
 /tmp/.hax/injector.sh
 ```
 
+A different approach could be looking for files that have been modified or changed during a certain period of time.
 ```
 root@injector-local:~# find {/usr,/tmp,/opt} -type f ! -mtime +30
 /tmp/.hax/injector.sh
 ```
 
-
-## todo: script is obfuscated
+## Peeking into injector.sh
+This program seems to be a shell script (bash).
 ```bash
 #!/bin/bash
 
@@ -139,6 +141,7 @@ fi
 
 ia5Uuboh $1
 ```
+The function names look obfuscated, making analysis a little bit harder. But even the way that it is, some strings and commands smell like memory fiddling (e.g. function *QueSh8yi* using dd to write into /proc/$1/mem). There also seems to be shellcode inside the script (*HeiSuC5o*).
 
 ## todo: refactor/deobfuscate/comment shellscript /tmp/.hax/injector.sh
 ```bash
