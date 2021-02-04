@@ -4,20 +4,34 @@
 The decrypted forum messages revealed that a disgruntled employee at one of our customers joined SPACE JACKAL and backdoored a host at their employer before they quit. Our customer provided us with a snapshot of that machine.
 Please identify the backdoor and validate your findings against our test instance of that host, which is available at injector.challenges.adversary.zone.
 
-## pre-req
-install qemu
+## Pre-Requisites
+This challenge consists of a qcow2 image, that needs qemu to run. In case qemu isn't installed, yet, now is a good time to do so. ;-)
 ```
 sudo apt install qemu-system-x86
 ```
 
-start image
+qemu-img can be used to list snapshots of this image.
+```
+qemu-img snapshot -l art_ctf_injector_local.qcow2 
+Snapshot list:
+ID        TAG               VM SIZE                DATE     VM CLOCK     ICOUNT
+1         compromised       452 MiB 2021-01-13 20:15:55 00:02:17.632           
+```
+
+The run.sh script uses qemu-system-x86_64 to run the image.
 ```
 ./run.sh 
 Restoring snapshot compromised (art_ctf_injector_local.qcow2)
 Press Return...
 ```
 
-## todo: emurate network services, compare to target server
+One of the options used for qemu inside run.sh is setting up port forwarding for the custom ports tcp/3322 and tcp/4321 from host to guest system.
+```
+hostfwd=tcp::3322-:3322,hostfwd=tcp::4321-:4321
+```
+
+## Emurate Network Services with Listen Ports
+So, which network services might listen of the forwarded custom ports?
 ```
 root@injector-local:~# netstat -pantu
 Active Internet connections (servers and established)
@@ -29,9 +43,10 @@ tcp6       0      0 :::3322                 :::*                    LISTEN      
 udp        0      0 127.0.0.53:53           0.0.0.0:*                           363/systemd-resolve 
 udp        0      0 0.0.0.0:68              0.0.0.0:*                           591/dhclient
 ```
-
+Looks like there is a sshd process with PID 377 listening on tcp port 3322 and an nginx process with PID 379 listening on tcp port 4321. These might be the processes that have been backdoored.
 
 ## Nmap Scan of Backdoored Target Server
+It would be interesting to verify if both of these custom ports are open on the target server as well.
 ```
 # Nmap 7.91 scan initiated Wed Jan 20 00:13:42 2021 as: nmap -Pn -p4321,3322,1-1024 -oA nmap injector.challenges.adversary.zone
 Nmap scan report for injector.challenges.adversary.zone (167.99.209.243)
@@ -51,6 +66,12 @@ might have been luck?
 root@injector-local:~# find / -name *injector*
 /tmp/.hax/injector.sh
 ```
+
+```
+root@injector-local:~# find {/usr,/tmp,/opt} -type f ! -mtime +30
+/tmp/.hax/injector.sh
+```
+
 
 ## todo: script is obfuscated
 ```bash
