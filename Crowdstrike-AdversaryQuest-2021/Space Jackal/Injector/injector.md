@@ -43,7 +43,7 @@ tcp6       0      0 :::3322                 :::*                    LISTEN      
 udp        0      0 127.0.0.53:53           0.0.0.0:*                           363/systemd-resolve 
 udp        0      0 0.0.0.0:68              0.0.0.0:*                           591/dhclient
 ```
-Looks like there is a sshd process with PID 377 listening on tcp port 3322 and an nginx process with PID 379 listening on tcp port 4321. These might be the processes that have been backdoored.
+Looks like there is an sshd process with PID 377 listening on tcp port 3322 and an nginx process with PID 379 listening on tcp port 4321. These might be the processes that have been backdoored.
 
 ## Nmap Scan of Backdoored Target Server
 It would be interesting to verify if both of these custom ports are open on the target server as well.
