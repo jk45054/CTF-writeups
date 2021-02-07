@@ -143,7 +143,8 @@ ia5Uuboh $1
 ```
 The function names look obfuscated, making analysis a little bit harder. But even the way that it is, some strings and commands smell like memory fiddling (e.g. function *QueSh8yi* using dd to write into /proc/$1/mem). There also seems to be shellcode inside the script (*HeiSuC5o*).
 
-## todo: refactor/deobfuscate/comment shellscript /tmp/.hax/injector.sh
+## Refactor/Deobfuscate/Comment Shellscript /tmp/.hax/injector.sh
+This is the shellscript after refactoring/deobfuscation and adding a few comments. The amount of obfuscation is not too bad, so the refactoring can be easily done with a text editor of your choice.
 ```bash
 #!/bin/bash
 
