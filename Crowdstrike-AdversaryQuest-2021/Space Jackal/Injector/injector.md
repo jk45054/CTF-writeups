@@ -390,3 +390,4 @@ Flag: **CS{fr33_h00k_b4ckd00r}**
 ## Conclusion
 This challenge has been a great learning experience, comprising different aspects of cyber security offense and defense.
 The backdoor is triggered through normal network services and their listening ports. There is no extra listen port, no seperate backdoor process running.
+Detection of API hooking seems like an important step in finding backdoors like this.
