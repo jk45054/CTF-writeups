@@ -234,9 +234,18 @@ fi
 main $1
 ```
 
-## todo: analyze shellscript
-does this
-then that
+## Analyze main functionality of the Shellscript injector.sh
+Full details can be taken from the refactored script above. What does it basically come down to?
+1. The script is called with one parameter (PID of target process to inject backdoor shellcode into)
+2. It parses the virtual memory mapping (/proc/$pid/maps) of the target process for the loaded libc library
+3. The virtual addresses (VA) of the libc functions __free_hook, system, free and malloc_usable_size are calculated for the target process (these have to be dynamically resolved, due to ASLR etc.)
+4. The virtual memory map is parsed for the end of an executable region in the loaded libc (to put code into)
+5. The VA of the named functions are put into placeholders inside the shellcode
+6. The updated shellcode is written to the executable memory region (step 4, *injection*)
+7. The VA of the libc function __free_hook is patched with the VA of the injected shellcode (*hooking* __free_hook, so to say)
+
+This way, whenever the libc function __free_hook is called inside the target process, the shellcode is called instead.
+But what does the shellcode do?
 
 ## todo: disassemble base shellcode (without dynamic substitutions from shellscript
 ```
