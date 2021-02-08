@@ -15,10 +15,10 @@ sudo apt install qemu-system-x86
 
 qemu-img can be used to list snapshots of this image.
 ```
-qemu-img snapshot -l art_ctf_injector_local.qcow2 
+qemu-img snapshot -l art_ctf_egghunt_local.qcow2 
 Snapshot list:
 ID        TAG               VM SIZE                DATE     VM CLOCK     ICOUNT
-1         compromised       452 MiB 2021-01-13 20:15:55 00:02:17.632           
+1         compromised       497 MiB 2021-01-14 13:15:30 00:01:55.747                 
 ```
 
 The run.sh script uses qemu-system-x86_64 to run the image.
@@ -28,7 +28,7 @@ Restoring snapshot compromised (art_ctf_egghunt_local.qcow2)
 Press Return...
 ```
 
-One of the options used for qemu inside run.sh is setting up port forwarding for the custom ports tcp/3322 and tcp/4321 from host to guest system.
+One of the options used for qemu inside run.sh is setting up port forwarding for the custom ports tcp/4422 and udp/1337 from host to guest system.
 ```
 hostfwd=tcp::4422-:4422,hostfwd=udp::1337-:1337
 ```
