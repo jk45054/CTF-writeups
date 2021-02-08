@@ -195,6 +195,13 @@ r6 - r9 are callee saved registers that will be preserved on helper function cal
 https://docs.cilium.io/en/latest/bpf/
 
 ```
+In some ways, eBPF does to the kernel what JavaScript does to websites: it allows all sorts of new applications to be created. BPF is now used for software defined networking, observability (this book), security enforcement, and more. The main front-ends for BPF performance tools are BCC and bpftrace
+```
+http://www.brendangregg.com/bpf-performance-tools-book.html
+https://www.youtube.com/watch?v=yrrxFZfyEsw
+
+
+```
 root@egghunt:~# bpftool -p prog
 [{
         "id": 3,
@@ -332,8 +339,13 @@ pid 974  fd 9: prog_id 16  tracepoint  netif_receive_skb
 pid 974  fd 10: prog_id 17  uprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
 pid 974  fd 11: prog_id 18  uretprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
 ```
+
+http://www.brendangregg.com/blog/2016-02-08/linux-ebpf-bcc-uprobes.html
+
 -> libc.so.6 offset 1174224 (0x11ead0) -> function getspnam_r
 The getspnam_r() function is like getspnam() but stores the retrieved shadow password structure in the space pointed to by spbuf.
+
+
 
 ```
 bpftool btf list
@@ -370,7 +382,6 @@ bpftool map dump id 4
 bpftool -j map dump id 4
 [{"key":["0x00","0x00","0x00","0x00"],"value":["0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00"],"formatted":{"value":{".bss":[{"backdoor":{"enabled":false,"hash":""}}]}}}]
 ```
-http://www.brendangregg.com/blog/2016-02-08/linux-ebpf-bcc-uprobes.html
 
 
 
