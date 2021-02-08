@@ -284,9 +284,9 @@ r2 -a x86 -b 64 -qc pd shellcode_unpatched.bin
   ╎│││││╎   0x00000067      4889d5         mov rbp, rdx
   ╎│││││╎   0x0000006a      488d4001       lea rax, [rax + 1]
   ╎│││││╎   0x0000006e      488d52ff       lea rdx, [rdx - 1]
-  ╎│││││╎   0x00000072      8d71e0         lea esi, [rcx - 0x20]
-  ╎│││││╎   0x00000075      4080fe5e       cmp sil, 0x5e               ; 94
-  ────────< 0x00000079      771b           ja 0x96 ; skip shellcode magic if counter is too high
+  ╎│││││╎   0x00000072      8d71e0         lea esi, [rcx - 0x20] ; substract 0x20 from char value
+  ╎│││││╎   0x00000075      4080fe5e       cmp sil, 0x5e               ; char value - 0x20 > 0x5e?
+  ────────< 0x00000079      771b           ja 0x96 ; skip shellcode magic if non-printable char was found (i.e. cl > 0x7e), ty @daubsi
   ╎│││││╎   0x0000007b      80f97d         cmp cl, 0x7d                ; '}'
   ────────< 0x0000007e      7508           jne 0x88
   ╎│││││╎   0x00000080      c60300         mov byte [rbx], 0 ; write null termination
