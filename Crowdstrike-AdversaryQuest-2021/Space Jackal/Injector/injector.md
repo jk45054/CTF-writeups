@@ -1,4 +1,4 @@
-# Crowdstrike Adversary Quest 2021 / Space Jackal / Injector
+# Crowdstrike Adversary Quest 2021 / Space Jackal / #3 Injector
 
 ## Challenge Description
 The decrypted forum messages revealed that a disgruntled employee at one of our customers joined SPACE JACKAL and backdoored a host at their employer before they quit. Our customer provided us with a snapshot of that machine.
