@@ -110,7 +110,7 @@ Jan 14 12:15:17 egghunt kernel: [   86.289920] cron[971] is installing a program
 Something called **bpf_probe_write_user** may corrupt user memory? That definitely doesn't sound like cron (PID 971) played a safe game there!
 The list of running processes does not contain a cron process with PID 971, but one with a PID of 974. Can't hurt to dive down again dumping this one's process memory with gcore!
 ```
-gcore cron (974) 
+gcore 974 
 ```
 
 Are there suspicious strings containing bpf inside this core dump?
