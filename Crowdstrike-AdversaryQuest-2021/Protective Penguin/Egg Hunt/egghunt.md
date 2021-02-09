@@ -4,9 +4,6 @@
 After moving laterally, PROTECTIVE PENGUIN compromised a number of additional systems and gained persistence. We have identified another host in the DMZ that we believe was backdoored by the adversary and is used to regain access.
 Please download a virtual machine image of that host and identify the backdoor. Validate your findings in our test environment on egghunt.challenges.adversary.zone.
 
-Hint:
-Snapshot is (at least) compatible with current QEMU versions available in Arch Linux and Fedora 33 (5.1.0, 5.2.0).
-
 ## Pre-Requisites
 This challenge consists of a qcow2 image, that needs qemu to run. In case qemu isn't installed, yet, now is a good time to do so. ;-)
 ```
@@ -54,10 +51,10 @@ sshd      379            root    3u  IPv4  21311      0t0  TCP *:4422 (LISTEN)
 sshd      379            root    4u  IPv6  21322      0t0  TCP *:4422 (LISTEN)
 dhclient  587            root    9u  IPv4  23072      0t0  UDP *:bootpc
 ```
-Looks like there is an sshd process with PID 379 listening on tcp port 4422 but no process seems to be listening on udp port 1337. Weird, why would there be a port forward rule for qemu then? This is of course a bit of a cheat hint, as compromised systems usually don't come with such hints in real IR. ;-)
+Looks like there is an sshd process with PID 379 listening on tcp port 4422 but no process seems to be listening on udp port 1337. Weird, why would there be a port forward rule for qemu then? This is of course a bit of a cheat hint, as compromised systems usually don't come with such nicely laid out forward rules in real IR. ;-)
 
 ## Nmap Scan of Backdoored Target Server
-It would be interesting to verify if both of these custom ports are open on the target server as well.
+It would be interesting to verify if one or both of these custom ports are open on the target server.
 There was no (sshd) network service listening on tcp port 4422, but there was one listening on the common tcp port 22. And udp port 1337 seems to be closed. Hmm.
 ```
 sudo nmap -sU -p 1337,53,68 egghunt.challenges.adversary.zone 
@@ -74,14 +71,25 @@ PORT     STATE         SERVICE
 
 ## Searching for Signs of the Backdoor Mechanism
 
--> crontab seems empty for root
+### Rabbit Hole - Dumping Process Memory of sshd
+Using the tool **gcore**, one can dump an image of a process' memory to disk. Since there seems to be only one network service with a listening port to inspect (sshd), it for some reason appeared to be clever to dig down deep into a rabbit hole instead of doing a proper system survey first. To generate a core file for sshd (PID 379):
+```
+gcore 379 
+```
 
+The resulting image can be thoroughly inspected for strings, but also for signs of the usage of network activity around udp port 1337 (little endian hex = 3905).
+Since there wasn't anything useful to be found, it was time to do some backtracking and checking for other signs of system anomalies.
+
+### Out of the Rabbit Hole, why not checking some System Logfiles instead?
 Peeking into /var/log/syslog.1
 ```
+Jan 14 12:15:16 egghunt systemd[1]: Stopping Regular background program processing daemon...
+Jan 14 12:15:16 egghunt systemd[1]: cron.service: Succeeded.
+Jan 14 12:15:16 egghunt systemd[1]: Stopped Regular background program processing daemon.
+Jan 14 12:15:16 egghunt systemd[1]: session-5.scope: Succeeded.
+Jan 14 12:15:16 egghunt systemd[1]: Started Session 6 of user root.
 Jan 14 12:15:17 egghunt kernel: [   86.289920] cron[971] is installing a program with bpf_probe_write_user helper that may corrupt user memory!
-Jan 14 12:14:22 egghunt kernel: [   32.332403] audit: type=1400 audit(1610626462.740:13): apparmor="DENIED" operation="open" profile="/{,usr/}sbin/dhclient" name="/proc/587/task/588/comm" pid=587 comm="dhclient" requested_mask="wr" denied_mask="wr" fsuid=0 ouid=0
-Jan 14 12:14:22 egghunt kernel: [   32.332652] audit: type=1400 audit(1610626462.740:14): apparmor="DENIED" operation="open" profile="/{,usr/}sbin/dhclient" name="/proc/587/task/589/comm" pid=587 comm="dhclient" requested_mask="wr" denied_mask="wr" fsuid=0 ouid=0
-Jan 14 12:14:22 egghunt kernel: [   32.332775] audit: type=1400 audit(1610626462.740:15): apparmor="DENIED" operation="open" profile="/{,usr/}sbin/dhclient" name="/proc/587/task/590/comm" pid=587 comm="dhclient" requested_mask="wr" denied_mask="wr" fsuid=0 ouid=0
+Jan 14 12:15:17 egghunt cron[971]: (CRON) INFO (pidfile fd = 12)
 ```
 
 Peeking into /var/log/kern.log.1
@@ -94,37 +102,31 @@ Jan 14 12:15:17 egghunt kernel: [   86.289920] cron[971] is installing a program
 Jan 14 12:15:31 egghunt kernel: [   86.289928] cron[971] is installing a program with bpf_probe_write_user helper that may corrupt user memory!
 ```
 
-## dump process memory / core dump on rabbit hole 1, sshd process
+Hmm. What's this about?
+```
+Jan 14 12:15:17 egghunt kernel: [   86.289920] cron[971] is installing a program with bpf_probe_write_user helper that may corrupt user memory!
+```
 
-gcore 379 
-
-havent found obviously interesting strings nor nopslep in core.379
-looking for 1337 (udp/1337)
-root@egghunt:/tmp# xxd core.379 | grep "3905"
--> no luck chasing dump of sshd
-
-## backtrack crawl out of rabbit hole, and dive into the next!
-
-recheck syslog.1 and kern.log.1 -> weird cron behaviour
-
+Something called **bpf_probe_write_user** may corrupt user memory? That definitely doesn't sound like cron (PID 971) played a safe game there!
+The list of running processes does not contain a cron process with PID 971, but one with a PID of 974. Can't hurt to dive down again dumping this one's process memory with gcore!
+```
 gcore cron (974) 
-
-```
-kali@rurapente:/mnt/hgfs/Crowdstrike-Adversary-Quest-2021/protective penguin/egg hunt$ strings -t x core.974 | grep bpf
-   6266 nodev   bpf
-   6928 implant_bpf
-   6ac8 implant_bpf
-   9ba7 /home/user/git/bcc/libbpf-tools/implant.bpf.c
 ```
 
-bpf implant might make sense if there is a port knock mechanism to open udp/1337
-
+Are there suspicious strings containing bpf inside this core dump?
 ```
-strings -t x core.974 | grep backdoor
-   a79b backdoor_hash
-   a7bc backdoor
+root@egghunt:/tmp# strings core.974 | grep bpf
+nodev   bpf
+implant_bpf
+implant_bpf
+/home/user/git/bcc/libbpf-tools/implant.bpf.c
+[...]
 ```
 
+Jackpot! So we are looking for a backdoor implant using bpf. Maybe there is some kind of port knocking mechanism around udp port 1337?
+
+
+The cron process with PID 974 also has weird file descriptors open.
 ```
 root@egghunt:/proc/974/fd# ls -la
 total 0
@@ -149,28 +151,7 @@ lrwx------ 1 root root 64 Jan 26 20:14 9 -> 'anon_inode:[perf_event]'
 ```
 root@egghunt:/proc/974/fd# lsof -p 974
 COMMAND PID USER   FD      TYPE             DEVICE SIZE/OFF   NODE NAME
-cron    974 root  cwd       DIR                8,2     4096  12762 /var/spool/cron
-cron    974 root  rtd       DIR                8,2     4096      2 /
-cron    974 root  txt       REG                8,2    55944   9199 /usr/sbin/cron
-cron    974 root  mem       REG                8,2    27002 133105 /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
-cron    974 root  mem       REG                8,2    55904   8798 /usr/lib/x86_64-linux-gnu/libnss_files-2.32.so
-cron    974 root  mem       REG                8,2  3041456  15771 /usr/lib/locale/locale-archive
-cron    974 root  mem       REG                8,2   151232   8834 /usr/lib/x86_64-linux-gnu/libpthread-2.32.so
-cron    974 root  mem       REG                8,2    27064   8662 /usr/lib/x86_64-linux-gnu/libcap-ng.so.0.0.0
-cron    974 root  mem       REG                8,2   584392   8819 /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.9.0
-cron    974 root  mem       REG                8,2    18816   8678 /usr/lib/x86_64-linux-gnu/libdl-2.32.so
-cron    974 root  mem       REG                8,2   133200   8652 /usr/lib/x86_64-linux-gnu/libaudit.so.1.0.0
-cron    974 root  mem       REG                8,2   113032   8909 /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
-cron    974 root  mem       REG                8,2   109200   8688 /usr/lib/x86_64-linux-gnu/libelf-0.181.so
-cron    974 root  mem       REG                8,2  1995896   8660 /usr/lib/x86_64-linux-gnu/libc-2.32.so
-cron    974 root  mem       REG                8,2   163256   8844 /usr/lib/x86_64-linux-gnu/libselinux.so.1
-cron    974 root  mem       REG                8,2    68320   8809 /usr/lib/x86_64-linux-gnu/libpam.so.0.84.2
-cron    974 root  mem       REG               0,13           12123 anon_inode:bpf-map (stat: No such file or directory)
-cron    974 root  mem       REG               0,25   257416      4 /dev/shm/x86_64-linux-gnu/libc.so.7
-cron    974 root  mem       REG                8,2   195584   8629 /usr/lib/x86_64-linux-gnu/ld-2.32.so
-cron    974 root    0r      CHR                1,3      0t0      6 /dev/null
-cron    974 root    1w      CHR                1,3      0t0      6 /dev/null
-cron    974 root    2w      CHR                1,3      0t0      6 /dev/null
+[...]
 cron    974 root    3r  a_inode               0,13        0  12123 btf
 cron    974 root    4u  a_inode               0,13        0  12123 bpf-map
 cron    974 root    5u  a_inode               0,13        0  12123 bpf-map
@@ -183,6 +164,8 @@ cron    974 root   11u  a_inode               0,13        0  12123 [perf_event]
 cron    974 root   12u      REG               0,24        4    436 /run/crond.pid
 cron    974 root   13u     unix 0xffff96bbcd1f6000      0t0  24485 type=DGRAM
 ```
+
+## What's this BPF Stuff about?
 
 ```
 BPF consists of eleven 64 bit registers with 32 bit subregisters, a program counter and a 512 byte large BPF stack space. Registers are named r0 - r10. The operating mode is 64 bit by default, the 32 bit subregisters can only be accessed through special ALU (arithmetic logic unit) operations. The 32 bit lower subregisters zero-extend into 64 bit when they are being written to.
