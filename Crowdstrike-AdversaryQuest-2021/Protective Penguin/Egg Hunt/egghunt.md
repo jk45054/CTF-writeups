@@ -232,7 +232,7 @@ root@egghunt:/tmp# bpftool prog show
 
 
 ```
-bpftool map list
+root@egghunt:/tmp# bpftool map list
 3: hash  name args  flags 0x0
         key 8B  value 8B  max_entries 10  memlock 4096B
         btf_id 5
@@ -242,7 +242,7 @@ bpftool map list
 ```
 
 ```
-bpftool map dump id 4
+root@egghunt:/tmp# bpftool map dump id 4
 [{
         "value": {
             ".bss": [{
@@ -259,7 +259,7 @@ bpftool map dump id 4
 
 
 ```
-root@egghunt:~# bpftool perf
+root@egghunt:/tmp# bpftool perf
 pid 974  fd 9: prog_id 16  tracepoint  netif_receive_skb
 pid 974  fd 10: prog_id 17  uprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
 pid 974  fd 11: prog_id 18  uretprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
@@ -309,7 +309,7 @@ after xoring stuff
  202: (73) *(u8 *)(r1 +31) = r3
 
 ```
-prog 17:
+root@egghunt:/tmp# bpftool prog dump xlated id 17
 int getspnam_r_entry(long long unsigned int * ctx):
   26: (85) call bpf_probe_read_compat#-54752
   28: (85) call bpf_get_current_pid_tgid#119360
@@ -318,7 +318,7 @@ int getspnam_r_entry(long long unsigned int * ctx):
 ```
 
 ```
-prog 18:
+root@egghunt:/tmp# bpftool prog dump xlated id 18
 int getspnam_r_exit(long long unsigned int * ctx):
    0: (85) call bpf_get_current_pid_tgid#119360
    4: (18) r1 = map[id:3]
@@ -335,6 +335,8 @@ int kprobe_netif_receive_skb(struct netif_receive_skb_args * args):
 port 1337, xor, stuff, write map 3
 
 ```
+root@egghunt:/tmp# bpftool prog dump xlated id 16
+int kprobe_netif_receive_skb(struct netif_receive_skb_args * args):
   33: (79) r3 = *(u64 *)(r1 +8)                 # r1 = pointer to skb + 8
   34: (bf) r6 = r10
   35: (07) r6 += -256
