@@ -182,164 +182,54 @@ r1 - r5 hold arguments from the BPF program to the kernel helper function.
 r6 - r9 are callee saved registers that will be preserved on helper function call.
 ```
 
-Some links that I've quoted from here:
+BPF Type Format (BTF) definition.
+```
+BTF (BPF Type Format) is the metadata format which encodes the debug info related to BPF program/map. The name BTF was used initially to describe data types. The BTF was later extended to include function info for defined subroutines, and line info for source/line information.
+```
+
+Some links that I've quoted from and can be used for reading up:
 - [www.brendanregg.com](http://www.brendangregg.com/bpf-performance-tools-book.html)
+- [www.brendanregg.com2](http://www.brendangregg.com/blog/2016-02-08/linux-ebpf-bcc-uprobes.html)
 - [ebpf.io](https://ebpf.io)
 - [docs.cilium.io](https://docs.cilium.io/en/latest/bpf/)
 
 One tool to interact with eBPF is **bpftool**.
+```
+root@egghunt:/tmp# bpftool 
+Usage: /usr/lib/linux-tools/5.8.0-33-generic/bpftool [OPTIONS] OBJECT { COMMAND | help }
+       /usr/lib/linux-tools/5.8.0-33-generic/bpftool batch file FILE
+       /usr/lib/linux-tools/5.8.0-33-generic/bpftool version
+
+       OBJECT := { prog | map | link | cgroup | perf | net | feature | btf | gen | struct_ops | iter }
+       OPTIONS := { {-j|--json} [{-p|--pretty}] | {-f|--bpffs} |
+                    {-m|--mapcompat} | {-n|--nomount} }
+```
 
 ## Searching for eBPF Backdoor Code
+Query BTF information.
 ```
-root@egghunt:~# bpftool -p prog
-[{
-        "id": 3,
-        "type": "cgroup_skb",
-        "tag": "6deef7357e7b4530",
-        "gpl_compatible": true,
-        "loaded_at": 1611691485,
-        "uid": 0,
-        "bytes_xlated": 64,
-        "jited": true,
-        "bytes_jited": 66,
-        "bytes_memlock": 4096
-    },{
-        "id": 4,
-        "type": "cgroup_skb",
-        "tag": "6deef7357e7b4530",
-        "gpl_compatible": true,
-        "loaded_at": 1611691485,
-        "uid": 0,
-        "bytes_xlated": 64,
-        "jited": true,
-        "bytes_jited": 66,
-        "bytes_memlock": 4096
-    },{
-        "id": 5,
-        "type": "cgroup_skb",
-        "tag": "6deef7357e7b4530",
-        "gpl_compatible": true,
-        "loaded_at": 1611691485,
-        "uid": 0,
-        "bytes_xlated": 64,
-        "jited": true,
-        "bytes_jited": 66,
-        "bytes_memlock": 4096
-    },{
-        "id": 6,
-        "type": "cgroup_skb",
-        "tag": "6deef7357e7b4530",
-        "gpl_compatible": true,
-        "loaded_at": 1611691485,
-        "uid": 0,
-        "bytes_xlated": 64,
-        "jited": true,
-        "bytes_jited": 66,
-        "bytes_memlock": 4096
-    },{
-        "id": 7,
-        "type": "cgroup_skb",
-        "tag": "6deef7357e7b4530",
-        "gpl_compatible": true,
-        "loaded_at": 1611691486,
-        "uid": 0,
-        "bytes_xlated": 64,
-        "jited": true,
-        "bytes_jited": 66,
-        "bytes_memlock": 4096
-    },{
-        "id": 8,
-        "type": "cgroup_skb",
-        "tag": "6deef7357e7b4530",
-        "gpl_compatible": true,
-        "loaded_at": 1611691486,
-        "uid": 0,
-        "bytes_xlated": 64,
-        "jited": true,
-        "bytes_jited": 66,
-        "bytes_memlock": 4096
-    },{
-        "id": 16,
-        "type": "tracepoint",
-        "name": "kprobe_netif_re",
-        "tag": "e0d014d973f44213",
-        "gpl_compatible": true,
-        "loaded_at": 1611691566,
-        "uid": 0,
-        "bytes_xlated": 2344,
-        "jited": true,
-        "bytes_jited": 1544,
-        "bytes_memlock": 4096,
-        "map_ids": [4
-        ],
-        "btf_id": 5
-    },{
-        "id": 17,
-        "type": "kprobe",
-        "name": "getspnam_r_entr",
-        "tag": "acab388c8f8ef0f9",
-        "gpl_compatible": true,
-        "loaded_at": 1611691566,
-        "uid": 0,
-        "bytes_xlated": 336,
-        "jited": true,
-        "bytes_jited": 223,
-        "bytes_memlock": 4096,
-        "map_ids": [3
-        ],
-        "btf_id": 5
-    },{
-        "id": 18,
-        "type": "kprobe",
-        "name": "getspnam_r_exit",
-        "tag": "ceeabb4ac5b9ed45",
-        "gpl_compatible": true,
-        "loaded_at": 1611691566,
-        "uid": 0,
-        "bytes_xlated": 328,
-        "jited": true,
-        "bytes_jited": 209,
-        "bytes_memlock": 4096,
-        "map_ids": [3,4
-        ],
-        "btf_id": 5
-    }
-]
-```
-
-```
-bpftool cgroup tree
-CgroupPath
-ID       AttachType      AttachFlags     Name           
-/sys/fs/cgroup/unified/system.slice/systemd-udevd.service
-    6        ingress                                        
-    5        egress                                         
-/sys/fs/cgroup/unified/system.slice/systemd-journald.service
-    4        ingress                                        
-    3        egress                                         
-/sys/fs/cgroup/unified/system.slice/systemd-logind.service
-    8        ingress                                        
-    7        egress  
-```
-
-```
-root@egghunt:~# bpftool perf
-pid 974  fd 9: prog_id 16  tracepoint  netif_receive_skb
-pid 974  fd 10: prog_id 17  uprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
-pid 974  fd 11: prog_id 18  uretprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
-```
-
-http://www.brendangregg.com/blog/2016-02-08/linux-ebpf-bcc-uprobes.html
-
--> libc.so.6 offset 1174224 (0x11ead0) -> function getspnam_r
-The getspnam_r() function is like getspnam() but stores the retrieved shadow password structure in the space pointed to by spbuf.
-
-
-
-```
-bpftool btf list
+root@egghunt:/tmp# bpftool btf
 5: size 6600B  prog_ids 18,17,16  map_ids 4,3
 ```
+
+Query data about prog_ids 16, 17, 18.
+```
+root@egghunt:/tmp# bpftool prog show
+[...]
+16: tracepoint  name kprobe_netif_re  tag e0d014d973f44213  gpl
+        loaded_at 2021-02-09T20:33:16+0000  uid 0
+        xlated 2344B  jited 1544B  memlock 4096B  map_ids 4
+        btf_id 5
+17: kprobe  name getspnam_r_entr  tag acab388c8f8ef0f9  gpl
+        loaded_at 2021-02-09T20:33:16+0000  uid 0
+        xlated 336B  jited 223B  memlock 4096B  map_ids 3
+        btf_id 5
+18: kprobe  name getspnam_r_exit  tag ceeabb4ac5b9ed45  gpl
+        loaded_at 2021-02-09T20:33:16+0000  uid 0
+        xlated 328B  jited 209B  memlock 4096B  map_ids 3,4
+        btf_id 5
+```
+
 
 ```
 bpftool map list
@@ -367,10 +257,16 @@ bpftool map dump id 4
 ]
 ```
 
+
 ```
-bpftool -j map dump id 4
-[{"key":["0x00","0x00","0x00","0x00"],"value":["0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00"],"formatted":{"value":{".bss":[{"backdoor":{"enabled":false,"hash":""}}]}}}]
+root@egghunt:~# bpftool perf
+pid 974  fd 9: prog_id 16  tracepoint  netif_receive_skb
+pid 974  fd 10: prog_id 17  uprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
+pid 974  fd 11: prog_id 18  uretprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
 ```
+
+-> libc.so.6 offset 1174224 (0x11ead0) -> function getspnam_r
+The getspnam_r() function is like getspnam() but stores the retrieved shadow password structure in the space pointed to by spbuf.
 
 
 
