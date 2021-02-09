@@ -166,7 +166,13 @@ cron    974 root   13u     unix 0xffff96bbcd1f6000      0t0  24485 type=DGRAM
 ```
 
 ## What's this BPF Stuff about?
+Up to this CTF challenge, I only used Berkeley Packet Filter (BPF) with network tools like tcpdump or wireshark. The Linux kernel contains a BPF virtual machine dubbed extended BPF (eBPF) that allows for much than that including Software Defined Networking (SDN). Also Compilers like LLVM and GCC can generate eBPF code.
 
+```
+In some ways, eBPF does to the kernel what JavaScript does to websites: it allows all sorts of new applications to be created. BPF is now used for software defined networking, observability (this book), security enforcement, and more. The main front-ends for BPF performance tools are BCC and bpftrace
+```
+
+The eBPF virtual machine is working with RISC style bytecode.
 ```
 BPF consists of eleven 64 bit registers with 32 bit subregisters, a program counter and a 512 byte large BPF stack space. Registers are named r0 - r10. The operating mode is 64 bit by default, the 32 bit subregisters can only be accessed through special ALU (arithmetic logic unit) operations. The 32 bit lower subregisters zero-extend into 64 bit when they are being written to.
 Register r10 is the only register which is read-only and contains the frame pointer address in order to access the BPF stack space. The remaining r0 - r9 registers are general purpose and of read/write nature.
@@ -175,15 +181,15 @@ r0 contains the return value of a helper function call.
 r1 - r5 hold arguments from the BPF program to the kernel helper function.
 r6 - r9 are callee saved registers that will be preserved on helper function call.
 ```
-https://docs.cilium.io/en/latest/bpf/
 
-```
-In some ways, eBPF does to the kernel what JavaScript does to websites: it allows all sorts of new applications to be created. BPF is now used for software defined networking, observability (this book), security enforcement, and more. The main front-ends for BPF performance tools are BCC and bpftrace
-```
-http://www.brendangregg.com/bpf-performance-tools-book.html
-https://www.youtube.com/watch?v=yrrxFZfyEsw
+Some links that I've quoted from here:
+- [www.brendanregg.com](http://www.brendangregg.com/bpf-performance-tools-book.html)
+- [ebpf.io](https://ebpf.io)
+- [docs.cilium.io](https://docs.cilium.io/en/latest/bpf/)
 
+One tool to interact with eBPF is **bpftool**.
 
+## Searching for eBPF Backdoor Code
 ```
 root@egghunt:~# bpftool -p prog
 [{
