@@ -478,7 +478,7 @@ XOR the hash value (without $1$ prefix!) with 66 ('B') yields:
 ```
 See [CyberChef](https://gchq.github.io/CyberChef/#recipe=XOR(%7B'option':'Decimal','string':'66'%7D,'Standard',false)To_Hex('Space',0)&input=d3R1TllJZUIkQm8yOEY4MTJzMy9BaFhXWldJY3NvLg)
 
-Craft and send the full packet (udp dst port 1337, udp len 42, udp payload begins with 'fsf' followed by XOR'd hash value
+Craft and send the full packet (udp dst port 1337, udp len 42, udp payload begins with 'fsf' followed by XOR'd hash value)
 ```
 >>> p = IP(dst="127.0.0.1")/UDP(dport=1337, len=0x2a)/Raw("fsf"+"\x35\x36\x37\x0
 ...: c\x1b\x0b\x27\x00\x66\x00\x2d\x70\x7a\x04\x7a\x73\x70\x31\x71\x6d\x03\x2a\x
