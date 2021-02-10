@@ -480,8 +480,6 @@ See [CyberChef](https://gchq.github.io/CyberChef/#recipe=XOR(%7B'option':'Decima
 
 Craft and send the full packet (udp dst port 1337, udp len 42, udp payload begins with 'fsf' followed by XOR'd hash value
 ```
-p = IP(dst="127.0.0.1")/UDP(dport=1337, len=0x2a)/Raw("fsf"+"\x35\x36\x37\x0c\x1b\x0b\x27\x00\x66\x00\x2d\x70\x7a\x04\x7a\x73\x70\x31\x71\x6d\x03\x2a\x1a\x15\x18\x15\x0b\x21\x31\x2d\x6c")
-
 >>> p = IP(dst="127.0.0.1")/UDP(dport=1337, len=0x2a)/Raw("fsf"+"\x35\x36\x37\x0
 ...: c\x1b\x0b\x27\x00\x66\x00\x2d\x70\x7a\x04\x7a\x73\x70\x31\x71\x6d\x03\x2a\x
 ...: 1a\x15\x18\x15\x0b\x21\x31\x2d\x6c")
