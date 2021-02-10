@@ -205,7 +205,7 @@ Usage: /usr/lib/linux-tools/5.8.0-33-generic/bpftool [OPTIONS] OBJECT { COMMAND 
                     {-m|--mapcompat} | {-n|--nomount} }
 ```
 
-## Searching for eBPF Backdoor Code
+## Searching for eBPF Backdoor Code with bpftool
 Query BTF information.
 ```
 root@egghunt:/tmp# bpftool btf
@@ -230,7 +230,14 @@ root@egghunt:/tmp# bpftool prog show
         btf_id 5
 ```
 
+```
+root@egghunt:/tmp# bpftool perf
+pid 974  fd 9: prog_id 16  tracepoint  netif_receive_skb
+pid 974  fd 10: prog_id 17  uprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
+pid 974  fd 11: prog_id 18  uretprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
+```
 
+Query data about map_ids 3, 4.
 ```
 root@egghunt:/tmp# bpftool map list
 3: hash  name args  flags 0x0
@@ -257,34 +264,152 @@ root@egghunt:/tmp# bpftool map dump id 4
 ]
 ```
 
+Interesting: map_id 4 contains a struct *backdoor* with an attribute *enabled* and another one called *hash*.
 
+### Interim Conclusion/Hypothesis: eBPF prog_id 16
 ```
-root@egghunt:/tmp# bpftool perf
 pid 974  fd 9: prog_id 16  tracepoint  netif_receive_skb
+```
+- A tracepoint on netif_receive_skb [main receive data processing function](https://www.kernel.org/doc/htmldocs/networking/API-netif-receive-skb.html)
+- Probably some kind of packet sniffing code
+- Might trigger on *magic* packets (like udp port 1337?)
+- Uses map_id 4 (like a variable/buffer), which has attributes *enabled* and *hash*
+
+### Interim Conclusion/Hypothesis: eBPF prog_id 17
+```
 pid 974  fd 10: prog_id 17  uprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
+17: kprobe  name getspnam_r_entr  tag acab388c8f8ef0f9  gpl
+```
+- kprobe is named *getspnam_r_entr*
+- eBPF code triggers on entry of the user mode libc function at offset 1174224
+- libc.so.6 offset 1174224 (0x11ead0) -> function getspnam_r, which handles a retrieved shadow password structure
+- Uses map_id 3 (like a variable/buffer), which has an attributed called *hash*
+
+### Interim Conclusion/Hypothesis: eBPF prog_id 18
+```
 pid 974  fd 11: prog_id 18  uretprobe  filename /lib/x86_64-linux-gnu/libc.so.6  offset 1174224
+18: kprobe  name getspnam_r_exit  tag ceeabb4ac5b9ed45  gpl
+```
+- kprobe is named *getspnam_r_exit*
+- eBPF code triggers on exit from the user mode libc function getspnam_r
+- Uses map_id 3 and 4 (like a variable/buffer)
+
+### Deep Dive eBPF code for prog_id 16
+Enough tl;dr, time for some real code analysis!
+The output of bpftool is shortened and commented for readability purposes.
+```
+root@egghunt:/sys/kernel/debug/tracing/events/net/netif_receive_skb# bpftool prog dump xlated id 16 
+int kprobe_netif_receive_skb(struct netif_receive_skb_args * args):
+ 
+  33: (79) r3 = *(u64 *)(r1 +8)                  # function arg3 (src), u64 pointer to skb + 8
+  36: (bf) r1 = r6                               # function arg1 (dst), stack pointer
+  37: (b7) r2 = 224                              # function arg2 (len), value 224
+  38: (85) call bpf_probe_read_compat#-54752     # read 224 bytes from skb+8
+
+  44: (bf) r1 = r10
+  45: (07) r1 += -24                             # dst on stack
+  46: (b7) r2 = 20                               # len
+  47: (bf) r3 = r6                               # src, smells like packet offset to ip header
+  48: (85) call bpf_probe_read_compat#-54752     # read first 20 bytes from offset to ip header
+
+  49: (55) if r0 != 0x0 goto pc+241              # exit if read failed
+  50: (bf) r1 = r10
+  51: (07) r1 += -24
+  52: (71) r1 = *(u8 *)(r1 +0)                   # u8 pointer to ip[0]
+  53: (57) r1 &= 240                             # ip[0] & 0xf0, mask for high nibble -> ip version
+  54: (55) if r1 != 0x40 goto pc+236             # exit if ip version != 4
+  55: (bf) r1 = r10
+  56: (07) r1 += -24
+  57: (71) r1 = *(u8 *)(r1 +9)                   # u8 pointer to ip[9] -> protocol
+  58: (55) if r1 != 0x11 goto pc+232             # exit if protocol != 0x11 (not udp)
+  59: (bf) r1 = r10
+  60: (07) r1 += -24
+  61: (71) r1 = *(u8 *)(r1 +0)                   # u8 pointer to ip[0]
+  62: (57) r1 &= 15                              # ip[0] & 0x0f, mask lower nibble -> ip header length (in double words)
+  63: (55) if r1 != 0x5 goto pc+227              # exit if ip header len != 20 bytes (i.e. contains ip options)
+
+  64: (07) r6 += 20                              # set src pointer behind ip header
+  65: (bf) r1 = r10
+  66: (07) r1 += -32                             # dst on stack
+  67: (b7) r2 = 8                                # len = 8 bytes
+  68: (bf) r3 = r6                               # src, just behind ip header
+  69: (85) call bpf_probe_read_compat#-54752     # read 8 bytes after ip header, i.e. udp header (always 8 bytes)
+  70: (55) if r0 != 0x0 goto pc+220              # exit if read failed
+  71: (bf) r1 = r10
+  72: (07) r1 += -32
+  73: (69) r1 = *(u16 *)(r1 +2)                  # u16 pointer to udp dst port
+  74: (55) if r1 != 0x3905 goto pc+216           # exit if udp dst port != 1337
+  75: (bf) r1 = r10
+  76: (07) r1 += -32
+  77: (69) r1 = *(u16 *)(r1 +4)                  # u16 pointer to udp len
+  78: (55) if r1 != 0x2a00 goto pc+212           # exit if udp len != 42
+  79: (b7) r1 = 0
+
+  85: (07) r6 += 8                               # set read pointer to just behind udp header
+  86: (bf) r1 = r10
+  87: (07) r1 += -296                            # dst on stack
+  88: (b7) r2 = 34                               # len = 34 bytes
+  89: (bf) r3 = r6                               # src pointer, behind udp header
+  90: (85) call bpf_probe_read_compat#-54752     # read 34 bytes after udp header, i.e. full udp payload (42 - 8)
+
+  91: (71) r1 = *(u8 *)(r10 -296)                # pointer to first udp data byte on stack
+  92: (55) if r1 != 0x66 goto pc+198             # exit if first byte != 0x66 ('f')
+  93: (71) r1 = *(u8 *)(r10 -295)                # pointer to second byte
+  94: (55) if r1 != 0x73 goto pc+196             # exit if second byte != 0x73 ('s')
+  95: (71) r1 = *(u8 *)(r10 -294)                # pointer to third byte
+  96: (55) if r1 != 0x66 goto pc+194             # exit if third byte != 0x66 ('f')
+  97: (b7) r1 = 36
+  98: (73) *(u8 *)(r10 -294) = r1                # replace third byte with 36 ('$')
+  99: (b7) r1 = 12580
+ 100: (6b) *(u16 *)(r10 -296) = r1               # replace first two bytes with 0x3124 ('$1') - little endian!
+                                                 # 'fsf' has been replaced with '$1$'
+                                                 # that smells a lot like crypt hash type 1 -> md5
+                                                 
+ 101: (71) r1 = *(u8 *)(r10 -293)                # read fourth byte
+ 102: (a7) r1 ^= 66                              # xor with 66 ('B')
+ 103: (73) *(u8 *)(r10 -293) = r1                # replace fourth byte with xor'd value
+
+ 191: (71) r1 = *(u8 *)(r10 -263)                # read 34th byte/last of udp payload
+ 192: (a7) r1 ^= 66
+ 193: (73) *(u8 *)(r10 -263) = r1                # payload[34] ^= 66
+
+ 194: (18) r1 = map[id:4][0]+0                   # let r1 point to map_id 4
+ 
+ 196: (79) r2 = *(u64 *)(r10 -272)               # write udp payload xor'd with 66 to map_id 4, attribute hash
+ 197: (bf) r3 = r2
+ 198: (77) r3 >>= 56
+
+ 289: (b7) r2 = 1
+ 290: (73) *(u8 *)(r1 +0) = r2                   # write 1 (true) to map_id 4 offset 0, attribute enabled
+ 
+ 291: (b7) r0 = 0
+ 292: (95) exit
 ```
 
--> libc.so.6 offset 1174224 (0x11ead0) -> function getspnam_r
-The getspnam_r() function is like getspnam() but stores the retrieved shadow password structure in the space pointed to by spbuf.
+### Analysis of prog_id 16, Proven Hypothesis
+Checks done on each packet processed are
+- ip version = 4
+- ip header len = 20 bytes
+- ip protocol = 0x11 (udp)
+- udp dst port = 1337 (0x3905, little endian)
+- udp len = 42 (0x2a00, little endian)
+- udp payload begins with 'fsf' (0x66, 0x73, 0x66)
+
+If all checks succeed, this is a **magic** packet to enable the backdoor and write an md5crypt hash into map_id 4. Value of this hash is taken from udp payload bytes 4-34, xor'd with 66 ('B').
+
+### Deep Dive eBPF code for prog_id 17
 
 
 
-prog 16 could be some kind of port knock check
+
+### Deep Dive eBPF code for prog_id 18
 
 
-Name
 
-netif_receive_skb — process receive buffer from network
-
-Synopsis
 
 int netif_receive_skb ( struct sk_buff * skb);
 
-pid 974 fd 9: prog_id 16 tracepoint netif_receive_skb
 
-might check all incoming packets
-for magic packet
 
 ```
 prog 17 writes to 
