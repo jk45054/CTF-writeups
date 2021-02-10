@@ -488,7 +488,7 @@ Craft and send the full packet (udp dst port 1337, udp len 42, udp payload begin
 Sent 1 packets.
 ```
 
-Verify that the backdoor is enabled and the hash hash value has been set:
+Verify that the backdoor is enabled and the hash value has been set:
 ```
 root@egghunt:/proc/974/fd# bpftool -p map dump id 4
 [{
