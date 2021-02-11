@@ -166,7 +166,7 @@ cron    974 root   13u     unix 0xffff96bbcd1f6000      0t0  24485 type=DGRAM
 ```
 
 ## What's this BPF Stuff about?
-Up to this CTF challenge, I only used Berkeley Packet Filter (BPF) with network tools like tcpdump or wireshark. The Linux kernel contains a BPF virtual machine dubbed extended BPF (eBPF) that allows for much than that including Software Defined Networking (SDN). Also Compilers like LLVM and GCC can generate eBPF code.
+Up to this CTF challenge, I only used Berkeley Packet Filter (BPF) with network tools like tcpdump or wireshark. The Linux kernel contains a BPF virtual machine dubbed extended BPF (eBPF) that allows for much more than that including Software Defined Networking (SDN). Also Compilers like LLVM and GCC can generate eBPF code.
 
 ```
 In some ways, eBPF does to the kernel what JavaScript does to websites: it allows all sorts of new applications to be created. BPF is now used for software defined networking, observability (this book), security enforcement, and more. The main front-ends for BPF performance tools are BCC and bpftrace
