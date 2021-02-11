@@ -192,6 +192,7 @@ Some links that I've quoted from and can be used for reading up:
 - [www.brendanregg.com2](http://www.brendangregg.com/blog/2016-02-08/linux-ebpf-bcc-uprobes.html)
 - [ebpf.io](https://ebpf.io)
 - [docs.cilium.io](https://docs.cilium.io/en/latest/bpf/)
+- [bcc reference guide](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md)
 
 One tool to interact with eBPF is **bpftool**.
 ```
