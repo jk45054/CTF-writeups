@@ -184,7 +184,7 @@ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi
 - env CONTENT_LENGTH has to be less than 1024
 - parses HTTP POST BODY as JSON, find string pointers for *user* and *pass*
 - calls a function @ 0x401226 with parsed JSON values for *user* and *pass* as arguments
--> validate(char *lpsz_user_b64, char *lpsz_pass_b64)
+-- validate(char *lpsz_user_b64, char *lpsz_pass_b64)
 - if validate function returns 0, the flag is returned from the portal.cgi
 
 ### Portal CGI, Disassemble validate() @ 0x401226
