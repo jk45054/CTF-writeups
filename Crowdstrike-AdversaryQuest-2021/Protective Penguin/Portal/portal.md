@@ -183,40 +183,134 @@ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi
 - env REQUEST_METHOD has to be **POST**
 - env CONTENT_LENGTH has to be less than 1024
 - parses HTTP POST BODY as JSON, find string pointers for *user* and *pass*
-- calls a function @ 0x401226 with parsed JSON values for *user* and *pass* as arguments
--- validate(char *lpsz_user_b64, char *lpsz_pass_b64)
+- calls a supposed validate function @ 0x401226 with parsed JSON values for *user* and *pass* as arguments
 - if validate function returns 0, the flag is returned from the portal.cgi
 
 ### Portal CGI, Disassemble validate() @ 0x401226
-
+Use radare2 to disassemble function *main* of portal.cgi (output is shortened for readability and additionally commented with ;;)
+```assembly
+r2 -q -c "pd 107 @ 0x401226" cgi-bin/portal.cgi 
+            0x00401226      55             push rbp
+            0x00401227      4889e5         mov rbp, rsp
+            0x0040122a      4881ec400200.  sub rsp, 0x240
+            0x00401231      4889bdc8fdff.  mov qword [rbp - 0x238], rdi
+            0x00401238      4889b5c0fdff.  mov qword [rbp - 0x240], rsi
+            0x0040123f      64488b042528.  mov rax, qword fs:[0x28]
+            0x00401248      488945f8       mov qword [rbp - 8], rax  ;; stack canary
+[...]
+            0x00401265      c785e0fdffff.  mov dword [rbp - 0x220], 1
+            0x0040126f      488d05920d00.  lea rax, str.creds.txt      ; 0x402008 ; "creds.txt"
+            0x00401276      488945e8       mov qword [rbp - 0x18], rax  ; save pointer to filename str "creds.txt" on stack @ [rbp - 0x18]
+            0x0040127a      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x00401281      488d88040100.  lea rcx, [rax + 0x104]
+            0x00401288      488b85c8fdff.  mov rax, qword [rbp - 0x238]  ;; user_b64
+            0x0040128f      ba00010000     mov edx, 0x100              ; dst size = 256
+            0x00401294      4889ce         mov rsi, rcx  ;; dst = stack @ [rbp - 0x11c]
+            0x00401297      4889c7         mov rdi, rax  ;; src = user_b64
+            0x0040129a      e861feffff     call sym.imp.__b64_pton  ;; base64_decode(user_b64, dst, dst_size)
+            0x0040129f      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x004012a6      480504010000   add rax, 0x104              ; 260
+            0x004012ac      4889c7         mov rdi, rax
+            0x004012af      e8bcfdffff     call sym.imp.strlen  ;; strlen(base64_decoded_user)
+            0x004012b4      4889c2         mov rdx, rax
+            0x004012b7      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x004012be      480504010000   add rax, 0x104              ; 260
+            0x004012c4      4801d0         add rax, rdx
+            0x004012c7      66c7003a00     mov word [rax], 0x3a        ;; add ':' after base64_decoded_user
+                                                                       ; [0x3a:2]=0xffff ; 58                                                                                                                
+            0x004012cc      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x004012d3      480504010000   add rax, 0x104              ; 260
+            0x004012d9      4889c7         mov rdi, rax
+            0x004012dc      e88ffdffff     call sym.imp.strlen  ;; strlen(base64_decoded_user + ':')
+            0x004012e1      4889c2         mov rdx, rax
+            0x004012e4      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x004012eb      480504010000   add rax, 0x104              ; 260
+            0x004012f1      488d0c10       lea rcx, [rax + rdx]
+            0x004012f5      488b85c0fdff.  mov rax, qword [rbp - 0x240]  ;; pass_b64
+            0x004012fc      ba00010000     mov edx, 0x100              ; dst size = 256
+            0x00401301      4889ce         mov rsi, rcx  ;; dst = stack @ [rbp - 0x11c + strlen(base64_decoded_user + ':')]
+            0x00401304      4889c7         mov rdi, rax  ;; src = pass_b64
+            0x00401307      e8f4fdffff     call sym.imp.__b64_pton  ;; base64_decode(pass_b64, dst, dst_size)
+            0x0040130c      488b45e8       mov rax, qword [rbp - 0x18]  ;; [rbp - 0x18] is used as lpsz_filename for fopen @ 0x0040131a
+            0x00401310      488d35fb0c00.  lea rsi, [0x00402012]       ; "r"
+            0x00401317      4889c7         mov rdi, rax
+            0x0040131a      e8f1fdffff     call sym.imp.fopen  ;; fopen([rbp - 0x18], "r")
+            0x0040131f      488985d0fdff.  mov qword [rbp - 0x230], rax
+            0x00401326      4883bdd0fdff.  cmp qword [rbp - 0x230], 0
+            0x0040132e      0f85aa000000   jne 0x4013de  ;; read next line from file
+[...]
+            0x0040133e      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x00401345      4883c004       add rax, 4
+            0x00401349      4889c7         mov rdi, rax
+            0x0040134c      e81ffdffff     call sym.imp.strlen  ;; strlen([rbp - 0x21c])
+            0x00401351      488985d8fdff.  mov qword [rbp - 0x228], rax
+            0x00401358      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x0040135f      4883c004       add rax, 4
+            0x00401363      be3a000000     mov esi, 0x3a               ; ':' ; 58
+            0x00401368      4889c7         mov rdi, rax
+            0x0040136b      e820fdffff     call sym.imp.strchr  ;; strchr([rbp - 0x21c], ":")
+            0x00401370      4885c0         test rax, rax
+            0x00401373      7502           jne 0x401377  ;; found colon
+            0x00401375      eb67           jmp 0x4013de  ;; read next line from file
+            0x00401377      4883bdd8fdff.  cmp qword [rbp - 0x228], 0  ;; is line empty?
+            0x0040137f      742a           je 0x4013ab
+            0x00401381      488b85d8fdff.  mov rax, qword [rbp - 0x228]
+            0x00401388      4883e801       sub rax, 1
+            0x0040138c      0fb68405e4fd.  movzx eax, byte [rbp + rax - 0x21c]
+            0x00401394      3c0a           cmp al, 0xa                 ;; is line ending with newline?
+            0x00401396      7513           jne 0x4013ab
+            0x00401398      488b85d8fdff.  mov rax, qword [rbp - 0x228]
+            0x0040139f      4883e801       sub rax, 1
+            0x004013a3      c68405e4fdff.  mov byte [rbp + rax - 0x21c], 0  ;; null terminate line
+            0x004013ab      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x004013b2      488d5004       lea rdx, [rax + 4]
+            0x004013b6      488d85e0fdff.  lea rax, [rbp - 0x220]
+            0x004013bd      480504010000   add rax, 0x104              ; 260
+            0x004013c3      4889d6         mov rsi, rdx
+            0x004013c6      4889c7         mov rdi, rax
+            0x004013c9      e802fdffff     call sym.imp.strcmp  ;; strcmp(base64_decoded_user + ':' + base64_decoded_pass, line)
+            0x004013ce      85c0           test eax, eax
+            0x004013d0      750c           jne 0x4013de  ;; lines did not match, read next line from file
+            0x004013d2      c785e0fdffff.  mov dword [rbp - 0x220], 0  ;; lines matched, success
+            0x004013dc      eb2b           jmp 0x401409  ;; jump out
+            0x004013de      488b85d0fdff.  mov rax, qword [rbp - 0x230]
+[...]
+            0x004013fb      e8c0fcffff     call sym.imp.fgets  ;; read up to 256 bytes from file to stack @ [rbp - 0x21c]
+            0x00401400      4885c0         test rax, rax
+            0x00401403      0f8535ffffff   jne 0x40133e  ;; read a line, do checks
+            0x00401409      488b85d0fdff.  mov rax, qword [rbp - 0x230]
+            0x00401410      4889c7         mov rdi, rax
+            0x00401413      e848fcffff     call sym.imp.fclose
+            0x00401418      8b85e0fdffff   mov eax, dword [rbp - 0x220]
+            0x0040141e      488b75f8       mov rsi, qword [rbp - 8]
+            0x00401422      64482b342528.  sub rsi, qword fs:[0x28]
+            0x0040142b      7405           je 0x401432
+            0x0040142d      e84efcffff     call sym.imp.__stack_chk_fail
+            0x00401432      c9             leave
+            0x00401433      c3             ret
+```
 
 ### Analysis Summary for validate()
+- fopen() of the *creds* file happens at 0x0040131a, using string pointer saved in local variable [rbp - 0x18] just **after** base64 decoding of user and pass
+- lines are read from the opened file that are either empty, newline terminated and < 256 bytes long or 256 bytes long
+- the currently read line is checked for an occurrence of a colon (":"); if not read next line
+- if this line is equal to base64_decoded_user + ":" + base64_decoded_pass, we got a match -> exit with value 0 (success) -> main will print FLAG (win!)
+
+
+- stack frame of validate is protected by a stack canary, so it's unlikely to overwrite the return pointer with a buffer overflow
 
 
 
-
-high level:
-main -> calls validate_creds with params b64_user, b64_pass
-validate opens creds.txt, reads line by line, compares for valid creds
-validate_creds returns 0 on success
-main -> print flag on success
-
-validate_creds has stack laylout
-.text:0000000000401226                   lpb64password= qword ptr -240h
-.text:0000000000401226                   lpb64username= qword ptr -238h
-.text:0000000000401226                   stream= qword ptr -230h
-.text:0000000000401226                   length_of_current_creds_line= qword ptr -228h
-.text:0000000000401226                   var_220= dword ptr -220h
-.text:0000000000401226                   var_21C= byte ptr -21Ch
-.text:0000000000401226                   filename= qword ptr -18h
-.text:0000000000401226                   stackCookie= qword ptr -8
-
-var_220 is used as exit value (0 for success)
+### Stack Layout of validate()
 parsing of server local creds.txt happens line by line, reading up to 100h bytes with fgets into var_220 + 4 (range variable from -21Ch up to -11Dh)
 b64 decoded username (up to 100h) bytes are saved to var_220 + 104 (range variable, from -11Ch up to -1Dh)
 then a colon is added to decoded username (with max username length, e.g. at -1Ch)
 b64 decoded password (up to 100h) bytes are saved to var_220 + 104 + strlen(username) + 1
 with max size username from -1B up to and beyond stack frame border.
+
+
+
+
 
 
 rabin2 -zz cgi-bin/portal.cgi 
