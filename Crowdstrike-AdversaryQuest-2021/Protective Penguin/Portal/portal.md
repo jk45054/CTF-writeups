@@ -97,7 +97,7 @@ vaddr=0x00401434 paddr=0x00401434
 ```
 
 ### Portal CGI, Disassemble main() @ 0x401434
-Use radare2 to disassemble function *main* of portal.cgi (output is shortened for readability and additionally commented with #)
+Use radare2 to disassemble function *main* of portal.cgi (output is shortened for readability and additionally commented with ;;)
 ```assembly
 r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi 
             ;-- main:
@@ -113,7 +113,7 @@ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi
             0x004014c4      4889c7         mov rdi, rax
             0x004014c7      e804fcffff     call sym.imp.strcmp
             0x004014cc      85c0           test eax, eax
-        ┌─< 0x004014ce      741b           je 0x4014eb  # REQUEST_METHOD == "POST"
+        ┌─< 0x004014ce      741b           je 0x4014eb  ;; REQUEST_METHOD == "POST"
 [...]
        │└─> 0x004014eb      488d3d7e0b00.  lea rdi, str.CONTENT_LENGTH ; 0x402070 ; "CONTENT_LENGTH"
        │    0x004014f2      e839fbffff     call sym.imp.getenv
@@ -124,7 +124,7 @@ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi
        │┌─< 0x0040150c      780d           js 0x40151b
        ││   0x0040150e      8b85c4fbffff   mov eax, dword [rbp - 0x43c]
        ││   0x00401514      3dff030000     cmp eax, 0x3ff              ; 1023
-      ┌───< 0x00401519      761b           jbe 0x401536  # CONTENT_LENGTH <= 1023
+      ┌───< 0x00401519      761b           jbe 0x401536  ;; CONTENT_LENGTH <= 1023
 [...]
       └───> 0x00401536      488b0d732b00.  mov rcx, qword [obj.stdin]  ; [0x4040b0:8]=0
        │    0x0040153d      8b85c4fbffff   mov eax, dword [rbp - 0x43c]
@@ -132,45 +132,45 @@ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi
        │    0x00401546      488d85f0fbff.  lea rax, [rbp - 0x410]
        │    0x0040154d      be01000000     mov esi, 1
        │    0x00401552      4889c7         mov rdi, rax
-       │    0x00401555      e8f6faffff     call sym.imp.fread  # fread body into [rbp - 0x410]
+       │    0x00401555      e8f6faffff     call sym.imp.fread  ;; fread body into [rbp - 0x410]
 [...]
        │    0x00401572      488d85f0fbff.  lea rax, [rbp - 0x410]
        │    0x00401579      4889c7         mov rdi, rax
-       │    0x0040157c      e85ffbffff     call sym.imp.json_tokener_parse  # parse body JSON
+       │    0x0040157c      e85ffbffff     call sym.imp.json_tokener_parse  ;; parse body JSON
 [...]
        │    0x004015ac      488d95c8fbff.  lea rdx, [rbp - 0x438]
        │    0x004015b3      488b85e8fbff.  mov rax, qword [rbp - 0x418]
        │    0x004015ba      488d35e40a00.  lea rsi, str.user           ; 0x4020a5 ; "user"
        │    0x004015c1      4889c7         mov rdi, rax
-       │    0x004015c4      e867fbffff     call sym.imp.json_object_object_get_ex  # put json obj pointer for user into [rbp - 0x438]
+       │    0x004015c4      e867fbffff     call sym.imp.json_object_object_get_ex  ;; put json obj pointer for user into [rbp - 0x438]
        │    0x004015c9      85c0           test eax, eax
        │    0x004015cb      0f84b7000000   je 0x401688
        │    0x004015d1      488d95d0fbff.  lea rdx, [rbp - 0x430]
        │    0x004015d8      488b85e8fbff.  mov rax, qword [rbp - 0x418]
        │    0x004015df      488d35c40a00.  lea rsi, str.pass           ; 0x4020aa ; "pass"
        │    0x004015e6      4889c7         mov rdi, rax
-       │    0x004015e9      e842fbffff     call sym.imp.json_object_object_get_ex  # put json obj pointer for pass into [rbp - 0x430]
+       │    0x004015e9      e842fbffff     call sym.imp.json_object_object_get_ex  ;; put json obj pointer for pass into [rbp - 0x430]
        │    0x004015ee      85c0           test eax, eax
        │    0x004015f0      0f8492000000   je 0x401688
        │    0x004015f6      488b85c8fbff.  mov rax, qword [rbp - 0x438]
        │    0x004015fd      4889c7         mov rdi, rax
-       │    0x00401600      e8abfaffff     call sym.imp.json_object_get_string  # get pointer to value for user
-       │    0x00401605      488985d8fbff.  mov qword [rbp - 0x428], rax  # save to [rbp - 0x428]
+       │    0x00401600      e8abfaffff     call sym.imp.json_object_get_string  ;; get pointer to value for user
+       │    0x00401605      488985d8fbff.  mov qword [rbp - 0x428], rax  ;; save to [rbp - 0x428]
        │    0x0040160c      4883bdd8fbff.  cmp qword [rbp - 0x428], 0
        │    0x00401614      7472           je 0x401688
        │    0x00401616      488b85d0fbff.  mov rax, qword [rbp - 0x430]
        │    0x0040161d      4889c7         mov rdi, rax
-       │    0x00401620      e88bfaffff     call sym.imp.json_object_get_string  # get pointer to value for pass
-       │    0x00401625      488985e0fbff.  mov qword [rbp - 0x420], rax  # save to [rbp - 0x420]
+       │    0x00401620      e88bfaffff     call sym.imp.json_object_get_string  ;; get pointer to value for pass
+       │    0x00401625      488985e0fbff.  mov qword [rbp - 0x420], rax  ;; save to [rbp - 0x420]
        │    0x0040162c      4883bde0fbff.  cmp qword [rbp - 0x420], 0
        │    0x00401634      7452           je 0x401688
        │    0x00401636      488b95e0fbff.  mov rdx, qword [rbp - 0x420]
        │    0x0040163d      488b85d8fbff.  mov rax, qword [rbp - 0x428]
        │    0x00401644      4889d6         mov rsi, rdx
        │    0x00401647      4889c7         mov rdi, rax
-       │    0x0040164a      e8d7fbffff     call 0x401226  # call validate(char *lpsz_user_b64, char *lpsz_pass_b64)
+       │    0x0040164a      e8d7fbffff     call 0x401226  ;; call validate(char *lpsz_user_b64, char *lpsz_pass_b64)
        │    0x0040164f      85c0           test eax, eax
-       │    0x00401651      7522           jne 0x401675  # print flag value if validate returned 0 (winning condition)
+       │    0x00401651      7522           jne 0x401675  ;; print flag value if validate returned 0 (winning condition)
        │    0x00401653      488d3d550a00.  lea rdi, str.FLAG           ; 0x4020af ; "FLAG"
        │    0x0040165a      e8d1f9ffff     call sym.imp.getenv
        │    0x0040165f      4889c6         mov rsi, rax
