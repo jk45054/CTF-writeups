@@ -62,11 +62,36 @@ A test run with admin/admin creds looks like this:
 {"user":"YWRtaW4=","pass":"YWRtaW4="}
 ```
 
+The web page and the Javascript do not seem to be vulnerable, so the attention is on to portal.cgi!
+
+### Portal CGI, Checksec
+A little glance at program security features with checksec never hurts...
+```
 /usr/bin/checksec --file=cgi-bin/portal.cgi
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      Symbols         FORTIFY Fortified       Fortifiable     FILE
 Partial RELRO   Canary found      NX enabled    No PIE          No RPATH   No RUNPATH   No Symbols        No    0               3               cgi-bin/portal.cgi
+```
+... and shows usage of stack canaries but also no PIE (position independent executable). So the base code might not make use of ASLR (address space layout randomization), which could be a first wink.
 
-reversing portal.cgi
+### Portal CGI, Binary info
+Gathering some ELF infos with readelf yields entry point **0x401140** (no ASLR).
+```
+readelf -a cgi-bin/portal.cgi 
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           Advanced Micro Devices X86-64
+  Version:                           0x1
+  Entry point address:               0x401140
+```
+
+
+
 
 high level:
 main -> calls validate_creds with params b64_user, b64_pass
