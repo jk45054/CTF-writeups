@@ -74,7 +74,7 @@ Partial RELRO   Canary found      NX enabled    No PIE          No RPATH   No RU
 ... and shows usage of stack canaries but also no PIE (position independent executable). So the base code might not make use of ASLR (address space layout randomization), which could be a first wink.
 
 ### Portal CGI, Binary info
-Gathering some ELF infos with readelf yields entry point **0x401140** (no ASLR).
+Gathering some ELF infos with readelf yields program entry point **0x401140** (no ASLR).
 ```
 readelf -a cgi-bin/portal.cgi 
 ELF Header:
@@ -89,7 +89,140 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x401140
 ```
+Quickly identify entrypoint of function *main* via rabin2
+```
+rabin2 -M cgi-bin/portal.cgi 
+[Main]
+vaddr=0x00401434 paddr=0x00401434
+```
 
+r2
+```
+                                  │       │                                               │                                                   │                                                              
+                                  │   ┌────────────────────────┐                      ┌──────────────────────────────────────┐                │                                                              
+                                  │   │  0x401568              │                      │  0x401572                            │                │                                                              
+                                  │   │ ; -1                   │                      │ lea rax, [var_410h]                  │                │                                                              
+                                  │   │ mov eax, 0xffffffff    │                      │ mov rdi, rax                         │                │                                                              
+                                  │   │ jmp 0x4016ad           │                      │ call sym.imp.json_tokener_parse;[og] │                │                                                              
+                                  │   └────────────────────────┘                      │ mov qword [var_418h], rax            │                │                                                              
+                                  │       v                                           │ mov qword [var_438h], 0              │                │                                                              
+                                  │       │                                           │ mov qword [var_430h], 0              │                │                                                              
+                                  │       │                                           │ cmp qword [var_418h], 0              │                │                                                              
+                                  │       │                                           │ je 0x401688                          │                │                                                              
+                                  │       │                                           └──────────────────────────────────────┘                │                                                              
+                                  │       │                                                   f t                                             │                                                              
+                                  │       │                                                   │ │                                             │                                                              
+                                  │   ┌───┘                                                   │ │                                             │                                                              
+                                  │   │                                                       │ └───────────────────────┐                     │                                                              
+                                  │   │                                   ┌───────────────────┘                         │                     │                                                              
+                                  │   │                                   │                                             │                     │                                                              
+                                  │   │                               ┌─────────────────────────────────────────────┐   │                     │                                                              
+                                  │   │                               │  0x4015ac                                   │   │                     │                                                              
+                                  │   │                               │ lea rdx, [var_438h]                         │   │                     │                                                              
+                                  │   │                               │ mov rax, qword [var_418h]                   │   │                     │                                                              
+                                  │   │                               │ ; 0x4020a5                                  │   │                     │                                                              
+                                  │   │                               │ ; "user"                                    │   │                     │                                                              
+                                  │   │                               │ lea rsi, str.user                           │   │                     │                                                              
+                                  │   │                               │ mov rdi, rax                                │   │                     │                                                              
+                                  │   │                               │ call sym.imp.json_object_object_get_ex;[oh] │   │                     │                                                              
+                                  │   │                               │ test eax, eax                               │   │                     │                                                              
+                                  │   │                               │ je 0x401688                                 │   │                     │                                                              
+                                  │   │                               └─────────────────────────────────────────────┘   │                     │                                                              
+                                  │   │                                       f t                                       │                     │                                                              
+                                  │   │                                       │ │                                       │                     │                                                              
+                                  │   │                                       │ └───────────────────────────────────┐   │                     │                                                              
+                                  │   │                               ┌───────┘                                     │   │                     │                                                              
+                                  │   │                               │                                             │   │                     │                                                              
+                                  │   │                           ┌─────────────────────────────────────────────┐   │   │                     │                                                              
+                                  │   │                           │  0x4015d1                                   │   │   │                     │                                                              
+                                  │   │                           │ lea rdx, [var_430h]                         │   │   │                     │                                                              
+                                  │   │                           │ mov rax, qword [var_418h]                   │   │   │                     │                                                              
+                                  │   │                           │ ; 0x4020aa                                  │   │   │                     │                                                              
+                                  │   │                           │ ; "pass"                                    │   │   │                     │                                                              
+                                  │   │                           │ lea rsi, str.pass                           │   │   │                     │                                                              
+                                  │   │                           │ mov rdi, rax                                │   │   │                     │                                                              
+                                  │   │                           │ call sym.imp.json_object_object_get_ex;[oh] │   │   │                     │                                                              
+                                  │   │                           │ test eax, eax                               │   │   │                     │                                                              
+                                  │   │                           │ je 0x401688                                 │   │   │                     │                                                              
+                                  │   │                           └─────────────────────────────────────────────┘   │   │                     │                                                              
+                                  │   │                                   f t                                       │   │                     │                                                              
+                                  │   │                                   │ │                                       │   │                     │                                                              
+                                  │   │                                   │ └───────────────────────────────────┐   │   │                     │                                                              
+                                  │   │                             ┌─────┘                                     │   │   │                     │                                                              
+                                  │   │                             │                                           │   │   │                     │                                                              
+                                  │   │                         ┌──────────────────────────────────────────┐    │   │   │                     │                                                              
+                                  │   │                         │  0x4015f6                                │    │   │   │                     │                                                              
+                                  │   │                         │ mov rax, qword [var_438h]                │    │   │   │                     │                                                              
+                                  │   │                         │ mov rdi, rax                             │    │   │   │                     │                                                              
+                                  │   │                         │ call sym.imp.json_object_get_string;[oi] │    │   │   │                     │                                                              
+                                  │   │                         │ mov qword [var_428h], rax                │    │   │   │                     │                                                              
+                                  │   │                         │ cmp qword [var_428h], 0                  │    │   │   │                     │                                                              
+                                  │   │                         │ je 0x401688                              │    │   │   │                     │                                                              
+                                  │   │                         └──────────────────────────────────────────┘    │   │   │                     │                                                              
+                                  │   │                                 f t                                     │   │   │                     │                                                              
+                                  │   │                                 │ │                                     │   │   │                     │                                                              
+                                  │   │                                 │ └─────────────────────────────────┐   │   │   │                     │                                                              
+                                  │   │                         ┌───────┘                                   │   │   │   │                     │                                                              
+                                  │   │                         │                                           │   │   │   │                     │                                                              
+                                  │   │                     ┌──────────────────────────────────────────┐    │   │   │   │                     │                                                              
+                                  │   │                     │  0x401616                                │    │   │   │   │                     │                                                              
+                                  │   │                     │ mov rax, qword [var_430h]                │    │   │   │   │                     │                                                              
+                                  │   │                     │ mov rdi, rax                             │    │   │   │   │                     │                                                              
+                                  │   │                     │ call sym.imp.json_object_get_string;[oi] │    │   │   │   │                     │                                                              
+                                  │   │                     │ mov qword [var_420h], rax                │    │   │   │   │                     │                                                              
+                                  │   │                     │ cmp qword [var_420h], 0                  │    │   │   │   │                     │                                                              
+                                  │   │                     │ je 0x401688                              │    │   │   │   │                     │                                                              
+                                  │   │                     └──────────────────────────────────────────┘    │   │   │   │                     │                                                              
+                                  │   │                             f t                                     │   │   │   │                     │                                                              
+                                  │   │                             │ │                                     │   │   │   │                     │                                                              
+                                  │   │                             │ └─────────────────────────────┐       │   │   │   │                     │                                                              
+                                  │   │                       ┌─────┘                               │       │   │   │   │                     │                                                              
+                                  │   │                       │                                     │ ┌─────┘   │   │   │                     │                                                              
+                                  │   │                       │                                     │ │ ┌───────┘   │   │                     │                                                              
+                                  │   │                       │                                     │ │ │ ┌─────────┘   │                     │                                                              
+                                  │   │                       │                                     │ │ │ │ ┌───────────┘                     │                                                              
+                                  │   │                       │                                     │ │ │ │ │                                 │                                                              
+                                  │   │                   ┌──────────────────────────────┐    ┌──────────────────────────────────────────┐    │                                                              
+                                  │   │                   │  0x401636                    │    │  0x401688                                │    │                                                              
+                                  │   │                   │ mov rdx, qword [var_420h]    │    │ ; 0x4020ee                               │    │                                                              
+                                  │   │                   │ mov rax, qword [var_428h]    │    │ ; "{\"status\": \"invalid-json\"}"       │    │                                                              
+                                  │   │                   │ mov rsi, rdx                 │    │ lea rdi, str._status_:__invalid_json_    │    │                                                              
+                                  │   │                   │ mov rdi, rax                 │    │ mov eax, 0                               │    │                                                              
+                                  │   │                   │ call fcn.00401226;[oj]       │    │ ; int printf(const char *format)         │    │                                                              
+                                  │   │                   │ test eax, eax                │    │ call sym.imp.printf;[od]                 │    │                                                              
+                                  │   │                   │ jne 0x401675                 │    └──────────────────────────────────────────┘    │                                                              
+                                  │   │                   └──────────────────────────────┘        v                                           │                                                              
+                                  │   │                           f t                             │                                           │                                                              
+                                  │   │                           │ │                             │                                           │                                                              
+                                  │   │                           │ └─────────────────────────────│───┐                                       │                                                              
+                                  │   │       ┌───────────────────┘                               │   │                                       │                                                              
+                                  │   │       │                                                   └───────────────────────────────────────┐   │                                                              
+                                  │   │       │                                                       │                                   │   │                                                              
+                                  │   │   ┌───────────────────────────────────────────────────┐   ┌──────────────────────────────────┐    │   │                                                              
+                                  │   │   │  0x401653                                         │   │  0x401675                        │    │   │                                                              
+                                  │   │   │ ; 0x4020af                                        │   │ ; 0x4020dc                       │    │   │                                                              
+                                  │   │   │ ; "FLAG"                                          │   │ ; "{\"status\": \"err\"}"        │    │   │                                                              
+                                  │   │   │ lea rdi, str.FLAG                                 │   │ lea rdi, str._status_:__err_     │    │   │                                                              
+                                  │   │   │ ; char *getenv(const char *name)                  │   │ mov eax, 0                       │    │   │                                                              
+                                  │   │   │ call sym.imp.getenv;[ob]                          │   │ ; int printf(const char *format) │    │   │                                                              
+                                  │   │   │ mov rsi, rax                                      │   │ call sym.imp.printf;[od]         │    │   │                                                              
+                                  │   │   │ ; 0x4020b8                                        │   │ jmp 0x401699                     │    │   │                                                              
+                                  │   │   │ ; "{\"status\": \"success\", \"flag\": \"%s\"}"   │   └──────────────────────────────────┘    │   │                                                              
+                                  │   │   │ lea rdi, str._status_:__success____flag_:___s_    │       v                                   │   │                                                              
+                                  │   │   │ mov eax, 0                                        │       │                                   │   │                                                              
+                                  │   │   │ ; int printf(const char *format)                  │       │                                   │   │                                                              
+                                  │   │   │ call sym.imp.printf;[od]                          │       │                                   │   │                                                              
+                                  │   │   │ jmp 0x401699                                      │       │                                   │   │                                                              
+                                  │   │   └───────────────────────────────────────────────────┘       │                                   │   │                                                              
+                                  │   │       v                                                       │                                   │   │                                                              
+                                  │   │       │                                                       │                                   │   │                                                              
+                                  │   │       └───────────────────────────────────────────┐           │                                   │   │                                                              
+                                  │   │                                                   │ ┌─────────┘                                   │   │                                                              
+                                  │   │                                                   │ │ ┌───────────────────────────────────────────┘   │                                                              
+                                  │   │                                                   │ │ │                                               │                                                              
+                                  │   │                                             ┌─────────────────────────────────────────────┐           │                                                              
+                                  │   │                                             │  0x401699                                   │           │   
+```
 
 
 
