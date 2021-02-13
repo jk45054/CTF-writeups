@@ -350,7 +350,7 @@ gdb -p 486858
 ```
 
 Follow child process on fork and set breakpoints
-```
+```gdb
 set follow-fork-mode child
 set detach-on-fork off
 break *0x401226  # validate()
@@ -371,7 +371,7 @@ Send login data to portal.cgi with interactive python
 ```
 
 Debugging
-```
+```gdb
 Thread 2.1 "portal.cgi" hit Breakpoint 1, 0x0000000000401226 in ?? () <- start of validate()
 gef➤  continue
 Continuing.
@@ -384,7 +384,7 @@ fopen@plt (
 )
 ```
 Manually patch filename string pointer from 0x402008 to 0x4002a8
-```
+```gdb
 gef➤  set $rdi=0x004002a8
 gef➤  context
 fopen@plt (
