@@ -28,37 +28,39 @@ Serving HTTP on 127.0.0.1 port 8000 (http://127.0.0.1:8000/) ...
 ... serving a rather simple web page resembling a VPN login.
 ![VPN login page](pics/1.png)
 
+### Page Source
+The login form uses an inline Javascript function *auth()* on submitting data for the fields *input_username* and *input_password*...
+```javascript
+function auth() {
+  let creds = {
+    user: btoa(document.getElementById("input_username").value),
+    pass: btoa(document.getElementById("input_password").value)
+  };
+  if (!creds.user) {
+    notification("Empty username", "warning");
+    return;
+  }
+  if (!creds.pass) {
+    notification("Empty password", "warning");
+    return;
+  }
 
-
-
-simple website with user/pass fields, validated by a cgi
-
-    function auth() {
-      let creds = {
-        user: btoa(document.getElementById("input_username").value),
-        pass: btoa(document.getElementById("input_password").value)
-      };
-      if (!creds.user) {
-        notification("Empty username", "warning");
-        return;
-      }
-      if (!creds.pass) {
-        notification("Empty password", "warning");
-        return;
-      }
-
-      fetch("/cgi-bin/portal.cgi", {
-        method: "POST",
-        body: JSON.stringify(creds),
-      }).then(function (response) {
-        return response.text();
-      }).then(function (data) {
-        let json = JSON.parse(data);
-        if (json.status == "success") {
-          notification(`Login success: ${json.flag}`, "success");
-
-cgi gets a POST request with data in json, example for admin/admin
+  fetch("/cgi-bin/portal.cgi", {
+    method: "POST",
+    body: JSON.stringify(creds),
+  }).then(function (response) {
+    return response.text();
+  }).then(function (data) {
+    let json = JSON.parse(data);
+    if (json.status == "success") {
+      notification(`Login success: ${json.flag}`, "success");
+[...]
+```
+... which base64 encodes both field values and delivers them via HTTP POST as JSON to the CGI program */cgi-bin/portal.cgi*.
+A test run with admin/admin creds looks like this:
+```json
 {"user":"YWRtaW4=","pass":"YWRtaW4="}
+```
 
 /usr/bin/checksec --file=cgi-bin/portal.cgi
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      Symbols         FORTIFY Fortified       Fortifiable     FILE
