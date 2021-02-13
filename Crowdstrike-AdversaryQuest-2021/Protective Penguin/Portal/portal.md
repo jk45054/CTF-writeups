@@ -98,7 +98,7 @@ vaddr=0x00401434 paddr=0x00401434
 
 ### Portal CGI, Disassemble main() @ 0x401434
 Use radare2 to disassemble function *main* of portal.cgi (output is shortened for readability and additionally commented with #)
-```
+```assembly
 r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi 
             ;-- main:
             0x00401434      55             push rbp
