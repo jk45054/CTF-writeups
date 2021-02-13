@@ -74,6 +74,11 @@ b64 decoded password (up to 100h) bytes are saved to var_220 + 104 + strlen(user
 with max size username from -1B up to and beyond stack frame border.
 
 
+strings -t x portal.cgi
+    2a8 /lib64/ld-linux-x86-64.so.2
+
+LOAD:00000000004002A8 aLib64LdLinuxX8 db '/lib64/ld-linux-x86-64.so.2',0
+
 nope: its the right way, only path in non-dynamic memory is
 fill up pass with \0 and then overwrite filename with offset $rax  : 0x00000000004002a8 → "/lib64/ld-linux-x86-64.so.2"
 
@@ -115,6 +120,10 @@ Reading symbols from /usr/lib/debug/.build-id/a5/a3c3f65fd94f4c7f323a175707c3a79
 Thread 2.1 "portal.cgi" hit Breakpoint 1, 0x0000000000401434 in ?? ()
 
 # first line read with fgets from /lib64/...
+
+00001420: 0348 8d3c 9248 01ff 4829 f841 0fb6 3c01  .H.<.H..H).A..<.
+00001430: 4889 c848 89d1 4188 3a48 83f8 0977 d14c  H..H..A.:H...w.L
+00001440: 89d8 ba19 0000 0049 89e3 4c29 d048 83f8  .......I..L).H..
 
 gef➤  x/200x $rsi
 0x7ffde4289cd4: 0x48    0x29    0xf8    0x41    0x0f    0xb6    0x3c    0x01
