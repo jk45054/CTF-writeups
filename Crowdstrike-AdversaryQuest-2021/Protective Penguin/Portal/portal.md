@@ -26,7 +26,7 @@ python3 -m http.server --cgi --bind 127.0.0.1
 Serving HTTP on 127.0.0.1 port 8000 (http://127.0.0.1:8000/) ...
 ```
 ... serving a rather simple web page resembling a VPN login.
-![VPN login page](pics/1.png | width=100)
+![VPN login page](pics/1.png)
 
 
 
