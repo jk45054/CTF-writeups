@@ -6,7 +6,7 @@ Please download the Portal Code and see whether you can reproduce their means of
 NOTE: Flags will be easily identifiable by following the format CS{some_secret_flag_text}. They must be submitted in full, including the CS{ and } parts.
 
 ## Authentication Portal, Local Files
-
+The archive for the test instance contains the following files:
 ```
 ./index.html
 ./run.sh
@@ -14,6 +14,22 @@ NOTE: Flags will be easily identifiable by following the format CS{some_secret_f
 ./cgi-bin/portal.cgi
 ./creds.txt
 ```
+
+For testing purposes, use run.sh to fire up a local webserver through python...
+```
+#!/bin/sh
+export FLAG=CS{foobar}
+python3 -m http.server --cgi --bind 127.0.0.1
+```
+```
+./run.sh 
+Serving HTTP on 127.0.0.1 port 8000 (http://127.0.0.1:8000/) ...
+```
+... serving a rather simple web page resembling a VPN login.
+![VPN login page](pics/1.png)
+
+
+
 
 simple website with user/pass fields, validated by a cgi
 
