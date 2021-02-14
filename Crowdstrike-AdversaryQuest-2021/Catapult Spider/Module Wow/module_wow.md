@@ -190,7 +190,6 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 - All it does is printing the string *oops. something went wrong! :(* and exiting the process with status 1.
 
 ### What is code_enc @ 0x40a0 with code_enc_len = 196?
-Looks like encrypted data, could be (shell)code from naming scheme.
 Dump 196 bytes of data *code_enc* @ 0x40a0
 ```objdump
 r2 -q -c "aaa; x 196 @ obj.code_enc" module.wow 
@@ -210,6 +209,8 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 0x00004150  bb3b f6b3 5e30 6e5f 6c35 edf3 f406 aff0  .;..^0n_l5......
 0x00004160  268e 24b3                                &.$.
 ```
+Looks like encrypted data, could be (shell)code from naming scheme.
+Funny seems the occurrence of **CS{c** inside the supposedly encrypted blob. These might be null bytes encrypted with a simple XOR cipher and the flag string as the key beginning with **CS{c**.
 
 ### Disassembly of Function execute() @ 0x11fa
 Use radare2 to disassemble function *execute* of module.wow (output is additionally commented with ;;)
@@ -310,7 +311,13 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 ## Approach?
 - all we know about the encrypted buffer is, that its supposed to be callable shellcode and that it is decrypted using XOR with key string
 - what do we know of encrypted shellcode? function prologue, epilogue
-- what do we know about flag? begins with CS{ ends with }
+- bytes at offset 0x1b to 0x1e in encrypted shellcode are **CS{c**, indicating that the flag is hidden in the key string
+- what do we know so far about the flag? begins with **CS{c** ends with **}**
+- flag is likely to be 0x1b (27) chars long (or 9 as a factorial of 27)
+
+### Write Decrypter that disassembles the encrypted Shellcode
+
+### Iteration 1, Flag: CS{c______________________}
 
 
 
