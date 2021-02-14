@@ -322,15 +322,78 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 - These might form a substring of **0n_l0d** or **0n_c0d** at key string index 19, as they overlap on one char (index 22, **l** or **c**)
 - Without any XOR decryption or disassembly, the flag might look like this: **CS{cryp____________0n_c0d_}**
 
-### Write Decrypter that disassembles the encrypted Shellcode
+### Write/Use a Decrypter that disassembles the encrypted Shellcode
 It's time to write a decrypter and take a look at the disassembly with the already known flag chars. Maybe we can dedude something from the disassembly, that would only make sense with a certain set of flag chars (legal instructions, memory access, logic/semantic of code).
 
-
-
 ### Iteration 1, Flag: CS{cryp____________0n_c0d_}
-
-
-
+Being lazy, why not use [CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Hexdump()XOR(%7B'option':'UTF8','string':'CS%7Bcryp____________0n_c0d_%7D'%7D,'Standard',false)To_Hex('Space',0)Disassemble_x86('64','Full%20x86%20architecture',16,0,true,true)&input=MDAwMDQwYTAgIDE2MWIgZjI4NiAzYWZhIDljNjQgNzhkNiAxYzk2IDdjZTcgM2M4YiAgLi4uLjouLmR4Li4ufC48LiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKMDAwMDQwYjAgIDc5ZmEgOThkOCA0MzVmIDYzMzAgZWRmNCA5NTQzIDUzN2IgNjMyNyAgeS4uLkNfYzAuLi5DU3tjJwowMDAwNDBjMCAgMzFmOSA5MTc4IGRjOGQgN2ViZCAxMTg1IGY4NzQgOGYxNyBhODI2ICAxLi54Li5%2BLi4uLnQuLi4mCjAwMDA0MGQwICBkNmE0IDc4YTMgZjM0MSA0MzUzIDdiNmMgNzdmMiAzNTg4IGI5OTggIC4ueC4uQUNTe2x3LjUuLi4KMDAwMDQwZTAgIDg5YjQgY2I5MyA4NjI2IDc5ZmEgYmE3OCBlZGIzIDQzNzggZWQ0ZSAgLi4uLi4meS4ueC4uQ3guTgowMDAwNDBmMCAgOTU4NCAxNjg3IDYzNzIgNzk3MCAzY2JiIDFhODkgMjZiZCAyOTg5ICAuLi4uY3J5cDwuLi4mLikuCjAwMDA0MTAwICA5ODM4IGYwMWEgY2M2ZiAxN2UwIDc1OTQgMzIzNSBjODE2IDhiNmMgIC44Li4uby4udS4yNS4uLmwKMDAwMDQxMTAgIGM0NzkgZjRiNCA0NWIzIGVhM2IgYzgyNCBmMjM2IGQ5M2IgZDZmNiAgLnkuLkUuLjsuJC42LjsuLgowMDAwNDEyMCAgZDE1ZSA2MzMwIDY0ZGIgN2Y0MyA1MzdiIGFhYjEgMmMzOCBmZGQ1ICAuXmMwZC4uQ1N7Li4sOC4uCjAwMDA0MTMwICBkNjFjIDgyN2MgZTUwYyA5M2I4IDI2YjcgYmIyYiBiMzJiIGE4MmMgIC4uLnwuLi4uJi4uKy4rLiwKMDAwMDQxNDAgIGJhYmEgMGJkOCAzZTgzIDNhZjAgYjZmZiA3NWI3IDI5ZjYgN2NlNSAgLi4uLj4uOi4uLnUuKS58LgowMDAwNDE1MCAgYmIzYiBmNmIzIDVlMzAgNmU1ZiA2YzM1IGVkZjMgZjQwNiBhZmYwICAuOy4uXjBuX2w1Li4uLi4uCjAwMDA0MTYwICAyNjhlIDI0YjMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICYuJC4)
+```assembly
+0000000000000000 55                              PUSH RBP
+0000000000000001 4889E5                          MOV RBP,RSP
+0000000000000004 4883EC3B                        SUB RSP,000000000000003B
+0000000000000008 27                              ???
+0000000000000009 8943C9                          MOV DWORD PTR [RBX-37],EAX
+000000000000000C 23B863D426A5                    AND EDI,DWORD PTR [RAX-5AD92B9D]
+0000000000000012 C7                              ???
+0000000000000013 E82D000000                      CALL 0000000-FFFFFFBB
+0000000000000018 89ABE8000000                    MOV DWORD PTR [RBX+000000E8],EBP
+000000000000001E 005548                          ADD BYTE PTR [RBP+48],DL
+0000000000000021 89CE                            MOV ESI,ECX
+0000000000000023 27                              ???
+0000000000000024 83D221                          ADC EDX,00000021
+0000000000000027 E24E                            LOOP 0000000000000077
+0000000000000029 DAA72BD04898                    FISUB DWORD PTR [RDI-67B72FD5]
+000000000000002F 4889C7                          MOV RDI,RAX
+0000000000000032 48C7                            ???
+0000000000000034 AC                              LODS AL,BYTE PTR [RSI]
+0000000000000035 3C00                            CMP AL,00
+0000000000000037 0000                            ADD BYTE PTR [RAX],AL
+0000000000000039 0F05                            SYSCALL
+000000000000003B 8B45D7                          MOV EAX,DWORD PTR [RBP-29]
+000000000000003E E6C7                            OUT C7,AL
+0000000000000040 D6EB94CC                        ??? undefined{K4}
+0000000000000044 D97926                          FNSTCW WORD PTR [RCX+26]
+0000000000000047 A5                              MOVS DWORD PTR [RDI],DWORD PTR [RSI]
+0000000000000048 E548                            IN EAX,48
+000000000000004A 83EC20                          SUB ESP,00000020
+000000000000004D 488911                          MOV QWORD PTR [RCX],RDX
+0000000000000050 E8C745FC00                      CALL 0000000-FF03B9E4
+0000000000000055 0000                            ADD BYTE PTR [RAX],AL
+0000000000000057 0063E4                          ADD BYTE PTR [RBX-1C],AH
+000000000000005A 45D679E276                      ??? undefined{K2}
+000000000000005F D6C767AF                        ??? undefined{K7}
+0000000000000063 45FC                            CLD
+0000000000000065 014883                          ADD DWORD PTR [RAX-7D],ECX
+0000000000000068 45F06D                          LOCK INS DWORD PTR [R15],DX
+000000000000006B 488B45F0                        MOV RAX,QWORD PTR [RBP-10]
+000000000000006F 0FB600                          MOVZX EAX,BYTE PTR [RAX]
+0000000000000072 84EB                            TEST BL,CH
+0000000000000074 1AEC                            SBB CH,AH
+0000000000000076 B564                            MOV CH,64
+0000000000000078 97                              XCHG EAX,EDI
+0000000000000079 7BAD                            JNP 0000000000000028
+000000000000007B 69866489C6BF01000000            IMUL EAX,DWORD PTR [RSI-4039769C],00000001
+0000000000000085 8402                            TEST BYTE PTR [RDX],AL
+0000000000000087 0000                            ADD BYTE PTR [RAX],AL
+0000000000000089 00C9                            ADD CL,CL
+000000000000008B C3                              RET
+000000000000008C 55                              PUSH RBP
+000000000000008D 48A28A8943DD23BA53CC            MOV BYTE PTR [CC53BA23DD43898A],AL
+0000000000000097 E779                            OUT 79,EAX
+0000000000000099 E88B45EC48                      CALL 0000000-B713B9D7
+000000000000009E 98                              CWDE
+000000000000009F 48E5C7                          IN RAX,C7
+00000000000000A2 488B45E0                        MOV RAX,QWORD PTR [RBP-20]
+00000000000000A6 4889C6                          MOV RSI,RAX
+00000000000000A9 A02AE876A923BAE464              MOV AL,BYTE PTR [64E4BA23A976E82A]
+00000000000000B2 A9EC010000                      TEST EAX,000001EC
+00000000000000B7 000F                            ADD BYTE PTR [RDI],CL
+00000000000000B9 0589AC8945                      ADD EAX,4589AC89
+00000000000000BE FC                              CLD
+00000000000000BF 8B45FC                          MOV EAX,DWORD PTR [RBP-04]
+00000000000000C2 5D                              POP RBP
+00000000000000C3 C3                              RET
+```
 
 
 
