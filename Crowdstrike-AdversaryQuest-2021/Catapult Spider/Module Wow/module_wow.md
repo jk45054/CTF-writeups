@@ -64,7 +64,7 @@ Usage: ./module.wow <string>
 oops. something went wrong! :(
 ```
 
-### Disassembly of Function main()
+### Disassembly of Function main() @ 0x12fa
 Use radare2 to disassemble function *main* of module.wow (output is additionally commented with ;;)
 ```assembly
 r2 -q -c "aaa; pd 76 @ main" module.wow 
@@ -163,10 +163,11 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 └           0x0000145f      c3             ret
 ```
 
-### Analysis Summary for main()
-- stuff
+### Analysis Summary for main() @ 0x12fa
+- Installs the function sighandler() @ 0x11d9 for signals 0xb (SIGSEGV), 0x7 (SIGBUS), 0x8 (SIGFPE) and 0x4 (SIGILL)
+- Calls function execute(code_enc, code_enc_len, argv[1])
 
-### Disassembly of sighandler()
+### Disassembly of sighandler() @ 0x11d9
 Use radare2 to disassemble function *sighandler* of module.wow
 ```assembly
 r2 -q -c "aaa; pd 8 @ sym.sighandler" module.wow 
@@ -185,11 +186,12 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 └           0x000011f5      e8d6feffff     call sym.imp.exit           ; void exit(int status)
 ```
 
-### Analysis Summary for sighandler()
+### Analysis Summary for sighandler() @ 0x11d9
 - All it does is printing the string *oops. something went wrong! :(* and exiting the process with status 1.
 
-### What is code_enc with code_enc_len = 196?
-Dump 196 bytes of data *code_enc*
+### What is code_enc @ 0x40a0 with code_enc_len = 196?
+Looks like encrypted data, could be (shell)code from naming scheme.
+Dump 196 bytes of data *code_enc* @ 0x40a0
 ```objdump
 r2 -q -c "aaa; x 196 @ obj.code_enc" module.wow 
 Warning: run r2 with -e io.cache=true to fix relocations in disassembly
@@ -209,7 +211,7 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 0x00004160  268e 24b3                                &.$.
 ```
 
-### Disassembly of Function execute()
+### Disassembly of Function execute() @ 0x11fa
 Use radare2 to disassemble function *execute* of module.wow (output is additionally commented with ;;)
 ```assembly
 r2 -q -c "aaa; pd 68 @ sym.execute" module.wow 
@@ -298,7 +300,7 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 └           0x000012f9      c3             ret
 ```
 
-### Analysis Summary for execute()
+### Analysis Summary for execute() @ 0x11fa
 - Copies encrypted buffer (arg1) of size arg2 to a newly allocated memory region with RWX protection bits set
 - Applies a simple XOR decryption over this buffer using arg3 as a key string
 - buffer[n] = buffer[n] ^ key[n % len(key)]
