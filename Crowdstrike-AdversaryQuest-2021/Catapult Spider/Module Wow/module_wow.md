@@ -418,14 +418,123 @@ Let's just assume we're kind of completing words and there is plenty of use of l
 000000000000002F 4889C7                          MOV RDI,RAX                        ;; n_c    47
 0000000000000032 48C7C03C000000                  MOV RAX,0000003C                   ;; 0d3}CS{50
 0000000000000039 0F05                            SYSCALL                            ;; cr     57
+000000000000003B 8B45FC                          MOV EAX,DWORD PTR [RBP-04]         ;; ypt    59
+000000000000003E E6C7                            OUT C7,AL                          ;; __     62
+0000000000000040 D6EB94CC                        ??? undefined{K4}                  ;; ____   64
+0000000000000044 D97926                          FNSTCW WORD PTR [RCX+26]           ;; ___    68
+0000000000000047 A5                              MOVS DWORD PTR [RDI],DWORD PTR [RSI]   ;; _  71
 [...]
 000000000000008C 55                              PUSH RBP                           ;; y      140
 000000000000008D 48898A8943DD23                  MOV QWORD PTR [RDX+23DD4389],RCX   ;; pt_____141
 [...]
 ```
-The **t** @ key index 7 is affecting decrypted offset 0x4 and especially offset 0x20 nicely.
-The **3** @ key index 25 is affecting decrypted offset 0x18 and offset 0x32 smoothly as well, so both seem correct.
-Judging from decrypted offset 0x8d, one would expect **MOV RBP, RSP** (opcodes **4889E5**) to build a proper function prologue. Applying XOR on crypted offset 0x8F with expected plain text byte 0xE5 yields key byte 0x30 (XOR 0xD5, 0xE5), representing ascii '0'.
+The **t** @ key index 7 is affecting decrypted disassembly line at offset 0x4 and especially the line at offset 0x20 nicely.
+The **3** @ key index 25 is affecting decrypted disassembly lines at offset 0x18 and offset 0x32 smoothly as well, so both seem correct.
+Judging from decrypted disassembly line at offset 0x8d, one would expect **MOV RBP, RSP** (opcodes **4889E5**) to build a proper function prologue. Applying XOR on crypted offset 0x8F with expected plain text byte 0xE5 yields key byte 0x30 (XOR 0xD5, 0xE5), representing ascii '0'.
 
+CyberChef has the habit of disassembling the call offsets in a weird fashion (see disassembly lines at offsets 0x13 and 0x1A, so pwntools to the rescue.
+```assembly
+disasm -c amd64 -a 0x13 e82d000000
+  13:    e8 2d 00 00 00           call   0x45
+disasm -c amd64 -a 0x1a e800000000
+  1a:    e8 00 00 00 00           call   0x1f
+```
+The call to 0x1F lands at a proper function prologue, the call to 0x45 not. For a proper function prologue, the decrypted bytes at offset 0x45 should be **554889E5**. XOR'ing those with the crypted bytes at offset 0x45 yields key bytes 0x7331735F (XOR 0x554889E5, 0x2679FABA), representing 's1s_' (key index 0x45 % 0x1B = 0xF).
 
+### Iteration 3, Flag: CS{crypt0______s1s_0n_c0d3}
+[CyberChef Update](https://gchq.github.io/CyberChef/#recipe=From_Hexdump()XOR(%7B'option':'UTF8','string':'CS%7Bcrypt0______s1s_0n_c0d3%7D'%7D,'Standard',false)To_Hex('Space',0)Disassemble_x86('64','Full%20x86%20architecture',16,0,true,true)&input=MDAwMDQwYTAgIDE2MWIgZjI4NiAzYWZhIDljNjQgNzhkNiAxYzk2IDdjZTcgM2M4YiAgLi4uLjouLmR4Li4ufC48LiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKMDAwMDQwYjAgIDc5ZmEgOThkOCA0MzVmIDYzMzAgZWRmNCA5NTQzIDUzN2IgNjMyNyAgeS4uLkNfYzAuLi5DU3tjJwowMDAwNDBjMCAgMzFmOSA5MTc4IGRjOGQgN2ViZCAxMTg1IGY4NzQgOGYxNyBhODI2ICAxLi54Li5%2BLi4uLnQuLi4mCjAwMDA0MGQwICBkNmE0IDc4YTMgZjM0MSA0MzUzIDdiNmMgNzdmMiAzNTg4IGI5OTggIC4ueC4uQUNTe2x3LjUuLi4KMDAwMDQwZTAgIDg5YjQgY2I5MyA4NjI2IDc5ZmEgYmE3OCBlZGIzIDQzNzggZWQ0ZSAgLi4uLi4meS4ueC4uQ3guTgowMDAwNDBmMCAgOTU4NCAxNjg3IDYzNzIgNzk3MCAzY2JiIDFhODkgMjZiZCAyOTg5ICAuLi4uY3J5cDwuLi4mLikuCjAwMDA0MTAwICA5ODM4IGYwMWEgY2M2ZiAxN2UwIDc1OTQgMzIzNSBjODE2IDhiNmMgIC44Li4uby4udS4yNS4uLmwKMDAwMDQxMTAgIGM0NzkgZjRiNCA0NWIzIGVhM2IgYzgyNCBmMjM2IGQ5M2IgZDZmNiAgLnkuLkUuLjsuJC42LjsuLgowMDAwNDEyMCAgZDE1ZSA2MzMwIDY0ZGIgN2Y0MyA1MzdiIGFhYjEgMmMzOCBmZGQ1ICAuXmMwZC4uQ1N7Li4sOC4uCjAwMDA0MTMwICBkNjFjIDgyN2MgZTUwYyA5M2I4IDI2YjcgYmIyYiBiMzJiIGE4MmMgIC4uLnwuLi4uJi4uKy4rLiwKMDAwMDQxNDAgIGJhYmEgMGJkOCAzZTgzIDNhZjAgYjZmZiA3NWI3IDI5ZjYgN2NlNSAgLi4uLj4uOi4uLnUuKS58LgowMDAwNDE1MCAgYmIzYiBmNmIzIDVlMzAgNmU1ZiA2YzM1IGVkZjMgZjQwNiBhZmYwICAuOy4uXjBuX2w1Li4uLi4uCjAwMDA0MTYwICAyNjhlIDI0YjMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICYuJC4)
+```assembly
+0000000000000000 55                              PUSH RBP
+0000000000000001 4889E5                          MOV RBP,RSP
+0000000000000004 4883EC10                        SUB RSP,0000000000000010
+0000000000000008 488943C9                        MOV QWORD PTR [RBX-37],RAX
+000000000000000C 23B863F84889                    AND EDI,DWORD PTR [RAX-76B7079D]
+0000000000000012 C7                              ???
+0000000000000013 E82D000000                      CALL 0000000-FFFFFFBB
+0000000000000018 89C7                            MOV EDI,EAX
+000000000000001A E800000000                      CALL 0000000-FFFFFFE1
+000000000000001F 55                              PUSH RBP                           ;; r      31
+0000000000000020 4889E5                          MOV RBP,RSP                        ;; ypt    32
+0000000000000023 4883D221                        ADC RDX,0000000000000021           ;; 0___   35
+[...]
+```
+At disassembly line with offset 0x23, one might expect a **SUB RSP, something** (4883ECxx). Opcode byte 0x83 at offset 0x24 seems fitting (key byte '_' at index 9). In order to receive opcode byte 0xEC at offset 0x25, XOR it with crypted byte 0x8D at offset 0x25, yielding key byte 0x61 ('a') at key index 0xA.
 
+The key string so far is: CS{crypt0_a____s1s_0n_c0d3}
+
+The second word can now be guessed to **analys1s** or **an4lys1s**. Trying both out in the [CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Hexdump()XOR(%7B'option':'UTF8','string':'CS%7Bcrypt0_an4lys1s_0n_c0d3%7D'%7D,'Standard',false)To_Hex('Space',0)Disassemble_x86('64','Full%20x86%20architecture',16,0,true,true)&input=MDAwMDQwYTAgIDE2MWIgZjI4NiAzYWZhIDljNjQgNzhkNiAxYzk2IDdjZTcgM2M4YiAgLi4uLjouLmR4Li4ufC48LiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKMDAwMDQwYjAgIDc5ZmEgOThkOCA0MzVmIDYzMzAgZWRmNCA5NTQzIDUzN2IgNjMyNyAgeS4uLkNfYzAuLi5DU3tjJwowMDAwNDBjMCAgMzFmOSA5MTc4IGRjOGQgN2ViZCAxMTg1IGY4NzQgOGYxNyBhODI2ICAxLi54Li5%2BLi4uLnQuLi4mCjAwMDA0MGQwICBkNmE0IDc4YTMgZjM0MSA0MzUzIDdiNmMgNzdmMiAzNTg4IGI5OTggIC4ueC4uQUNTe2x3LjUuLi4KMDAwMDQwZTAgIDg5YjQgY2I5MyA4NjI2IDc5ZmEgYmE3OCBlZGIzIDQzNzggZWQ0ZSAgLi4uLi4meS4ueC4uQ3guTgowMDAwNDBmMCAgOTU4NCAxNjg3IDYzNzIgNzk3MCAzY2JiIDFhODkgMjZiZCAyOTg5ICAuLi4uY3J5cDwuLi4mLikuCjAwMDA0MTAwICA5ODM4IGYwMWEgY2M2ZiAxN2UwIDc1OTQgMzIzNSBjODE2IDhiNmMgIC44Li4uby4udS4yNS4uLmwKMDAwMDQxMTAgIGM0NzkgZjRiNCA0NWIzIGVhM2IgYzgyNCBmMjM2IGQ5M2IgZDZmNiAgLnkuLkUuLjsuJC42LjsuLgowMDAwNDEyMCAgZDE1ZSA2MzMwIDY0ZGIgN2Y0MyA1MzdiIGFhYjEgMmMzOCBmZGQ1ICAuXmMwZC4uQ1N7Li4sOC4uCjAwMDA0MTMwICBkNjFjIDgyN2MgZTUwYyA5M2I4IDI2YjcgYmIyYiBiMzJiIGE4MmMgIC4uLnwuLi4uJi4uKy4rLiwKMDAwMDQxNDAgIGJhYmEgMGJkOCAzZTgzIDNhZjAgYjZmZiA3NWI3IDI5ZjYgN2NlNSAgLi4uLj4uOi4uLnUuKS58LgowMDAwNDE1MCAgYmIzYiBmNmIzIDVlMzAgNmU1ZiA2YzM1IGVkZjMgZjQwNiBhZmYwICAuOy4uXjBuX2w1Li4uLi4uCjAwMDA0MTYwICAyNjhlIDI0YjMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICYuJC4) recipe makes the latter seem like the proper final flag piece.
+
+### Full Disassembly
+```assembly
+disasm -c amd64 "55 48 89 e5 48 83 ec 10 48 89 7d f8 48 8b 45 f8 48 89 c7 e8 2d 00 00 00 89 c7 e8 00 00 00 00 55 48 89 e5 48 83 ec 10 89 7d fc 8b 45 fc 48 98 48 89 c7 48 c7 c0 3c 00 00 00 0f 05 8b 45 fc 89 c7 e8 da ff ff ff 55 48 89 e5 48 83 ec 20 48 89 7d e8 c7 45 fc 00 00 00 00 48 8b 45 e8 48 89 45 f0 eb 09 83 45 fc 01 48 83 45 f0 01 48 8b 45 f0 0f b6 00 84 c0 75 ec 8b 55 fc 48 8b 45 e8 48 89 c6 bf 01 00 00 00 e8 02 00 00 00 c9 c3 55 48 89 e5 89 7d ec 48 89 75 e0 89 55 e8 8b 45 ec 48 98 48 89 c7 48 8b 45 e0 48 89 c6 8b 45 e8 48 98 48 89 c2 48 c7 c0 01 00 00 00 0f 05 89 c0 89 45 fc 8b 45 fc 5d c3"
+   0:    55                       push   rbp
+   1:    48 89 e5                 mov    rbp,  rsp
+   4:    48 83 ec 10              sub    rsp,  0x10
+   8:    48 89 7d f8              mov    QWORD PTR [rbp-0x8],  rdi
+   c:    48 8b 45 f8              mov    rax,  QWORD PTR [rbp-0x8]
+  10:    48 89 c7                 mov    rdi,  rax
+  13:    e8 2d 00 00 00           call   0x45
+  18:    89 c7                    mov    edi,  eax
+  1a:    e8 00 00 00 00           call   0x1f
+  1f:    55                       push   rbp
+  20:    48 89 e5                 mov    rbp,  rsp
+  23:    48 83 ec 10              sub    rsp,  0x10
+  27:    89 7d fc                 mov    DWORD PTR [rbp-0x4],  edi
+  2a:    8b 45 fc                 mov    eax,  DWORD PTR [rbp-0x4]
+  2d:    48 98                    cdqe
+  2f:    48 89 c7                 mov    rdi,  rax
+  32:    48 c7 c0 3c 00 00 00     mov    rax,  0x3c
+  39:    0f 05                    syscall
+  3b:    8b 45 fc                 mov    eax,  DWORD PTR [rbp-0x4]
+  3e:    89 c7                    mov    edi,  eax
+  40:    e8 da ff ff ff           call   0x1f
+  45:    55                       push   rbp
+  46:    48 89 e5                 mov    rbp,  rsp
+  49:    48 83 ec 20              sub    rsp,  0x20
+  4d:    48 89 7d e8              mov    QWORD PTR [rbp-0x18],  rdi
+  51:    c7 45 fc 00 00 00 00     mov    DWORD PTR [rbp-0x4],  0x0
+  58:    48 8b 45 e8              mov    rax,  QWORD PTR [rbp-0x18]
+  5c:    48 89 45 f0              mov    QWORD PTR [rbp-0x10],  rax
+  60:    eb 09                    jmp    0x6b
+  62:    83 45 fc 01              add    DWORD PTR [rbp-0x4],  0x1
+  66:    48 83 45 f0 01           add    QWORD PTR [rbp-0x10],  0x1
+  6b:    48 8b 45 f0              mov    rax,  QWORD PTR [rbp-0x10]
+  6f:    0f b6 00                 movzx  eax,  BYTE PTR [rax]
+  72:    84 c0                    test   al,  al
+  74:    75 ec                    jne    0x62
+  76:    8b 55 fc                 mov    edx,  DWORD PTR [rbp-0x4]
+  79:    48 8b 45 e8              mov    rax,  QWORD PTR [rbp-0x18]
+  7d:    48 89 c6                 mov    rsi,  rax
+  80:    bf 01 00 00 00           mov    edi,  0x1
+  85:    e8 02 00 00 00           call   0x8c
+  8a:    c9                       leave
+  8b:    c3                       ret
+  8c:    55                       push   rbp
+  8d:    48 89 e5                 mov    rbp,  rsp
+  90:    89 7d ec                 mov    DWORD PTR [rbp-0x14],  edi
+  93:    48 89 75 e0              mov    QWORD PTR [rbp-0x20],  rsi
+  97:    89 55 e8                 mov    DWORD PTR [rbp-0x18],  edx
+  9a:    8b 45 ec                 mov    eax,  DWORD PTR [rbp-0x14]
+  9d:    48 98                    cdqe
+  9f:    48 89 c7                 mov    rdi,  rax
+  a2:    48 8b 45 e0              mov    rax,  QWORD PTR [rbp-0x20]
+  a6:    48 89 c6                 mov    rsi,  rax
+  a9:    8b 45 e8                 mov    eax,  DWORD PTR [rbp-0x18]
+  ac:    48 98                    cdqe
+  ae:    48 89 c2                 mov    rdx,  rax
+  b1:    48 c7 c0 01 00 00 00     mov    rax,  0x1
+  b8:    0f 05                    syscall
+  ba:    89 c0                    mov    eax,  eax
+  bc:    89 45 fc                 mov    DWORD PTR [rbp-0x4],  eax
+  bf:    8b 45 fc                 mov    eax,  DWORD PTR [rbp-0x4]
+  c2:    5d                       pop    rbp
+  c3:    c3                       ret
+```
+
+### Executing module.wow with the correct key
+```
+./module.wow "CS{crypt0_an4lys1s_0n_c0d3}"
+CS{crypt0_an4lys1s_0n_c0d3}
+```
+
+Flag: **CS{crypt0_an4lys1s_0n_c0d3}**
