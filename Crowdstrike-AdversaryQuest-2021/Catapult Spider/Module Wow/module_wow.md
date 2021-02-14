@@ -180,7 +180,7 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 │           0x000011da      4889e5         mov rbp, rsp
 │           0x000011dd      4883ec10       sub rsp, 0x10
 │           0x000011e1      897dfc         mov dword [var_4h], edi     ; arg1
-│           0x000011e4      488d3d1d0e00.  lea rdi, str.oops._something_went_wrong__:_ ; 0x2008 ; "oops. something went wrong! :(" ; const char *s
+│           0x000011e4      488d3d1d0e00   lea rdi, str.oops._something_went_wrong__:_ ; 0x2008 ; "oops. something went wrong! :(" ; const char *s
 │           0x000011eb      e850feffff     call sym.imp.puts           ; int puts(const char *s)
 │           0x000011f0      bf01000000     mov edi, 1                  ; int status
 └           0x000011f5      e8d6feffff     call sym.imp.exit           ; void exit(int status)
@@ -285,10 +285,10 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 - Calls into offset 0 of the decrypted buffer, which is expected to hold executable shellcode after decryption
 - If execution fails, a signal will be raised (like SIGILL or illegal instruction)
 
-## Approach?
-- all we know about the encrypted buffer is, that its supposed to be callable shellcode and that it is decrypted using XOR with key string
-- what do we know of encrypted shellcode? likely has a function prologue, epilogue
-- shellcode might contain null bytes, revealing parts of the flag
+## Approach
+- We know about the encrypted buffer, that it's supposed to be executable shellcode and that it is decrypted using XOR with a key string.
+- What do we expect of executable shellcode? It likely has a proper function prologue and epilogue.
+- The shellcode might contain null bytes, revealing parts of the flag.
 
 ### So what does code_enc @ 0x40a0 consist of with code_enc_len = 196?
 Dump 196 bytes of data *code_enc* @ 0x40a0
