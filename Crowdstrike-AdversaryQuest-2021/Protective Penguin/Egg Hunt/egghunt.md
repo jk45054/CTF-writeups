@@ -31,7 +31,7 @@ hostfwd=tcp::4422-:4422,hostfwd=udp::1337-:1337
 ```
 
 ## Emurate Network Services with Listen Ports
-So, which network services might listen of the forwarded custom ports?
+So, which network services might listen on the forwarded custom ports?
 ```
 root@egghunt:~# netstat -pantu
 Active Internet connections (servers and established)
