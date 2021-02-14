@@ -204,71 +204,70 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 │           0x000011fb      4889e5         mov rbp, rsp
 │           0x000011fe      53             push rbx
 │           0x000011ff      4883ec38       sub rsp, 0x38
-│           0x00001203      48897dd8       mov qword [s2], rdi         ; arg1
-│           0x00001207      488975d0       mov qword [length], rsi     ; arg2
-│           0x0000120b      488955c8       mov qword [s], rdx          ; arg3
+│           0x00001203      48897dd8       mov qword [s2], rdi         ;; arg1 = void *obj.code_enc
+│           0x00001207      488975d0       mov qword [length], rsi     ;; arg2 = size_t obj.code_enc_len (196 bytes)
+│           0x0000120b      488955c8       mov qword [s], rdx          ;; arg3 = char *argv[1] (key)
 │           0x0000120f      488b45d0       mov rax, qword [length]
 │           0x00001213      41b900000000   mov r9d, 0                  ; size_t offset
 │           0x00001219      41b8ffffffff   mov r8d, 0xffffffff         ; -1 ; int fd
-│           0x0000121f      b922000000     mov ecx, 0x22               ; '"' ; int flags
-│           0x00001224      ba07000000     mov edx, 7                  ; int prot
-│           0x00001229      4889c6         mov rsi, rax                ; size_t length
+│           0x0000121f      b922000000     mov ecx, 0x22               ;; int flags (MAP_ANONYMOUS | MAP_PRIVATE)
+│           0x00001224      ba07000000     mov edx, 7                  ;; int prot (PROT_READ | PROT_WRITE | PROT_EXEC)
+│           0x00001229      4889c6         mov rsi, rax                ; size_t length = obj.code_enc_len (196 bytes)
 │           0x0000122c      bf00000000     mov edi, 0                  ; void*addr
 │           0x00001231      e84afeffff     call sym.imp.mmap           ; void*mmap(void*addr, size_t length, int prot, int flags, int fd, size_t offset)
-│           0x00001236      488945e8       mov qword [addr], rax
+|                                                                      ;; allocate 196 bytes of RWX memory (RWX_buffer)
+│           0x00001236      488945e8       mov qword [addr], rax       ;; addr = pointer to RWX_buffer
 │           0x0000123a      48837de8ff     cmp qword [addr], 0xffffffffffffffff
-│       ┌─< 0x0000123f      7516           jne 0x1257
-│       │   0x00001241      488d3ddf0d00.  lea rdi, str.____mmap___failed ; 0x2027 ; "[!] mmap() failed" ; const char *s
-│       │   0x00001248      e873feffff     call sym.imp.perror         ; void perror(const char *s)
-│       │   0x0000124d      b8ffffffff     mov eax, 0xffffffff         ; -1
-│      ┌──< 0x00001252      e99d000000     jmp 0x12f4
-│      ││   ; CODE XREF from sym.execute @ 0x123f
-│      │└─> 0x00001257      488b55d0       mov rdx, qword [length]     ; size_t n
-│      │    0x0000125b      488b4dd8       mov rcx, qword [s2]
-│      │    0x0000125f      488b45e8       mov rax, qword [addr]
-│      │    0x00001263      4889ce         mov rsi, rcx                ; const void *s2
-│      │    0x00001266      4889c7         mov rdi, rax                ; void *s1
+│       ┌─< 0x0000123f      7516           jne 0x1257                  ;; continue only, if allocation succeeded
+│[...]
+│      ┌──< 0x00001252      e99d000000     jmp 0x12f4                  ;; jump to function epilogue
+│      │└─> 0x00001257      488b55d0       mov rdx, qword [length]     ;; size_t n = 196
+│      │    0x0000125b      488b4dd8       mov rcx, qword [s2]         ;; void *obj.code_enc
+│      │    0x0000125f      488b45e8       mov rax, qword [addr]       ;; void *RWX_buffer
+│      │    0x00001263      4889ce         mov rsi, rcx                ;; const void *s2 (obj.code_enc)
+│      │    0x00001266      4889c7         mov rdi, rax                ;; void *s1 (RWX_buffer)
 │      │    0x00001269      e8c2fdffff     call sym.imp.memcpy         ; void *memcpy(void *s1, const void *s2, size_t n)
-│      │    0x0000126e      48c745e00000.  mov qword [var_20h], 0
-│      │┌─< 0x00001276      eb4d           jmp 0x12c5
+|      |                                                               ;; copy encrypted code to RWX_buffer
+│      │    0x0000126e      48c745e00000.  mov qword [var_20h], 0      ;; var_20h is a loop_counter, could be a while loop
+|      |
+│      │┌─< 0x00001276      eb4d           jmp 0x12c5                  ;; jump to loop condition check at the end of loop block
 │      ││   ; CODE XREF from sym.execute @ 0x12cd
-│     ┌───> 0x00001278      488b55e8       mov rdx, qword [addr]
-│     ╎││   0x0000127c      488b45e0       mov rax, qword [var_20h]
-│     ╎││   0x00001280      4801d0         add rax, rdx
-│     ╎││   0x00001283      0fb618         movzx ebx, byte [rax]
+│     ┌───> 0x00001278      488b55e8       mov rdx, qword [addr]       ;; start of loop body, addr = RWX_buffer
+│     ╎││   0x0000127c      488b45e0       mov rax, qword [var_20h]    ;; loop_counter
+│     ╎││   0x00001280      4801d0         add rax, rdx                ;; RWX_buffer + loop_counter
+│     ╎││   0x00001283      0fb618         movzx ebx, byte [rax]       ;; ebx <- byte pointer RWX_buffer[loop_counter]
 │     ╎││   0x00001286      488b45c8       mov rax, qword [s]
-│     ╎││   0x0000128a      4889c7         mov rdi, rax                ; const char *s
-│     ╎││   0x0000128d      e8cefdffff     call sym.imp.strlen         ; size_t strlen(const char *s)
-│     ╎││   0x00001292      4889c6         mov rsi, rax
-│     ╎││   0x00001295      488b45e0       mov rax, qword [var_20h]
+│     ╎││   0x0000128a      4889c7         mov rdi, rax                ;; rdi = char *key
+│     ╎││   0x0000128d      e8cefdffff     call sym.imp.strlen         ;; size_t strlen(const char *key)
+│     ╎││   0x00001292      4889c6         mov rsi, rax                ;; rsi = strlen(key)
+│     ╎││   0x00001295      488b45e0       mov rax, qword [var_20h]    ;; rax = loop_counter
 │     ╎││   0x00001299      ba00000000     mov edx, 0
-│     ╎││   0x0000129e      48f7f6         div rsi
-│     ╎││   0x000012a1      4889d1         mov rcx, rdx
-│     ╎││   0x000012a4      4889ca         mov rdx, rcx
-│     ╎││   0x000012a7      488b45c8       mov rax, qword [s]
-│     ╎││   0x000012ab      4801d0         add rax, rdx
-│     ╎││   0x000012ae      0fb610         movzx edx, byte [rax]
-│     ╎││   0x000012b1      488b4de8       mov rcx, qword [addr]
-│     ╎││   0x000012b5      488b45e0       mov rax, qword [var_20h]
-│     ╎││   0x000012b9      4801c8         add rax, rcx
-│     ╎││   0x000012bc      31da           xor edx, ebx
-│     ╎││   0x000012be      8810           mov byte [rax], dl
-│     ╎││   0x000012c0      488345e001     add qword [var_20h], 1
-│     ╎││   ; CODE XREF from sym.execute @ 0x1276
+│     ╎││   0x0000129e      48f7f6         div rsi                     ;; rax = rax div rsi, rdx = rax mod rsi
+[...]
+│     ╎││   0x000012a7      488b45c8       mov rax, qword [s]          ;; rax = char *key
+│     ╎││   0x000012ab      4801d0         add rax, rdx                ;; rax += loop_counter % strlen(key)
+│     ╎││   0x000012ae      0fb610         movzx edx, byte [rax]       ;; edx <- byte pointer key[loop_counter % strlen(key)]
+│     ╎││   0x000012b1      488b4de8       mov rcx, qword [addr]       ;; rcx = void *RWX_buffer
+│     ╎││   0x000012b5      488b45e0       mov rax, qword [var_20h]    ;; rax = loop_counter
+│     ╎││   0x000012b9      4801c8         add rax, rcx                ;; rax = RWX_buffer[loop_counter]
+│     ╎││   0x000012bc      31da           xor edx, ebx                ;; XOR key[loop_counter % strlen(key)], RWX_buffer[loop_counter]
+│     ╎││   0x000012be      8810           mov byte [rax], dl          ;; write result to RWX_buffer[loop_counter]
+│     ╎││   0x000012c0      488345e001     add qword [var_20h], 1      ;; loop_counter += 1
 │     ╎│└─> 0x000012c5      488b45e0       mov rax, qword [var_20h]
 │     ╎│    0x000012c9      483b45d0       cmp rax, qword [length]
-│     └───< 0x000012cd      72a9           jb 0x1278
-│      │    0x000012cf      488b55e8       mov rdx, qword [addr]
+│     └───< 0x000012cd      72a9           jb 0x1278                   ;; loop while loop_counter < obj.code_len (196)
+|      |
+│      │    0x000012cf      488b55e8       mov rdx, qword [addr]       ;; rdx = void *RWX_buffer
 │      │    0x000012d3      488b45c8       mov rax, qword [s]
-│      │    0x000012d7      4889c7         mov rdi, rax
-│      │    0x000012da      ffd2           call rdx
+│      │    0x000012d7      4889c7         mov rdi, rax                ;; rdi = char *key (as arg1 to next call)
+│      │    0x000012da      ffd2           call rdx                    ;; call decrypted code(key)
+|      |
 │      │    0x000012dc      488b55d0       mov rdx, qword [length]
 │      │    0x000012e0      488b45e8       mov rax, qword [addr]
 │      │    0x000012e4      4889d6         mov rsi, rdx                ; size_t length
 │      │    0x000012e7      4889c7         mov rdi, rax                ; void*addr
 │      │    0x000012ea      e8c1fdffff     call sym.imp.munmap         ; int munmap(void*addr, size_t length)
 │      │    0x000012ef      b800000000     mov eax, 0
-│      │    ; CODE XREF from sym.execute @ 0x1252
 │      └──> 0x000012f4      488b5df8       mov rbx, qword [var_8h]
 │           0x000012f8      c9             leave
 └           0x000012f9      c3             ret
