@@ -328,15 +328,15 @@ It's time to write a decrypter and take a look at the disassembly with the alrea
 ### Iteration 1, Flag: CS{cryp____________0n_c0d_}
 Being lazy, why not use [CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Hexdump()XOR(%7B'option':'UTF8','string':'CS%7Bcryp____________0n_c0d_%7D'%7D,'Standard',false)To_Hex('Space',0)Disassemble_x86('64','Full%20x86%20architecture',16,0,true,true)&input=MDAwMDQwYTAgIDE2MWIgZjI4NiAzYWZhIDljNjQgNzhkNiAxYzk2IDdjZTcgM2M4YiAgLi4uLjouLmR4Li4ufC48LiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKMDAwMDQwYjAgIDc5ZmEgOThkOCA0MzVmIDYzMzAgZWRmNCA5NTQzIDUzN2IgNjMyNyAgeS4uLkNfYzAuLi5DU3tjJwowMDAwNDBjMCAgMzFmOSA5MTc4IGRjOGQgN2ViZCAxMTg1IGY4NzQgOGYxNyBhODI2ICAxLi54Li5%2BLi4uLnQuLi4mCjAwMDA0MGQwICBkNmE0IDc4YTMgZjM0MSA0MzUzIDdiNmMgNzdmMiAzNTg4IGI5OTggIC4ueC4uQUNTe2x3LjUuLi4KMDAwMDQwZTAgIDg5YjQgY2I5MyA4NjI2IDc5ZmEgYmE3OCBlZGIzIDQzNzggZWQ0ZSAgLi4uLi4meS4ueC4uQ3guTgowMDAwNDBmMCAgOTU4NCAxNjg3IDYzNzIgNzk3MCAzY2JiIDFhODkgMjZiZCAyOTg5ICAuLi4uY3J5cDwuLi4mLikuCjAwMDA0MTAwICA5ODM4IGYwMWEgY2M2ZiAxN2UwIDc1OTQgMzIzNSBjODE2IDhiNmMgIC44Li4uby4udS4yNS4uLmwKMDAwMDQxMTAgIGM0NzkgZjRiNCA0NWIzIGVhM2IgYzgyNCBmMjM2IGQ5M2IgZDZmNiAgLnkuLkUuLjsuJC42LjsuLgowMDAwNDEyMCAgZDE1ZSA2MzMwIDY0ZGIgN2Y0MyA1MzdiIGFhYjEgMmMzOCBmZGQ1ICAuXmMwZC4uQ1N7Li4sOC4uCjAwMDA0MTMwICBkNjFjIDgyN2MgZTUwYyA5M2I4IDI2YjcgYmIyYiBiMzJiIGE4MmMgIC4uLnwuLi4uJi4uKy4rLiwKMDAwMDQxNDAgIGJhYmEgMGJkOCAzZTgzIDNhZjAgYjZmZiA3NWI3IDI5ZjYgN2NlNSAgLi4uLj4uOi4uLnUuKS58LgowMDAwNDE1MCAgYmIzYiBmNmIzIDVlMzAgNmU1ZiA2YzM1IGVkZjMgZjQwNiBhZmYwICAuOy4uXjBuX2w1Li4uLi4uCjAwMDA0MTYwICAyNjhlIDI0YjMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICYuJC4)
 ```assembly
-0000000000000000 55                              PUSH RBP
-0000000000000001 4889E5                          MOV RBP,RSP
-0000000000000004 4883EC3B                        SUB RSP,000000000000003B
-0000000000000008 27                              ???
-0000000000000009 8943C9                          MOV DWORD PTR [RBX-37],EAX
-000000000000000C 23B863D426A5                    AND EDI,DWORD PTR [RAX-5AD92B9D]
-0000000000000012 C7                              ???
-0000000000000013 E82D000000                      CALL 0000000-FFFFFFBB
-0000000000000018 89ABE8000000                    MOV DWORD PTR [RBX+000000E8],EBP
+0000000000000000 55                              PUSH RBP                           ;; C       0
+0000000000000001 4889E5                          MOV RBP,RSP                        ;; S{c     1
+0000000000000004 4883EC3B                        SUB RSP,000000000000003B           ;; ryp_    4
+0000000000000008 27                              ???                                ;; _       8
+0000000000000009 8943C9                          MOV DWORD PTR [RBX-37],EAX         ;; ___     9
+000000000000000C 23B863D426A5                    AND EDI,DWORD PTR [RAX-5AD92B9D]   ;; ______ 12
+0000000000000012 C7                              ???                                ;; _      18
+0000000000000013 E82D000000                      CALL 0000000-FFFFFFBB              ;; 0n_c0  19
+0000000000000018 89ABE8000000                    MOV DWORD PTR [RBX+000000E8],EBP   ;; d_}CS{ 24
 000000000000001E 005548                          ADD BYTE PTR [RBP+48],DL
 0000000000000021 89CE                            MOV ESI,ECX
 0000000000000023 27                              ???
@@ -395,5 +395,30 @@ Being lazy, why not use [CyberChef](https://gchq.github.io/CyberChef/#recipe=Fro
 00000000000000C3 C3                              RET
 ```
 
+### Iteration 2, Flag: CS{crypt___________0n_c0d3}
+Let's just assume we're kind of completing words and there is plenty of use of leet speak in the flag string.
+**cryp** is missing a **t** to become **crypt** and **c0d** is missing either an **e** or a **3** to become **c0de**/**c0d3**. Fiddling a bit with [CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Hexdump()XOR(%7B'option':'UTF8','string':'CS%7Bcrypt___________0n_c0d3%7D'%7D,'Standard',false)To_Hex('Space',0)Disassemble_x86('64','Full%20x86%20architecture',16,0,true,true)&input=MDAwMDQwYTAgIDE2MWIgZjI4NiAzYWZhIDljNjQgNzhkNiAxYzk2IDdjZTcgM2M4YiAgLi4uLjouLmR4Li4ufC48LiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKMDAwMDQwYjAgIDc5ZmEgOThkOCA0MzVmIDYzMzAgZWRmNCA5NTQzIDUzN2IgNjMyNyAgeS4uLkNfYzAuLi5DU3tjJwowMDAwNDBjMCAgMzFmOSA5MTc4IGRjOGQgN2ViZCAxMTg1IGY4NzQgOGYxNyBhODI2ICAxLi54Li5%2BLi4uLnQuLi4mCjAwMDA0MGQwICBkNmE0IDc4YTMgZjM0MSA0MzUzIDdiNmMgNzdmMiAzNTg4IGI5OTggIC4ueC4uQUNTe2x3LjUuLi4KMDAwMDQwZTAgIDg5YjQgY2I5MyA4NjI2IDc5ZmEgYmE3OCBlZGIzIDQzNzggZWQ0ZSAgLi4uLi4meS4ueC4uQ3guTgowMDAwNDBmMCAgOTU4NCAxNjg3IDYzNzIgNzk3MCAzY2JiIDFhODkgMjZiZCAyOTg5ICAuLi4uY3J5cDwuLi4mLikuCjAwMDA0MTAwICA5ODM4IGYwMWEgY2M2ZiAxN2UwIDc1OTQgMzIzNSBjODE2IDhiNmMgIC44Li4uby4udS4yNS4uLmwKMDAwMDQxMTAgIGM0NzkgZjRiNCA0NWIzIGVhM2IgYzgyNCBmMjM2IGQ5M2IgZDZmNiAgLnkuLkUuLjsuJC42LjsuLgowMDAwNDEyMCAgZDE1ZSA2MzMwIDY0ZGIgN2Y0MyA1MzdiIGFhYjEgMmMzOCBmZGQ1ICAuXmMwZC4uQ1N7Li4sOC4uCjAwMDA0MTMwICBkNjFjIDgyN2MgZTUwYyA5M2I4IDI2YjcgYmIyYiBiMzJiIGE4MmMgIC4uLnwuLi4uJi4uKy4rLiwKMDAwMDQxNDAgIGJhYmEgMGJkOCAzZTgzIDNhZjAgYjZmZiA3NWI3IDI5ZjYgN2NlNSAgLi4uLj4uOi4uLnUuKS58LgowMDAwNDE1MCAgYmIzYiBmNmIzIDVlMzAgNmU1ZiA2YzM1IGVkZjMgZjQwNiBhZmYwICAuOy4uXjBuX2w1Li4uLi4uCjAwMDA0MTYwICAyNjhlIDI0YjMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICYuJC4), and the current best guess would be **CS{crypt___________0n_c0d3}**
+```assembly
+0000000000000000 55                              PUSH RBP                           ;; C       0
+0000000000000001 4889E5                          MOV RBP,RSP                        ;; S{c     1
+0000000000000004 4883EC10                        SUB RSP,0000000000000010           ;; rypt    4
+0000000000000008 27                              ???                                ;; _       8
+0000000000000009 8943C9                          MOV DWORD PTR [RBX-37],EAX         ;; ___     9
+000000000000000C 23B863D426A5                    AND EDI,DWORD PTR [RAX-5AD92B9D]   ;; ______ 12
+0000000000000012 C7                              ???                                ;; _      18
+0000000000000013 E82D000000                      CALL 0000000-FFFFFFBB              ;; 0n_c0  19
+0000000000000018 89C7                            MOV EDI,EAX                        ;; d3     24
+000000000000001A E800000000                      CALL 0000000-FFFFFFE1              ;; }CS{c  26
+000000000000001F 55                              PUSH RBP                           ;; r      31
+0000000000000020 4889E5                          MOV RBP,RSP                        ;;
+0000000000000023 27                              ???
+0000000000000024 83D221                          ADC EDX,00000021
+0000000000000027 E24E                            LOOP 0000000000000077
+0000000000000029 DAA72BD04898                    FISUB DWORD PTR [RDI-67B72FD5]
+000000000000002F 4889C7                          MOV RDI,RAX
+0000000000000032 48C7C03C000000                  MOV RAX,0000003C
+0000000000000039 0F05                            SYSCALL
+[...]
+```
 
 
