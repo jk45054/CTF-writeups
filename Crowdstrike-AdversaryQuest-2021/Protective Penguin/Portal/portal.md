@@ -461,5 +461,5 @@ There are a lot more colon seperated strings, but this one looked nice enough. S
 Flag: **CS{w3b_vPn_h4xx}**
 
 ## Conclusion
-This has been a nice and - in hindsight - pretty forwarded challenge. There was only one stack to smash (function validate @ 0x401226), only one stack variable to overwrite and only one reliable filename string pointer to overwrite with.
+This has been a nice and - in hindsight - pretty forwarded challenge. There was only one stack to smash (function validate @ 0x401226), only one stack variable to overwrite and only one reliable filename string pointer to overwrite it with.
 But that still leaves enough room for error, especially when diving into rabbit holes and/or making assumptions about the remote environment wrongly deduced from the local environment.
