@@ -410,15 +410,22 @@ Let's just assume we're kind of completing words and there is plenty of use of l
 0000000000000018 89C7                            MOV EDI,EAX                        ;; d3     24
 000000000000001A E800000000                      CALL 0000000-FFFFFFE1              ;; }CS{c  26
 000000000000001F 55                              PUSH RBP                           ;; r      31
-0000000000000020 4889E5                          MOV RBP,RSP                        ;;
-0000000000000023 27                              ???
-0000000000000024 83D221                          ADC EDX,00000021
-0000000000000027 E24E                            LOOP 0000000000000077
-0000000000000029 DAA72BD04898                    FISUB DWORD PTR [RDI-67B72FD5]
-000000000000002F 4889C7                          MOV RDI,RAX
-0000000000000032 48C7C03C000000                  MOV RAX,0000003C
-0000000000000039 0F05                            SYSCALL
+0000000000000020 4889E5                          MOV RBP,RSP                        ;; ypt    32
+0000000000000023 27                              ???                                ;; _      35
+0000000000000024 83D221                          ADC EDX,00000021                   ;; ___    36
+0000000000000027 E24E                            LOOP 0000000000000077              ;; __     39
+0000000000000029 DAA72BD04898                    FISUB DWORD PTR [RDI-67B72FD5]     ;; _____0 41
+000000000000002F 4889C7                          MOV RDI,RAX                        ;; n_c    47
+0000000000000032 48C7C03C000000                  MOV RAX,0000003C                   ;; 0d3}CS{50
+0000000000000039 0F05                            SYSCALL                            ;; cr     57
+[...]
+000000000000008C 55                              PUSH RBP                           ;; y      140
+000000000000008D 48898A8943DD23                  MOV QWORD PTR [RDX+23DD4389],RCX   ;; pt_____141
 [...]
 ```
+The **t** @ key index 7 is affecting decrypted offset 0x4 and especially offset 0x20 nicely.
+The **3** @ key index 25 is affecting decrypted offset 0x18 and offset 0x32 smoothly as well, so both seem correct.
+Judging from decrypted offset 0x8d, one would expect **MOV RBP, RSP** (opcodes **4889E5**) to build a proper function prologue. Applying XOR on crypted offset 0x8F with expected plain text byte 0xE5 yields key byte 0x30 (XOR 0xD5, 0xE5), representing ascii '0'.
+
 
 
