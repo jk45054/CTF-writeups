@@ -189,29 +189,6 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 ### Analysis Summary for sighandler() @ 0x11d9
 - All it does is printing the string *oops. something went wrong! :(* and exiting the process with status 1.
 
-### What is code_enc @ 0x40a0 with code_enc_len = 196?
-Dump 196 bytes of data *code_enc* @ 0x40a0
-```objdump
-r2 -q -c "aaa; x 196 @ obj.code_enc" module.wow 
-Warning: run r2 with -e io.cache=true to fix relocations in disassembly
-- offset -   0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
-0x000040a0  161b f286 3afa 9c64 78d6 1c96 7ce7 3c8b  ....:..dx...|.<.                                                                                                                                        
-0x000040b0  79fa 98d8 435f 6330 edf4 9543 537b 6327  y...C_c0...CS{c'
-0x000040c0  31f9 9178 dc8d 7ebd 1185 f874 8f17 a826  1..x..~....t...&
-0x000040d0  d6a4 78a3 f341 4353 7b6c 77f2 3588 b998  ..x..ACS{lw.5...
-0x000040e0  89b4 cb93 8626 79fa ba78 edb3 4378 ed4e  .....&y..x..Cx.N
-0x000040f0  9584 1687 6372 7970 3cbb 1a89 26bd 2989  ....cryp<...&.).
-0x00004100  9838 f01a cc6f 17e0 7594 3235 c816 8b6c  .8...o..u.25...l
-0x00004110  c479 f4b4 45b3 ea3b c824 f236 d93b d6f6  .y..E..;.$.6.;..
-0x00004120  d15e 6330 64db 7f43 537b aab1 2c38 fdd5  .^c0d..CS{..,8..
-0x00004130  d61c 827c e50c 93b8 26b7 bb2b b32b a82c  ...|....&..+.+.,
-0x00004140  baba 0bd8 3e83 3af0 b6ff 75b7 29f6 7ce5  ....>.:...u.).|.
-0x00004150  bb3b f6b3 5e30 6e5f 6c35 edf3 f406 aff0  .;..^0n_l5......
-0x00004160  268e 24b3                                &.$.
-```
-Looks like encrypted data, could be (shell)code from naming scheme.
-Funny seems the occurrence of **CS{c** inside the supposedly encrypted blob. These might be null bytes encrypted with a simple XOR cipher and the flag string as the key beginning with **CS{c**.
-
 ### Disassembly of Function execute() @ 0x11fa
 Use radare2 to disassemble function *execute* of module.wow (output is additionally commented with ;;)
 ```assembly
@@ -310,14 +287,47 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 
 ## Approach?
 - all we know about the encrypted buffer is, that its supposed to be callable shellcode and that it is decrypted using XOR with key string
-- what do we know of encrypted shellcode? function prologue, epilogue
-- bytes at offset 0x1b to 0x1e in encrypted shellcode are **CS{c**, indicating that the flag is hidden in the key string
-- what do we know so far about the flag? begins with **CS{c** ends with **}**
-- flag is likely to be 0x1b (27) chars long (or 9 as a factorial of 27)
+- what do we know of encrypted shellcode? likely has a function prologue, epilogue
+- shellcode might contain null bytes, revealing parts of the flag
+
+### So what does code_enc @ 0x40a0 consist of with code_enc_len = 196?
+Dump 196 bytes of data *code_enc* @ 0x40a0
+```objdump
+r2 -q -c "aaa; x 196 @ obj.code_enc" module.wow 
+Warning: run r2 with -e io.cache=true to fix relocations in disassembly
+- offset -   0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
+0x000040a0  161b f286 3afa 9c64 78d6 1c96 7ce7 3c8b  ....:..dx...|.<.                                                                                                                                        
+0x000040b0  79fa 98d8 435f 6330 edf4 9543 537b 6327  y...C_c0...CS{c'
+0x000040c0  31f9 9178 dc8d 7ebd 1185 f874 8f17 a826  1..x..~....t...&
+0x000040d0  d6a4 78a3 f341 4353 7b6c 77f2 3588 b998  ..x..ACS{lw.5...
+0x000040e0  89b4 cb93 8626 79fa ba78 edb3 4378 ed4e  .....&y..x..Cx.N
+0x000040f0  9584 1687 6372 7970 3cbb 1a89 26bd 2989  ....cryp<...&.).
+0x00004100  9838 f01a cc6f 17e0 7594 3235 c816 8b6c  .8...o..u.25...l
+0x00004110  c479 f4b4 45b3 ea3b c824 f236 d93b d6f6  .y..E..;.$.6.;..
+0x00004120  d15e 6330 64db 7f43 537b aab1 2c38 fdd5  .^c0d..CS{..,8..
+0x00004130  d61c 827c e50c 93b8 26b7 bb2b b32b a82c  ...|....&..+.+.,
+0x00004140  baba 0bd8 3e83 3af0 b6ff 75b7 29f6 7ce5  ....>.:...u.).|.
+0x00004150  bb3b f6b3 5e30 6e5f 6c35 edf3 f406 aff0  .;..^0n_l5......
+0x00004160  268e 24b3                                &.$.
+```
+
+### Analysis Summary for code_enc @ 0x40a0
+- Funny seems the occurrence of **CS{c** inside the supposedly encrypted blob @ offset 0x1b (27). These might be null bytes encrypted with a simple XOR cipher and the flag string as the key beginning with **CS{c**.
+- A second occurrence of **CS{** happens at offset 0x36 (54).
+- A third occurrence of **CS{** happens at offset 0x87 (135).
+- Deduction 1: The flag is likely 27 chars long (or less likely 9).
+- The string **cryp** at offset 0x54 (84) doesn't look like being randomly there, either.
+- Deduction 2: If the flag is 27 chars long, it would repeat at offset 0x51 (81) with **CS{** while having **cryp** right behind it, forming **CS{cryp**
+- With lower probability, there might be the substring **c0d** at offset 0x82 (130 % 27 = 22) and **0n_l** at offset 0xb5 (181 % 27 = 19).
+- These might form a substring of **0n_l0d** or **0n_c0d** at key string index 19, as they overlap on one char (index 22, **l** or **c**)
+- Without any XOR decryption or disassembly, the flag might look like this: **CS{cryp____________0n_c0d_}**
 
 ### Write Decrypter that disassembles the encrypted Shellcode
+It's time to write a decrypter and take a look at the disassembly with the already known flag chars. Maybe we can dedude something from the disassembly, that would only make sense with a certain set of flag chars (legal instructions, memory access, logic/semantic of code).
 
-### Iteration 1, Flag: CS{c______________________}
+
+
+### Iteration 1, Flag: CS{cryp____________0n_c0d_}
 
 
 
