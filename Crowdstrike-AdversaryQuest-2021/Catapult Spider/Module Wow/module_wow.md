@@ -53,5 +53,17 @@ nth paddr      vaddr      len size section type  string
 5   0x00003154 0x00004154 6   7    .data   ascii ^0n_l5
 ```
 
+### Execution in a Sandbox
+```
+./module.wow 
+Usage: ./module.wow <string>
+```
+
+```
+./module.wow test
+oops. something went wrong! :(
+```
+
+
 
 
