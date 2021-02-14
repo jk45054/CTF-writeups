@@ -24,7 +24,7 @@ checksec module.wow
 
 Rabin2 for entrypoints and strings (output edited slightly for readability)
 ```
-rabin2 -e -ee -z module.wow 
+rabin2 -e -ee -M -z module.wow 
 [Entrypoints]
 vaddr=0x000010e0 paddr=0x000010e0 haddr=0x00000018 hvaddr=0x00000018 type=program
 
