@@ -187,7 +187,7 @@ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi
 - If validate function returns 0, the flag is returned from the portal.cgi
 
 ### Portal CGI, Disassemble validate() @ 0x401226
-Use radare2 to disassemble function *main* of portal.cgi (output is shortened for readability and additionally commented with ;;)
+Use radare2 to disassemble function *validate* of portal.cgi (output is shortened for readability and additionally commented with ;;)
 ```assembly
 r2 -q -c "pd 107 @ 0x401226" cgi-bin/portal.cgi 
             0x00401226      55             push rbp
@@ -325,7 +325,7 @@ Bingo! There's exactly one static valid filename string pointer other than **cre
 ## Constructing the Exploit
 1) Find a colon seperated user:pass in /lib64/ld-linux-x86-64.so.2
 2) Data can be binary, as user and pass are transmitted in base64 encoding
-3) Pass should be expanded, e.g. with null bytes, so that strlen(user + ":" + pass) == 260 bytes
+3) Pass should be expanded, e.g. with null bytes, so that strlen(user + ":" + pass) == 260 bytes (before base64 encoding)
 4) Add 0x004002a8 in little endian to pass
 5) Base64 encode user and pass and fire them directly at the portal.cgi 
 
@@ -335,8 +335,8 @@ While feeling somewhat clever, i thought:
 - Why not debug the CGI
 - Set breakpoint at function validate()
 - Manually patch the filename to be opened to /lib64/ld-linux-x86-64.so.2
-- Let CGI fgets the first line
-- Dump that and use it for the exploit
+- Let CGI fgets the first line with a colon for comparison (breakpoint on strcmp)
+- Dump the data and use it for the exploit
 
 Find PID of local python webserver
 ```
@@ -410,7 +410,7 @@ gef➤  x/29x $rsi
 0x7ffc8783929c: 0x89    0xd8    0xba    0x19    0x00
 ```
 
-Okay. This is the null terminated (binary) data containing a colon (0x3a @ 0x7ffc87839294). Let's use the bytes up to colon as username, base64 encode that. Use bytes following colon up to null termination as password, base64 encode that. Fill up password with null bytes so that username + colon + password are 260 bytes long and then add the little endian address to overwrite the filename string pointer with the one for /lib64/ld-linux-x86-64.so.2!
+Okay. This is the null terminated (binary) data containing a colon (0x3a @ 0x7ffc87839294). Let's use the bytes up to colon as username, base64 encode that. Use bytes following colon up to null termination as password. Fill up password with null bytes so that username (plain) + colon + password (plain) are 260 bytes long and then add the little endian address to overwrite the filename string pointer with the one for /lib64/ld-linux-x86-64.so.2. Then base64 encode password.
 
 Back to python console
 ```python
