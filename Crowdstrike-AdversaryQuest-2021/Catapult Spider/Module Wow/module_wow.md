@@ -163,6 +163,31 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 └           0x0000145f      c3             ret
 ```
 
+### Analysis Summary for main()
+- stuff
+
+### Disassembly of sighandler()
+Use radare2 to disassemble function *sighandler* of module.wow
+```assembly
+r2 -q -c "aaa; pd 8 @ sym.sighandler" module.wow 
+Warning: run r2 with -e io.cache=true to fix relocations in disassembly
+            ; DATA XREF from main @ 0x1365
+┌ 33: sym.sighandler (int64_t arg1);
+│           ; var int64_t var_4h @ rbp-0x4
+│           ; arg int64_t arg1 @ rdi
+│           0x000011d9      55             push rbp
+│           0x000011da      4889e5         mov rbp, rsp
+│           0x000011dd      4883ec10       sub rsp, 0x10
+│           0x000011e1      897dfc         mov dword [var_4h], edi     ; arg1
+│           0x000011e4      488d3d1d0e00.  lea rdi, str.oops._something_went_wrong__:_ ; 0x2008 ; "oops. something went wrong! :(" ; const char *s
+│           0x000011eb      e850feffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x000011f0      bf01000000     mov edi, 1                  ; int status
+└           0x000011f5      e8d6feffff     call sym.imp.exit           ; void exit(int status)
+```
+
+### Analysis Summary for sighandler()
+- All it does is printing the string *oops. something went wrong! :(* and exiting the process with status 1.
+
 ### What is code_enc with code_enc_len = 196?
 Dump 196 bytes of data *code_enc*
 ```objdump
@@ -273,9 +298,20 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 └           0x000012f9      c3             ret
 ```
 
+### Analysis Summary for execute()
+- Copies encrypted buffer (arg1) of size arg2 to a newly allocated memory region with RWX protection bits set
+- Applies a simple XOR decryption over this buffer using arg3 as a key string
+- buffer[n] = buffer[n] ^ key[n % len(key)]
+- Calls into offset 0 of the decrypted buffer, which is expected to hold executable shellcode after decryption
+- If execution fails, a signal will be raised (like SIGILL or illegal instruction)
+
+## Approach?
+- all we know about the encrypted buffer is, that its supposed to be callable shellcode and that it is decrypted using XOR with key string
+- what do we know of encrypted shellcode? function prologue, epilogue
+- what do we know about flag? begins with CS{ ends with }
 
 
-```
+
 
 
 
