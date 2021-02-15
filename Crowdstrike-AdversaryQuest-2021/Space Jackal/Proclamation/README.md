@@ -69,14 +69,14 @@ Disassemble as 16 bits architecture with radare2
 $ r2 -q -b 16 -m 0x7c00 -c "aaa; pd" proclamation.dat 
 ┌ 88: fcn.00007c00 ();
 │           0000:7c00      bc0020         mov sp, 0x2000
-│           0000:7c03      b407           mov ah, 7
-│           0000:7c05      30c0           xor al, al
+│           0000:7c03      b407           mov ah, 7			;; scroll down window
+│           0000:7c05      30c0           xor al, al			;; 0 lines to scroll
 │           0000:7c07      31c9           xor cx, cx
 │           0000:7c09      b78a           mov bh, 0x8a                 ; 138
 │           0000:7c0b      b661           mov dh, 0x61                 ; 'a' ; 97
 │           0000:7c0d      b261           mov dl, 0x61                 ; 'a' ; 97
 │           0000:7c0f      cd10           int 0x10
-│           0000:7c11      b402           mov ah, 2
+│           0000:7c11      b402           mov ah, 2			;; set cursor position
 │           0000:7c13      31d2           xor dx, dx
 │           0000:7c15      30ff           xor bh, bh
 │           0000:7c17      cd10           int 0x10
@@ -89,7 +89,7 @@ $ r2 -q -b 16 -m 0x7c00 -c "aaa; pd" proclamation.dat
 │       │   0000:7c1f      b209           mov dl, 9			;; some starting value (ascii tab?)
 │       │   0000:7c21      6652           push edx			;; save for later
 │     ┌┌──> 0000:7c23      b300           mov bl, 0
-│     ╎╎│   0000:7c25      b40e           mov ah, 0xe                  ; 14
+│     ╎╎│   0000:7c25      b40e           mov ah, 0xe                  	;; teletype output
 │     ╎╎│   0000:7c27      8a04           mov al, byte [si]		;; get current char @ [si]
 │     ╎╎│   ; CODE XREF from loc.00007c61 @ +0x43
 │     ╎╎│   0000:7c29      83c601         add si, 1			;; add si byte pointer
@@ -105,12 +105,12 @@ $ r2 -q -b 16 -m 0x7c00 -c "aaa; pd" proclamation.dat
 │    │╎╎│   0000:7c46      88c2           mov dl, al
 │    │╎╎│   0000:7c48      80f20a         xor dl, 0xa			;; if decrypted byte == newline, go 0x7c51
 │   ┌─────< 0000:7c4b      7404           je 0x7c51
-│   ││╎╎│   0000:7c4d      cd10           int 0x10			;; output decrypted char
+│   ││╎╎│   0000:7c4d      cd10           int 0x10			;; teletype output decrypted char
 │   ││└───< 0000:7c4f      ebd2           jmp 0x7c23			;; loop
 │   ││ ╎│   ; CODE XREF from fcn.00007c1b @ 0x7c4b
-│   └─────> 0000:7c51      b403           mov ah, 3
+│   └─────> 0000:7c51      b403           mov ah, 3			;; get cursor position
 │    │ ╎│   0000:7c53      cd10           int 0x10			;; do newline stuff
-│    │ ╎│   0000:7c55      b402           mov ah, 2
+│    │ ╎│   0000:7c55      b402           mov ah, 2			;; set cursor position
 │    │ ╎│   0000:7c57      fec6           inc dh
 │    │ ╎│   0000:7c59      b200           mov dl, 0
 │    │ ╎│   0000:7c5b  ~   cd10           int 0x10			;; do newline stuff
