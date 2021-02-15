@@ -244,6 +244,8 @@ nasm > cmp al,0x40
 00000000  3C40              cmp al,0x40
 ```
 
+Patch bootsector byte at offset 0x42 with value 0x3c and at offset 0x43 with value 0x40.
+
 Emulate the bootcode again and gain flag.
 ![Let the bootstrap code decrypt the flag ftw](pics/2.png)
 
