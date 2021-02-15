@@ -65,7 +65,7 @@ The handler for [Interrupt 10h](https://en.wikipedia.org/wiki/INT_10H) has a lot
 
 Disassemble as 16 bits architecture with radare2
 ```assembly
-r2 -q -b 16 -m 0x7c00 -c "aaa; pd" proclamation.dat 
+$ r2 -q -b 16 -m 0x7c00 -c "aaa; pd" proclamation.dat 
 ┌ 88: fcn.00007c00 ();
 │           0000:7c00      bc0020         mov sp, 0x2000
 │           0000:7c03      b407           mov ah, 7
@@ -147,13 +147,13 @@ r2 -q -b 16 -m 0x7c00 -c "aaa; pd" proclamation.dat
 There might be a disassembly fail at offset 0x7c5c (byte 0x10), which seems to be used twice in the disassembly: Once for int 10h and again as the opcode for adc.
 But it should be just 0xeb 0xc4 at offset 0x7c5d following the int 10h.
 ```
-disasm -a 0x7c5d "EBC4"
+$ disasm -a 0x7c5d "EBC4"
     7c5d:        eb c4                    jmp    0x7c23
 ```
 
 What's the stuff behind the call @ 0000:7c61?
 ```
-r2 -q -b 16 -m 0x7c00 -c "aaa; x 412 @ 0x7c64" proclamation.dat 
+$ r2 -q -b 16 -m 0x7c00 -c "aaa; x 412 @ 0x7c64" proclamation.dat 
 - offset -  0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
 0000:7c64  796f 7527 7265 206f 6e20 6120 676f 6f64  you're on a good		;; a hint, not displayed when running bootstrap code
 0000:7c74  2077 6179 2ebf c686 85c4 cabd 8fca 8b98   way............
@@ -193,7 +193,7 @@ The data behind the *hint* is used as the start of a blob that is decrypted. Fir
 ## Approach 1 - Write Decrypter
 Grab the encrypted bytes beginning at offset 0x78.
 ```
-xxd -p -s 0x78 -c 392 proclamation.dat 
+$ xxd -p -s 0x78 -c 392 proclamation.dat 
 2ebfc68685c4cabd8fca8b988fca8685858183848dca8c8598ca82838d828693ca83849e8f8686838d8f849ee083848e839c838e9f8b8699c4cabe85ca8c83848eca9e828f87c6ca9d8fca828b9c8fca8e8f9c83998f8ee08bca9e8f999ec4e0e0be828f988fca8399ca8bca878f99998b8d8fca82838e8e8f84ca8384ca9e828399ca8885859e86858b8e8f98c4e0e0ac83848eca839ec6ca8b848eca839eca9d838686ca868f8b8eca93859fca8584ca9e828fca98858b8eca9e85e08c83848e83848dca9f99c4cabd8fca86858581ca8c85989d8b988eca9e85ca878f8f9eca9e828fe08c8f9dca9e828b9eca9d838686ca878b818fca839eca8b8686ca9e828fca9d8b93ca9e8298859f8d82c4e0e0ad85858eca869f8981c6ca8b848eca988f878f87888f98d0e0cacacacabd8fca86859c8fca999a8b898f99ca879f8982ca8785988fca9e828b84ca9e8b8899cbea811911a9b991da988ed998b5da8cb5da92d8dab588dada9e86da8b8ed9989797eaf4f4f4f4f4f4f4f4f4f4f4f4f4f4f4f4f4f4f455aa
 ```
 
@@ -212,7 +212,7 @@ print()
 
 ... and run it to get the flag!
 ```
-./solve.py 
+$ ./solve.py 
 Hello. We are looking for highly intelligent
 individuals. To find them, we have devised
 a test.
@@ -238,7 +238,7 @@ The decryption code in the bootsector has a stop condition. It stops decrypting 
 
 This check could be patched with a different stop condition.
 ```
-msf-nasm_shell
+$ msf-nasm_shell
 nasm > cmp al,0x40
 00000000  3C40              cmp al,0x40
 ```
