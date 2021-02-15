@@ -15,7 +15,7 @@ proclamation.dat: DOS/MBR boot sector
 
 If it is a MBR boot sector, let's have a look what fdisk has to say about it.
 ```
-fdisk -l proclamation.dat 
+$ fdisk -l proclamation.dat 
 Disk proclamation.dat: 512 B, 512 bytes, 1 sectors
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -42,38 +42,30 @@ Offset | Meaning | Size (Bytes)
 
 Link: [Master Boot Record - MBR](https://en.wikipedia.org/wiki/Master_boot_record)
 
-### Behavioural
-Behavioural / Execution
+### Behavioural Analysis
+Why don't we just emulate a boot with qemu and see what happens?
 ```
-qemu-system-i386 proclamation.dat
+$ qemu-system-i386 proclamation.dat
 ```
 ![qemu emulation of MBR bootstrap code](pics/1.png)
 
 ### Strings
-strings
+Are there additional strings inside the bootsector that we didn't witness during emulation?
 ```
-strings proclamation.dat 
+$ strings proclamation.dat 
 you're on a good way.
 ```
 
-Uhm. What? Where is the text displayed when running the bootstrap code?
+Yes! But... where is the text displayed when running the bootstrap code? Looks like it's kind of encoded/encrypted.
 
-### Disassembly / r2
+### Disassembly of the Bootstrap Code
 MBR bootstrap code runs in [Real Mode](https://en.wikipedia.org/wiki/Real_mode)
--> real mode machine code
--> loaded at address 0x0000:0x7C00
--> magic byte check, then jmp to 0x7C00
+It's loaded by the BIOS at address 0x0000:0x7C00 and then jumped to.
+The handler for [Interrupt 10h](https://en.wikipedia.org/wiki/INT_10H) has a lot of console output functionality.
 
-Link: [Int 10h](https://en.wikipedia.org/wiki/INT_10H)
-
-### Analysis
-lots of text in behavioural run. Where does it come from? might be decoded/decrypted by bootstrap code
-
-disassemble 16 bits with radare2
+Disassemble as 16 bits architecture with radare2
 ```assembly
 r2 -q -b 16 -m 0x7c00 -c "aaa; pd" proclamation.dat 
-WARNING: using oba to load the syminfo from different mapaddress.
-TODO: Must use the API instead of running commands to speedup loading times.
 ┌ 88: fcn.00007c00 ();
 │           0000:7c00      bc0020         mov sp, 0x2000
 │           0000:7c03      b407           mov ah, 7
@@ -129,8 +121,6 @@ TODO: Must use the API instead of running commands to speedup loading times.
         │   ; CODE XREF from fcn.00007c00 @ 0x7c19
         │   ;-- ip:
 ├ 61: loc.00007c61 (int16_t arg1, int16_t arg3);
-│       │   ; arg int16_t arg1 @ ax
-│       │   ; arg int16_t arg3 @ bx
 │       └─> 0000:7c61      e8b7ff         call fcn.00007c1b
 │       ┌─< 0000:7c64      796f           jns 0x7cd5			;; ascii hex bytes interpreted as code
 │      ┌──< 0000:7c66      7527           jne 0x7c8f			;; up to 0x7c78
@@ -154,7 +144,8 @@ TODO: Must use the API instead of running commands to speedup loading times.
 │    ││└──> 0000:7c8f      8598ca82       test word [bx + si - 0x7d36], bx
 ```
 
-weird radare2 seems to fail disassembling at offset 0x7c5d (using hex byte 0x10 twice, once for int 10h, once as an opcode for adc)
+There seems to be a disassembly fail at offset 0x7c5c, which seems to be used twice in the disassembly: Once for int 10h and again as the opcode for adc.
+It should be just 0xeb 0xc4 at offset 0x7c5d.
 ```
 disasm -a 0x7c5d "EBC4"
     7c5d:        eb c4                    jmp    0x7c23
@@ -163,8 +154,6 @@ disasm -a 0x7c5d "EBC4"
 Whats the stuff behind the call @ 0000:7c61?
 ```
 r2 -q -b 16 -m 0x7c00 -c "aaa; x 412 @ 0x7c64" proclamation.dat 
-WARNING: using oba to load the syminfo from different mapaddress.
-TODO: Must use the API instead of running commands to speedup loading times.
 - offset -  0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
 0000:7c64  796f 7527 7265 206f 6e20 6120 676f 6f64  you're on a good		;; a hint, not displayed when running bootstrap code
 0000:7c74  2077 6179 2ebf c686 85c4 cabd 8fca 8b98   way............
@@ -194,15 +183,21 @@ TODO: Must use the API instead of running commands to speedup loading times.
 0000:7df4  f4f4 f4f4 f4f4 f4f4 f4f4 55aa            ..........U.		;; ends with magic bytes of MBR/boot sector
 ```
 
+The data behind the *hint* is used as the start of a blob that is decrypted. First encrypted byte is at offset 0x7c78 (0x2e).
+```
+│       │   0000:7c1b      5e             pop si			;; called from 0x7c61
+│ 	│ 							        ;; si = 0x7c64
+│       │   0000:7c1c      83c614         add si, 0x14			;; si = 0x7c78 (byte 0x2e)
+```
 
 ## Approach 1 - Write Decrypter
-
+Grab the encrypted bytes beginning at offset 0x78.
 ```
 xxd -p -s 0x78 -c 392 proclamation.dat 
 2ebfc68685c4cabd8fca8b988fca8685858183848dca8c8598ca82838d828693ca83849e8f8686838d8f849ee083848e839c838e9f8b8699c4cabe85ca8c83848eca9e828f87c6ca9d8fca828b9c8fca8e8f9c83998f8ee08bca9e8f999ec4e0e0be828f988fca8399ca8bca878f99998b8d8fca82838e8e8f84ca8384ca9e828399ca8885859e86858b8e8f98c4e0e0ac83848eca839ec6ca8b848eca839eca9d838686ca868f8b8eca93859fca8584ca9e828fca98858b8eca9e85e08c83848e83848dca9f99c4cabd8fca86858581ca8c85989d8b988eca9e85ca878f8f9eca9e828fe08c8f9dca9e828b9eca9d838686ca878b818fca839eca8b8686ca9e828fca9d8b93ca9e8298859f8d82c4e0e0ad85858eca869f8981c6ca8b848eca988f878f87888f98d0e0cacacacabd8fca86859c8fca999a8b898f99ca879f8982ca8785988fca9e828b84ca9e8b8899cbea811911a9b991da988ed998b5da8cb5da92d8dab588dada9e86da8b8ed9989797eaf4f4f4f4f4f4f4f4f4f4f4f4f4f4f4f4f4f4f455aa
 ```
 
-code
+Implement the decryption...
 ```python
 #!/usr/bin/env python3
 from binascii import unhexlify
@@ -215,7 +210,7 @@ for i in crypted:
 print()
 ```
 
-run it
+... and run it to get the flag!
 ```
 ./solve.py 
 Hello. We are looking for highly intelligent
@@ -235,20 +230,19 @@ Good luck, and remember:
 Flag: **CS{0rd3r_0f_0x20_b00tl0ad3r}**
 
 ## Approach 2 - Let the original code do the decryption work!
-alternative solution:
-- patch stop condition?
+The decryption code in the bootsector has a stop condition. It stops decrypting when the decrypted byte is a null byte.
+```
+│     ╎╎│   0000:7c42      0c00           or al, 0			;; that's the stop condition (al == 0x0)
+									;; if decrypted byte == null, stop
+```
 
-change
-0xc0 0x 00 or al,0
-to something appropriate
-
+This check could be patched with a different stop condition.
+```
 msf-nasm_shell
-nasm > cmp al,0
-00000000  3C00              cmp al,0x0
 nasm > cmp al,0x40
 00000000  3C40              cmp al,0x40
+```
 
-0x40 is hex value of last decrypted char in boot sector ("@"), so use this as stop condition will display flag in qemu (see screenshot)
-
+Emulate the bootcode again and gain flag.
 ![Let the bootstrap code decrypt the flag ftw](pics/2.png)
 
