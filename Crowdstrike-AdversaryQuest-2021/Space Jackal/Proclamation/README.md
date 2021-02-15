@@ -4,15 +4,16 @@
 A mysterious file appeared on a deep dark web forum. Can you figure out what we can't see right now?
 NOTE: Flags will be easily identifiable by following the format CS{some_secret_flag_text}. They must be submitted in full, including the CS{ and } parts.
 
-## Approach
+## General Approach
 
 ### Identification of Evidence File
-Magic Bytes
+Check evidence for magic bytes via file command
 ```
-file proclamation.dat 
+$ file proclamation.dat 
 proclamation.dat: DOS/MBR boot sector
 ```
 
+If it is a MBR boot sector, let's have a look what fdisk has to say about it.
 ```
 fdisk -l proclamation.dat 
 Disk proclamation.dat: 512 B, 512 bytes, 1 sectors
@@ -32,11 +33,12 @@ Partition table entries are not in disk order.
 ```
 Agreed with fdisk on last sentence for sure...
 
-### TODO: boot sector wikipedia
-Structure of classic generic MBR
-Offset 0x0 - Bootstrap Code - Size 446
-Offset 0x1BE - Partition Table - Size 4 * 16
-Offset 0x1FE - Magic Bytes 0x55 0xAA - Size 2
+### MBR Boot Sector Structure (Generic)
+Offset | Meaning | Size (Bytes)
+--- | --- | ---
+0x0 | Bootstrap Code | 446
+0x1BE | Partition Table | 4 * 16
+0x1FE | Magic Bytes 0x55 0xAA | 2
 
 Link: [Master Boot Record - MBR](https://en.wikipedia.org/wiki/Master_boot_record)
 
