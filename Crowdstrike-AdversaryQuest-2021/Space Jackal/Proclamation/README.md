@@ -144,14 +144,14 @@ r2 -q -b 16 -m 0x7c00 -c "aaa; pd" proclamation.dat
 │    ││└──> 0000:7c8f      8598ca82       test word [bx + si - 0x7d36], bx
 ```
 
-There seems to be a disassembly fail at offset 0x7c5c, which seems to be used twice in the disassembly: Once for int 10h and again as the opcode for adc.
-It should be just 0xeb 0xc4 at offset 0x7c5d.
+There might be a disassembly fail at offset 0x7c5c (byte 0x10), which seems to be used twice in the disassembly: Once for int 10h and again as the opcode for adc.
+But it should be just 0xeb 0xc4 at offset 0x7c5d following the int 10h.
 ```
 disasm -a 0x7c5d "EBC4"
     7c5d:        eb c4                    jmp    0x7c23
 ```
 
-Whats the stuff behind the call @ 0000:7c61?
+What's the stuff behind the call @ 0000:7c61?
 ```
 r2 -q -b 16 -m 0x7c00 -c "aaa; x 412 @ 0x7c64" proclamation.dat 
 - offset -  0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
