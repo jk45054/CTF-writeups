@@ -50,7 +50,8 @@ $ qemu-system-i386 proclamation.dat
 ![qemu emulation of MBR bootstrap code](pics/1.png)
 
 ### Strings
-Are there additional strings inside the bootsector that we didn't witness during emulation?
+The displayed text suggests, that there is a hidden message inside the bootsector.
+Are there additional strings that we didn't witness during emulation?
 ```
 $ strings proclamation.dat 
 you're on a good way.
