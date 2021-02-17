@@ -7,12 +7,13 @@ Can you validate our assumption, and, if possible, extract the key?
 ## Approach
 
 ### First Info about Evidence File
+Try to identify the type of file via magic bytes.
 ```
-file module.wow 
+$ file module.wow 
 module.wow: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=0e5d6a93a2dc3a28eace2b7179e81ce32b968e34, for GNU/Linux 3.2.0, not stripped
 ```
 
-Checksec
+Retrieve information about security features for this ELF binary.
 ```
 checksec module.wow
     Arch:     amd64-64-little
@@ -22,9 +23,9 @@ checksec module.wow
     PIE:      PIE enabled
 ```
 
-Rabin2 for entrypoints and strings (output edited slightly for readability)
+Quickly identify entrypoints and strings via rabin2 (output edited slightly for readability)
 ```
-rabin2 -e -ee -M -z module.wow 
+$ rabin2 -e -ee -M -z module.wow 
 [Entrypoints]
 vaddr=0x000010e0 paddr=0x000010e0 haddr=0x00000018 hvaddr=0x00000018 type=program
 
@@ -54,20 +55,21 @@ nth paddr      vaddr      len size section type  string
 ```
 
 ### Execution in a Sandbox
+Do a few test executions without arguments and a test string as one argument.
 ```
-./module.wow 
+$ ./module.wow 
 Usage: ./module.wow <string>
 ```
 
 ```
-./module.wow test
+$ ./module.wow test
 oops. something went wrong! :(
 ```
 
 ### Disassembly of Function main() @ 0x12fa
 Use radare2 to disassemble function *main* of module.wow (output is additionally commented with ;;)
 ```assembly
-r2 -q -c "aaa; pd 76 @ main" module.wow 
+$ r2 -q -c "aaa; pd 76 @ main" module.wow 
 Warning: run r2 with -e io.cache=true to fix relocations in disassembly
             ; DATA XREF from entry0 @ 0x1101
 ┌ 358: int main (uint32_t argc, char **argv);
@@ -170,7 +172,7 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 ### Disassembly of sighandler() @ 0x11d9
 Use radare2 to disassemble function *sighandler* of module.wow
 ```assembly
-r2 -q -c "aaa; pd 8 @ sym.sighandler" module.wow 
+$ r2 -q -c "aaa; pd 8 @ sym.sighandler" module.wow 
 Warning: run r2 with -e io.cache=true to fix relocations in disassembly
             ; DATA XREF from main @ 0x1365
 ┌ 33: sym.sighandler (int64_t arg1);
@@ -192,7 +194,7 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 ### Disassembly of Function execute() @ 0x11fa
 Use radare2 to disassemble function *execute* of module.wow (output is additionally commented with ;;)
 ```assembly
-r2 -q -c "aaa; pd 68 @ sym.execute" module.wow 
+$ r2 -q -c "aaa; pd 68 @ sym.execute" module.wow 
 Warning: run r2 with -e io.cache=true to fix relocations in disassembly
             ; CALL XREF from main @ 0x1445
 ┌ 256: sym.execute (size_t arg1, size_t arg2, char *arg3);
@@ -293,7 +295,7 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 ### So what does code_enc @ 0x40a0 consist of with code_enc_len = 196?
 Dump 196 bytes of data *code_enc* @ 0x40a0
 ```objdump
-r2 -q -c "aaa; x 196 @ obj.code_enc" module.wow 
+$ r2 -q -c "aaa; x 196 @ obj.code_enc" module.wow 
 Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 - offset -   0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
 0x000040a0  161b f286 3afa 9c64 78d6 1c96 7ce7 3c8b  ....:..dx...|.<.                                                                                                                                        
@@ -434,9 +436,9 @@ Judging from decrypted disassembly line at offset 0x8d, one would expect **MOV R
 
 CyberChef has the habit of disassembling the call offsets in a weird fashion (see disassembly lines at offsets 0x13 and 0x1A, so pwntools to the rescue.
 ```assembly
-disasm -c amd64 -a 0x13 e82d000000
+$ disasm -c amd64 -a 0x13 e82d000000
   13:    e8 2d 00 00 00           call   0x45
-disasm -c amd64 -a 0x1a e800000000
+$ disasm -c amd64 -a 0x1a e800000000
   1a:    e8 00 00 00 00           call   0x1f
 ```
 The call to 0x1F lands at a proper function prologue, the call to 0x45 not. For a proper function prologue, the decrypted bytes at offset 0x45 should be **554889E5**. XOR'ing those with the crypted bytes at offset 0x45 yields key bytes 0x7331735F (XOR 0x554889E5, 0x2679FABA), representing 's1s_' (key index 0x45 % 0x1B = 0xF).
@@ -466,7 +468,7 @@ The second word can now be guessed to **analys1s** or **an4lys1s**. Trying both 
 
 ### Full Disassembly
 ```assembly
-disasm -c amd64 "55 48 89 e5 48 83 ec 10 48 89 7d f8 48 8b 45 f8 48 89 c7 e8 2d 00 00 00 89 c7 e8 00 00 00 00 55 48 89 e5 48 83 ec 10 89 7d fc 8b 45 fc 48 98 48 89 c7 48 c7 c0 3c 00 00 00 0f 05 8b 45 fc 89 c7 e8 da ff ff ff 55 48 89 e5 48 83 ec 20 48 89 7d e8 c7 45 fc 00 00 00 00 48 8b 45 e8 48 89 45 f0 eb 09 83 45 fc 01 48 83 45 f0 01 48 8b 45 f0 0f b6 00 84 c0 75 ec 8b 55 fc 48 8b 45 e8 48 89 c6 bf 01 00 00 00 e8 02 00 00 00 c9 c3 55 48 89 e5 89 7d ec 48 89 75 e0 89 55 e8 8b 45 ec 48 98 48 89 c7 48 8b 45 e0 48 89 c6 8b 45 e8 48 98 48 89 c2 48 c7 c0 01 00 00 00 0f 05 89 c0 89 45 fc 8b 45 fc 5d c3"
+$ disasm -c amd64 "55 48 89 e5 48 83 ec 10 48 89 7d f8 48 8b 45 f8 48 89 c7 e8 2d 00 00 00 89 c7 e8 00 00 00 00 55 48 89 e5 48 83 ec 10 89 7d fc 8b 45 fc 48 98 48 89 c7 48 c7 c0 3c 00 00 00 0f 05 8b 45 fc 89 c7 e8 da ff ff ff 55 48 89 e5 48 83 ec 20 48 89 7d e8 c7 45 fc 00 00 00 00 48 8b 45 e8 48 89 45 f0 eb 09 83 45 fc 01 48 83 45 f0 01 48 8b 45 f0 0f b6 00 84 c0 75 ec 8b 55 fc 48 8b 45 e8 48 89 c6 bf 01 00 00 00 e8 02 00 00 00 c9 c3 55 48 89 e5 89 7d ec 48 89 75 e0 89 55 e8 8b 45 ec 48 98 48 89 c7 48 8b 45 e0 48 89 c6 8b 45 e8 48 98 48 89 c2 48 c7 c0 01 00 00 00 0f 05 89 c0 89 45 fc 8b 45 fc 5d c3"
    0:    55                       push   rbp
    1:    48 89 e5                 mov    rbp,  rsp
    4:    48 83 ec 10              sub    rsp,  0x10
@@ -533,7 +535,7 @@ disasm -c amd64 "55 48 89 e5 48 83 ec 10 48 89 7d f8 48 8b 45 f8 48 89 c7 e8 2d 
 
 ### Executing module.wow with the correct key
 ```
-./module.wow "CS{crypt0_an4lys1s_0n_c0d3}"
+$ ./module.wow "CS{crypt0_an4lys1s_0n_c0d3}"
 CS{crypt0_an4lys1s_0n_c0d3}
 ```
 
