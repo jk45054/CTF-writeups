@@ -22,7 +22,7 @@ export FLAG=CS{foobar}
 python3 -m http.server --cgi --bind 127.0.0.1
 ```
 ```
-./run.sh 
+$ ./run.sh 
 Serving HTTP on 127.0.0.1 port 8000 (http://127.0.0.1:8000/) ...
 ```
 ... serving a rather simple web page resembling a VPN login.
@@ -67,7 +67,7 @@ The web page and the Javascript do not seem to be vulnerable, so the attention i
 ### Portal CGI, Checksec
 A little glance at program security features with checksec never hurts...
 ```
-/usr/bin/checksec --file=cgi-bin/portal.cgi
+$ /usr/bin/checksec --file=cgi-bin/portal.cgi
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      Symbols         FORTIFY Fortified       Fortifiable     FILE
 Partial RELRO   Canary found      NX enabled    No PIE          No RPATH   No RUNPATH   No Symbols        No    0               3               cgi-bin/portal.cgi
 ```
@@ -76,7 +76,7 @@ Partial RELRO   Canary found      NX enabled    No PIE          No RPATH   No RU
 ### Portal CGI, Binary info
 Gathering some ELF infos with readelf yields program entry point **0x401140** (no ASLR).
 ```
-readelf -a cgi-bin/portal.cgi 
+$ readelf -a cgi-bin/portal.cgi 
 ELF Header:
   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
   Class:                             ELF64
@@ -91,7 +91,7 @@ ELF Header:
 ```
 Quickly identify entrypoint of function *main* via rabin2
 ```
-rabin2 -M cgi-bin/portal.cgi 
+$ rabin2 -M cgi-bin/portal.cgi 
 [Main]
 vaddr=0x00401434 paddr=0x00401434
 ```
@@ -99,7 +99,7 @@ vaddr=0x00401434 paddr=0x00401434
 ### Portal CGI, Disassemble main() @ 0x401434
 Use radare2 to disassemble function *main* of portal.cgi (output is shortened for readability and additionally commented with ;;)
 ```assembly
-r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi 
+$ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi 
             ;-- main:
             0x00401434      55             push rbp
             0x00401435      4889e5         mov rbp, rsp
@@ -189,7 +189,7 @@ r2 -q -c "pd 125 @ main" cgi-bin/portal.cgi
 ### Portal CGI, Disassemble validate() @ 0x401226
 Use radare2 to disassemble function *validate* of portal.cgi (output is shortened for readability and additionally commented with ;;)
 ```assembly
-r2 -q -c "pd 107 @ 0x401226" cgi-bin/portal.cgi 
+$ r2 -q -c "pd 107 @ 0x401226" cgi-bin/portal.cgi 
             0x00401226      55             push rbp
             0x00401227      4889e5         mov rbp, rsp
             0x0040122a      4881ec400200.  sub rsp, 0x240
@@ -311,7 +311,7 @@ r2 -q -c "pd 107 @ 0x401226" cgi-bin/portal.cgi
 - For a reliable attack, there needs to be a string to a valid filename inside the non-ASLR region
 
 ```
-rabin2 -zz cgi-bin/portal.cgi 
+$ rabin2 -zz cgi-bin/portal.cgi 
 [Strings]
 nth paddr      vaddr      len size section   type    string
 ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
@@ -340,13 +340,13 @@ While feeling somewhat clever, i thought:
 
 Find PID of local python webserver
 ```
-ps auxwwg | grep server
+$ ps auxwwg | grep server
 kali      486858  0.0  1.1  98440 17352 pts/0    S+   19:31   0:02 python3 -m http.server --cgi --bind 127.0.0.1
 ```
 
 Attach with debugger of your choice
 ```
-gdb -p 486858
+$ gdb -p 486858
 ```
 
 Follow child process on fork and set breakpoints
@@ -431,7 +431,7 @@ This is a good time to step back, take a break. Do some physical workout and bac
 ### Attempt 2 - Flag Time!
 The exploit worked locally but failed remote. So what could be different? 
 ```
-ls -l /lib64/ld-linux-x86-64.so.2
+$ ls -l /lib64/ld-linux-x86-64.so.2
 lrwxrwxrwx 1 root root 32 Jan  5 06:47 /lib64/ld-linux-x86-64.so.2 -> /lib/x86_64-linux-gnu/ld-2.31.so
 ```
 
@@ -439,7 +439,7 @@ Oh. It's a symlink to a file, that might be in a different version on the remote
 
 So it's grep time for more colons, which hopefully are less version dependent.
 ```
-xxd /lib64/ld-linux-x86-64.so.2
+$ xxd /lib64/ld-linux-x86-64.so.2
 [...]
 00022460: 6b00 0a70 7265 6c69 6e6b 2063 6865 636b  k..prelink check
 00022470: 696e 673a 2025 730a 0066 6169 6c65 6400  ing: %s..failed.
