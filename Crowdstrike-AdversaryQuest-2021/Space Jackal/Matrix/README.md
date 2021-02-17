@@ -144,6 +144,6 @@ CS{if_computers_could_think_would_they_like_spaces?}
 
 Flag: **CS{if_computers_could_think_would_they_like_spaces?}**
 
-### Conslusion
+### Conclusions
 - Don't apply custom crypto
 - Beware of known plaintext attacks
