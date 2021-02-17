@@ -7,12 +7,12 @@ Please download a virtual machine image of that host and identify the backdoor. 
 ## Pre-Requisites
 This challenge consists of a qcow2 image, that needs qemu to run. In case qemu isn't installed, yet, now is a good time to do so. ;-)
 ```
-sudo apt install qemu-system-x86
+$ sudo apt install qemu-system-x86
 ```
 
 qemu-img can be used to list snapshots of this image.
 ```
-qemu-img snapshot -l art_ctf_egghunt_local.qcow2 
+$ qemu-img snapshot -l art_ctf_egghunt_local.qcow2 
 Snapshot list:
 ID        TAG               VM SIZE                DATE     VM CLOCK     ICOUNT
 1         compromised       497 MiB 2021-01-14 13:15:30 00:01:55.747                 
@@ -20,7 +20,7 @@ ID        TAG               VM SIZE                DATE     VM CLOCK     ICOUNT
 
 The run.sh script uses qemu-system-x86_64 to run the image.
 ```
-./run.sh 
+$ ./run.sh 
 Restoring snapshot compromised (art_ctf_egghunt_local.qcow2)
 Press Return...
 ```
@@ -74,7 +74,7 @@ PORT     STATE         SERVICE
 ### Rabbit Hole - Dumping Process Memory of sshd
 Using the tool **gcore**, one can dump an image of a process' memory to disk. Since there seems to be only one network service with a listening port to inspect (sshd), it for some reason appeared to be clever to dig down deep into a rabbit hole instead of doing a proper system survey first. To generate a core file for sshd (PID 379):
 ```
-gcore 379 
+$ gcore 379 
 ```
 
 The resulting image can be thoroughly inspected for strings, but also for signs of the usage of network activity around udp port 1337 (little endian hex = 3905).
@@ -110,7 +110,7 @@ Jan 14 12:15:17 egghunt kernel: [   86.289920] cron[971] is installing a program
 Something called **bpf_probe_write_user** may corrupt user memory? That definitely doesn't sound like cron (PID 971) played a safe game there!
 The list of running processes does not contain a cron process with PID 971, but one with a PID of 974. Can't hurt to dive down again dumping this one's process memory with gcore!
 ```
-gcore 974 
+$ gcore 974 
 ```
 
 Are there suspicious strings containing bpf inside this core dump?
@@ -463,12 +463,12 @@ Not much code to stare at here, either. But this eBPF code likely overwrites the
 Now that the *magic* has been identified, it's time to craft a packet that will trigger the eBPF code. In the first tests, I was sending the crafted packet from host to qemu guest system, expecting the forward rule for udp dst port 1337 to work. For some reason, it didn't.
 For local testing purposes, scapy may as well be installed to the guest system via:
 ```
-apt install python3-scapy
+$ apt install python3-scapy
 ```
 
 Generate an md5crypt hash for the password 'pass':
 ```
-mkpasswd -m md5crypt
+$ mkpasswd -m md5crypt
 Password: pass
 $1$wtuNYIeB$Bo28F812s3/AhXWZWIcso.
 ```
@@ -527,7 +527,7 @@ Sent 1 packets.
 
 Login with creds **root** / **pass**.
 ```
-ssh -l root egghunt.challenges.adversary.zone
+$ ssh -l root egghunt.challenges.adversary.zone
 root@egghunt.challenges.adversary.zone's password: 
 PTY allocation request failed on channel 0
 CS{ebpf_b4ckd00r_ftw}
