@@ -21,7 +21,7 @@ FLAGZ!
 ```
 At a very first glance: All three encrypted messages begin with the same 18 hexadecimal digits `259F8D014A44C2BE8F`.
 
-### Encryption Tool
+### Encryption Tool *crypter.py*
 ```
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -69,13 +69,16 @@ Known plaintext: every plaintext message begins with SPACEARMY (9 chars).
 Crypto is applied in 3 bytes at a time, plaintext is padded to multiple of 3.
 B lambda function applies linear equation as crypto
 
-259F8D014A44C2BE8F <- thats encrypted SPACEARMY (seen in all 3 messages)
+`259F8D014A44C2BE8F` <- thats encrypted SPACEARMY (seen in all 3 messages)
 
+```
 B=lambda A,B,C,D,E,F,G,H,I,X,Y,Z:bytes((A*X+B*Y+C*Z&0xFF,D*X+E*Y+F*Z&0xFF,G*X+H*Y+I*Z&0xFF))
 return B''.join(B(*K,*W) for W in zip(*[iter(M)]*3)).rstrip(B'\0')
+```
 
 -> X, Y, Z are the next three chars of the message
 
+```
 0x25 = (A * 83 + B * 80 + C * 65) & 0xFF
 0x9F = (D * 83 + E * 80 + F * 65) & 0xFF
 0x8D = (G * 83 + H * 80 + I * 65) & 0xFF
@@ -87,9 +90,10 @@ return B''.join(B(*K,*W) for W in zip(*[iter(M)]*3)).rstrip(B'\0')
 0xC2 = (A * 82 + B * 77 + C * 89) & 0xFF
 0xBE = (D * 82 + E * 77 + F * 89) & 0xFF
 0x8F = (G * 82 + H * 77 + I * 89) & 0xFF
+```
 
 sort linear equations
-
+```
 0x25 = (A * 83 + B * 80 + C * 65) & 0xFF
 0x01 = (A * 67 + B * 69 + C * 65) & 0xFF
 0xC2 = (A * 82 + B * 77 + C * 89) & 0xFF
@@ -101,19 +105,21 @@ sort linear equations
 0x8D = (G * 83 + H * 80 + I * 65) & 0xFF
 0x44 = (G * 67 + H * 69 + I * 65) & 0xFF
 0x8F = (G * 82 + H * 77 + I * 89) & 0xFF
-
+```
 solve equations with z3
-
+```
 [A = 207, B = 28, C = 72]
 [D = 76, F = 139, E = 223]
 [G = 109, I = 70, H = 11]
 b'\xcf\x1cHL\xdf\x8bm\x0bF'
+```
 
-we calced U(K) and had to apply U on it again to get K
-
+But z3 solution is not the key K, it is U(K).
+To get K, we can apply U(U(K)) = K.
+```
 [83, 80, 52, 101, 118, 97, 67, 69, 83]
-
-key: SP4evaCES
+```
+Key: SP4evaCES
 
 ### Decrypt Messages
 ```
