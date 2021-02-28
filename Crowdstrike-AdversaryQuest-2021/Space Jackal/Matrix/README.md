@@ -9,7 +9,7 @@ With the help of your analysis, we got onto the trail of the group and found the
 - Derive decryption key
 - Decrypt messages
 
-### Encrypted Messages
+### Retrieve Encrypted Messages
 ```
 Forum Entries
 Welcome on board!
@@ -63,6 +63,15 @@ else:
     M[:9]==B'SPACEARMY' or die('INVALID')
     print(M[9:].decode('ascii'))
 ```
+
+The name of the challenge is called **Matrix**. So could this calculation have to do with it?
+The T lambda function calculates the [Determinant](https://en.wikipedia.org/wiki/Determinant) of the following Matrix.
+A | D | G
+--- | --- | ---
+B | E | H
+--- | --- | ---
+C | F | I
+
 
 ### Derive Decryption Key
 Known plaintext: every plaintext message begins with SPACEARMY (9 chars).
