@@ -65,7 +65,7 @@ else:
 ```
 
 The name of the challenge is called **Matrix**. So could this calculation have to do with it?
-The lambda function T calculates the [Determinant](https://en.wikipedia.org/wiki/Determinant) of the 3x3 Matrix K via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus) and applies Modulo 255.
+The lambda function T calculates the [Determinant](https://en.wikipedia.org/wiki/Determinant) of the 3x3 Matrix K via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus) and applies Modulo 256.
 ```
     A D G
 K = B E H
@@ -74,7 +74,7 @@ K = B E H
 det(K) = A*E*I + D*H*C + G*B*F - G*E*C - D*B*I - A*H*F     <- compare to lambda function T
 ```
 
-Function U(K) calculates the [Inverted 3x3 Matrix](https://en.wikipedia.org/wiki/Invertible_matrix) of K with the same Modulus of 255.
+Function U(K) calculates the [Inverted 3x3 Matrix](https://en.wikipedia.org/wiki/Invertible_matrix) of K with the same Modulus of 256.
 
 The values for the 3x3 Matrix K are read from `argv[2]` command line parameter as an ASCII string of length 9. It is also checked that det(K) & 1 has to be true.
 
@@ -90,6 +90,11 @@ Summed up:
 - Decryption is triggered by calling crypter.py with first argument anything but E and second argument being used the same as above (key matrix K).
 - Decrypted plaintexts are only valid if they begin with `SPACEARMY`.
 - Decryption is applied as products of **vector_cipher** and **key matrix K** to yield **vector_plain** for each 3 bytes of ciphertext.
+
+With a bit of googling and reading up on classic cryptography, this kind of encryption based on linear algebra seems to be an implementation of the [Hill Cipher](https://en.m.wikipedia.org/wiki/Hill_cipher) using a Modulus of 256 (full byte spectrum).
+In order for this to work (ie. for the key matrix to be invertible to the used modulus), the Determinant of the key matrix has to be non-zero and also has to be coprime to the used modulus of 256. Since `256 == 2**8`, the Determinant has to be uneven. This explains `T(*K)&1` perfectly.
+
+The **Hill Cipher** is susceptible to known plain text attacks and we do have the known plaintext of `SPACEARMY` at our hands to calculate the key matrix as a solution to a system of linear equations.
 
 
 ### Derive Decryption Key
