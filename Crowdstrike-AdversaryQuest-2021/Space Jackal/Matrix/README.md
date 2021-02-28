@@ -141,21 +141,18 @@ Group the equations for unknown variables A-I
 
 Solve the equations in any way you prefer. One way could be using the magic [z3 solver](https://github.com/Z3Prover/z3). See example [code](./retrieve_key.py).
 ```
-[A = 207, B = 28, C = 72]
-[D = 76, F = 139, E = 223]
-[G = 109, I = 70, H = 11]
-b'\xcf\x1cHL\xdf\x8bm\x0bF'
+...
+inverted key matrix U(K) = b'\xcf\x1cHL\xdf\x8bm\x0bF'
+key matrix K = b'SP4evaCES'
 ```
 
-But z3 solution is not the key K, it is U(K).
-To get K, we can apply U(U(K)) = K.
-```
-[83, 80, 52, 101, 118, 97, 67, 69, 83]
-```
-Key: SP4evaCES
+The z3 solution yielded U(K), which was used for encryption. To get the decryption key, one has to invert the inverted key matrix once more to get `U(U(K)) = K`.
+Key: **SP4evaCES**
 
 ### Decrypt Messages
+Now that we know the key matrix, we can decrypt the messages.
 ```
+$ python3 crypter.py D SP4evaCES < welcome.txt
 Welcome on board and congratulations on joining the Order of 0x20.
 
 Together we will fight the good fight and bring enlightenment to the non-believers: Let's stop the global TAB infestation once and for all. This forum is a place to share news and coordinate action, but be careful: you never know who's watching.
@@ -166,6 +163,7 @@ Together we will fight the good fight and bring enlightenment to the non-believe
 ```
 
 ```
+$ python3 crypter.py D SP4evaCES < letsfightback.txt
 My name is rudi. i was fired by my Old employer because I refused to use TABs. THIS madness must be STOPPED! These people must be STOPPED!1! But I fought back! I hacked their network established access. Let me know if you have an idea how to take revegne!
 
  040 == 32 == 0x20
@@ -174,7 +172,7 @@ My name is rudi. i was fired by my Old employer because I refused to use TABs. T
 ```
 
 ```
-$ cat flagz.txt | python3 crypter.py D SP4evaCES
+$ python3 crypter.py D SP4evaCES < flagz.txt
 Good job!
 
  040 == 32 == 0x20
@@ -185,5 +183,6 @@ CS{if_computers_could_think_would_they_like_spaces?}
 Flag: **CS{if_computers_could_think_would_they_like_spaces?}**
 
 ### Conclusions
-- Don't apply custom crypto
+- Don't use crypto algorithms from the year 1912
+- Don't apply or write custom crypto
 - Beware of known plaintext attacks
