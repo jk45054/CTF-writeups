@@ -65,15 +65,31 @@ else:
 ```
 
 The name of the challenge is called **Matrix**. So could this calculation have to do with it?
-The T lambda function calculates the [Determinant](https://en.wikipedia.org/wiki/Determinant) of the following Matrix via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus) and applies Modulo 255.
+The lambda function T calculates the [Determinant](https://en.wikipedia.org/wiki/Determinant) of the 3x3 Matrix K via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus) and applies Modulo 255.
 ```
     A D G
-M = B E H
+K = B E H
     C F I
     
-det(M) = A*E*I + D*H*C + G*B*F - G*E*C - D*B*I - A*H*F     <- compare to lambda function T
-
+det(K) = A*E*I + D*H*C + G*B*F - G*E*C - D*B*I - A*H*F     <- compare to lambda function T
 ```
+
+Function U(K) calculates the [Inverted 3x3 Matrix](https://en.wikipedia.org/wiki/Invertible_matrix) of K with the same Modulus of 255.
+
+The values for the 3x3 Matrix K are read from `argv[2]` command line parameter as an ASCII string of length 9. It is also checked that det(K) & 1 has to be true.
+
+The Matrix K seems to be used as the decryption key for function **C()**, if `argv[1] != 'E'`. The decrypted message M has to begin with `SPACEARMY` to be a valid decrypted message.
+If `argv[1] == 'E'`, the message M will be prepended with `SPACEARMY` and encrypted using **U(K)** as the encryption key for function **C()**.
+
+Function **C(K, M)** seems to apply a product of a vector and the matrix K for each 3 characters/bytes of the message M.
+
+Summed up:
+- Encryption is triggered by calling crypter.py with first argument **E** and second argument being a nine ASCII character long string interpreted as the key matrix **K**.
+- Plaintext is prepended with `SPACEARMY` before encryption.
+- Encryption is applied as products of **vector_plain** and **inverted matrix K** to yield **vector_cipher** for each 3 bytes of the plaintext message, which is padded to a multiple of three.
+- Decryption is triggered by calling crypter.py with first argument anything but E and second argument being used the same as above (key matrix K).
+- Decrypted plaintexts are only valid if they begin with `SPACEARMY`.
+
 
 ### Derive Decryption Key
 Known plaintext: every plaintext message begins with SPACEARMY (9 chars).
