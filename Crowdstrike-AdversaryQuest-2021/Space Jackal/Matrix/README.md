@@ -22,7 +22,7 @@ FLAGZ!
 At a very first glance: All three encrypted messages begin with the same 18 hexadecimal digits `259F8D014A44C2BE8F` (9 bytes).
 
 ### Analyze Encryption Tool *crypter.py*
-```python=
+```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''              ,
@@ -64,8 +64,9 @@ else:
     print(M[9:].decode('ascii'))
 ```
 
-The name of the challenge is called **Matrix**. So could the calculations in crypter.py have anything do with it?
-The calculation formula in the lambda function T might remind someone of the [Determinant](https://en.wikipedia.org/wiki/Determinant) of a 3x3 Matrix via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus). The result is binary AND'd with 255, which equals to the application of a Modulus of 256.
+The challenge is named **Matrix**. So could the calculations in crypter.py have anything do with it?
+The formula in the **lambda function T(*K)** (located between def die() and def U(K)) might remind someone of the [Determinant](https://en.wikipedia.org/wiki/Determinant) of a 3x3 Matrix via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus). The result is binary AND'd with 255, which equals to the application of a Modulus of 256.
+For a 3x3 Matrix K, the Determinant det(K) is calculated like this:
 ```
     A D G
 K = B E H
@@ -74,28 +75,26 @@ K = B E H
 det(K) = A*E*I + D*H*C + G*B*F - G*E*C - D*B*I - A*H*F     <- compare to lambda function T
 ```
 
-Function U(K) calculates the [Inverted 3x3 Matrix](https://en.wikipedia.org/wiki/Invertible_matrix) of K with the same Modulus of 256.
+Function **U(K)** calculates the [Inverted 3x3 Matrix](https://en.wikipedia.org/wiki/Invertible_matrix) of K using R holding the multiplicative inverse of det(K) regarding the modulus of 256.
 
-The values for the 3x3 Matrix K are read from `argv[2]` command line parameter as an ASCII string of length 9. It is also checked that det(K) & 1 has to be true.
+Function **C(K, M)** seems to apply a product of a vector and the matrix K for each 3 characters/bytes of the message M using the **lambda function B(*K, *W)**. The naming might remind of an encryption function like crypt(key, message).
 
-The Matrix K seems to be used as the decryption key for function **C()**, if `argv[1] != 'E'`. The decrypted message M has to begin with `SPACEARMY` to be a valid decrypted message.
-If `argv[1] == 'E'`, the message M will be prepended with `SPACEARMY` and encrypted using **U(K)** as the encryption key for function **C()**.
-
-Function **C(K, M)** seems to apply a product of a vector and the matrix K for each 3 characters/bytes of the message M.
+The *main* function begins with `len(sys.argv) == 3...` exiting if the program is not executed with 2 command line arguments with
+1. argv[1] triggering the *if/else* blocks
+2. argv[2] expected to be an ASCII string of length 9 that is interpreted as the key matrix K and whose Determinant needs to be even (det(K) & 1). 
 
 Summed up:
-- Encryption is triggered by calling crypter.py with first argument **E** and second argument being a nine ASCII character long string interpreted as the key matrix **K**.
-- Plaintext is prepended with `SPACEARMY` before encryption.
-- Encryption is applied as products of **vector_plain** and **inverted key matrix K** to yield **vector_cipher** for each 3 bytes of the plaintext message, which is padded to a multiple of three.
-- Decryption is triggered by calling crypter.py with first argument anything but E and second argument being used the same as above (key matrix K).
+- Encryption is triggered by calling *crypter.py* with first argument **E** and second argument being a nine ASCII character long string interpreted as the key matrix **K**.
+- The plaintext read from STDIN is prepended with `SPACEARMY` before applying **C(U(K), M)** for encryption.
+- Encryption is applied as products of **vector_plain** and **inverted key matrix U(K)** to yield **vector_cipher** for each 3 bytes of the plaintext message, which is padded to a multiple of three.
+- Decryption is triggered by calling *crypter.py* with first argument anything but E and second argument being used the same as above (key matrix K).
 - Decrypted plaintexts are only valid if they begin with `SPACEARMY`.
 - Decryption is applied as products of **vector_cipher** and **key matrix K** to yield **vector_plain** for each 3 bytes of ciphertext.
 
-With a bit of googling and reading up on classic cryptography, this kind of encryption based on linear algebra seems to be an implementation of the [Hill Cipher](https://en.m.wikipedia.org/wiki/Hill_cipher) using a Modulus of 256 (full byte spectrum).
-In order for this to work (ie. for the key matrix to be invertible to the used modulus), the Determinant of the key matrix has to be non-zero and also has to be coprime to the used modulus of 256. Since `256 == 2**8`, the Determinant has to be uneven. This explains `T(*K)&1` perfectly.
+With a bit of googling and reading up on classic cryptography, this kind of encryption based on linear algebra seems to be an implementation of the [Hill Cipher](https://en.m.wikipedia.org/wiki/Hill_cipher) using a modulus of 256 (full byte spectrum).
+In order for this to work (ie. for the key matrix to be invertible to the used modulus), the determinant of the key matrix has to be non-zero and also has to be coprime to the used modulus of 256. Since `256 == 2**8`, the determinant has to be uneven. This explains `T(*K)&1` perfectly.
 
 The **Hill Cipher** is susceptible to known plain text attacks and we do have the known plaintext of `SPACEARMY` at our hands to calculate the key matrix as a solution to a system of linear equations.
-
 
 ### Derive Decryption Key
 Known plaintext: every plaintext message begins with SPACEARMY (9 chars).
