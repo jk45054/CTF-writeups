@@ -69,7 +69,6 @@ The T lambda function calculates the [Determinant](https://en.wikipedia.org/wiki
 A | D | G
 --- | --- | ---
 B | E | H
---- | --- | ---
 C | F | I
 
 
