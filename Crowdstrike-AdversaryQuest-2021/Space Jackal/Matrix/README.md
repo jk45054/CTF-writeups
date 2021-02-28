@@ -81,7 +81,7 @@ Function **C(K, M)** seems to apply a product of a vector and the matrix K for e
 
 The *main* function begins with `len(sys.argv) == 3...` exiting if the program is not executed with 2 command line arguments with
 1. argv[1] triggering the *if/else* blocks
-2. argv[2] expected to be an ASCII string of length 9 that is interpreted as the key matrix K and whose Determinant needs to be even (det(K) & 1). 
+2. argv[2] expected to be an ASCII string of length 9 that is interpreted as the key matrix K and whose determinant needs to be even (det(K) & 1). 
 
 Summed up:
 - Encryption is triggered by calling *crypter.py* with first argument **E** and second argument being a nine ASCII character long string interpreted as the key matrix **K**.
