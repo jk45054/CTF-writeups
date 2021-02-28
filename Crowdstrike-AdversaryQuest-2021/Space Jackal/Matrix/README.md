@@ -96,35 +96,35 @@ In order for this to work (ie. for the key matrix to be invertible to the used m
 
 The **Hill Cipher** is susceptible to known plain text attacks and we do have the known plaintext of `SPACEARMY` at our hands to calculate the key matrix as a solution to a system of linear equations.
 
-### Derive Decryption Key
-Known plaintext: every plaintext message begins with SPACEARMY (9 chars).
-Crypto is applied in 3 bytes at a time, plaintext is padded to multiple of 3.
-B lambda function applies linear equation as crypto
+### Derive Decryption Key via Known Plaintext Attack
+We already know that every ciphertext begins with the nine hexbytes of `259F8D014A44C2BE8F`. We also know from *crypter.py* that every plaintext is prepended with the string `SPACEARMY` which happens to also be nine characters long (ASCII: nine bytes). So we can expect `C(U(K), 'SPACEARMY') == b'259F8D014A44C2BE8F'`.
 
-`259F8D014A44C2BE8F` <- thats encrypted SPACEARMY (seen in all 3 messages)
+The crypto function **C(U(K), M)** calculates with lambda function B a product of vector and the inverted key matrix, working on three bytes at a time (used as vectors).
 
 ```
 B=lambda A,B,C,D,E,F,G,H,I,X,Y,Z:bytes((A*X+B*Y+C*Z&0xFF,D*X+E*Y+F*Z&0xFF,G*X+H*Y+I*Z&0xFF))
-return B''.join(B(*K,*W) for W in zip(*[iter(M)]*3)).rstrip(B'\0')
 ```
 
--> X, Y, Z are the next three chars of the message
+The vector (X, Y, Z) holds the next three bytes of the message. With the known plaintext of `SPACEARMY` being the decimal bytes of `83 80 65 67 69 65 82 77 89` ([CyberChef](https://gchq.github.io/CyberChef/#recipe=To_Decimal('Space',false)&input=U1BBQ0VBUk1Z)), we can construct the following system of linear equations
 
 ```
+# X='S' (83), Y='P' (80), Z='A' (65)
 0x25 = (A * 83 + B * 80 + C * 65) & 0xFF
 0x9F = (D * 83 + E * 80 + F * 65) & 0xFF
 0x8D = (G * 83 + H * 80 + I * 65) & 0xFF
 
+# X='C' (67), Y='E' (69), Z='A' (65)
 0x01 = (A * 67 + B * 69 + C * 65) & 0xFF
 0x4A = (D * 67 + E * 69 + F * 65) & 0xFF
 0x44 = (G * 67 + H * 69 + I * 65) & 0xFF
 
+# X='R' (82), Y='M' (77), Z='Y' (89)
 0xC2 = (A * 82 + B * 77 + C * 89) & 0xFF
 0xBE = (D * 82 + E * 77 + F * 89) & 0xFF
 0x8F = (G * 82 + H * 77 + I * 89) & 0xFF
 ```
 
-sort linear equations
+Group the equations for unknown variables A-I
 ```
 0x25 = (A * 83 + B * 80 + C * 65) & 0xFF
 0x01 = (A * 67 + B * 69 + C * 65) & 0xFF
@@ -138,7 +138,8 @@ sort linear equations
 0x44 = (G * 67 + H * 69 + I * 65) & 0xFF
 0x8F = (G * 82 + H * 77 + I * 89) & 0xFF
 ```
-solve equations with z3
+
+Solve the equations in any way, e.g. with the z3 solver.
 ```
 [A = 207, B = 28, C = 72]
 [D = 76, F = 139, E = 223]
