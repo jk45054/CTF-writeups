@@ -139,7 +139,7 @@ Group the equations for unknown variables A-I
 0x8F = (G * 82 + H * 77 + I * 89) & 0xFF
 ```
 
-Solve the equations in any way, e.g. with the z3 solver.
+Solve the equations in any way you prefer. One way could be using the magic [z3 solver](https://github.com/Z3Prover/z3). See example [code](./retrieve_key.py).
 ```
 [A = 207, B = 28, C = 72]
 [D = 76, F = 139, E = 223]
