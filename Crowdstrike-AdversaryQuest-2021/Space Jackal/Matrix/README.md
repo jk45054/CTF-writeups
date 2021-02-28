@@ -65,12 +65,15 @@ else:
 ```
 
 The name of the challenge is called **Matrix**. So could this calculation have to do with it?
-The T lambda function calculates the [Determinant](https://en.wikipedia.org/wiki/Determinant) of the following Matrix.
-A | D | G
---- | --- | ---
-B | E | H
-C | F | I
+The T lambda function calculates the [Determinant](https://en.wikipedia.org/wiki/Determinant) of the following Matrix via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus) and applies Modulo 255.
+```
+    A D G
+M = B E H
+    C F I
+    
+det(M) = A*E*I + D*H*C + G*B*F - G*E*C - D*B*I - A*H*F     <- compare to lambda function T
 
+```
 
 ### Derive Decryption Key
 Known plaintext: every plaintext message begins with SPACEARMY (9 chars).
