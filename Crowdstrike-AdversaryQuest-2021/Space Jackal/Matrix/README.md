@@ -21,7 +21,7 @@ FLAGZ!
 ```
 At a very first glance: All three encrypted messages begin with the same 18 hexadecimal digits `259F8D014A44C2BE8F`.
 
-### Encryption Tool *crypter.py*
+### Analyze Encryption Tool *crypter.py*
 ```
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
