@@ -86,9 +86,10 @@ Function **C(K, M)** seems to apply a product of a vector and the matrix K for e
 Summed up:
 - Encryption is triggered by calling crypter.py with first argument **E** and second argument being a nine ASCII character long string interpreted as the key matrix **K**.
 - Plaintext is prepended with `SPACEARMY` before encryption.
-- Encryption is applied as products of **vector_plain** and **inverted matrix K** to yield **vector_cipher** for each 3 bytes of the plaintext message, which is padded to a multiple of three.
+- Encryption is applied as products of **vector_plain** and **inverted key matrix K** to yield **vector_cipher** for each 3 bytes of the plaintext message, which is padded to a multiple of three.
 - Decryption is triggered by calling crypter.py with first argument anything but E and second argument being used the same as above (key matrix K).
 - Decrypted plaintexts are only valid if they begin with `SPACEARMY`.
+- Decryption is applied as products of **vector_cipher** and **key matrix K** to yield **vector_plain** for each 3 bytes of ciphertext.
 
 
 ### Derive Decryption Key
