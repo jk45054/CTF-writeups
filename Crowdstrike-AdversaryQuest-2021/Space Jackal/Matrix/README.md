@@ -19,10 +19,10 @@ Let's fight back!
 FLAGZ!
 259F8D014A44C2BE8FC50A5A2C1EF0C1 3D7F2E0E70009CCCB4C2ED84137DB4C2 EDE078807E1616C266D5A15DC6DDB60E 4B7337E851E739A61EED83D2E06D6184 11DF61222EED83D2E06D612C8EB5294B CD4954E0855F4D71D0F06D05EE
 ```
-At a very first glance: All three encrypted messages begin with the same 18 hexadecimal digits `259F8D014A44C2BE8F`.
+At a very first glance: All three encrypted messages begin with the same 18 hexadecimal digits `259F8D014A44C2BE8F` (9 bytes).
 
 ### Analyze Encryption Tool *crypter.py*
-```
+```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''              ,
@@ -64,8 +64,8 @@ else:
     print(M[9:].decode('ascii'))
 ```
 
-The name of the challenge is called **Matrix**. So could this calculation have to do with it?
-The lambda function T calculates the [Determinant](https://en.wikipedia.org/wiki/Determinant) of the 3x3 Matrix K via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus) and applies Modulo 256.
+The name of the challenge is called **Matrix**. So could the calculations in crypter.py have anything do with it?
+The calculation formula in the lambda function T might remind someone of the [Determinant](https://en.wikipedia.org/wiki/Determinant) of a 3x3 Matrix via [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus). The result is binary AND'd with 255, which equals to the application of a Modulus of 256.
 ```
     A D G
 K = B E H
