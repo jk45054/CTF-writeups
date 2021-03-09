@@ -297,11 +297,82 @@ Transfer failed: CryptMsg<key: 'dffghj', filename: 'trace.pcapng', host: '127.0.
 Remind the breadcrumb from analysis of *cryptshell.sh*?
 Maybe there is some kind of information leak based on input echoing?
 
+Experiment with cryptshell.sh and sniff traffic for comparisons.
+
+Start listen server
+```
+$ ./cryptshell.sh listen 127.0.0.1 7777
+Ncat: Version 7.80 ( https://nmap.org/ncat )
+Ncat: Generating a temporary 2048-bit RSA key. Use --ssl-key and --ssl-cert to use a permanent one.
+Ncat: SHA-1 fingerprint: 8EB1 958B DDB0 359F 626E BCEE A3A5 E481 8D8E ACB1
+Ncat: Listening on 127.0.0.1:7777
+```
+
+Sniff traffic
+```
+$ sudo tcpdump -n -n -i lo 'host 127.0.0.1' -w connect.pcap
+tcpdump: listening on lo, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+```
+
+Connect to server
+```
+$ ./cryptshell.sh connect 127.0.0.1 7777
+```
+
+The connection itself consists of 15 packets on the wire using TLS cipher: TLS_AES_256_GCM_SHA384 (0x1302).
+Call exfil.py and sniff.
+```
+$ ./exfil.py 127.0.0.1 8888 exfil.py                                                                                                                                                                         
+   ____         ___   _    __  __               __   ___                     ___    ____
+  / __/ __ __  / _/  (_)  / / / /_  ____ ___ _ / /_ / _ \  ____      _  __  |_  |  |_  /
+ / _/   \ \ / / _/  / /  / / / __/ / __// _ `// __// // / / __/     | |/ / / __/  _/_ < 
+/___/  /_\_\ /_/   /_/  /_/  \__/ /_/   \_,_/ \__/ \___/ /_/        |___/ /____/ /____/ 
+                                                                                        
+                                                                                     
+ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____
+/___//___//___//___//___//___//___//___//___//___//___//___//___//___//___//___//___/
+                                                                                     
+                                                                                     
+   ____        __                    __                 _ 
+  / __/  ___  / /_ ___   ____       / /__ ___   __ __  (_)
+ / _/   / _ \/ __// -_) / __/      /  '_// -_) / // / _   
+/___/  /_//_/\__/ \__/ /_/        /_/\_\ \__/  \_, / (_)  
+                                              /___/    
+```
+
+The sniffed traffic for this ASCII art seems to have the packet sizes 248, 464, 536, 452 and 188.
+These exact packet sizes can be found in the trace.pcapng file at packets #1527, #1529, #1531, #1533 and #1535.
+So it looks like there has been a keyboard interactive input of the ChaCha20 key used for exfil.py.
+
+The packets directly following the ASCII art might leak which key was pressed. Each keypress input packet seems to be 89 bytes large with a larger packet returned (due to ASCII art echoing back).
+Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
+--- | --- | --- | --- | ---
+1 | 1537 | 89 | 1538 | 265
+2 | 1540 | 89 | 1541 | 643
+3 | 1543 | 89 | 1544 | 888
+4 | 1546 | 89 | 1547 | 1121
+5 | 1549 | 89 | 1550 | 1412
+6 | 1552 | 89 | 1553 | 1689
+7 | 1555 | 89 | 1556 | 1919
+8 | 1558 | 89 | 1559 | 2230
+9 | 1561 | 89 | 1562 | 2527
+10 | 1564 | 89 | 1565 | 2732
+11 | 1567 | 89 | 1568 | 3023
+12 | 1570 | 89 | 1571 | 3354
+13 | 1573 | 89 | 1574 | 3717
+
+After these packets the packet sizes differ in a way that suggests that the interactive key was 13 characters long.
+
+
+
+
+
 side channel analysis of tls 1.3 stream by packet size
 - ascii art for string "Enter key:" has packet sizes 248 (#1527), 464, 536, 452, 188 (#1535)
 - can be verified by using cryptshell.sh listen and connect with call to exfil.py without key for interactive input of key
 - each key press is one packet
 - full sequence will be echoed back
+
 
 key packets are likely
 - 89 byte packets starting at #1537 (encrypted single byte input)
