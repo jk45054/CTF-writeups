@@ -213,7 +213,7 @@ Cipher Suite: TLS_AES_256_GCM_SHA384 (0x1302)
 ---- len(nonce): 0x0c (12)
 ---- nonce: 0b 5d 76 9d 19 f3 ba 9b 62 17 b9 e0
 ---- len(salt): 0x10 (16)
----- salt: ad b8 82 d2 85 32 07 0c f0 8c c9 c9 84 c6 b7
+---- salt: ad b8 82 d2 85 32 07 0c f0 8c c9 c9 84 c6 b7 52
 ---- len(filename): b2 69 7e b1 (crypted, u32) <- encrypted value 14 as u32, likely 0e 00 00 00
 ---- filename: 84 a4 43 1c 3b 49 66 00 72 e6 70 9c dc d9 (14 bytes)
 
@@ -385,16 +385,39 @@ Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo | Cha
 This side channel information leak through ASCII art packet sizes yielded the key **my_s3cr3t_k3y** that was used to exfiltrate data via *exfil.py*.
 
 ### Decrypt TCP streams 1-3 with ChaCha20 Key
+To decrypt the streams 1-3 from trace.pcapng we need each nonce and salt which - according to above analysis of exfil.py - have been transmitted in the unencrypted preamble packets.
 
-now decrypt data from exfil.py streams
+Stream | Preamble Packet # | Nonce | Salt
+--- | --- | --- | ---
+1 | 1581 | 60 4a e7 0f 2d 46 29 35 d4 c5 41 44 | 75 7f fa d8 0a 5f 69 89 14 07 75 1d a4 c7 24 ba
+2 | 1594 | 0b 5d 76 9d 19 f3 ba 9b 62 17 b9 e0 | ad b8 82 d2 85 32 07 0c f0 8c c9 c9 84 c6 b7 52
+3 | 1607 | db ad 67 ae 23 6b 3b 32 86 78 36 7b | e1 54 fd c0 0c 76 bd 1f f9 21 cc 27 b9 fa 3b d5
 
-./decrypt.py
-b'g5\xf6\x11U\xd5\\\xb8\xec\x07'
-b'\x89PNG\r\n\x1a\n\x00\x00'
+Extract the crypted data from stream 3, save it as network.png.enc and decrypt via
+```
+#!/usr/bin/env python3
+from Crypto.Cipher import ChaCha20_Poly1305
+from Crypto.Protocol.KDF import scrypt
+from Crypto.Random import get_random_bytes
+from binascii import unhexlify
 
-first exfil is /etc/passwd
-second is a rickroll
-third network.png with flag: CS{p4ck3t_siz3_sid3_ch4nn3l}
+key = "my_s3cr3t_k3y"
+nonce = unhexlify("dbad67ae236b3b328678367b")
+key_salt = unhexlify("e154fdc00c76bd1ff921cc27b9fa3bd5")
+derived_key = scrypt(key, key_salt, 32, 2**14, 8, 1)
+cipher = ChaCha20_Poly1305.new(key=derived_key, nonce=nonce)
+
+with open("network.png.enc", "rb") as f:
+  c = f.read()
+
+p = cipher.decrypt(c)
+
+with open("network.png", "wb") as g:
+  g.write(p)
+```
+
+The decrypted network.png yields the flag: CS{p4ck3t_siz3_sid3_ch4nn3l}
+The first two streams contain a passwd and a funny rickroll. Thanks for that!
 
 Flag: **CS{p4ck3t_siz3_sid3_ch4nn3l}**
 
