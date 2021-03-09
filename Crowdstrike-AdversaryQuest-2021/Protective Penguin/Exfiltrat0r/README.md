@@ -389,9 +389,9 @@ To decrypt the streams 1-3 from trace.pcapng we need each nonce and salt which -
 
 Stream | Preamble Packet # | Nonce | Salt
 --- | --- | --- | ---
-1 | 1581 | `60 4a e7 0f 2d 46 29 35 d4 c5 41 44` | `75 7f fa d8 0a 5f 69 89 14 07 75 1d a4 c7 24 ba`
-2 | 1594 | `0b 5d 76 9d 19 f3 ba 9b 62 17 b9 e0` | `ad b8 82 d2 85 32 07 0c f0 8c c9 c9 84 c6 b7 52`
-3 | 1607 | `db ad 67 ae 23 6b 3b 32 86 78 36 7b` | `e1 54 fd c0 0c 76 bd 1f f9 21 cc 27 b9 fa 3b d5
+1 | 1581 | `604ae70f2d462935d4c54144` | `757ffad80a5f69891407751da4c724ba`
+2 | 1594 | `0b5d769d19f3ba9b6217b9e0` | `adb882d28532070cf08cc9c984c6b752`
+3 | 1607 | `dbad67ae236b3b328678367b` | `e154fdc00c76bd1ff921cc27b9fa3bd5`
 
 Extract the crypted data from stream 3, save it as network.png.enc and decrypt via
 ```
