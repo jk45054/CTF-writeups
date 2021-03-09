@@ -363,44 +363,26 @@ Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
 
 After these packets the packet sizes differ in a way that suggests that the interactive key was 13 characters long.
 
+One approach could be calculating the delta values between each keypress. But a quick test entering `aaa` yields packet sizes 260, 557 (+297) and 839 (+282).
+So basically it's a trial and error from here on trying to find the correct keys yielding the same cumulated packet sizes from trace.pcapng.
 
+Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo | Character
+--- | --- | --- | --- | --- | ---
+1 | 1537 | 89 | 1538 | 265 | m
+2 | 1540 | 89 | 1541 | 643 | y
+3 | 1543 | 89 | 1544 | 888 | _
+4 | 1546 | 89 | 1547 | 1121 | s
+5 | 1549 | 89 | 1550 | 1412 | 3
+6 | 1552 | 89 | 1553 | 1689 | c
+7 | 1555 | 89 | 1556 | 1919 | r
+8 | 1558 | 89 | 1559 | 2230 | 3
+9 | 1561 | 89 | 1562 | 2527 | t
+10 | 1564 | 89 | 1565 | 2732 | _
+11 | 1567 | 89 | 1568 | 3023 | k
+12 | 1570 | 89 | 1571 | 3354 | 3
+13 | 1573 | 89 | 1574 | 3717 | y
 
-
-
-side channel analysis of tls 1.3 stream by packet size
-- ascii art for string "Enter key:" has packet sizes 248 (#1527), 464, 536, 452, 188 (#1535)
-- can be verified by using cryptshell.sh listen and connect with call to exfil.py without key for interactive input of key
-- each key press is one packet
-- full sequence will be echoed back
-
-
-key packets are likely
-- 89 byte packets starting at #1537 (encrypted single byte input)
-- n byte packets starting at #1538 (echoed sequence back)
-
-assumed packet size values for ascii art key sequence in trace.pcapng stream 0:
-265, 643, 888, 1121, 1412, 1689, 1919, 2230, 2527, 2732, 3023, 3354, 3717
-calc delta between each packet size for per character size change
-c1:265 (#1538), c2:378, c3:245, c4:233, c5:291, c6:277, c7:230, c8:311, c9:297, c10:205, c11:291, c12:331, c13:363 (#1574)
-
-use scriptshell.sh with exfil.py to map ascii printable chars to echo packet sizes
-
-arg. single char mapping does not seem to work
-m = 265
-mm = 587 (delta 322)
-mmm = 894 (delta 307)
-mmmm = 1201 (delta 307)
-
-m = 265
-my = 643
-my_ = 888
-my_s = 1121
-my_s3 = 1412
-my_s3c = 1689
-my_s3cr = 1919
-my_s3cr3 = 2230
-...
-my_s3cr3t_k3y = 3717
+This side channel information leak through ASCII art packet sizes yielded the key **my_s3cr3t_k3y** that was used to exfiltrate data via *exfil.py*.
 
 ### Decrypt TCP streams 1-3 with ChaCha20 Key
 
