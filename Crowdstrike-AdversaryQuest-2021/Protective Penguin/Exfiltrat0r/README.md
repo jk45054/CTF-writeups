@@ -382,6 +382,8 @@ Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo | Cha
 12 | 1570 | 89 | 1571 | 3354 | 3
 13 | 1573 | 89 | 1574 | 3717 | y
 
+![key](pics/4.png)
+
 This side channel information leak through ASCII art packet sizes yielded the key **my_s3cr3t_k3y** that was used to exfiltrate data via *exfil.py*.
 
 ### Decrypt TCP streams 1-3 with ChaCha20 Key
