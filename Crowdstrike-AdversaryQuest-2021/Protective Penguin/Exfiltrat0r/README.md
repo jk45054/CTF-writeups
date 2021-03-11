@@ -366,22 +366,6 @@ After these packets the packet sizes differ in a way that suggests that the inte
 One approach could be calculating the delta values between each keypress. But a quick test entering `aaa` yields packet sizes 260, 557 (+297) and 839 (+282).
 So basically it's a trial and error from here on trying to find the correct keys yielding the same cumulated packet sizes from trace.pcapng.
 
-Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo | Character
---- | --- | --- | --- | --- | ---
-1 | 1537 | 89 | 1538 | 265 | m
-2 | 1540 | 89 | 1541 | 643 | y
-3 | 1543 | 89 | 1544 | 888 | _
-4 | 1546 | 89 | 1547 | 1121 | s
-5 | 1549 | 89 | 1550 | 1412 | 3
-6 | 1552 | 89 | 1553 | 1689 | c
-7 | 1555 | 89 | 1556 | 1919 | r
-8 | 1558 | 89 | 1559 | 2230 | 3
-9 | 1561 | 89 | 1562 | 2527 | t
-10 | 1564 | 89 | 1565 | 2732 | _
-11 | 1567 | 89 | 1568 | 3023 | k
-12 | 1570 | 89 | 1571 | 3354 | 3
-13 | 1573 | 89 | 1574 | 3717 | y
-
 ![key](pics/4.png)
 
 This side channel information leak through ASCII art packet sizes yielded the key **my_s3cr3t_k3y** that was used to exfiltrate data via *exfil.py*.
