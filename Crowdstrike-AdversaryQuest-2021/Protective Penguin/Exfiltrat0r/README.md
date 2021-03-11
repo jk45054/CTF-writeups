@@ -172,7 +172,7 @@ if __name__ == "__main__":
 - Send_Preamble
 - 1 byte: version (PLAIN)
 - 1 byte: nonce length (PLAIN)
-- 16 bytes: nonce (PLAIN)
+- 12 bytes: nonce (PLAIN)
 - 1 byte: key salt length (PLAIN)
 - 16 bytes: kay salt (PLAIN)
 - 4 byte: filename length (ENCRYPTED)
@@ -190,52 +190,52 @@ tls stream / cryptshell.sh
 Cipher Suite: TLS_AES_256_GCM_SHA384 (0x1302)
 
 - stream 1 (.251:57760 -> .1:1234), SYN in packet 1578 / exfil.py communication
---> preamble in packet 1581
----- version: 1
----- len(nonce): 0x0c (12)
----- nonce: 60 4a e7 0f 2d 46 29 35 d4 c5 41 44
----- len(salt): 0x10 (16)
----- salt: 75 7f fa d8 0a 5f 69 89 14 07 75 1d a4 c7 24 ba
----- len(filename): e8 5e 70 ce (crypted, u32)  <- encrypted value 11 as u32, likely 0b 00 00 00
----- filename: af 11 d8 51 30 d8 2c c0 1a 97 71 (11 bytes)
+- preamble in packet 1581
+- version: 1
+- len(nonce): 0x0c (12)
+- nonce: 60 4a e7 0f 2d 46 29 35 d4 c5 41 44
+- len(salt): 0x10 (16)
+- salt: 75 7f fa d8 0a 5f 69 89 14 07 75 1d a4 c7 24 ba
+- len(filename): e8 5e 70 ce (crypted, u32)  <- encrypted value 11 as u32, likely 0b 00 00 00
+- filename: af 11 d8 51 30 d8 2c c0 1a 97 71 (11 bytes)
 
---> file content in packet 1583 (encrypted)
----- 1754 bytes
+- file content in packet 1583 (encrypted)
+- 1754 bytes
 
---> cipher.digest in packet 1585 (plain)
----- 9b 43 7e 8b a9 c9 ab 55 cb 18 1c d6 70 c0 64 78 (16 bytes, Poly1305 MAC tag))
+- cipher.digest in packet 1585 (plain)
+- 9b 43 7e 8b a9 c9 ab 55 cb 18 1c d6 70 c0 64 78 (16 bytes, Poly1305 MAC tag))
 
 - stream 2 (.251:57762 -> .1:1234), SYN in packet 1591 / exfil.py
---> preamble in packet 1594
----- version: 1
----- len(nonce): 0x0c (12)
----- nonce: 0b 5d 76 9d 19 f3 ba 9b 62 17 b9 e0
----- len(salt): 0x10 (16)
----- salt: ad b8 82 d2 85 32 07 0c f0 8c c9 c9 84 c6 b7 52
----- len(filename): b2 69 7e b1 (crypted, u32) <- encrypted value 14 as u32, likely 0e 00 00 00
----- filename: 84 a4 43 1c 3b 49 66 00 72 e6 70 9c dc d9 (14 bytes)
+- preamble in packet 1594
+- version: 1
+- len(nonce): 0x0c (12)
+- nonce: 0b 5d 76 9d 19 f3 ba 9b 62 17 b9 e0
+- len(salt): 0x10 (16)
+- salt: ad b8 82 d2 85 32 07 0c f0 8c c9 c9 84 c6 b7 52
+- len(filename): b2 69 7e b1 (crypted, u32) <- encrypted value 14 as u32, likely 0e 00 00 00
+- filename: 84 a4 43 1c 3b 49 66 00 72 e6 70 9c dc d9 (14 bytes)
 
---> file content in packet 1596 (encrypted)
----- 2533 bytes
+- file content in packet 1596 (encrypted)
+- 2533 bytes
 
---> cipher.digest in packet 1598 (plain)
----- 71 a7 e4 3e 42 8d cd ea a3 c7 b7 cc ec 4f e3 29
+- cipher.digest in packet 1598 (plain)
+- 71 a7 e4 3e 42 8d cd ea a3 c7 b7 cc ec 4f e3 29
 
 - stream 3 (.251:57764 -> .1:1234), SYN in packet 1604 / exfil.py
---> preamble in packet 1607
----- version: 1
----- len(nonce): 0x0c (12)
----- nonce: db ad 67 ae 23 6b 3b 32 86 78 36 7b
----- len(salt): 0x10 (16)
----- salt: e1 54 fd c0 0c 76 bd 1f f9 21 cc 27 b9 fa 3b d5
----- len(filename): c2 9d cf 5b (crypted, u32) <- encrypted value 13 as u32, likely 0d 00 00 00
----- filename: 4d 6d 1a 22 21 67 aa f3 5f 51 35 76 98 (13 bytes)
+- preamble in packet 1607
+- version: 1
+- len(nonce): 0x0c (12)
+- nonce: db ad 67 ae 23 6b 3b 32 86 78 36 7b
+- len(salt): 0x10 (16)
+- salt: e1 54 fd c0 0c 76 bd 1f f9 21 cc 27 b9 fa 3b d5
+- len(filename): c2 9d cf 5b (crypted, u32) <- encrypted value 13 as u32, likely 0d 00 00 00
+- filename: 4d 6d 1a 22 21 67 aa f3 5f 51 35 76 98 (13 bytes)
 
---> file contents in packets 1609+
----- much more data, tcp window full packet 1653/1654
+- file contents in packets 1609+
+- much more data, tcp window full packet 1653/1654
 
---> cipher.digest unknown, should be in last data packet 1660 (FIN, PSH, ACK)
----- maybe last 16 bytes: a9 c8 2d ad ef 66 f8 a7 7a 9f 5b 39 7d d1 ea f0
+- cipher.digest unknown, should be in last data packet 1660 (FIN, PSH, ACK)
+- maybe last 16 bytes: a9 c8 2d ad ef 66 f8 a7 7a 9f 5b 39 7d d1 ea f0
 
 ### Approaches / Ideas
 There are some known strings in the shell stream 0, like call of exfil script with ip port and output from exfil script (transfer complete). But it’s at unknown Offset in ciphertext. Attack on tls 1.3 seems difficult?
