@@ -326,6 +326,8 @@ The sniffed traffic for this ASCII art seems to have the packet sizes 248, 464, 
 These exact packet sizes can be found in the trace.pcapng file at packets #1527, #1529, #1531, #1533 and #1535.
 So it looks like there has been a keyboard interactive input of the ChaCha20 key used for exfil.py.
 
+![exfil_key_aaaaaa](pics/3.png)
+
 The packets directly following the ASCII art might leak which key was pressed. Each keypress input packet seems to be 89 bytes large with a larger packet returned (due to ASCII art echoing back).
 Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
 --- | --- | --- | --- | ---
