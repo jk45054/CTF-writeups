@@ -164,23 +164,21 @@ if __name__ == "__main__":
 -- https://tools.ietf.org/html/rfc7905
 -- https://loup-vaillant.fr/tutorials/chacha20-design
 
--- There are some side channel attacks
--- There is an issue if nonce is 16 byte, script uses default, whatever that is
 - Scrypt call looks good. 32 byte keys
 - ASCII art stuff, characters, interactive_key() when option -k is not used
 - Maybe interactive_key() has a fault, FIXME
 -- There seems to be a lot of character manipulation, maybe somewhere is an issue that limits the key set
-- Maybe empty key was used, is it possible?
-- This is how a message looks like:
--- 1 byte: version (PLAIN)
--- 1 byte: nonce length (PLAIN)
---  variable: nonce (PLAIN)
--- 1 byte: key salt length (PLAIN)
---  variable: kay salt (PLAIN)
--- 4 byte: filename length (ENCRYPTED)
--- Variable: filename (ENCRYPTED)
--- (ENCRYPTED) file content in 4096 chunks before enc
--- Digest
+- This is how *exfil.py* transfers data:
+- Send_Preamble
+- 1 byte: version (PLAIN)
+- 1 byte: nonce length (PLAIN)
+- 16 bytes: nonce (PLAIN)
+- 1 byte: key salt length (PLAIN)
+- 16 bytes: kay salt (PLAIN)
+- 4 byte: filename length (ENCRYPTED)
+- Variable: filename (ENCRYPTED)
+- (ENCRYPTED) file content in 4096 chunks before enc
+- 16 bytes: Digest
 
 ### Analysis of *trace.pcapng*
 - 4 tcp streams between 192.168.122.1 and 192.168.122.251
