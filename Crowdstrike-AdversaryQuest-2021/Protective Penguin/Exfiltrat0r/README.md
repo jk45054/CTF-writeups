@@ -299,25 +299,7 @@ Maybe there is some kind of information leak based on input echoing?
 
 Experiment with cryptshell.sh and sniff traffic for comparisons.
 
-Start listen server
-```
-$ ./cryptshell.sh listen 127.0.0.1 7777
-Ncat: Version 7.80 ( https://nmap.org/ncat )
-Ncat: Generating a temporary 2048-bit RSA key. Use --ssl-key and --ssl-cert to use a permanent one.
-Ncat: SHA-1 fingerprint: 8EB1 958B DDB0 359F 626E BCEE A3A5 E481 8D8E ACB1
-Ncat: Listening on 127.0.0.1:7777
-```
-
-Sniff traffic
-```
-$ sudo tcpdump -n -n -i lo 'host 127.0.0.1' -w connect.pcap
-tcpdump: listening on lo, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-```
-
-Connect to server
-```
-$ ./cryptshell.sh connect 127.0.0.1 7777
-```
+![cryptshell_connect](pics/1.png)
 
 The connection itself consists of 15 packets on the wire using TLS cipher: TLS_AES_256_GCM_SHA384 (0x1302).
 Call exfil.py and sniff.
