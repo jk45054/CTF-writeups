@@ -260,7 +260,7 @@ Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
 After these packets the packet sizes differ in a way that suggests that the interactive key was 13 characters long.
 
 So basically it's a trial and error from here on trying to find the correct keys yielding the same cumulated packet sizes from trace.pcapng.
-![key](pics/4_.png)
+![key](pics/4.png)
 
 This side channel information leak through ASCII art packet sizes yielded the key **my_s3cr3t_k3y** that was used to exfiltrate data via *exfil.py*.
 
