@@ -233,6 +233,14 @@ This is a great **Bingo!** moment, as these frame length sizes do match for fram
 This finding leads us to believe, that it might be possible to retrieve the key characters from interactive console input recorded into separate capture frames.
 
 The capture frames directly following the ASCII art might leak which key was pressed. Each keypress seems to be delivered in a frame of length 89 bytes with a larger frame returned (due to ASCII art echoing back).
+
+Simulating the interactive input of the key `aaaaaa` yields the following frame lengths.
+![exfil_key_aaaaaa](pics/3.png)
+
+These frame lengths of the cumulated characters echoed back are of sizes 260, 557 (+297), 839 (+282), 1112 (+273), 1403 (+291) and 1685 (+282) bytes. It looks like the size delta depends on more than just the plain character itself.
+
+The following table lists the frame lengths of the key input frames from *trace.pcapng*.
+
 Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
 --- | --- | --- | --- | ---
 1 | 1537 | 89 | 1538 | 265
@@ -250,9 +258,6 @@ Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
 13 | 1573 | 89 | 1574 | 3717
 
 After these packets the packet sizes differ in a way that suggests that the interactive key was 13 characters long.
-
-One approach could be calculating the delta values between each keypress. But a quick test entering `aaaaaa` in our simulated setup yields frame lengths of 260, 557 (+297), 839 (+282), 1112 (+273), 1403 (+291) and 1685 (+282) bytes.
-![exfil_key_aaaaaa](pics/3.png)
 
 So basically it's a trial and error from here on trying to find the correct keys yielding the same cumulated packet sizes from trace.pcapng.
 ![key](pics/4_.png)
