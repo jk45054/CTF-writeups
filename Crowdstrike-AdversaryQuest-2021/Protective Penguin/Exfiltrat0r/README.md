@@ -235,7 +235,7 @@ This finding leads us to believe, that it might be possible to retrieve the key 
 The capture frames directly following the ASCII art might leak which key was pressed. Each keypress seems to be delivered in a frame of length 89 bytes with a larger frame returned (due to ASCII art echoing back).
 
 Simulating the interactive input of the key `aaaaaa` yields the following frame lengths.
-![exfil_key_aaaaaa](pics/3.png)
+![exfil_key_aaaaaa](pics/3_.png)
 
 These frame lengths of the cumulated characters echoed back are of sizes 260, 557 (+297), 839 (+282), 1112 (+273), 1403 (+291) and 1685 (+282) bytes. It looks like the size delta depends on more than just the plain character itself.
 
