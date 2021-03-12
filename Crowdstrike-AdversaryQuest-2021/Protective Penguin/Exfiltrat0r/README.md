@@ -241,7 +241,7 @@ These frame lengths of the cumulated characters echoed back are of sizes 260, 55
 
 The following table lists the frame lengths of the key input frames from *trace.pcapng*.
 
-Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
+Keypress | Frame # In | Frame Length In | Frame # Echo | Frame Length Echo
 --- | --- | --- | --- | ---
 1 | 1537 | 89 | 1538 | 265
 2 | 1540 | 89 | 1541 | 643
@@ -257,17 +257,17 @@ Keypress | Packet # In | Packet Size In | Packet # Echo | Packet Size Echo
 12 | 1570 | 89 | 1571 | 3354
 13 | 1573 | 89 | 1574 | 3717
 
-After these packets the packet sizes differ in a way that suggests that the interactive key was 13 characters long.
+After these frames the frame sizes differ in a way that suggests that the interactive key was 13 characters long.
 
-So basically it's a trial and error from here on trying to find the correct keys yielding the same cumulated packet sizes from trace.pcapng.
+So basically it's a trial and error from here on trying to find the correct keys yielding the same frame lengths from trace.pcapng.
 ![key](pics/4.png)
 
-This side channel information leak through ASCII art packet sizes yielded the key **my_s3cr3t_k3y** that was used to exfiltrate data via *exfil.py*.
+With this side channel information leak we retrieved the key **my_s3cr3t_k3y** that was used to exfiltrate data via *exfil.py*.
 
 ### Decrypt TCP streams 1-3 with ChaCha20 Key
-To decrypt the streams 1-3 from trace.pcapng we need each nonce and salt which - according to above analysis of exfil.py - have been transmitted in the unencrypted preamble packets.
+To decrypt the streams 1-3 from trace.pcapng we need each nonce and salt which - according to above analysis of exfil.py - have been transmitted in the unencrypted preamble frames.
 
-Stream | Preamble Packet # | Nonce | Salt
+Stream | Preamble Frame # | Nonce | Salt
 --- | --- | --- | ---
 1 | 1581 | `604ae70f2d462935d4c54144` | `757ffad80a5f69891407751da4c724ba`
 2 | 1594 | `0b5d769d19f3ba9b6217b9e0` | `adb882d28532070cf08cc9c984c6b752`
