@@ -285,7 +285,7 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 - Applies a simple XOR decryption over this buffer using arg3 as a key string
 - buffer[n] = buffer[n] ^ key[n % len(key)]
 - Calls into offset 0 of the decrypted buffer, which is expected to hold executable shellcode after decryption
-- If execution fails, a signal will be raised (like SIGILL or illegal instruction)
+- If execution fails, a signal will be raised (like SIGILL for illegal instruction)
 
 ## Approach
 - We know about the encrypted buffer, that it's supposed to be executable shellcode and that it is decrypted using XOR with a key string.
@@ -325,7 +325,7 @@ Warning: run r2 with -e io.cache=true to fix relocations in disassembly
 - Without any XOR decryption or disassembly, the flag might look like this: **CS{cryp____________0n_c0d_}**
 
 ### Write/Use a Decrypter that disassembles the encrypted Shellcode
-It's time to write a decrypter and take a look at the disassembly with the already known flag chars. Maybe we can dedude something from the disassembly, that would only make sense with a certain set of flag chars (legal instructions, memory access, logic/semantic of code).
+It's time to write a decrypter and take a look at the disassembly with the already known flag chars. Maybe we can deduce something from the disassembly, that would only make sense with a certain set of flag chars (legal instructions, memory access, logic/semantic of code).
 
 ### Iteration 1, Flag: CS{cryp____________0n_c0d_}
 Being lazy, why not use [CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Hexdump()XOR(%7B'option':'UTF8','string':'CS%7Bcryp____________0n_c0d_%7D'%7D,'Standard',false)To_Hex('Space',0)Disassemble_x86('64','Full%20x86%20architecture',16,0,true,true)&input=MDAwMDQwYTAgIDE2MWIgZjI4NiAzYWZhIDljNjQgNzhkNiAxYzk2IDdjZTcgM2M4YiAgLi4uLjouLmR4Li4ufC48LiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKMDAwMDQwYjAgIDc5ZmEgOThkOCA0MzVmIDYzMzAgZWRmNCA5NTQzIDUzN2IgNjMyNyAgeS4uLkNfYzAuLi5DU3tjJwowMDAwNDBjMCAgMzFmOSA5MTc4IGRjOGQgN2ViZCAxMTg1IGY4NzQgOGYxNyBhODI2ICAxLi54Li5%2BLi4uLnQuLi4mCjAwMDA0MGQwICBkNmE0IDc4YTMgZjM0MSA0MzUzIDdiNmMgNzdmMiAzNTg4IGI5OTggIC4ueC4uQUNTe2x3LjUuLi4KMDAwMDQwZTAgIDg5YjQgY2I5MyA4NjI2IDc5ZmEgYmE3OCBlZGIzIDQzNzggZWQ0ZSAgLi4uLi4meS4ueC4uQ3guTgowMDAwNDBmMCAgOTU4NCAxNjg3IDYzNzIgNzk3MCAzY2JiIDFhODkgMjZiZCAyOTg5ICAuLi4uY3J5cDwuLi4mLikuCjAwMDA0MTAwICA5ODM4IGYwMWEgY2M2ZiAxN2UwIDc1OTQgMzIzNSBjODE2IDhiNmMgIC44Li4uby4udS4yNS4uLmwKMDAwMDQxMTAgIGM0NzkgZjRiNCA0NWIzIGVhM2IgYzgyNCBmMjM2IGQ5M2IgZDZmNiAgLnkuLkUuLjsuJC42LjsuLgowMDAwNDEyMCAgZDE1ZSA2MzMwIDY0ZGIgN2Y0MyA1MzdiIGFhYjEgMmMzOCBmZGQ1ICAuXmMwZC4uQ1N7Li4sOC4uCjAwMDA0MTMwICBkNjFjIDgyN2MgZTUwYyA5M2I4IDI2YjcgYmIyYiBiMzJiIGE4MmMgIC4uLnwuLi4uJi4uKy4rLiwKMDAwMDQxNDAgIGJhYmEgMGJkOCAzZTgzIDNhZjAgYjZmZiA3NWI3IDI5ZjYgN2NlNSAgLi4uLj4uOi4uLnUuKS58LgowMDAwNDE1MCAgYmIzYiBmNmIzIDVlMzAgNmU1ZiA2YzM1IGVkZjMgZjQwNiBhZmYwICAuOy4uXjBuX2w1Li4uLi4uCjAwMDA0MTYwICAyNjhlIDI0YjMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICYuJC4)
