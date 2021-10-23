@@ -1,0 +1,43 @@
+PRIVMSG #dungeon :I cast Feather Fall on the Wyvern for 218d197 damage!
+PRIVMSG #dungeon :I cast Flesh to Stone on the Wyvern for 40d117 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 3d248 damage!
+PRIVMSG #dungeon :I cast Spider Climb on the Wyvern for 197d211 damage!
+PRIVMSG #dungeon :I cast Cure Wounds on the Wyvern for 145d131 damage!
+PRIVMSG #dungeon :I cast Disintegrate on the Wyvern for 93d13 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 203d64 damage!
+PRIVMSG #dungeon :I cast Animate Dead on the Wyvern for 133d234 damage!
+PRIVMSG #dungeon :I cast Feather Fall on the Wyvern for 218d197 damage!
+PRIVMSG #dungeon :I cast Flesh to Stone on the Wyvern for 40d117 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 3d248 damage!
+PRIVMSG #dungeon :I cast Spider Climb on the Wyvern for 197d211 damage!
+PRIVMSG #dungeon :I cast Cure Wounds on the Wyvern for 145d131 damage!
+PRIVMSG #dungeon :I cast Disintegrate on the Wyvern for 93d13 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 203d64 damage!
+PRIVMSG #dungeon :I cast Animate Dead on the Wyvern for 133d234 damage!
+PRIVMSG #dungeon :I cast Feather Fall on the Wyvern for 218d197 damage!
+PRIVMSG #dungeon :I cast Flesh to Stone on the Wyvern for 40d117 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 3d248 damage!
+PRIVMSG #dungeon :I cast Spider Climb on the Wyvern for 197d211 damage!
+PRIVMSG #dungeon :I cast Cure Wounds on the Wyvern for 145d131 damage!
+PRIVMSG #dungeon :I cast Disintegrate on the Wyvern for 93d13 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 203d64 damage!
+PRIVMSG #dungeon :I cast Animate Dead on the Wyvern for 133d234 damage!
+PRIVMSG #dungeon :I cast Feather Fall on the Wyvern for 218d197 damage!
+PRIVMSG #dungeon :I cast Flesh to Stone on the Wyvern for 40d117 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 3d248 damage!
+PRIVMSG #dungeon :I cast Spider Climb on the Wyvern for 197d211 damage!
+PRIVMSG #dungeon :I cast Cure Wounds on the Wyvern for 145d131 damage!
+PRIVMSG #dungeon :I cast Disintegrate on the Wyvern for 93d13 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 203d64 damage!
+PRIVMSG #dungeon :I cast Animate Dead on the Wyvern for 133d234 damage!
+PRIVMSG #dungeon :I cast Feather Fall on the Wyvern for 218d197 damage!
+PRIVMSG #dungeon :I cast Flesh to Stone on the Wyvern for 40d117 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 3d248 damage!
+PRIVMSG #dungeon :I cast Spider Climb on the Wyvern for 197d211 damage!
+PRIVMSG #dungeon :I cast Cure Wounds on the Wyvern for 145d131 damage!
+PRIVMSG #dungeon :I cast Disintegrate on the Wyvern for 93d13 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 203d64 damage!
+PRIVMSG #dungeon :I cast Animate Dead on the Wyvern for 133d234 damage!
+PRIVMSG #dungeon :I cast Feather Fall on the Wyvern for 218d197 damage!
+PRIVMSG #dungeon :I cast Flesh to Stone on the Wyvern for 40d117 damage!
+PRIVMSG #dungeon :I cast Shillelagh on the Wyvern for 3 raw damage!

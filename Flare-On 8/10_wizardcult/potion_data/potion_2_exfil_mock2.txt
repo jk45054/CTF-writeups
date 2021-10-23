@@ -1,0 +1,65 @@
+PRIVMSG #dungeon :I cast Wind Walk on the Wyvern for 211d173 damage!
+PRIVMSG #dungeon :I cast Imprisonment on the Wyvern for 235d2 damage!
+PRIVMSG #dungeon :I cast Flame Strike on the Wyvern for 160d241 damage!
+PRIVMSG #dungeon :I cast Magic Weapon on the Wyvern for 173d218 damage!
+PRIVMSG #dungeon :I cast Astral Projection on the Wyvern for 167d26 damage!
+PRIVMSG #dungeon :I cast Globe of Invulnerability on the Wyvern for 184d94 damage!
+PRIVMSG #dungeon :I cast Flame Strike on the Wyvern for 143d172 damage!
+PRIVMSG #dungeon :I cast Warding Bond on the Wyvern for 95d100 damage!
+PRIVMSG #dungeon :I cast Wind Walk on the Wyvern for 211d173 damage!
+PRIVMSG #dungeon :I cast Imprisonment on the Wyvern for 235d2 damage!
+PRIVMSG #dungeon :I cast Flame Strike on the Wyvern for 160d241 damage!
+PRIVMSG #dungeon :I cast Magic Weapon on the Wyvern for 173d218 damage!
+PRIVMSG #dungeon :I cast Astral Projection on the Wyvern for 167d26 damage!
+PRIVMSG #dungeon :I cast Globe of Invulnerability on the Wyvern for 184d94 damage!
+PRIVMSG #dungeon :I cast Flame Strike on the Wyvern for 143d172 damage!
+PRIVMSG #dungeon :I cast Warding Bond on the Wyvern for 95d100 damage!
+PRIVMSG #dungeon :I cast Greater Restoration on the Wyvern for 245d247 damage!
+PRIVMSG #dungeon :I cast Locate Creature on the Wyvern for 134d160 damage!
+PRIVMSG #dungeon :I cast Hold Person on the Wyvern for 2d55 damage!
+PRIVMSG #dungeon :I cast Dream on the Wyvern for 247d150 damage!
+PRIVMSG #dungeon :I cast Contact Other Plane on the Wyvern for 65d233 damage!
+PRIVMSG #dungeon :I cast Clairvoyance on the Wyvern for 225d9 damage!
+PRIVMSG #dungeon :I cast Hold Person on the Wyvern for 174d194 damage!
+PRIVMSG #dungeon :I cast Searing Smite on the Wyvern for 112d35 damage!
+PRIVMSG #dungeon :I cast Greater Restoration on the Wyvern for 245d247 damage!
+PRIVMSG #dungeon :I cast Locate Creature on the Wyvern for 134d160 damage!
+PRIVMSG #dungeon :I cast Hold Person on the Wyvern for 2d55 damage!
+PRIVMSG #dungeon :I cast Dream on the Wyvern for 247d150 damage!
+PRIVMSG #dungeon :I cast Contact Other Plane on the Wyvern for 65d233 damage!
+PRIVMSG #dungeon :I cast Clairvoyance on the Wyvern for 225d9 damage!
+PRIVMSG #dungeon :I cast Hold Person on the Wyvern for 174d194 damage!
+PRIVMSG #dungeon :I cast Searing Smite on the Wyvern for 112d35 damage!
+PRIVMSG #dungeon :I cast Bane on the Wyvern for 202d166 damage!
+PRIVMSG #dungeon :I cast Raise Dead on the Wyvern for 7d133 damage!
+PRIVMSG #dungeon :I cast Water Walk on the Wyvern for 109d196 damage!
+PRIVMSG #dungeon :I cast Shield on the Wyvern for 166d249 damage!
+PRIVMSG #dungeon :I cast Clone on the Wyvern for 34d84 damage!
+PRIVMSG #dungeon :I cast Vicious Mockery on the Wyvern for 214d178 damage!
+PRIVMSG #dungeon :I cast Water Walk on the Wyvern for 118d232 damage!
+PRIVMSG #dungeon :I cast Move Earth on the Wyvern for 117d223 damage!
+PRIVMSG #dungeon :I cast Bane on the Wyvern for 202d166 damage!
+PRIVMSG #dungeon :I cast Raise Dead on the Wyvern for 7d133 damage!
+PRIVMSG #dungeon :I cast Water Walk on the Wyvern for 109d196 damage!
+PRIVMSG #dungeon :I cast Shield on the Wyvern for 166d249 damage!
+PRIVMSG #dungeon :I cast Clone on the Wyvern for 34d84 damage!
+PRIVMSG #dungeon :I cast Vicious Mockery on the Wyvern for 214d178 damage!
+PRIVMSG #dungeon :I cast Water Walk on the Wyvern for 118d232 damage!
+PRIVMSG #dungeon :I cast Move Earth on the Wyvern for 117d223 damage!
+PRIVMSG #dungeon :I cast Elemental Weapon on the Wyvern for 10d25 damage!
+PRIVMSG #dungeon :I cast Guardian of Faith on the Wyvern for 129d189 damage!
+PRIVMSG #dungeon :I cast Wind Wall on the Wyvern for 223d214 damage!
+PRIVMSG #dungeon :I cast Phantom Steed on the Wyvern for 25d18 damage!
+PRIVMSG #dungeon :I cast Invisibility on the Wyvern for 246d41 damage!
+PRIVMSG #dungeon :I cast Stoneskin on the Wyvern for 196d122 damage!
+PRIVMSG #dungeon :I cast Wind Wall on the Wyvern for 231d82 damage!
+PRIVMSG #dungeon :I cast Meteor Swarm on the Wyvern for 181d109 damage!
+PRIVMSG #dungeon :I cast Elemental Weapon on the Wyvern for 10d25 damage!
+PRIVMSG #dungeon :I cast Guardian of Faith on the Wyvern for 129d189 damage!
+PRIVMSG #dungeon :I cast Wind Wall on the Wyvern for 223d214 damage!
+PRIVMSG #dungeon :I cast Phantom Steed on the Wyvern for 25d18 damage!
+PRIVMSG #dungeon :I cast Invisibility on the Wyvern for 246d41 damage!
+PRIVMSG #dungeon :I cast Stoneskin on the Wyvern for 196d122 damage!
+PRIVMSG #dungeon :I cast Wind Wall on the Wyvern for 231d82 damage!
+PRIVMSG #dungeon :I cast Meteor Swarm on the Wyvern for 181d109 damage!
+PRIVMSG #dungeon :I cast Water Walk on the Wyvern!
