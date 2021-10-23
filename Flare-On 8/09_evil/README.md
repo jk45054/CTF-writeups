@@ -568,7 +568,7 @@ At 0x40422A, a second call to some_crypto_stuff_4067A0 is executed.
 - pbData (crypted buffer @ 0x6CFBA0) = `9C 5C 0C 96 6C 7F D8 B9 CC 38 F6 17 6D AA BA 84 BD 83 D8 74 58 D7 D3 32 4C 59 1D FE 5C 24 FB 2B 6B 4F A9 0F 26`
 - pbDataLen = 0x25
 - The result is sent back to the packet origin via function wrap_ws2_32_sendto_403D40.
-- The decryption function (see above) imports a PUBLICKEYSTRUC and key bytes indicating an ALG_ID of CALG_SEAL (0x6802), which is marked as "not supported" in MSDN. Trying out CALG_RC4 (0x6801) just for fun and giggles unexpectedly decrypts this pbData to fake flag `N3ver_G0nNa_g1ve_y0u_Up@flare-on.com\x00`. While it is not necessary to know for solving this challenge, it is now known that function some_crypto_stuff_4067A0 uses the RC4 cipher (if any person reading this could point out why, please don't hesitate to brighten me up - it seems to be another **evil** trick).
+- The decryption function (see above) imports a PUBLICKEYSTRUC and key bytes indicating an ALG_ID of CALG_SEAL (0x6802), which is marked as "not supported" in MSDN. Trying out CALG_RC4 (0x6801) just for fun and giggles unexpectedly decrypts this pbData to fake flag `N3ver_G0nNa_g1ve_y0u_Up@flare-on.com\x00`. While it is not necessary to know for solving this challenge, it is now known that function some_crypto_stuff_4067A0 uses the RC4 cipher.
 
 Knowing this, the encrypted buffer 0x5B7330 can be decrypted to a bitmap file containing a screenshot of rick astley (more rick roll! YAY!).
 
@@ -728,3 +728,21 @@ b'n0_mOr3_eXcEpti0n$_p1ea$e@flare-on.com\x00'
 ## Flag
 
 `n0_mOr3_eXcEpti0n$_p1ea$e@flare-on.com`
+
+## Post-Analysis Addendum: The CALG_SEAL Mystery
+
+In her [writeup for challenge 9](https://hshrzd.wordpress.com/2021/10/23/flare-on-8-task-9/), Hasherezade pointed out that advapi32!CryptImportKey has been hooked with a trampoline. Since I couldn't put my brain to rest, I put a breakpoint on advapi32!CryptImportKey after hitting my "usual debug breakpoint in thread 4 @ 0x404793".
+
+![CryptImportKey Trampoline](pics/cryptimportkey_trampoline.PNG)
+
+So code at 0x4060E0 is jumped to whenever advapi32!CryptImportKey is called. What does the function @ 0x4060E0 do? It replaces a possible value of CALG_SEAL in the BLOBHEADER with CALG_RC4. Looks like i even touched this code in IDA and already renamed it wrap_CryptImportKey_4060E0 without fully understanding it. Yeah, that explains...
+
+![Wrap CryptImportKey](pics/wrap_cryptimportkey.PNG)
+
+What function installed the trampoline? install_CryptImportKey_trampoline_4020F0
+
+![Install CryptImportKey Trampoline](pics/install_cryptimportkey_trampoline.PNG)
+
+When was this installer called? Right before the VEH was installed. **DUH!!** Tomatoes - eyes?
+
+![Call CryptImportKey Installer](pics/runtime_addon.PNG)
