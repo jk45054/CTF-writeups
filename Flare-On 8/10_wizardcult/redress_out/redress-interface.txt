@@ -1,0 +1,24 @@
+type error interface {
+	Error() string
+}
+
+type interface {} interface{}
+
+type girc.Dialer interface {
+	Dial(string, string) (net.Conn, error)
+}
+
+type girc.Handler interface {
+	Execute(*girc.Client, girc.Event)
+}
+
+type girc.SASLMech interface {
+	Encode([]string) string
+	Method() string
+}
+
+type vm.Device interface {
+	Execute(chan int)
+	SetChannel(int, chan int)
+}
+

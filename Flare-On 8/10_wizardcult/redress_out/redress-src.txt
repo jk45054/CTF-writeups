@@ -1,0 +1,61 @@
+Package wizardcult/tables: \home\chris\flare-challenges\wizardcult\tables
+File: tables.go	
+	Lookup Lines: 8 to 17 (9)	
+	GetBytesFromTable Lines: 17 to 680 (663)	
+	init Lines: 680 to 681 (1)	
+Package main: \home\chris\flare-challenges\wizardcult
+File: main.go	
+	init Lines: 26 to 26 (0)	
+	getPlaceFromIp Lines: 28 to 41 (13)	
+	getRemoteIp Lines: 41 to 78 (37)	
+	buildInitialBeacon Lines: 78 to 83 (5)	
+	main Lines: 83 to 98 (15)	
+	mainfunc1 Lines: 98 to 107 (9)	
+	mainfunc2 Lines: 107 to 128 (21)	
+Package wizardcult/comms: \home\chris\flare-challenges\wizardcult\comms
+File: comms.go	
+	ProcessDMMessage Lines: 16 to 92 (76)	
+	CastSpells Lines: 92 to 95 (3)	
+Package wizardcult/vm: \home\chris\flare-challenges\wizardcult\vm
+File: cpu.go	
+	(*Program)Execute Lines: 8 to 107 (99)	
+	(*Cpu)GetRegister Lines: 107 to 132 (25)	
+	(*Cpu)SetRegister Lines: 132 to 183 (51)	
+	(*Cpu)Execute Lines: 183 to 224 (41)	
+	(*Cpu)ExecuteInstruction Lines: 224 to 274 (50)	
+	(*Cpu)BlockRead Lines: 274 to 289 (15)	
+	(*Cpu)BlockWrite Lines: 289 to 294 (5)	
+File: devices.go	
+	(*InputDevice)Execute Lines: 8 to 29 (21)	
+	(*OutputDevice)Execute Lines: 29 to 48 (19)	
+	(*ROM)Execute Lines: 48 to 93 (45)	
+	(*RAM)Execute Lines: 93 to 121 (28)	
+File: instructions.go	
+	(*Cpu)ExecuteMov Lines: 9 to 35 (26)	
+	(*Cpu)ExecuteTeq Lines: 35 to 63 (28)	
+	(*Cpu)ExecuteTgt Lines: 63 to 90 (27)	
+	(*Cpu)ExecuteTlt Lines: 90 to 118 (28)	
+	(*Cpu)ExecuteTcp Lines: 118 to 150 (32)	
+	(*Cpu)ExecuteAdd Lines: 150 to 165 (15)	
+	(*Cpu)ExecuteSub Lines: 165 to 180 (15)	
+	(*Cpu)ExecuteMul Lines: 180 to 195 (15)	
+	(*Cpu)ExecuteDiv Lines: 195 to 221 (26)	
+	(*Cpu)ExecuteAnd Lines: 221 to 236 (15)	
+	(*Cpu)ExecuteOr Lines: 236 to 251 (15)	
+	(*Cpu)ExecuteXor Lines: 251 to 266 (15)	
+	(*Cpu)ExecuteShl Lines: 266 to 281 (15)	
+	(*Cpu)ExecuteShr Lines: 281 to 292 (11)	
+File: loader.go	
+	LoadProgram Lines: 10 to 28 (18)	
+File: types.go	
+	(*Cpu)SetChannel Lines: 28 to 82 (54)	
+	(*InputDevice)SetChannel Lines: 82 to 97 (15)	
+	(*OutputDevice)SetChannel Lines: 97 to 117 (20)	
+	(*ROM)SetChannel Lines: 117 to 142 (25)	
+	(*RAM)SetChannel Lines: 142 to 151 (9)	
+Package wizardcult/potion: \home\chris\flare-challenges\wizardcult\potion
+File: potion.go	
+	FindPotionByFlavor Lines: 43 to 52 (9)	
+	FindPotionByDungeon Lines: 52 to 62 (10)	
+	CommandPotion Lines: 62 to 80 (18)	
+	ReadFilePotion Lines: 80 to 86 (6)	

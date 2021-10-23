@@ -1,0 +1,3302 @@
+**big.Int
+
+**gob.decEngine
+
+**gob.typeInfo
+
+**http.Request
+
+**http.Response
+
+**http.http2clientStream
+
+**int
+
+**net._Ctype_struct_addrinfo
+
+**potion.Potion
+
+**regexp.onePassProg
+
+**runtime._defer
+
+**runtime.funcval
+
+**runtime.m
+
+**runtime.mcache
+
+**runtime.mspan
+
+**runtime.notInHeap
+
+**runtime.stackWorkBuf
+
+**sync.entry
+
+**x509.Certificate
+
+*[1125899906842623]uint8
+
+*[19]int
+
+*[256]*hpack.node
+
+*[316]int
+
+*[4194304]*runtime.heapArena
+
+*[46912496118442]runtime.elfSym
+
+*[562949953421311]uint16
+
+*[8192]runtime.pallocData
+
+*[]*http.Cookie
+
+*[]*http.Request
+
+*[]*http.http2ClientConn
+
+*[]*runtime.bmap
+
+*[]*url.URL
+
+*[][]*x509.Certificate
+
+*[][]int
+
+*[]int32
+
+*[]json.field
+
+*[][]uint8
+
+*[]net.nssCriterion
+
+*[]runtime.ancestorInfo
+
+*[]string
+
+*[]syscall.Iovec
+
+*[]uint16
+
+*[]uint8
+
+*[]x509.authorityInfoAccess
+
+*[]x509.distributionPoint
+
+*[]x509.policyInformation
+
+*int
+
+*bool
+
+*[]uint8
+
+*asn1.RawValue
+
+*asn1.encoder
+
+*asn1.fieldParameters
+
+*asn1.tagAndLength
+
+*uint
+
+*big.divisor
+
+*bool
+
+*func([]uint8, bool) (int, []uint8, error)
+
+*int8
+
+*cipher.AEAD
+
+*cipher.Block
+
+*cipher.BlockMode
+
+*cipher.Stream
+
+*cipher.cbc
+
+*cipher.cbcDecAble
+
+*cipher.cbcEncAble
+
+*cipher.gcmAble
+
+*cipher.gcmFieldElement
+
+*complex128
+
+*complex64
+
+*func()
+
+*context.Context
+
+*context.canceler
+
+*context.stringer
+
+*cpu.CacheLinePad
+
+*cpu.option
+
+*cpu.option
+
+*[256]uint32
+
+*[8][256]uint32
+
+*crypto.Decrypter
+
+*crypto.DecrypterOpts
+
+*crypto.PrivateKey
+
+*crypto.PublicKey
+
+*crypto.Signer
+
+*crypto.SignerOpts
+
+*cryptobyte.BuildError
+
+*uint8
+
+*dsa.Parameters
+
+*dsa.PublicKey
+
+*ecdsa.combinedMult
+
+*ecdsa.invertible
+
+*elliptic.Curve
+
+*[8]uint32
+
+*encoding.BinaryMarshaler
+
+*encoding.BinaryUnmarshaler
+
+*encoding.TextMarshaler
+
+*encoding.TextUnmarshaler
+
+*error
+
+*func(*exec.Cmd) (*os.File, error)
+
+*flate.Reader
+
+*flate.Resetter
+
+*flate.literalNode
+
+*float32
+
+*float64
+
+*fmt.Formatter
+
+*fmt.GoStringer
+
+*fmt.State
+
+*fmt.Stringer
+
+*fmt.fmtFlags
+
+*fs.DirEntry
+
+*fs.FileInfo
+
+*func(uint32, []bool) bool
+
+*girc.CTCPEvent
+
+*func(*girc.Client, girc.CTCPEvent)
+
+*girc.Dialer
+
+*girc.Handler
+
+*girc.SASLMech
+
+*gob.GobDecoder
+
+*gob.GobEncoder
+
+*gob.decEngine
+
+*func(*gob.decoderState, reflect.Value, int, error) bool
+
+*gob.decInstr
+
+*func(*gob.decInstr, *gob.decoderState, reflect.Value)
+
+*gob.emptyStruct
+
+*func(*gob.encoderState, reflect.Value) bool
+
+*gob.fieldType
+
+*gob.gobError
+
+*gob.gobType
+
+*gob.typeInfo
+
+*gob.userTypeInfo
+
+*gzip.Header
+
+*hash.Hash
+
+*hmac.marshalable
+
+*[0]func()
+
+*hpack.node
+
+*hpack.pairNameValue
+
+*http.CookieJar
+
+*http.RoundTripper
+
+*int
+
+*http.cancelKey
+
+*http.canceler
+
+*http.erringRoundTripper
+
+*http.h2Transport
+
+*http.http2ClientConnPool
+
+*http.http2Frame
+
+*http.http2clientConnPoolIdleCloser
+
+*http.http2connectionStater
+
+*func(*http.http2frameCache, http.http2FrameHeader, []uint8) (http.http2Frame, error)
+
+*http.http2headersOrContinuation
+
+*[0]func()
+
+*http.http2pipeBuffer
+
+*http.http2resAndError
+
+*int
+
+*[0]func()
+
+*http.keyValues
+
+*http.readResult
+
+*http.requestAndChan
+
+*http.responseAndError
+
+*int
+
+*http.writeRequest
+
+*httpproxy.matcher
+
+*httptrace.DNSDoneInfo
+
+*httptrace.DNSStartInfo
+
+*httptrace.GotConnInfo
+
+*httptrace.WroteRequestInfo
+
+*httptrace.clientEventContextKey
+
+*int
+
+*int16
+
+*int32
+
+*int64
+
+*int8
+
+*interface {}
+
+*io.ByteReader
+
+*io.ByteScanner
+
+*io.ByteWriter
+
+*io.Closer
+
+*io.ReadCloser
+
+*io.ReadWriteCloser
+
+*io.ReadWriter
+
+*io.Reader
+
+*io.ReaderFrom
+
+*io.RuneReader
+
+*io.StringWriter
+
+*io.WriteCloser
+
+*io.Writer
+
+*io.WriterTo
+
+*json.Marshaler
+
+*json.Unmarshaler
+
+*json.encOpts
+
+*func(*json.encodeState, reflect.Value, json.encOpts)
+
+*json.field
+
+*json.structFields
+
+*json.unquotedValue
+
+*main.IP
+
+*map[*x509.Certificate][][]*x509.Certificate
+
+*map[string]girc.Handler
+
+*map[string]girc.Perms
+
+*map[string]string
+
+*net.Addr
+
+*net.Conn
+
+*net.Error
+
+*net.PacketConn
+
+*int8
+
+*int32
+
+*net._Ctype_struct_addrinfo
+
+*net._Ctype_struct_sockaddr
+
+*uint32
+
+*uint16
+
+*net.ipAttr
+
+*net.ipLookupResult
+
+*net.nssConf
+
+*net.policyTableEntry
+
+*net.portLookupResult
+
+*uint8
+
+*net.sockaddr
+
+*net.temporary
+
+*net.timeout
+
+*nettrace.LookupIPAltResolverKey
+
+*nettrace.Trace
+
+*nettrace.TraceKey
+
+*func(*norm.Iter) []uint8
+
+*func(norm.input, int) norm.Properties
+
+*uint8
+
+*os.ProcAttr
+
+*os.Signal
+
+*os.timeout
+
+*pem.Block
+
+*pkix.AlgorithmIdentifier
+
+*pkix.AttributeTypeAndValue
+
+*pkix.Extension
+
+*[]pkix.AttributeTypeAndValue
+
+*potion.Potion
+
+*func(*potion.Potion, string) string
+
+*rand.Source
+
+*rand.Source64
+
+*reflect.Method
+
+*reflect.StructField
+
+*reflect.Type
+
+*reflect.fieldScan
+
+*reflect.layoutKey
+
+*reflect.layoutType
+
+*reflect.methodValue
+
+*int32
+
+*uint8
+
+*int32
+
+*reflect.visit
+
+*reflectlite.Type
+
+*int32
+
+*uint8
+
+*int32
+
+*regexp.entry
+
+*regexp.input
+
+*regexp.job
+
+*regexp.onePassMachine
+
+*regexp.onePassProg
+
+*regexp.queue
+
+*regexp.thread
+
+*rsa.CRTValue
+
+*rsa.PKCS1v15DecryptOptions
+
+*rsa.PrecomputedValues
+
+*runtime.Frame
+
+*runtime._defer
+
+*runtime._func
+
+*runtime._panic
+
+*runtime._typePair
+
+*runtime.ancestorInfo
+
+*runtime.arenaHint
+
+*uint8
+
+*int
+
+*[32]uintptr
+
+*runtime.cgoSymbolizerArg
+
+*runtime.cgoTracebackArg
+
+*runtime.cgothreadstart
+
+*[1048576]uint8
+
+*runtime.dlogPerM
+
+*runtime.eface
+
+*runtime.elfSym
+
+*runtime.elfVerdef
+
+*runtime.evacDst
+
+*uint8
+
+*runtime.funcinl
+
+*runtime.functab
+
+*runtime.funcval
+
+*runtime.g
+
+*runtime.gcBgMarkWorkerNode
+
+*int
+
+*runtime.gobuf
+
+*runtime.gsignalStack
+
+*runtime.heapArena
+
+*runtime.heldLockInfo
+
+*runtime.hiter
+
+*runtime.imethod
+
+*runtime.interfacetype
+
+*runtime.lfnode
+
+*runtime.libcall
+
+*runtime.lockRankStruct
+
+*runtime.m
+
+*runtime.mOS
+
+*uint8
+
+*runtime.mapextra
+
+*runtime.mlink
+
+*runtime.moduledata
+
+*runtime.modulehash
+
+*runtime.mutex
+
+*int32
+
+*runtime.note
+
+*runtime.pcHeader
+
+*runtime.pcvalueCache
+
+*runtime.pcvalueCacheEnt
+
+*runtime.persistentAlloc
+
+*runtime.ptabEntry
+
+*runtime.ptrtype
+
+*runtime.scase
+
+*runtime.sigactiont
+
+*runtime.siginfo
+
+*[2]uint32
+
+*[]uint8
+
+*runtime.special
+
+*runtime.specialfinalizer
+
+*runtime.stack
+
+*runtime.stackObjectBuf
+
+*runtime.stackObjectBufHdr
+
+*runtime.stackObjectRecord
+
+*runtime.stackWorkBuf
+
+*runtime.stackWorkBufHdr
+
+*runtime.stackfreelist
+
+*runtime.stackt
+
+*runtime.stkframe
+
+*string
+
+*runtime.stringStruct
+
+*runtime.stringer
+
+*runtime.sudog
+
+*runtime.sysmontick
+
+*runtime.textsect
+
+*uint8
+
+*runtime.timer
+
+*int32
+
+*uint16
+
+*uint32
+
+*uint64
+
+*runtime.vdsoInfo
+
+*runtime.workbufhdr
+
+*singleflight.Result
+
+*singleflight.call
+
+*sort.Interface
+
+*strconv.decimalSlice
+
+*string
+
+*strings.replacer
+
+*strings.span
+
+*struct { base runtime.offAddr; bound runtime.offAddr }
+
+*struct { r1 int }
+
+*struct { r2 int }
+
+*struct { r3 int }
+
+*struct { r4 int }
+
+*struct { r5 int }
+
+*struct { r6 int }
+
+*struct { r7 int }
+
+*struct { runtime.gList; n int32 }
+func (*struct { runtime.gList; n int32 }) empty() bool
+func (*struct { runtime.gList; n int32 }) pop()
+func (*struct { runtime.gList; n int32 }) push()
+func (*struct { runtime.gList; n int32 }) pushAll()
+
+*struct { sync.Once; v *x509.Certificate }
+func (*struct { sync.Once; v *x509.Certificate }) Do()
+func (*struct { sync.Once; v *x509.Certificate }) doSlow()
+
+*struct {}
+
+*sync.Locker
+
+*sync.eface
+
+*sync.notifyList
+
+*sync.poolLocal
+
+*sync.poolLocalInternal
+
+*sync.readOnly
+
+*uint8
+
+*uint16
+
+*syntax.charGroup
+
+*uint64
+
+*syscall.Credential
+
+*syscall.NetlinkMessage
+
+*syscall.NetlinkRouteAttr
+
+*syscall.NlMsghdr
+
+*syscall.ProcAttr
+
+*syscall.RawConn
+
+*syscall.RawSockaddrInet4
+
+*syscall.RawSockaddrInet6
+
+*syscall.RawSockaddrLinklayer
+
+*syscall.RawSockaddrNetlink
+
+*syscall.RawSockaddrUnix
+
+*syscall.RtAttr
+
+*syscall.Rusage
+
+*syscall.Sockaddr
+
+*syscall.Stat_t
+
+*syscall.SysProcAttr
+
+*syscall.SysProcIDMap
+
+*uint32
+
+*testlog.Interface
+
+*time.runtimeTimer
+
+*time.zone
+
+*time.zoneTrans
+
+*tls.ClientSessionCache
+
+*tls.ClientSessionState
+
+*int
+
+*tls.aead
+
+*tls.cbcMode
+
+*tls.cipherSuite
+
+*tls.constantTimeHash
+
+*tls.ecdheParameters
+
+*tls.handshakeMessage
+
+*tls.keyAgreement
+
+*tls.keyShare
+
+*tls.pskIdentity
+
+*tls.ticketKey
+
+*uint
+
+*uint16
+
+*uint32
+
+*uint64
+
+*uint8
+
+*uintptr
+
+*unicode.Range16
+
+*unicode.Range32
+
+*unicode.RangeTable
+
+*unsafe.Pointer
+
+*unsafeheader.Slice
+
+*unsafeheader.String
+
+*vm.Device
+
+*vm.Instruction
+
+*vm.Link
+
+*int
+
+*int
+
+*int
+
+*x509.VerifyOptions
+
+*x509.authKeyId
+
+*x509.authorityInfoAccess
+
+*x509.basicConstraints
+
+*x509.certificate
+
+*x509.distributionPoint
+
+*x509.distributionPointName
+
+*x509.dsaAlgorithmParameters
+
+*x509.lazyCert
+
+*x509.pkcs1PublicKey
+
+*x509.policyInformation
+
+*x509.pssParameters
+
+*x509.publicKeyInfo
+
+*x509.rfc2821Mailbox
+
+*[28]uint8
+
+*x509.tbsCertificate
+
+*x509.validity
+
+<-chan struct {}
+
+<-chan time.Time
+
+[1024]uint8
+
+[108]int8
+
+[10]runtime.heldLockInfo
+
+[10]string
+
+[10]uintptr
+
+[1125899906842623]uint8
+
+[128]*reflect.rtype
+
+[128]*runtime.mspan
+
+[128]*runtime.sudog
+
+[128]uint8
+
+[12]uint8
+
+[136]*runtime.mspan
+
+[136]struct { mcentral runtime.mcentral; pad [24]uint8 }
+
+[13]uint8
+
+[14]int8
+
+[14]uint8
+
+[15]cpu.option
+
+[15]uint8
+
+[16]*reflect.rtype
+
+[16][]uint
+
+[16]cipher.gcmFieldElement
+
+[16]uint64
+
+[16]uint8
+
+[17]int32
+
+[18]uint8
+
+[19]int
+
+[19]uint8
+
+[1]*[4194304]*runtime.heapArena
+
+[1]*syntax.Regexp
+
+[1]*x509.Certificate
+
+[1][]int32
+
+[1][]uint8
+
+[1]chan<- singleflight.Result
+
+[1]httpproxy.matcher
+
+[1]int
+
+[1]interface {}
+
+[1]json.field
+
+[1]net.Addr
+
+[1]net.IPAddr
+
+[1]pkix.AttributeTypeAndValue
+
+[1]reflect.fieldScan
+
+[1]string
+
+[1]time.zone
+
+[1]time.zoneTrans
+
+[1]uint16
+
+[1]tls.keyShare
+
+[1]tls.pskIdentity
+
+[1]uint32
+
+[1]uint8
+
+[1]uintptr
+
+[1]unsafe.Pointer
+
+[2097152]uint8
+
+[24]uint8
+
+[252]uintptr
+
+[253]uintptr
+
+[255]uint8
+
+[256]*hpack.node
+
+[256][]uint8
+
+[256]int
+
+[256]uintptr
+
+[256]uint32
+
+[256]uint64
+
+[256]uint8
+
+[26][]uint64
+
+[2]**runtime.stackWorkBuf
+
+[2][8]runtime.pcvalueCacheEnt
+
+[2]asn1.encoder
+
+[2]int
+
+[2]int
+
+[2]int32
+
+[2]interface {}
+
+[2]io.Reader
+
+[2]io.Writer
+
+[2]runtime.Frame
+
+[2]runtime.evacDst
+
+[2]runtime.spanSet
+
+[2]string
+
+[2]struct { laddr net.TCPAddr; value int }
+
+[2]uint32
+
+[2]uint8
+
+[316]int
+
+[32]*reflect.rtype
+
+[32]*runtime._defer
+
+[32]norm.Properties
+
+[32]uint8
+
+[32]uintptr
+
+[38]cpu.option
+
+[39]string
+
+[3][]uint8
+
+[3]func(*exec.Cmd) (*os.File, error)
+
+[3]int64
+
+[3]interface {}
+
+[3]string
+
+[3]uint16
+
+[3]uint16
+
+[3]uint32
+
+[3]uint8
+
+[4194304]*runtime.heapArena
+
+[43][256]uint64
+
+[46912496118442]runtime.elfSym
+
+[4]*reflect.rtype
+
+[4]interface {}
+
+[4]runtime.stackfreelist
+
+[4]string
+
+[4]uint16
+
+[4]uint32
+
+[4]uint8
+
+[512]*runtime.itab
+
+[512]uint32
+
+[512]uint8
+
+[512]uintptr
+
+[54]uint8
+
+[562949953421311]uint16
+
+[5][32]*runtime._defer
+
+[5][]*runtime._defer
+
+[5][]uint64
+
+[5]interface {}
+
+[5]string
+
+[5]uint32
+
+[5]uint8
+
+[607]int64
+
+[63]runtime.stackObject
+
+[64]*reflect.rtype
+
+[64]uint8
+
+[68]uint8
+
+[6]interface {}
+
+[6]string
+
+[6]uintptr
+
+[7]string
+
+[7]uint16
+
+[8192]*[8192]runtime.pallocData
+
+[8192]*runtime.mspan
+
+[8192]runtime.pallocData
+
+[8]**gob.decEngine
+
+[8]*girc.Channel
+
+[8]*girc.User
+
+[8]*func(*gob.decInstr, *gob.decoderState, reflect.Value)
+
+[8]*gob.typeInfo
+
+[8]*gob.wireType
+
+[8]*http.http2ClientConn
+
+[8]*http.http2addConnCall
+
+[8]*http.http2clientStream
+
+[8]*http.http2dialCall
+
+[8]*http.persistConn
+
+[8]*list.Element
+
+[8]*potion.Potion
+
+[8]*reflect.rtype
+
+[8]*reflect.structType
+
+[8]*runtime._type
+
+[8]*singleflight.call
+
+[8]*sync.entry
+
+[8]*tls.Certificate
+
+[8]*unicode.RangeTable
+
+[8]*x509.Certificate
+
+[8][8]uint8
+
+[8][]*http.Cookie
+
+[8][]*http.http2ClientConn
+
+[8][]*http.persistConn
+
+[8][]*multipart.FileHeader
+
+[8][]*runtime._type
+
+[8][][]*x509.Certificate
+
+[8][]int
+
+[8][]net.nssSource
+
+[8][]string
+
+[8][]uint8
+
+[8]asn1.RawValue
+
+[8]bool
+
+[8]chan struct {}
+
+[8]context.canceler
+
+[8]uint
+
+[8]uint16
+
+[8]uint16
+
+[8]uint16
+
+[8]uint8
+
+[8]func(error)
+
+[8]func(string, *tls.Conn) http.RoundTripper
+
+[8]func(*girc.Client, girc.CTCPEvent)
+
+[8]girc.Handler
+
+[8]girc.Perms
+
+[8]func(*gob.decoderState, reflect.Value, int, error) bool
+
+[8]func(*gob.decInstr, *gob.decoderState, reflect.Value)
+
+[8]func(*gob.encoderState, reflect.Value) bool
+
+[8]gob.gobType
+
+[8]int32
+
+[8]hpack.pairNameValue
+
+[8]int
+
+[8]http.RoundTripper
+
+[8]http.cancelKey
+
+[8]http.connectMethodKey
+
+[8]uint32
+
+[8]uint8
+
+[8]uint8
+
+[8]uint16
+
+[8]func(*http.http2frameCache, http.http2FrameHeader, []uint8) (http.http2Frame, error)
+
+[8]http.wantConnQueue
+
+[8]int
+
+[8]int32
+
+[8]int64
+
+[8]interface {}
+
+[8]map[int32]**gob.decEngine
+
+[8]map[uint8]string
+
+[8]map[string]girc.Handler
+
+[8]map[string]int
+
+[8]map[string]string
+
+[8]int
+
+[8]uint
+
+[8]reflect.Type
+
+[8]reflect.visit
+
+[8]runtime._typePair
+
+[8]runtime.pcvalueCacheEnt
+
+[8]int32
+
+[8]string
+
+[8]string
+
+[8]struct {}
+
+[8]syntax.charGroup
+
+[8]uint8
+
+[8]uint32
+
+[8]uint32
+
+[8]uint64
+
+[8]uint64
+
+[8]uint8
+
+[8]unsafe.Pointer
+
+[96]uint8
+
+[9]string
+
+[9]uint8
+
+[]**gob.decEngine
+
+[]**runtime.stackWorkBuf
+
+[]*[4194304]*runtime.heapArena
+
+[]*[8192]runtime.pallocData
+
+[]*big.Int
+
+[]*girc.Channel
+
+[]*girc.User
+
+[]*func(*gob.decInstr, *gob.decoderState, reflect.Value)
+
+[]*gob.fieldType
+
+[]*gob.typeInfo
+
+[]*gob.wireType
+
+[]*hpack.node
+
+[]*http.Cookie
+
+[]*http.Request
+
+[]*http.http2ClientConn
+
+[]*http.http2addConnCall
+
+[]*http.http2clientStream
+
+[]*http.http2dialCall
+
+[]*http.persistConn
+
+[]*http.wantConn
+
+[]*list.Element
+
+[]*multipart.FileHeader
+
+[]*net.IPNet
+
+[]*os.File
+
+[]*potion.Potion
+
+[]*reflect.rtype
+
+[]*reflect.structType
+
+[]*regexp.thread
+
+[]*runtime._defer
+
+[]*runtime._type
+
+[]*runtime.bmap
+
+[]*runtime.heapArena
+
+[]*runtime.itab
+
+[]*runtime.moduledata
+
+[]*runtime.mspan
+
+[]*runtime.sudog
+
+[]*runtime.timer
+
+[]*singleflight.call
+
+[]*strings.trieNode
+
+[]*sync.entry
+
+[]*syntax.Regexp
+
+[]*tls.Certificate
+
+[]*unicode.RangeTable
+
+[]*url.URL
+
+[]*x509.Certificate
+
+[][256]uint64
+
+[][32]*runtime._defer
+
+[][8]runtime.pcvalueCacheEnt
+
+[][8]uint8
+
+[][]*http.Cookie
+
+[][]*http.http2ClientConn
+
+[][]*http.persistConn
+
+[][]*multipart.FileHeader
+
+[][]*runtime._defer
+
+[][]*runtime._type
+
+[][]*x509.Certificate
+
+[][][]*x509.Certificate
+
+[][]int
+
+[][]int32
+
+[][]net.nssSource
+
+[][]uint64
+
+[][]string
+
+[][]uint32
+
+[][]uint64
+
+[][]uint8
+
+[][]int
+
+[]asn1.RawValue
+
+[]asn1.encoder
+
+[]uint
+
+[][]uint
+
+[]bool
+
+[]chan int
+
+[]chan struct {}
+
+[]chan<- singleflight.Result
+
+[]cipher.gcmFieldElement
+
+[]complex128
+
+[]complex64
+
+[]context.canceler
+
+[]cpu.option
+
+[]cpu.option
+
+[][256]uint32
+
+[]uint
+
+[]uint16
+
+[]uint16
+
+[]uint16
+
+[]uint8
+
+[]func(*exec.Cmd) (*os.File, error)
+
+[]flate.hcode
+
+[]flate.literalNode
+
+[]float32
+
+[]float64
+
+[]fs.DirEntry
+
+[]func()
+
+[]func() error
+
+[]func(error)
+
+[]func(string, *tls.Conn) http.RoundTripper
+
+[]girc.CMode
+
+[]func(*girc.Client, girc.CTCPEvent)
+
+[]girc.Handler
+
+[]girc.Perms
+
+[]girc.execStack
+
+[]func(*gob.decoderState, reflect.Value, int, error) bool
+
+[]gob.decInstr
+
+[]func(*gob.decInstr, *gob.decoderState, reflect.Value)
+
+[]func(*gob.encoderState, reflect.Value) bool
+
+[]gob.gobType
+
+[]int32
+
+[]hpack.HeaderField
+
+[]hpack.pairNameValue
+
+[]int
+
+[]http.RoundTripper
+
+[]http.cancelKey
+
+[]http.connectMethodKey
+
+[]uint32
+
+[]uint8
+
+[]uint8
+
+[]uint16
+
+[]func(*http.http2frameCache, http.http2FrameHeader, []uint8) (http.http2Frame, error)
+
+[]http.keyValues
+
+[]int
+
+[]http.wantConnQueue
+
+[]httpproxy.matcher
+
+[]int
+
+[]int16
+
+[]int32
+
+[]int64
+
+[]int8
+
+[]interface {}
+
+[]io.Closer
+
+[]io.Reader
+
+[]io.Writer
+
+[]json.field
+
+[]json.reflectWithString
+
+[]map[int32]**gob.decEngine
+
+[]map[uint8]string
+
+[]map[string]girc.Handler
+
+[]map[string]int
+
+[]map[string]string
+
+[]net.Addr
+
+[][]uint8
+
+[]net.IPAddr
+
+[]int8
+
+[]int
+
+[]net.ipAttr
+
+[]net.nssCriterion
+
+[]net.nssSource
+
+[]norm.Properties
+
+[]pkix.AttributeTypeAndValue
+
+[]pkix.Extension
+
+[]uint
+
+[]reflect.Type
+
+[]reflect.Value
+
+[]reflect.fieldScan
+
+[]reflect.structField
+
+[]reflect.visit
+
+[]regexp.entry
+
+[]regexp.job
+
+[]regexp.onePassInst
+
+[]rsa.CRTValue
+
+[]runtime.Frame
+
+[]runtime._typePair
+
+[]runtime.addrRange
+
+[]runtime.ancestorInfo
+
+[]uint
+
+[]runtime.elfSym
+
+[]runtime.evacDst
+
+[]runtime.functab
+
+[]uintptr
+
+[]runtime.heldLockInfo
+
+[]runtime.imethod
+
+[]runtime.modulehash
+
+[]runtime.pallocData
+
+[]uint64
+
+[]runtime.pcvalueCacheEnt
+
+[]runtime.ptabEntry
+
+[]runtime.scase
+
+[]runtime.spanSet
+
+[]runtime.stackObject
+
+[]runtime.stackObjectRecord
+
+[]runtime.stackfreelist
+
+[]runtime.textsect
+
+[]int32
+
+[]string
+
+[]struct { c unsafe.Pointer; elem unsafe.Pointer }
+
+[]struct { c unsafe.Pointer; elem unsafe.Pointer }
+
+[]struct { c unsafe.Pointer; elem unsafe.Pointer }
+
+[]struct { c unsafe.Pointer; elem unsafe.Pointer }
+
+[]struct { c unsafe.Pointer; elem unsafe.Pointer }
+
+[]struct { c unsafe.Pointer; elem unsafe.Pointer }
+
+[]struct { c unsafe.Pointer; elem unsafe.Pointer }
+
+[]struct { c unsafe.Pointer; elem unsafe.Pointer }
+
+[]struct { laddr net.TCPAddr; value int }
+
+[]struct { mcentral runtime.mcentral; pad [24]uint8 }
+
+[]struct {}
+
+[]sync.eface
+
+[]syntax.Inst
+
+[]syntax.charGroup
+
+[]syscall.Iovec
+
+[]syscall.SysProcIDMap
+
+[]time.zone
+
+[]time.zoneTrans
+
+[]tls.Certificate
+
+[]uint16
+
+[]uint16
+
+[]uint8
+
+[]tls.keyShare
+
+[]tls.pskIdentity
+
+[]tls.ticketKey
+
+[]uint
+
+[]uint16
+
+[]uint32
+
+[]uint64
+
+[]uint8
+
+[]uintptr
+
+[]unicode.Range16
+
+[]unicode.Range32
+
+[]unsafe.Pointer
+
+[]vm.Cpu
+
+[]vm.Instruction
+
+[]vm.Link
+
+[]vm.RAM
+
+[]vm.ROM
+
+[]int
+
+[]x509.authorityInfoAccess
+
+[]x509.distributionPoint
+
+[]x509.lazyCert
+
+[]x509.policyInformation
+
+[][28]uint8
+
+int
+
+int
+
+bool
+
+uint8
+
+int64
+
+string
+
+int64
+
+uint
+
+uint
+
+bool
+
+int8
+
+chan *girc.Event
+
+chan bool
+
+chan error
+
+chan http.http2resAndError
+
+chan http.readResult
+
+chan http.requestAndChan
+
+chan http.responseAndError
+
+chan http.writeRequest
+
+chan int
+
+chan net.dialResult
+
+chan net.ipLookupResult
+
+chan net.portLookupResult
+
+chan net.result
+
+chan singleflight.Result
+
+chan struct {}
+
+chan time.Time
+
+chan<- error
+
+chan<- singleflight.Result
+
+chan<- struct {}
+
+complex128
+
+complex64
+
+int
+
+uint
+
+int
+
+uint16
+
+uint16
+
+uint16
+
+uint8
+
+type error interface {
+	Error() string
+}
+
+int64
+
+string
+
+float32
+
+float64
+
+uint32
+
+func()
+
+func() (*x509.Certificate, error)
+
+func() ([]uint8, error)
+
+func() (fs.FileInfo, error)
+
+func() (int, bool)
+
+func() (int32, int, error)
+
+func() (io.ReadCloser, error)
+
+func() (time.Time, bool)
+
+func() (uint8, error)
+
+func() (unsafe.Pointer, uint32, error)
+
+func() *elliptic.CurveParams
+
+func() *reflect.rtype
+
+func() *reflect.uncommonType
+
+func() *reflectlite.rtype
+
+func() *reflectlite.uncommonType
+
+func() <-chan struct {}
+
+func() []uint8
+
+func() bool
+
+func() uint
+
+func() crypto.PublicKey
+
+func() error
+
+func() uint32
+
+func() int32
+
+func() hash.Hash
+
+func() http.http2FrameHeader
+
+func() int
+
+func() int64
+
+func() interface {}
+
+func() net.Addr
+
+func() int
+
+func() uint
+
+func() reflect.Type
+
+func() uint
+
+func() reflectlite.Type
+
+func() string
+
+func() time.Time
+
+func() tls.ConnectionState
+
+func() uint16
+
+func() uint64
+
+func() uintptr
+
+func(*big.Int) *big.Int
+
+func(*big.Int, *big.Int) (*big.Int, *big.Int)
+
+func(*big.Int, *big.Int) bool
+
+func(*big.Int, *big.Int, *big.Int, *big.Int) (*big.Int, *big.Int)
+
+func(*big.Int, *big.Int, []uint8) (*big.Int, *big.Int)
+
+func(*big.Int, *big.Int, []uint8, []uint8) (*big.Int, *big.Int)
+
+func(*flate.decompressor)
+
+func(*girc.Client, *girc.HandlerError)
+
+func(*girc.Client, girc.CTCPEvent)
+
+func(*girc.Client, girc.Event)
+
+func(*http.Request)
+
+func(*http.Request) (*http.Response, error)
+
+func(*http.Request) (*url.URL, error)
+
+func(*http.Request, []*http.Request) error
+
+func(*http.Request, string) (*http.http2ClientConn, error)
+
+func(*http.http2ClientConn)
+
+func(*json.scanner, uint8) int
+
+func(*net.netFD) error
+
+func(*norm.reorderBuffer) bool
+
+func(*os.Process) error
+
+func(*os.file) error
+
+func(*regexp.Regexp) bool
+
+func(*regexp.Regexp, int) int
+
+func(*runtime.g, unsafe.Pointer) bool
+
+func(*tls.CertificateRequestInfo) (*tls.Certificate, error)
+
+func(*tls.ClientHelloInfo) (*tls.Certificate, error)
+
+func(*tls.ClientHelloInfo) (*tls.Config, error)
+
+func(*tls.Config, *tls.Certificate, *tls.clientHelloMsg, *tls.serverHelloMsg) (*tls.serverKeyExchangeMsg, error)
+
+func(*tls.Config, *tls.Certificate, *tls.clientKeyExchangeMsg, uint16) ([]uint8, error)
+
+func(*tls.Config, *tls.clientHelloMsg, *tls.serverHelloMsg, *x509.Certificate, *tls.serverKeyExchangeMsg) error
+
+func(*tls.Config, *tls.clientHelloMsg, *x509.Certificate) ([]uint8, *tls.clientKeyExchangeMsg, error)
+
+func(*url.URL) []*http.Cookie
+
+func(*url.URL, []*http.Cookie)
+
+func([][]uint8, [][]*x509.Certificate) error
+
+func([]int) reflect.StructField
+
+func([]interface {}, bool, error)
+
+func([]string) string
+
+func([]uint8)
+
+func([]uint8) (*big.Int, *big.Int)
+
+func([]uint8) (int, error)
+
+func([]uint8) (int, net.Addr, error)
+
+func([]uint8) []uint8
+
+func([]uint8) bool
+
+func([]uint8) cipher.BlockMode
+
+func([]uint8) error
+
+func([]uint8) hash.Hash
+
+func([]uint8, []uint8)
+
+func([]uint8, []uint8) bool
+
+func([]uint8, []uint8) tls.aead
+
+func([]uint8, []uint8, []uint8, []uint8)
+
+func([]uint8, []uint8, []uint8, []uint8) ([]uint8, error)
+
+func([]uint8, []uint8, []uint8, []uint8) []uint8
+
+func([]uint8, []uint8, bool) interface {}
+
+func([]uint8, net.Addr) (int, error)
+
+func(bool) bool
+
+func(bool, error)
+
+func(chan int)
+
+func(context.Context, *url.URL, string) (map[string][]string, error)
+
+func(context.Context, io.ReadWriter, int) error
+
+func(context.Context, string, string) ([]net.IPAddr, error)
+
+func(context.Context, string, string) (net.Conn, error)
+
+func(error)
+
+func(error) error
+
+func(fmt.State, int32)
+
+func(func(string) bool) (reflect.StructField, bool)
+
+func(func(uintptr) bool) error
+
+func(func(uintptr)) error
+
+func(int32)
+
+func(hpack.HeaderField)
+
+func(map[string][]string)
+
+func(httptrace.DNSDoneInfo)
+
+func(httptrace.DNSStartInfo)
+
+func(httptrace.GotConnInfo)
+
+func(httptrace.WroteRequestInfo)
+
+func(int) (int32, int)
+
+func(int) (syscall.Sockaddr, error)
+
+func(int) bool
+
+func(int) reflect.Method
+
+func(int) reflect.StructField
+
+func(int) reflect.Type
+
+func(int) uint64
+
+func(int, chan int)
+
+func(int, int)
+
+func(int, int) (cipher.AEAD, error)
+
+func(int, int) bool
+
+func(int, int, int) runtime.addrRange
+
+func(int, runtime.addrRange) (int, int)
+
+func(int, map[string][]string) error
+
+func(int64)
+
+func(interface {}) interface {}
+
+func(interface {}, uintptr)
+
+func(io.Reader) (int64, error)
+
+func(io.Reader, []uint8) error
+
+func(io.Reader, []uint8, crypto.DecrypterOpts) ([]uint8, error)
+
+func(io.Reader, []uint8, crypto.SignerOpts) ([]uint8, error)
+
+func(io.Writer) (int64, error)
+
+func(io.Writer, string) (int, error)
+
+func(map[int32]bool) string
+
+func(reflect.Type) bool
+
+func(reflectlite.Type) bool
+
+func(string)
+
+func(string) (*tls.ClientSessionState, bool)
+
+func(string) (int, error)
+
+func(string) (reflect.Method, bool)
+
+func(string) (reflect.StructField, bool)
+
+func(string) bool
+
+func(string) net.sockaddr
+
+func(string) string
+
+func(string, *tls.ClientSessionState)
+
+func(string, *tls.Conn) http.RoundTripper
+
+func(string, []interface {})
+
+func(string, []string)
+
+func(string, []uint8, int) ([]uint8, error)
+
+func(string, string)
+
+func(string, string) (net.Conn, error)
+
+func(string, string, *tls.Config) (net.Conn, error)
+
+func(string, string, error)
+
+func(string, string, []uint8) bool
+
+func(string, string, syscall.RawConn) error
+
+func(time.Time) error
+
+func(tls.ConnectionState) error
+
+func(tls.ConnectionState, error)
+
+func(uint16) tls.keyAgreement
+
+func(uint32) []uint8
+
+func(uint32, []bool) bool
+
+func(uint8) error
+
+func(uintptr)
+
+func(uintptr) bool
+
+func(unsafe.Pointer, uintptr) uintptr
+
+func(unsafe.Pointer, unsafe.Pointer)
+
+func(unsafe.Pointer, unsafe.Pointer) bool
+
+map[string]string
+
+int32
+
+int
+
+int
+
+map[string][]string
+
+int
+
+int32
+
+uint32
+
+uint32
+
+uint8
+
+uint8
+
+uint16
+
+string
+
+string
+
+string
+
+string
+
+int
+
+int
+
+int
+
+int32
+
+int
+
+int16
+
+int32
+
+int64
+
+int8
+
+type interface {} interface{}
+
+string
+
+int
+
+map[*http.http2ClientConn][]string
+
+map[*http.persistConn]*list.Element
+
+map[*reflect.structType]bool
+
+map[*reflect.structType]int
+
+map[*x509.Certificate][][]*x509.Certificate
+
+map[[8]uint8]chan struct {}
+
+map[context.canceler]struct {}
+
+map[uint][]uint8
+
+map[uint]asn1.RawValue
+
+map[uint16]string
+
+map[uint16]string
+
+map[uint16]string
+
+map[uint8]string
+
+map[int32]**gob.decEngine
+
+map[int32]*func(*gob.decInstr, *gob.decoderState, reflect.Value)
+
+map[int32]*gob.wireType
+
+map[int32]bool
+
+map[int32]func(*gob.decInstr, *gob.decoderState, reflect.Value)
+
+map[int32]gob.gobType
+
+map[hpack.pairNameValue]uint64
+
+map[int]string
+
+map[http.cancelKey]func(error)
+
+map[http.connectMethodKey][]*http.persistConn
+
+map[http.connectMethodKey]http.wantConnQueue
+
+map[http.connectMethodKey]int
+
+map[uint32]string
+
+map[uint8]string
+
+map[uint8]func(*http.http2frameCache, http.http2FrameHeader, []uint8) (http.http2Frame, error)
+
+map[uint8]map[uint8]string
+
+map[uint8]string
+
+map[uint16]string
+
+map[int32]uint
+
+map[int32]unsafe.Pointer
+
+map[int]string
+
+map[interface {}]*sync.entry
+
+map[interface {}]struct {}
+
+map[int]string
+
+map[uint]func(*gob.decoderState, reflect.Value, int, error) bool
+
+map[uint]func(*gob.encoderState, reflect.Value) bool
+
+map[reflect.Type]*func(*gob.decInstr, *gob.decoderState, reflect.Value)
+
+map[reflect.Type]*gob.typeInfo
+
+map[reflect.Type]bool
+
+map[reflect.Type]gob.gobType
+
+map[reflect.Type]int32
+
+map[reflect.Type]int
+
+map[reflect.Type]map[int32]**gob.decEngine
+
+map[reflect.visit]bool
+
+map[runtime._typePair]struct {}
+
+map[int32]*runtime._type
+
+map[string]*girc.Channel
+
+map[string]*girc.User
+
+map[string]*http.http2addConnCall
+
+map[string]*http.http2dialCall
+
+map[string]*potion.Potion
+
+map[string]*singleflight.call
+
+map[string]*tls.Certificate
+
+map[string]*unicode.RangeTable
+
+map[string][]*http.Cookie
+
+map[string][]*http.http2ClientConn
+
+map[string][]*multipart.FileHeader
+
+map[string][]int
+
+map[string][]net.nssSource
+
+map[string][]string
+
+map[string]bool
+
+map[string]func(string, *tls.Conn) http.RoundTripper
+
+map[string]func(*girc.Client, girc.CTCPEvent)
+
+map[string]girc.Handler
+
+map[string]girc.Perms
+
+map[string]http.RoundTripper
+
+map[string]int
+
+map[string]int64
+
+map[string]interface {}
+
+map[string]map[string]girc.Handler
+
+map[string]map[string]int
+
+map[string]map[string]string
+
+map[string]string
+
+map[string]syntax.charGroup
+
+map[string]uint64
+
+map[uint8]string
+
+map[uint16]bool
+
+map[uint32]*http.http2clientStream
+
+map[uint32][]*runtime._type
+
+map[uint32]int32
+
+map[unsafe.Pointer]int32
+
+map[[28]uint8]bool
+
+uint
+
+string
+
+int8
+
+int32
+
+uint32
+
+uint16
+
+int
+
+int
+
+uint8
+
+int
+
+uint8
+
+uint8
+
+int
+
+int
+
+uint
+
+string
+
+uintptr
+
+int32
+
+uint8
+
+int32
+
+uint
+
+int32
+
+uint8
+
+int32
+
+uint64
+
+uint
+
+uint8
+
+int
+
+uint
+
+string
+
+uint8
+
+uint8
+
+int
+
+uintptr
+
+uintptr
+
+uint64
+
+int
+
+uint8
+
+uintptr
+
+int32
+
+uint64
+
+string
+
+uintptr
+
+uint8
+
+string
+
+uint64
+
+uint8
+
+uintptr
+
+int32
+
+uint16
+
+uint32
+
+uint64
+
+uint8
+
+string
+
+type struct { Name string "json:\"name\""; Account string "json:\"account\""; Away string "json:\"away\"" } struct{
+	Name string
+	Account string
+	Away string
+}
+
+type struct { Struct reflect.Type; FieldStack []string } struct{
+	Struct reflect.Type
+	FieldStack []string
+}
+
+type struct {} struct{}
+
+uintptr
+
+uint8
+
+string
+
+uint16
+
+uint8
+
+uint8
+
+uint64
+
+uintptr
+
+int
+
+uint32
+
+uint32
+
+map[string][]string
+
+string
+
+int64
+
+string
+
+int
+
+uint16
+
+int
+
+uint16
+
+uint8
+
+uint
+
+uint16
+
+uint32
+
+uint64
+
+uint8
+
+uintptr
+
+unsafe.Pointer
+
+string
+
+string
+
+map[string][]string
+
+int
+
+int
+
+int
+
+int
+
+int
+
+int
+
+*girc.CMode
+func (*girc.CMode) Short() string
+func (*girc.CMode) String() string
+
+*girc.CModes
+func (*girc.CModes) Apply()
+func (*girc.CModes) Copy()
+func (*girc.CModes) Get()
+func (*girc.CModes) HasMode(string) bool
+func (*girc.CModes) Parse()
+func (*girc.CModes) String() string
+func (*girc.CModes) hasArg()
+
+*girc.CTCP
+func (*girc.CTCP) Clear(string)
+func (*girc.CTCP) ClearAll()
+func (*girc.CTCP) Set()
+func (*girc.CTCP) SetBg()
+func (*girc.CTCP) addDefaultHandlers()
+func (*girc.CTCP) call()
+func (*girc.CTCP) parseCMD(string) string
+
+*girc.Caller
+func (*girc.Caller) Add()
+func (*girc.Caller) AddBg()
+func (*girc.Caller) AddHandler()
+func (*girc.Caller) AddTmp()
+func (*girc.Caller) Clear(string)
+func (*girc.Caller) ClearAll()
+func (*girc.Caller) Count()
+func (*girc.Caller) Len() int
+func (*girc.Caller) Remove(string) bool
+func (*girc.Caller) String() string
+func (*girc.Caller) clearInternal()
+func (*girc.Caller) cuid()
+func (*girc.Caller) cuidToID()
+func (*girc.Caller) exec()
+func (*girc.Caller) register()
+func (*girc.Caller) remove(string) bool
+func (*girc.Caller) sregister()
+
+*girc.Channel
+func (*girc.Channel) Admins()
+func (*girc.Channel) Copy()
+func (*girc.Channel) Len() int
+func (*girc.Channel) Lifetime()
+func (*girc.Channel) Trusted()
+func (*girc.Channel) UserIn(string) bool
+func (*girc.Channel) Users()
+func (*girc.Channel) addUser(string)
+func (*girc.Channel) deleteUser(string)
+
+*girc.Client
+func (*girc.Client) ChannelList()
+func (*girc.Client) Channels()
+func (*girc.Client) Close()
+func (*girc.Client) ConnSince()
+func (*girc.Client) Connect() error
+func (*girc.Client) DialerConnect()
+func (*girc.Client) DisableTracking()
+func (*girc.Client) GetHost() string
+func (*girc.Client) GetID() string
+func (*girc.Client) GetIdent() string
+func (*girc.Client) GetNick() string
+func (*girc.Client) GetServerOption()
+func (*girc.Client) HasCapability(string) bool
+func (*girc.Client) IsConnected() bool
+func (*girc.Client) IsInChannel(string) bool
+func (*girc.Client) Latency()
+func (*girc.Client) Lifetime()
+func (*girc.Client) LookupChannel()
+func (*girc.Client) LookupUser()
+func (*girc.Client) MockConnect()
+func (*girc.Client) NetworkName() string
+func (*girc.Client) Quit(string)
+func (*girc.Client) RunHandlers()
+func (*girc.Client) Send()
+func (*girc.Client) Server() string
+func (*girc.Client) ServerMOTD() string
+func (*girc.Client) ServerVersion() string
+func (*girc.Client) String() string
+func (*girc.Client) TLSConnectionState()
+func (*girc.Client) Uptime()
+func (*girc.Client) UserList()
+func (*girc.Client) Users()
+func (*girc.Client) debugLogEvent()
+func (*girc.Client) execLoop()
+func (*girc.Client) internalConnect()
+func (*girc.Client) listCAP()
+func (*girc.Client) panicIfNotTracking()
+func (*girc.Client) pingLoop()
+func (*girc.Client) readLoop()
+func (*girc.Client) registerBuiltins()
+func (*girc.Client) sendLoop()
+func (*girc.Client) server() string
+func (*girc.Client) write()
+
+*girc.Commands
+func (*girc.Commands) Action(string, string)
+func (*girc.Commands) Actionf()
+func (*girc.Commands) Away(string)
+func (*girc.Commands) Back()
+func (*girc.Commands) Ban(string, string)
+func (*girc.Commands) Invite()
+func (*girc.Commands) Join()
+func (*girc.Commands) JoinKey(string, string)
+func (*girc.Commands) Kick()
+func (*girc.Commands) List()
+func (*girc.Commands) Message(string, string)
+func (*girc.Commands) Messagef()
+func (*girc.Commands) Mode()
+func (*girc.Commands) Monitor()
+func (*girc.Commands) Nick(string)
+func (*girc.Commands) Notice(string, string)
+func (*girc.Commands) Noticef()
+func (*girc.Commands) Oper(string, string)
+func (*girc.Commands) Part()
+func (*girc.Commands) PartMessage(string, string)
+func (*girc.Commands) Ping(string)
+func (*girc.Commands) Pong(string)
+func (*girc.Commands) Reply()
+func (*girc.Commands) ReplyTo()
+func (*girc.Commands) ReplyTof()
+func (*girc.Commands) Replyf()
+func (*girc.Commands) SendCTCP()
+func (*girc.Commands) SendCTCPReply()
+func (*girc.Commands) SendCTCPReplyf()
+func (*girc.Commands) SendCTCPf()
+func (*girc.Commands) SendRaw()
+func (*girc.Commands) SendRawf()
+func (*girc.Commands) Topic(string, string)
+func (*girc.Commands) Unban(string, string)
+func (*girc.Commands) Who()
+func (*girc.Commands) Whois()
+func (*girc.Commands) Whowas()
+
+*girc.Config
+func (*girc.Config) isValid() error
+
+*girc.ErrEvent
+func (*girc.ErrEvent) Error() string
+
+*girc.ErrInvalidConfig
+func (*girc.ErrInvalidConfig) Error() string
+
+*girc.ErrParseEvent
+func (*girc.ErrParseEvent) Error() string
+
+*girc.ErrSTSUpgradeFailed
+func (*girc.ErrSTSUpgradeFailed) Error() string
+
+*girc.ErrTimedOut
+func (*girc.ErrTimedOut) Error() string
+
+*girc.Event
+func (*girc.Event) Bytes() []uint8
+func (*girc.Event) Copy()
+func (*girc.Event) Equals()
+func (*girc.Event) IsAction() bool
+func (*girc.Event) IsCTCP()
+func (*girc.Event) IsFromChannel() bool
+func (*girc.Event) IsFromUser() bool
+func (*girc.Event) Last() string
+func (*girc.Event) Len() int
+func (*girc.Event) Pretty()
+func (*girc.Event) String() string
+func (*girc.Event) StripAction() string
+
+*girc.HandlerError
+func (*girc.HandlerError) Error() string
+func (*girc.HandlerError) String() string
+
+*func()
+func (*girc.HandlerFunc) Execute(*girc.Client, girc.Event)
+
+*girc.Perms
+func (*girc.Perms) IsAdmin() bool
+func (*girc.Perms) IsTrusted() bool
+func (*girc.Perms) reset()
+func (*girc.Perms) set()
+func (*girc.Perms) setFromMode()
+
+*girc.Source
+func (*girc.Source) Bytes() []uint8
+func (*girc.Source) Copy()
+func (*girc.Source) Equals()
+func (*girc.Source) ID() string
+func (*girc.Source) IsHostmask() bool
+func (*girc.Source) IsServer() bool
+func (*girc.Source) Len() int
+func (*girc.Source) String() string
+func (*girc.Source) writeTo()
+
+*map[string]string
+func (*girc.Tags) Bytes() []uint8
+func (*girc.Tags) Count() int
+func (*girc.Tags) Equals()
+func (*girc.Tags) Get()
+func (*girc.Tags) Keys()
+func (*girc.Tags) Len() int
+func (*girc.Tags) Remove(string) bool
+func (*girc.Tags) Set()
+func (*girc.Tags) String() string
+func (*girc.Tags) writeTo()
+
+*girc.User
+func (*girc.User) Active()
+func (*girc.User) Channels()
+func (*girc.User) Copy()
+func (*girc.User) InChannel(string) bool
+func (*girc.User) IsActive() bool
+func (*girc.User) Lifetime()
+func (*girc.User) addChannel(string)
+func (*girc.User) deleteChannel(string)
+
+*girc.UserPerms
+func (*girc.UserPerms) Copy()
+func (*girc.UserPerms) Lookup()
+func (*girc.UserPerms) MarshalJSON() ([]uint8, error)
+func (*girc.UserPerms) remove(string)
+func (*girc.UserPerms) set()
+
+*girc.WebIRC
+func (*girc.WebIRC) Params()
+
+*girc.execStack
+func (*girc.execStack) Execute(*girc.Client, girc.Event)
+
+*girc.ircConn
+func (*girc.ircConn) Close() error
+func (*girc.ircConn) decode()
+func (*girc.ircConn) encode()
+func (*girc.ircConn) newReadWriter()
+func (*girc.ircConn) rate()
+
+*girc.state
+func (*girc.state) Lock()
+func (*girc.state) RLock()
+func (*girc.state) RLocker()
+func (*girc.state) RUnlock()
+func (*girc.state) Unlock()
+func (*girc.state) chanModes() string
+func (*girc.state) createChannel(string) bool
+func (*girc.state) createUser()
+func (*girc.state) deleteChannel(string)
+func (*girc.state) deleteUser(string, string)
+func (*girc.state) lookupChannel()
+func (*girc.state) lookupUser()
+func (*girc.state) notify()
+func (*girc.state) rUnlockSlow()
+func (*girc.state) renameUser(string, string)
+func (*girc.state) reset()
+func (*girc.state) userPrefixes() string
+
+*girc.strictTransport
+func (*girc.strictTransport) enabled() bool
+func (*girc.strictTransport) expired() bool
+func (*girc.strictTransport) reset()
+
+type girc.CMode struct{
+	add bool
+	name uint8
+	setting bool
+	args string
+}
+
+type girc.CModes struct{
+	raw string
+	modesListArgs string
+	modesArgs string
+	modesSetArgs string
+	modesNoArgs string
+	prefixes string
+	modes []girc.CMode
+}
+
+type girc.CTCP struct{
+	mu sync.RWMutex
+	handlers map[string]func(*girc.Client, girc.CTCPEvent)
+}
+
+type girc.CTCPEvent struct{
+	Origin *girc.Event
+	Source *girc.Source
+	Command string
+	Text string
+	Reply bool
+}
+
+func(*girc.Client, girc.CTCPEvent)
+
+type girc.Caller struct{
+	mu sync.RWMutex
+	external map[string]map[string]girc.Handler
+	internal map[string]map[string]girc.Handler
+	debug *log.Logger
+}
+
+type girc.Channel struct{
+	Name string
+	Topic string
+	UserList []string
+	Joined time.Time
+	Modes girc.CModes
+}
+func (girc.Channel) Admins()
+func (girc.Channel) Trusted()
+func (girc.Channel) Users()
+
+type girc.Client struct{
+	Config girc.Config
+	rx chan *girc.Event
+	tx chan *girc.Event
+	state *girc.state
+	initTime time.Time
+	Handlers *girc.Caller
+	CTCP *<nil>
+	Cmd *girc.Commands
+	mu sync.RWMutex
+	stop func()
+	conn *girc.ircConn
+	debug *log.Logger
+}
+
+type girc.Commands struct{
+	c *<nil>
+}
+
+type girc.Config struct{
+	Server string
+	ServerPass string
+	Port int
+	Nick string
+	User string
+	Name string
+	SASL girc.SASLMech
+	WebIRC girc.WebIRC
+	Bind string
+	SSL bool
+	DisableSTS bool
+	DisableSTSFallback bool
+	TLSConfig *tls.Config
+	AllowFlood bool
+	GlobalFormat bool
+	Debug io.Writer
+	Out io.Writer
+	RecoverFunc func(*girc.Client, *girc.HandlerError)
+	SupportedCaps map[string][]string
+	Version string
+	PingDelay int64
+	disableTracking bool
+	HandleNickCollide func(string) string
+}
+
+type girc.Dialer interface {
+	Dial(string, string) (net.Conn, error)
+}
+
+type girc.ErrEvent struct{
+	Event *girc.Event
+}
+
+type girc.ErrInvalidConfig struct{
+	Conf girc.Config
+	err error
+}
+func (girc.ErrInvalidConfig) Error() string
+
+type girc.ErrParseEvent struct{
+	Line string
+}
+func (girc.ErrParseEvent) Error() string
+
+type girc.ErrSTSUpgradeFailed struct{
+	Err error
+}
+func (girc.ErrSTSUpgradeFailed) Error() string
+
+type girc.ErrTimedOut struct{
+	TimeSinceSuccess int64
+	LastPong time.Time
+	LastPing time.Time
+	Delay int64
+}
+func (girc.ErrTimedOut) Error() string
+
+type girc.Event struct{
+	Source *girc.Source
+	Tags map[string]string
+	Timestamp time.Time
+	Command string
+	Params []string
+	Sensitive bool
+	Echo bool
+}
+
+type girc.Handler interface {
+	Execute(*girc.Client, girc.Event)
+}
+
+type girc.HandlerError struct{
+	Event girc.Event
+	ID string
+	File string
+	Line int
+	Func string
+	Panic interface {}
+	Stack []uint8
+	callOk bool
+}
+
+func()
+func (girc.HandlerFunc) Execute(*girc.Client, girc.Event)
+
+type girc.Perms struct{
+	Owner bool
+	Admin bool
+	Op bool
+	HalfOp bool
+	Voice bool
+}
+func (girc.Perms) IsAdmin() bool
+func (girc.Perms) IsTrusted() bool
+
+type girc.SASLMech interface {
+	Encode([]string) string
+	Method() string
+}
+
+type girc.Source struct{
+	Name string
+	Ident string
+	Host string
+}
+
+type girc.User struct{
+	Nick string
+	Ident string
+	Host string
+	ChannelList []string
+	FirstSeen time.Time
+	LastActive time.Time
+	Perms *girc.UserPerms
+	Extras struct { Name string "json:\"name\""; Account string "json:\"account\""; Away string "json:\"away\"" }
+}
+func (girc.User) Channels()
+
+type girc.UserPerms struct{
+	mu sync.RWMutex
+	channels map[string]girc.Perms
+}
+
+type girc.WebIRC struct{
+	Password string
+	Gateway string
+	Hostname string
+	Address string
+}
+func (girc.WebIRC) Params()
+
+type girc.execStack struct{
+	girc.Handler
+	cuid string
+}
+func (girc.execStack) Execute(*girc.Client, girc.Event)
+
+type girc.ircConn struct{
+	io *bufio.ReadWriter
+	sock net.Conn
+	mu sync.RWMutex
+	lastWrite time.Time
+	lastActive time.Time
+	writeDelay int64
+	connected bool
+	connTime *time.Time
+	lastPing time.Time
+	lastPong time.Time
+	pingDelay int64
+}
+
+type girc.state struct{
+	sync.RWMutex
+	nick string
+	ident string
+	host string
+	channels map[string]*girc.Channel
+	users map[string]*girc.User
+	enabledCap map[string]map[string]string
+	tmpCap map[string]map[string]string
+	serverOptions map[string]string
+	motd string
+	sts girc.strictTransport
+}
+
+type girc.strictTransport struct{
+	beginUpgrade bool
+	upgradePort int
+	persistenceDuration int
+	persistenceReceived time.Time
+	preload bool
+	lastFailed time.Time
+}
+
+type struct { c unsafe.Pointer; elem unsafe.Pointer } struct{
+	c unsafe.Pointer
+	elem unsafe.Pointer
+}
+
+type main.IP struct{
+	Query string
+}
+
+type potion.Potion struct{
+	Name string
+	Handler func(*potion.Potion, string) string
+	Program []uint8
+	VM *vm.Program
+	Flavor string
+	Dungeon string
+	DungeonContents string
+}
+
+func(*potion.Potion, string) string
+
+*vm.Cpu
+func (*vm.Cpu) BlockRead()
+func (*vm.Cpu) BlockWrite()
+func (*vm.Cpu) Execute(chan int)
+func (*vm.Cpu) ExecuteAdd()
+func (*vm.Cpu) ExecuteAnd()
+func (*vm.Cpu) ExecuteDiv()
+func (*vm.Cpu) ExecuteInstruction()
+func (*vm.Cpu) ExecuteJmp()
+func (*vm.Cpu) ExecuteMov()
+func (*vm.Cpu) ExecuteMul()
+func (*vm.Cpu) ExecuteNot()
+func (*vm.Cpu) ExecuteOr()
+func (*vm.Cpu) ExecuteShl()
+func (*vm.Cpu) ExecuteShr()
+func (*vm.Cpu) ExecuteSub()
+func (*vm.Cpu) ExecuteTcp()
+func (*vm.Cpu) ExecuteTeq()
+func (*vm.Cpu) ExecuteTgt()
+func (*vm.Cpu) ExecuteTlt()
+func (*vm.Cpu) ExecuteXor()
+func (*vm.Cpu) GetRegister()
+func (*vm.Cpu) SetChannel(int, chan int)
+func (*vm.Cpu) SetRegister(int, int) bool
+
+*vm.InputDevice
+func (*vm.InputDevice) Execute(chan int)
+func (*vm.InputDevice) SetChannel(int, chan int)
+
+*vm.OutputDevice
+func (*vm.OutputDevice) Execute(chan int)
+func (*vm.OutputDevice) SetChannel(int, chan int)
+
+*vm.Program
+func (*vm.Program) Execute([]uint8) []uint8
+func (*vm.Program) GetDeviceById()
+
+*vm.RAM
+func (*vm.RAM) Execute(chan int)
+func (*vm.RAM) SetChannel(int, chan int)
+
+*vm.ROM
+func (*vm.ROM) Execute(chan int)
+func (*vm.ROM) SetChannel(int, chan int)
+
+type struct { c unsafe.Pointer; elem unsafe.Pointer } struct{
+	c unsafe.Pointer
+	elem unsafe.Pointer
+}
+
+type vm.Cpu struct{
+	Acc int
+	Dat int
+	Pc int
+	Cond int
+	Instructions []vm.Instruction
+	x0 chan int
+	x1 chan int
+	x2 chan int
+	x3 chan int
+	control chan int
+}
+
+type vm.Device interface {
+	Execute(chan int)
+	SetChannel(int, chan int)
+}
+
+type vm.InputDevice struct{
+	Name string
+	x0 chan int
+	input chan int
+	control chan int
+}
+
+type vm.Instruction struct{
+	Opcode int
+	A0 int
+	A1 int
+	A2 int
+	Bm int
+	Cond int
+}
+
+type vm.Link struct{
+	LHDevice int
+	LHReg int
+	RHDevice int
+	RHReg int
+}
+
+type vm.OutputDevice struct{
+	Name string
+	x0 chan int
+	output chan int
+	control chan int
+}
+
+type vm.Program struct{
+	Magic int
+	Input vm.InputDevice
+	Output vm.OutputDevice
+	Cpus []vm.Cpu
+	ROMs []vm.ROM
+	RAMs []vm.RAM
+	Links []vm.Link
+	controls []chan int
+}
+
+type vm.RAM struct{
+	A0 int
+	A1 int
+	Data []int
+	x0 chan int
+	x1 chan int
+	x2 chan int
+	x3 chan int
+	control chan int
+}
+
+type vm.ROM struct{
+	A0 int
+	A1 int
+	Data []int
+	x0 chan int
+	x1 chan int
+	x2 chan int
+	x3 chan int
+	control chan int
+}
+

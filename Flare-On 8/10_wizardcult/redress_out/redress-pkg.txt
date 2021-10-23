@@ -1,0 +1,7 @@
+Packages:
+main
+wizardcult/comms
+wizardcult/potion
+wizardcult/tables
+wizardcult/vm
+

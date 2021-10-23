@@ -1,0 +1,327 @@
+type struct { Name string "json:\"name\""; Account string "json:\"account\""; Away string "json:\"away\"" } struct{
+	Name string
+	Account string
+	Away string
+}
+
+type struct { Struct reflect.Type; FieldStack []string } struct{
+	Struct reflect.Type
+	FieldStack []string
+}
+
+type struct {} struct{}
+
+type girc.CMode struct{
+	add bool
+	name uint8
+	setting bool
+	args string
+}
+
+type girc.CModes struct{
+	raw string
+	modesListArgs string
+	modesArgs string
+	modesSetArgs string
+	modesNoArgs string
+	prefixes string
+	modes []girc.CMode
+}
+
+type girc.CTCP struct{
+	mu sync.RWMutex
+	handlers map[string]func(*girc.Client, girc.CTCPEvent)
+}
+
+type girc.CTCPEvent struct{
+	Origin *girc.Event
+	Source *girc.Source
+	Command string
+	Text string
+	Reply bool
+}
+
+type girc.Caller struct{
+	mu sync.RWMutex
+	external map[string]map[string]girc.Handler
+	internal map[string]map[string]girc.Handler
+	debug *log.Logger
+}
+
+type girc.Channel struct{
+	Name string
+	Topic string
+	UserList []string
+	Joined time.Time
+	Modes girc.CModes
+}
+
+type girc.Client struct{
+	Config girc.Config
+	rx chan *girc.Event
+	tx chan *girc.Event
+	state *girc.state
+	initTime time.Time
+	Handlers *girc.Caller
+	CTCP *<nil>
+	Cmd *girc.Commands
+	mu sync.RWMutex
+	stop func()
+	conn *girc.ircConn
+	debug *log.Logger
+}
+
+type girc.Commands struct{
+	c *<nil>
+}
+
+type girc.Config struct{
+	Server string
+	ServerPass string
+	Port int
+	Nick string
+	User string
+	Name string
+	SASL girc.SASLMech
+	WebIRC girc.WebIRC
+	Bind string
+	SSL bool
+	DisableSTS bool
+	DisableSTSFallback bool
+	TLSConfig *tls.Config
+	AllowFlood bool
+	GlobalFormat bool
+	Debug io.Writer
+	Out io.Writer
+	RecoverFunc func(*girc.Client, *girc.HandlerError)
+	SupportedCaps map[string][]string
+	Version string
+	PingDelay int64
+	disableTracking bool
+	HandleNickCollide func(string) string
+}
+
+type girc.ErrEvent struct{
+	Event *girc.Event
+}
+
+type girc.ErrInvalidConfig struct{
+	Conf girc.Config
+	err error
+}
+
+type girc.ErrParseEvent struct{
+	Line string
+}
+
+type girc.ErrSTSUpgradeFailed struct{
+	Err error
+}
+
+type girc.ErrTimedOut struct{
+	TimeSinceSuccess int64
+	LastPong time.Time
+	LastPing time.Time
+	Delay int64
+}
+
+type girc.Event struct{
+	Source *girc.Source
+	Tags map[string]string
+	Timestamp time.Time
+	Command string
+	Params []string
+	Sensitive bool
+	Echo bool
+}
+
+type girc.HandlerError struct{
+	Event girc.Event
+	ID string
+	File string
+	Line int
+	Func string
+	Panic interface {}
+	Stack []uint8
+	callOk bool
+}
+
+type girc.Perms struct{
+	Owner bool
+	Admin bool
+	Op bool
+	HalfOp bool
+	Voice bool
+}
+
+type girc.Source struct{
+	Name string
+	Ident string
+	Host string
+}
+
+type girc.User struct{
+	Nick string
+	Ident string
+	Host string
+	ChannelList []string
+	FirstSeen time.Time
+	LastActive time.Time
+	Perms *girc.UserPerms
+	Extras struct { Name string "json:\"name\""; Account string "json:\"account\""; Away string "json:\"away\"" }
+}
+
+type girc.UserPerms struct{
+	mu sync.RWMutex
+	channels map[string]girc.Perms
+}
+
+type girc.WebIRC struct{
+	Password string
+	Gateway string
+	Hostname string
+	Address string
+}
+
+type girc.execStack struct{
+	girc.Handler
+	cuid string
+}
+
+type girc.ircConn struct{
+	io *bufio.ReadWriter
+	sock net.Conn
+	mu sync.RWMutex
+	lastWrite time.Time
+	lastActive time.Time
+	writeDelay int64
+	connected bool
+	connTime *time.Time
+	lastPing time.Time
+	lastPong time.Time
+	pingDelay int64
+}
+
+type girc.state struct{
+	sync.RWMutex
+	nick string
+	ident string
+	host string
+	channels map[string]*girc.Channel
+	users map[string]*girc.User
+	enabledCap map[string]map[string]string
+	tmpCap map[string]map[string]string
+	serverOptions map[string]string
+	motd string
+	sts girc.strictTransport
+}
+
+type girc.strictTransport struct{
+	beginUpgrade bool
+	upgradePort int
+	persistenceDuration int
+	persistenceReceived time.Time
+	preload bool
+	lastFailed time.Time
+}
+
+type struct { c unsafe.Pointer; elem unsafe.Pointer } struct{
+	c unsafe.Pointer
+	elem unsafe.Pointer
+}
+
+type main.IP struct{
+	Query string
+}
+
+type potion.Potion struct{
+	Name string
+	Handler func(*potion.Potion, string) string
+	Program []uint8
+	VM *vm.Program
+	Flavor string
+	Dungeon string
+	DungeonContents string
+}
+
+type struct { c unsafe.Pointer; elem unsafe.Pointer } struct{
+	c unsafe.Pointer
+	elem unsafe.Pointer
+}
+
+type vm.Cpu struct{
+	Acc int
+	Dat int
+	Pc int
+	Cond int
+	Instructions []vm.Instruction
+	x0 chan int
+	x1 chan int
+	x2 chan int
+	x3 chan int
+	control chan int
+}
+
+type vm.InputDevice struct{
+	Name string
+	x0 chan int
+	input chan int
+	control chan int
+}
+
+type vm.Instruction struct{
+	Opcode int
+	A0 int
+	A1 int
+	A2 int
+	Bm int
+	Cond int
+}
+
+type vm.Link struct{
+	LHDevice int
+	LHReg int
+	RHDevice int
+	RHReg int
+}
+
+type vm.OutputDevice struct{
+	Name string
+	x0 chan int
+	output chan int
+	control chan int
+}
+
+type vm.Program struct{
+	Magic int
+	Input vm.InputDevice
+	Output vm.OutputDevice
+	Cpus []vm.Cpu
+	ROMs []vm.ROM
+	RAMs []vm.RAM
+	Links []vm.Link
+	controls []chan int
+}
+
+type vm.RAM struct{
+	A0 int
+	A1 int
+	Data []int
+	x0 chan int
+	x1 chan int
+	x2 chan int
+	x3 chan int
+	control chan int
+}
+
+type vm.ROM struct{
+	A0 int
+	A1 int
+	Data []int
+	x0 chan int
+	x1 chan int
+	x2 chan int
+	x3 chan int
+	control chan int
+}
+
