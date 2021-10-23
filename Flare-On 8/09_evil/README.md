@@ -568,13 +568,13 @@ At 0x40422A, a second call to some_crypto_stuff_4067A0 is executed.
 - pbData (crypted buffer @ 0x6CFBA0) = `9C 5C 0C 96 6C 7F D8 B9 CC 38 F6 17 6D AA BA 84 BD 83 D8 74 58 D7 D3 32 4C 59 1D FE 5C 24 FB 2B 6B 4F A9 0F 26`
 - pbDataLen = 0x25
 - The result is sent back to the packet origin via function wrap_ws2_32_sendto_403D40.
-- The decryption function (see above) imports a PUBLICKEYSTRUC and key bytes indicating an ALG_ID of CALG_SEAL (0x6802), which is marked as "not supported" in MSDN. Trying out CALG_RC4 (0x6801) just for fun and giggles unexpectedly decrypts this pbData to fake flag `N3ver_G0nNa_g1ve_y0u_Up@flare-on.com\x00`. While it is not necessary to know for solving this challenge, it is known now that function some_crypto_stuff_4067A0 uses the RC4 cipher (if any person reading this could point out why, please don't hesitate to brighten me up - it seems to be another **evil** trick).
+- The decryption function (see above) imports a PUBLICKEYSTRUC and key bytes indicating an ALG_ID of CALG_SEAL (0x6802), which is marked as "not supported" in MSDN. Trying out CALG_RC4 (0x6801) just for fun and giggles unexpectedly decrypts this pbData to fake flag `N3ver_G0nNa_g1ve_y0u_Up@flare-on.com\x00`. While it is not necessary to know for solving this challenge, it is now known that function some_crypto_stuff_4067A0 uses the RC4 cipher (if any person reading this could point out why, please don't hesitate to brighten me up - it seems to be another **evil** trick).
 
 Knowing this, the encrypted buffer 0x5B7330 can be decrypted to a bitmap file containing a screenshot of rick astley (more rick roll! YAY!).
 
 #### Thread 4: Type dependent Code Execution - Type 2
 
-A type 2 packet will continue code execution @ 0x404904. This code starts of with lots of gibberish code that might best be left off for a future dynamic analysis.
+A type 2 packet will continue code execution @ 0x404904. This code begins spaghetti-like that might best be left for a future dynamic analysis.
 
 What stands out though is code that looks like crc32 calculation in the function crc32_4069F0 called @ 0x404D9D. After inspecting this function it could be prototyped with `unsigned int __cdecl crc32_4069F0(int buf, unsigned int dwLen, int *crc)`.
 
