@@ -24,7 +24,7 @@ evil.exe | 2,964,480 bytes | 83902600c32ff5d37cbdbed813d99c3b05b0f53311170c3b8c3
 - evil will terminate, if it wasn't called with a command line argument. The argument is used as an IPv4 address to bind UDP sockets to.
 - Then a function is called containing quite some dead code, that also sets up raw UDP network sockets and thread synchronization Semaphore & Mutex.
 - After that, two more threads are created that handle network communications through these sockets.
-  - Thread 3 listens for incoming UDP packets destined for port 4356 and having the **evil** bit set in the IP header.
+  - Thread 3 listens for incoming UDP packets destined for port 4356 and having the **evil** bit (0x80 for that byte, or 0x04 for the flag) set in the IP header.
   - Thread 4 will generate four parts of the flag decrypting key if it is passed four UDP packets with specific payloads ("L0ve", "s3cret", "5Ex", "g0d").
   - Once the key parts are in place, a last crafted UDP packet will return the flag `n0_mOr3_eXcEpti0n$_p1ea$e@flare-on.com`
 
