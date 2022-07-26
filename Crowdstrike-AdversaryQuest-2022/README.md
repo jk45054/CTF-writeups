@@ -1,6 +1,6 @@
 # CrowdStrike's Adversary Quest 2022
 
-CrowdStrike hosted their (hopefully annual) CTF this year running from 2022-07-11 to 2022-07-25.
+CrowdStrike hosted their (hopefully annual) [Adversary Quest CTF](https://www.crowdstrike.com/blog/capture-the-flag-crowdstrike-intelligence-adversary-quest-2022/) this year running from 2022-07-11 to 2022-07-25.
 
 It consisted of three tracks for the fictive Cyberthreat actors Catapult Spider, Protective Penguin and Tabloid Jackal. Each track comprised four challenges each.
 
