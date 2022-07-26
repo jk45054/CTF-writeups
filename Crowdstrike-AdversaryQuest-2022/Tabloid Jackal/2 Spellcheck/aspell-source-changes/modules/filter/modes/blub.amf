@@ -1,0 +1,7 @@
+MODE blub
+
+ASPELL >=0.60
+
+DESCRIPTION mode for pwning tabloid jackal challenge 2
+
+FILTER blub
