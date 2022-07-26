@@ -280,7 +280,7 @@ One nice way to gain access to the target machine would be to open a reverse she
 
 Lacking such a server with a public IPv4 address, we may as well try to leak the flag into the dicts subdirectory and read it from there via endpoint **/dicts** listing.
 
-Rebuilding the custom filter with the payload and recompiling it will yield the final exploit.
+Rebuilding the [custom filter](./aspell-source-changes/modules/filter/blub.cpp) with the payload and recompiling it will yield the final exploit.
 
 ```cpp
 system("/usr/bin/touch /home/challenge/challenge/dicts/`/usr/bin/cat /home/challenge/challenge/flag.txt | /usr/bin/base64 | /usr/bin/rev`");\
