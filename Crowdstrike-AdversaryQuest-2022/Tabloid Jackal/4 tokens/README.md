@@ -129,7 +129,7 @@ Approach could be:
 
 #### Programmatically gathering tokens
 
-See `collect_tokens.py`, output from example runs (u=1 user, n=20 token resets each).
+See [collect_tokens.py](./collect_tokens.py), output from example runs (u=1 user, n=20 token resets each).
 
 ```txt
 └─$ ./collect_tokens.py | tee 02.log
@@ -166,7 +166,7 @@ Since all of the above information gathering and approaches didn't work out, it'
 
 Checking for file **robots.txt** on the web server finds an interesting entry: `Disallow: /.git`
 
-That path contains a single reference to http://116.202.83.208:42300/.git/random_generator.py
+That path contains a single reference to [http://116.202.83.208:42300/.git/random_generator.py](./random_generator.py).
 
 Oh noes! Why didn't we spot that n hours earlier?
 
@@ -375,7 +375,7 @@ Once we have found the internal state values n0, n1 and n2, clone the custom PRN
   next_token = random.next_limit(281474976710656)
 ```
 
-See link pwn_tokens.py for fully automated solution script.
+See [pwn_tokens.py](./pwn_tokens.py) for the fully automated solution script.
 
 ### Final Run / Flag Time!
 
