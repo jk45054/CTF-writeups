@@ -26,7 +26,7 @@ $ file control.exe
 control.exe: PE32+ executable (console) x86-64, for MS Windows
 ```
 
-Strings output yields Dogescript (some _fun_ language that compiles into javascript) at the end of the file. We can manually copy/dump the dogescript to a file called **dogescript.djs**. **TODO** Link.
+Strings output yields Dogescript (some _fun_ language that compiles into javascript) at the end of the file. We can manually copy/dump the dogescript to a file called [**dogescript.djs**](./dogescript.djs).
 
 Catapult Spider has been known to use compiled node.js binaries with Dogescript in the past as well, so that's not a surprise. ;-) See CrowdStrike's Adversary Quest 2021, Challenge 2 ("Very Protocol") of Catapult Spider track.
 
