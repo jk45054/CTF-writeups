@@ -1,0 +1,434 @@
+└─$ strace aspell pipe                                                                                                                                                                                          130 ⨯
+execve("/usr/bin/aspell", ["aspell", "pipe"], 0x7ffee691d7a8 /* 56 vars */) = 0
+brk(NULL)                               = 0x55f437634000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=77087, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 77087, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fbfb6c83000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libaspell.so.15", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@\217\2\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=719136, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fbfb6c81000
+mmap(NULL, 723384, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb6bd0000
+mprotect(0x7fbfb6bf7000, 536576, PROT_NONE) = 0
+mmap(0x7fbfb6bf7000, 446464, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x27000) = 0x7fbfb6bf7000
+mmap(0x7fbfb6c64000, 86016, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x94000) = 0x7fbfb6c64000
+mmap(0x7fbfb6c7a000, 28672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xa9000) = 0x7fbfb6c7a000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libncursesw.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0p\242\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=235440, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 238008, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb6b95000
+mmap(0x7fbfb6b9e000, 159744, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x9000) = 0x7fbfb6b9e000
+mmap(0x7fbfb6bc5000, 36864, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x30000) = 0x7fbfb6bc5000
+mmap(0x7fbfb6bce000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x38000) = 0x7fbfb6bce000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libtinfo.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\220\351\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=187792, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 190880, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb6b66000
+mmap(0x7fbfb6b74000, 57344, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7fbfb6b74000
+mmap(0x7fbfb6b82000, 57344, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1c000) = 0x7fbfb6b82000
+mmap(0x7fbfb6b90000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x29000) = 0x7fbfb6b90000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0000\321\t\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=2128936, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 2144384, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb695a000
+mprotect(0x7fbfb69f3000, 1449984, PROT_NONE) = 0
+mmap(0x7fbfb69f3000, 1003520, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x99000) = 0x7fbfb69f3000
+mmap(0x7fbfb6ae8000, 442368, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x18e000) = 0x7fbfb6ae8000
+mmap(0x7fbfb6b55000, 57344, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1fa000) = 0x7fbfb6b55000
+mmap(0x7fbfb6b63000, 10368, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fbfb6b63000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@y\2\0\0\0\0\0"..., 832) = 832
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\200\0\300\4\0\0\0\1\0\0\0\0\0\0\0", 32, 848) = 32
+pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0?\323\315\324#\241\204X\331\333:^P\242\263\300"..., 68, 880) = 68
+newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=1904752, ...}, AT_EMPTY_PATH) = 0
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+mmap(NULL, 1938296, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb6780000
+mprotect(0x7fbfb67a6000, 1724416, PROT_NONE) = 0
+mmap(0x7fbfb67a6000, 1409024, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7fbfb67a6000
+mmap(0x7fbfb68fe000, 311296, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17e000) = 0x7fbfb68fe000
+mmap(0x7fbfb694b000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ca000) = 0x7fbfb694b000
+mmap(0x7fbfb6951000, 33656, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fbfb6951000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=22864, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 24816, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb6779000
+mmap(0x7fbfb677b000, 8192, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fbfb677b000
+mmap(0x7fbfb677d000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4000) = 0x7fbfb677d000
+mmap(0x7fbfb677e000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4000) = 0x7fbfb677e000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=1317328, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fbfb6777000
+mmap(NULL, 1319184, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb6634000
+mmap(0x7fbfb6643000, 630784, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xf000) = 0x7fbfb6643000
+mmap(0x7fbfb66dd000, 622592, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xa9000) = 0x7fbfb66dd000
+mmap(0x7fbfb6775000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x140000) = 0x7fbfb6775000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0203\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=100736, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 103496, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb661a000
+mmap(0x7fbfb661d000, 73728, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7fbfb661d000
+mmap(0x7fbfb662f000, 12288, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x15000) = 0x7fbfb662f000
+mmap(0x7fbfb6632000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17000) = 0x7fbfb6632000
+close(3)                                = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fbfb6618000
+arch_prctl(ARCH_SET_FS, 0x7fbfb66193c0) = 0
+mprotect(0x7fbfb694b000, 12288, PROT_READ) = 0
+mprotect(0x7fbfb6632000, 4096, PROT_READ) = 0
+mprotect(0x7fbfb6775000, 4096, PROT_READ) = 0
+mprotect(0x7fbfb677e000, 4096, PROT_READ) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fbfb6616000
+mprotect(0x7fbfb6b55000, 45056, PROT_READ) = 0
+mprotect(0x7fbfb6b90000, 16384, PROT_READ) = 0
+mprotect(0x7fbfb6bce000, 4096, PROT_READ) = 0
+mprotect(0x7fbfb6c7a000, 24576, PROT_READ) = 0
+mprotect(0x55f4358b1000, 8192, PROT_READ) = 0
+mprotect(0x7fbfb6cc5000, 8192, PROT_READ) = 0
+munmap(0x7fbfb6c83000, 77087)           = 0
+brk(NULL)                               = 0x55f437634000
+brk(0x55f437655000)                     = 0x55f437655000
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=3041456, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 3041456, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fbfb632f000
+close(3)                                = 0
+openat(AT_FDCWD, "/home/kali/.aspell.conf", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/aspell.conf", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+newfstatat(3, "", {st_mode=S_IFDIR|0755, st_size=4096, ...}, AT_EMPTY_PATH) = 0
+getdents64(3, 0x55f437648020 /* 44 entries */, 32768) = 1616
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/markdown.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=201, ...}, AT_EMPTY_PATH) = 0
+read(4, "# Markdown mode description file"..., 4096) = 201
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/ddtp.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=92, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE ddtp\n\nASPELL >=0.60.5\n\nDESC"..., 4096) = 92
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/html.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=271, ...}, AT_EMPTY_PATH) = 0
+read(4, "# HTML mode description file\n\nMO"..., 4096) = 271
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 5
+newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=27002, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 27002, PROT_READ, MAP_SHARED, 5, 0) = 0x7fbfb6c8f000
+close(5)                                = 0
+brk(0x55f437676000)                     = 0x55f437676000
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/ccpp.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=346, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE ccpp\n\nASPELL >=0.60.1\n\nMAGI"..., 4096) = 346
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/perl.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=330, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE perl\n\nASPELL >=0.60.1\n\nMAGI"..., 4096) = 330
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/texinfo.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=137, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE texinfo\n\nASPELL >=0.60.1\n\nM"..., 4096) = 137
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/sgml.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=254, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE sgml\n\nASPELL >=0.60\n\nMAGIC "..., 4096) = 254
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/none.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=69, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE none \n\nASPELL >=0.60.1\n\nDES"..., 4096) = 69
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/nroff.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=149, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE nroff\n\nASPELL >=0.60.1\n\nMAG"..., 4096) = 149
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/url.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=98, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE url \n\nASPELL >=0.60\n\nDESCRI"..., 4096) = 98
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/email.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=113, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE email \n\nASPELL >=0.60\n\nDESC"..., 4096) = 113
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/comment.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=182, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE comment \n\nASPELL >=0.60\n\nDE"..., 4096) = 182
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/debctrl.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=108, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE debctrl\n\nASPELL >=0.60\n\nDES"..., 4096) = 108
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/tex.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=163, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE tex\n\nASPELL >=0.60\n\nMAGIC /"..., 4096) = 163
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+getdents64(3, 0x55f437648020 /* 0 entries */, 32768) = 0
+close(3)                                = 0
+clock_gettime(CLOCK_PROCESS_CPUTIME_ID, {tv_sec=0, tv_nsec=28087808}) = 0
+openat(AT_FDCWD, "/usr/lib/aspell", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+newfstatat(3, "", {st_mode=S_IFDIR|0755, st_size=16384, ...}, AT_EMPTY_PATH) = 0
+getdents64(3, 0x55f437648020 /* 151 entries */, 32768) = 6192
+getdents64(3, 0x55f437648020 /* 0 entries */, 32768) = 0
+close(3)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+newfstatat(3, "", {st_mode=S_IFDIR|0755, st_size=16384, ...}, AT_EMPTY_PATH) = 0
+getdents64(3, 0x55f437648020 /* 151 entries */, 32768) = 6192
+getdents64(3, 0x55f437648020 /* 0 entries */, 32768) = 0
+close(3)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/en_US.multi", O_RDONLY) = 3
+stat("/usr/lib/aspell/en_US.multi", {st_mode=S_IFREG|0644, st_size=86, ...}) = 0
+openat(AT_FDCWD, "/usr/lib/aspell/en_US.multi", O_RDONLY) = 4
+stat("/usr/lib/aspell/en_US.multi", {st_mode=S_IFREG|0644, st_size=86, ...}) = 0
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=86, ...}, AT_EMPTY_PATH) = 0
+read(4, "# Generated with Aspell Dicts \"p"..., 4096) = 86
+openat(AT_FDCWD, "/usr/lib/aspell/en_US-wo_accents.multi", O_RDONLY) = 5
+stat("/usr/lib/aspell/en_US-wo_accents.multi", {st_mode=S_IFREG|0644, st_size=107, ...}) = 0
+openat(AT_FDCWD, "/usr/lib/aspell/en_US-wo_accents.multi", O_RDONLY) = 6
+stat("/usr/lib/aspell/en_US-wo_accents.multi", {st_mode=S_IFREG|0644, st_size=107, ...}) = 0
+newfstatat(6, "", {st_mode=S_IFREG|0644, st_size=107, ...}, AT_EMPTY_PATH) = 0
+read(6, "# Generated with Aspell Dicts \"p"..., 4096) = 107
+openat(AT_FDCWD, "/usr/lib/aspell/en-common.rws", O_RDONLY) = 7
+newfstatat(7, "", {st_mode=S_IFREG|0644, st_size=2420432, ...}, AT_EMPTY_PATH) = 0
+read(7, "aspell default speller rowl 1.10"..., 4096) = 4096
+stat("/usr/lib/aspell/en-common.rws", {st_mode=S_IFREG|0644, st_size=2420432, ...}) = 0
+stat("/usr/lib/aspell/en-common.rws", {st_mode=S_IFREG|0644, st_size=2420432, ...}) = 0
+openat(AT_FDCWD, "/usr/lib/aspell/en-common.rws", O_RDONLY) = 8
+newfstatat(8, "", {st_mode=S_IFREG|0644, st_size=2420432, ...}, AT_EMPTY_PATH) = 0
+read(8, "aspell default speller rowl 1.10"..., 4096) = 4096
+access("/usr/lib/aspell/en.dat", F_OK)  = 0
+openat(AT_FDCWD, "/usr/lib/aspell/en.dat", O_RDONLY) = 9
+newfstatat(9, "", {st_mode=S_IFREG|0644, st_size=88, ...}, AT_EMPTY_PATH) = 0
+read(9, "name en\ncharset iso8859-1\nspecia"..., 4096) = 88
+read(9, "", 4096)                       = 0
+close(9)                                = 0
+access("/usr/lib/aspell/iso-8859-1.cset", F_OK) = 0
+openat(AT_FDCWD, "/usr/lib/aspell/iso-8859-1.cset", O_RDONLY) = 9
+newfstatat(9, "", {st_mode=S_IFREG|0644, st_size=13848, ...}, AT_EMPTY_PATH) = 0
+read(9, "# Aspell Character Data File.\n= "..., 4096) = 4096
+read(9, "71 71 # LATIN CAPITAL LETTER Q\n5"..., 4096) = 4096
+read(9, "2 00A2 - Y A2 A2 A2 00 00 00 # C"..., 4096) = 4096
+read(9, "R C WITH CEDILLA\nE8 00E8 L Y C8 "..., 4096) = 1560
+close(9)                                = 0
+access("/usr/lib/aspell/iso-8859-1.cmap", F_OK) = 0
+openat(AT_FDCWD, "/usr/lib/aspell/iso-8859-1.cmap", O_RDONLY) = 9
+newfstatat(9, "", {st_mode=S_IFREG|0644, st_size=30894, ...}, AT_EMPTY_PATH) = 0
+read(9, "INTERNAL\n/\nN 958\n0000 > 00\n0001 "..., 4096) = 4096
+read(9, "10F > 64 # unsup: 0064 030C\n0112"..., 4096) = 4096
+read(9, "01F0 > 6A # unsup: 006A 030C\n01F"..., 4096) = 4096
+read(9, "308\n1E28 > 48 # unsup: 0048 0327"..., 4096) = 4096
+read(9, "nsup: 0061 0306 0303\n1EB6 > 41 #"..., 4096) = 4096
+read(9, "# compat\nFF22 > 42 # compat\nFF23"..., 4096) = 4096
+read(9, "B > AB\n00AC > AC\n00AD > AD\n00AE "..., 4096) = 4096
+brk(0x55f437697000)                     = 0x55f437697000
+read(9, " 0023\n24 > 0024\n25 > 0025\n26 > 0"..., 4096) = 2222
+read(9, "", 4096)                       = 0
+close(9)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell//en_phonet.dat", O_RDONLY) = 9
+newfstatat(9, "", {st_mode=S_IFREG|0644, st_size=7273, ...}, AT_EMPTY_PATH) = 0
+read(9, "#   phonetic_english.h - phoneti"..., 4096) = 4096
+read(9, "        _\nTOUGH^               T"..., 4096) = 3177
+read(9, "", 4096)                       = 0
+lseek(9, 0, SEEK_SET)                   = 0
+read(9, "#   phonetic_english.h - phoneti"..., 4096) = 4096
+read(9, "        _\nTOUGH^               T"..., 4096) = 3177
+read(9, "", 4096)                       = 0
+close(9)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell//en_affix.dat", O_RDONLY) = 9
+newfstatat(9, "", {st_mode=S_IFREG|0644, st_size=4675, ...}, AT_EMPTY_PATH) = 0
+read(9, "# \n# This affix file is based on"..., 4096) = 4096
+read(9, "P f ph\nREP ph f\nREP gh f\nREP f g"..., 4096) = 579
+read(9, "", 4096)                       = 0
+close(9)                                = 0
+lseek(8, -3933, SEEK_CUR)               = 163
+mmap(NULL, 2420432, PROT_READ, MAP_SHARED, 8, 0) = 0x7fbfb60e0000
+close(8)                                = 0
+close(7)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/en_US-wo_accents-only.rws", O_RDONLY) = 7
+newfstatat(7, "", {st_mode=S_IFREG|0644, st_size=91968, ...}, AT_EMPTY_PATH) = 0
+read(7, "aspell default speller rowl 1.10"..., 4096) = 4096
+stat("/usr/lib/aspell/en_US-wo_accents-only.rws", {st_mode=S_IFREG|0644, st_size=91968, ...}) = 0
+stat("/usr/lib/aspell/en_US-wo_accents-only.rws", {st_mode=S_IFREG|0644, st_size=91968, ...}) = 0
+openat(AT_FDCWD, "/usr/lib/aspell/en_US-wo_accents-only.rws", O_RDONLY) = 8
+newfstatat(8, "", {st_mode=S_IFREG|0644, st_size=91968, ...}, AT_EMPTY_PATH) = 0
+read(8, "aspell default speller rowl 1.10"..., 4096) = 4096
+lseek(8, -3933, SEEK_CUR)               = 163
+mmap(NULL, 91968, PROT_READ, MAP_SHARED, 8, 0) = 0x7fbfb60c9000
+close(8)                                = 0
+close(7)                                = 0
+read(6, "", 4096)                       = 0
+close(6)                                = 0
+close(5)                                = 0
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+close(3)                                = 0
+stat("/home/kali/.aspell.en.pws", 0x7ffc73d9dee0) = -1 ENOENT (No such file or directory)
+access("/home/kali/.aspell.en.pws", F_OK) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/home/kali/.aspell.en.per", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/home/kali/.aspell.en.prepl", 0x7ffc73d9dee0) = -1 ENOENT (No such file or directory)
+access("/home/kali/.aspell.en.prepl", F_OK) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/home/kali/.aspell.en.rpl", O_RDONLY) = -1 ENOENT (No such file or directory)
+access("/usr/lib/aspell/standard.kbd", F_OK) = 0
+openat(AT_FDCWD, "/usr/lib/aspell/standard.kbd", O_RDONLY) = 3
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=100, ...}, AT_EMPTY_PATH) = 0
+read(3, "# Standard keyboard data file\n\nq"..., 4096) = 100
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+access("/usr/lib/aspell/x86_64-linux-gnu/nroff-filter.info", F_OK) = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/nroff-filter.info", O_RDONLY) = 3
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=232, ...}, AT_EMPTY_PATH) = 0
+read(3, "# sgml filter option file\n\n#This"..., 4096) = 232
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/nroff-filter.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300\20\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=14424, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 16424, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb6c8a000
+mmap(0x7fbfb6c8b000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7fbfb6c8b000
+mmap(0x7fbfb6c8c000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fbfb6c8c000
+mmap(0x7fbfb6c8d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fbfb6c8d000
+close(3)                                = 0
+mprotect(0x7fbfb6c8d000, 4096, PROT_READ) = 0
+newfstatat(1, "", {st_mode=S_IFCHR|0600, st_rdev=makedev(0x88, 0x1), ...}, AT_EMPTY_PATH) = 0
+write(1, "@(#) International Ispell Versio"..., 68@(#) International Ispell Version 3.1.20 (but really Aspell 0.60.8)
+) = 68
+newfstatat(0, "", {st_mode=S_IFCHR|0600, st_rdev=makedev(0x88, 0x1), ...}, AT_EMPTY_PATH) = 0
+read(0, $$cs add-filter-path,/home/challenge/challenge/dicts/
+"$$cs add-filter-path,/home/chall"..., 1024) = 54
+read(0, $$cs add-filter,blub
+"$$cs add-filter,blub\n", 1024) = 21
+read(0, +blub
+"+blub\n", 1024)                = 6
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+newfstatat(3, "", {st_mode=S_IFDIR|0755, st_size=4096, ...}, AT_EMPTY_PATH) = 0
+getdents64(3, 0x55f437685540 /* 44 entries */, 32768) = 1616
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/markdown.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=201, ...}, AT_EMPTY_PATH) = 0
+read(4, "# Markdown mode description file"..., 4096) = 201
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/ddtp.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=92, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE ddtp\n\nASPELL >=0.60.5\n\nDESC"..., 4096) = 92
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/html.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=271, ...}, AT_EMPTY_PATH) = 0
+read(4, "# HTML mode description file\n\nMO"..., 4096) = 271
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/ccpp.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=346, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE ccpp\n\nASPELL >=0.60.1\n\nMAGI"..., 4096) = 346
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/perl.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=330, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE perl\n\nASPELL >=0.60.1\n\nMAGI"..., 4096) = 330
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/texinfo.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=137, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE texinfo\n\nASPELL >=0.60.1\n\nM"..., 4096) = 137
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/sgml.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=254, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE sgml\n\nASPELL >=0.60\n\nMAGIC "..., 4096) = 254
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/none.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=69, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE none \n\nASPELL >=0.60.1\n\nDES"..., 4096) = 69
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/nroff.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=149, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE nroff\n\nASPELL >=0.60.1\n\nMAG"..., 4096) = 149
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/url.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=98, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE url \n\nASPELL >=0.60\n\nDESCRI"..., 4096) = 98
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/email.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=113, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE email \n\nASPELL >=0.60\n\nDESC"..., 4096) = 113
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/comment.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=182, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE comment \n\nASPELL >=0.60\n\nDE"..., 4096) = 182
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/debctrl.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=108, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE debctrl\n\nASPELL >=0.60\n\nDES"..., 4096) = 108
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+openat(AT_FDCWD, "/usr/lib/aspell/x86_64-linux-gnu/tex.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=163, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE tex\n\nASPELL >=0.60\n\nMAGIC /"..., 4096) = 163
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+getdents64(3, 0x55f437685540 /* 0 entries */, 32768) = 0
+close(3)                                = 0
+openat(AT_FDCWD, "/home/challenge/challenge/dicts/", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+newfstatat(3, "", {st_mode=S_IFDIR|0755, st_size=4096, ...}, AT_EMPTY_PATH) = 0
+getdents64(3, 0x55f437685540 /* 6 entries */, 32768) = 200
+openat(AT_FDCWD, "/home/challenge/challenge/dicts/blub.amf", O_RDONLY) = 4
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=126, ...}, AT_EMPTY_PATH) = 0
+read(4, "MODE blub\n\nASPELL >=0.60\n\nMAGIC "..., 4096) = 126
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+getdents64(3, 0x55f437685540 /* 0 entries */, 32768) = 0
+close(3)                                = 0
+access("/usr/lib/aspell/x86_64-linux-gnu/blub-filter.info", F_OK) = -1 ENOENT (No such file or directory)
+access("/home/challenge/challenge/dicts/blub-filter.info", F_OK) = 0
+openat(AT_FDCWD, "/home/challenge/challenge/dicts/blub-filter.info", O_RDONLY) = 3
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=2123, ...}, AT_EMPTY_PATH) = 0
+read(3, "# TeX filter option file\n\n#This "..., 4096) = 2123
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+openat(AT_FDCWD, "/home/challenge/challenge/dicts/blub-filter.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\340!\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=26696, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 28704, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbfb60c1000
+mmap(0x7fbfb60c3000, 12288, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fbfb60c3000
+mmap(0x7fbfb60c6000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x5000) = 0x7fbfb60c6000
+mmap(0x7fbfb60c7000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x5000) = 0x7fbfb60c7000
+close(3)                                = 0
+mprotect(0x7fbfb60c7000, 4096, PROT_READ) = 0
+write(2, "Unhandled Error: ", 17Unhandled Error: )       = 17
+write(2, "The file \"blub\" does not contain"..., 45The file "blub" does not contain any filters.) = 45
+write(2, "\n", 1
+)                       = 1
+rt_sigprocmask(SIG_UNBLOCK, [ABRT], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, ~[RTMIN RT_1], [], 8) = 0
+getpid()                                = 42548
+gettid()                                = 42548
+tgkill(42548, 42548, SIGABRT)           = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=42548, si_uid=1000} ---
++++ killed by SIGABRT +++
+zsh: abort      strace aspell pipe
+
