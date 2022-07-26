@@ -20,7 +20,7 @@ The challenge file is a .tar.gz archive that seems to contain the contents of th
 The Zshell history file **.zsh_history** contains suspiciously looking executions of a binary named **boltctl**.
 
 ```console
-└─$ cat ../../jsmith/.zsh_history 
+$ cat ../../jsmith/.zsh_history 
 : 1646988394:0;sudo boltctl 3294cbf3-7a11-d400-ffff-ffffffffffff
 : 1646902640:0;sudo boltctl 3294cbf3-7a11-d400-ffff-ffffffffffff
 : 1646816263:0;sudo boltctl 3294cbf3-7a11-d400-ffff-ffffffffffff
@@ -51,7 +51,7 @@ Boltctl is a binary residing in **.bins/** in jsmith's home directory. It is a 6
 There is also a PCAP file in **.sensor**, containing a single packet.
 
 ```console
-└─$ xxd hit_01.pcap        
+$ xxd hit_01.pcap        
 00000000: d4c3 b2a1 0200 0400 0000 0000 0000 0000  ................
 00000010: 0000 0400 0100 0000 2353 3862 9958 0a00  ........#S8b.X..
 00000020: 5e00 0000 5e00 0000 ffff ffff ffff f8ac  ^...^...........
@@ -222,9 +222,9 @@ _QWORD __fastcall PRNG_with_state_1651(_DWORD *PRNG_state_value_1, _DWORD *PRNG_
 }
 ```
 
-Payload decryption can now be achieved by decoding each cipher byte from its two character nibble encoding and XOR'ing it with the XOR key derived from the cloned PRNG.
-
 ### Implementation
+
+Payload decryption can now be achieved by decoding each cipher byte from its two character nibble encoding and XOR'ing it with the XOR key derived from the cloned PRNG ([decrypt.py](./decrypt.py)).
 
 ```python
 class PRNG_with_state_1651(object):
