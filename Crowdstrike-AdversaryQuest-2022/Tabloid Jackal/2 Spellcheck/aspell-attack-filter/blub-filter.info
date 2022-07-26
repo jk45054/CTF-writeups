@@ -1,0 +1,10 @@
+# sgml filter option file
+
+#This Filter is usable with the following version(s) of Aspell
+ASPELL >=0.51
+
+#This line will be printed when typing `aspell help blub'
+DESCRIPTION filter for pwning tabloid jackal challenge 2
+
+STATIC filter
+
