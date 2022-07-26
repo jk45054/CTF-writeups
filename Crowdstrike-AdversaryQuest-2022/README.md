@@ -8,7 +8,7 @@ It consisted of three tracks for the fictive Cyberthreat actors Catapult Spider,
 
 My write-ups can be found here
 
-- [Catapult Spider/#2 Such Control Wow](./Catapult Spider/2 Such Control Wow/)
+- [Catapult Spider/#2 Such Control Wow](./Catapult Spider/2 Such Control Wow/README.md)
 
 I was able to finish with rank #8.
 
