@@ -8,10 +8,11 @@ Note: Flags will be easily identifiable by the format “CS{some_secret_flag_tex
 
 ## TL;DR Summary
 
-- A binary called boltctl was executed in the context of the managing editor
-- That binary tricked the user into entering their (sudo) password by mimicking a sudo password prompt
-- The encrypted password is sent as a payload in an IPV4 broadcast packet
-- The encryption is based on a custom PRNG and a single byte XOR cipher
+- A binary called boltctl was executed in the context of the managing editor.
+- That binary tricked the user into entering their (sudo) password by mimicking a sudo password prompt.
+- The encrypted password is sent as a payload in an IPV4 broadcast packet.
+- The encryption is based on a custom PRNG and a single byte XOR cipher.
+- Reverse Engineering the custom PRNG and cipher allows for decryption of the recorded packet's payload.
 
 ## Analysis
 
