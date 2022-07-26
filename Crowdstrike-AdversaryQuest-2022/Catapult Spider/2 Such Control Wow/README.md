@@ -12,10 +12,10 @@ $ sudo npm install -g dogescript
 
 ## TL;DR Summary
 
-- The supplied server/control binary is a compiled node.js application written in Dogescript
-- The authentication checks can be bypassed with two Cookies with the same name **session**
-- Exploiting a directory traversal vulnerability (**path.join()**) in **checkAuth()** allows access to the control functions.
-- Using the function **readfile**, the flag file can be read remotely.
+- The supplied server/control binary is a compiled node.js application written in Dogescript.
+- The authentication checks can be bypassed with two Cookies with the same name **session**.
+- Exploiting a directory traversal vulnerability in the authentication function's code allows execution of the control functions.
+- Using the server function **readfile**, the flag file can be read remotely.
 
 ## Analysis
 
