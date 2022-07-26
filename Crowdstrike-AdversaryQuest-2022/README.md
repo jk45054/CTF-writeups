@@ -2,7 +2,7 @@
 
 CrowdStrike hosted their (hopefully annual) CTF this year running from 2022-07-11 to 2022-07-25.
 
-It consisted of three tracks for the fictive Cyberthreat actors Catapult Spider, Protective Penguin and Tabloid Jackal. Each track was comprised of four challenges each.
+It consisted of three tracks for the fictive Cyberthreat actors Catapult Spider, Protective Penguin and Tabloid Jackal. Each track comprised four challenges each.
 
 ## Write-Ups
 
