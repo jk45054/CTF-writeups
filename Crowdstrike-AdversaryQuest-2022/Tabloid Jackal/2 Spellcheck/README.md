@@ -9,7 +9,11 @@ The challenge is running on Ubuntu 22.04.
 
 ## TL;DR Summary
 
-TL;DR
+- This spell checking web service allows administrators to upload dictionaries to be used for spell checking.
+- The upload function has an authentication bypass vulnerability that can be exploited to upload files.
+- The way that input text is fed into the spell checking backend program Aspell allows delivery for special Aspell commands.
+- Using these commands, one can read and set configuration options.
+- Abusing this, an attacker can upload a custom Aspell filter (mode) to gain remote code execution.
 
 ## Pre-Requisites
 
