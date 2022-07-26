@@ -30,9 +30,7 @@ Strings output yields Dogescript (some _fun_ language that compiles into javascr
 
 Catapult Spider has been known to use compiled node.js binaries with Dogescript in the past as well, so that's not a surprise. ;-) See CrowdStrike's Adversary Quest 2021, Challenge 2 ("Very Protocol") of Catapult Spider track.
 
-Compile the Dogescript to JavaScript with `dogescript dogescript.djs > javascript.js` and beautify it a bit with Notepad++ JS-Tool/Format to **javascript_formatted.js**
-
-**TODO** link to javascript.js and javascript_formatted.js
+Compile the Dogescript to JavaScript with `dogescript dogescript.djs > javascript.js` and beautify it a bit with Notepad++ JS-Tool/Format to [**javascript_formatted.js**](./javascript_formatted.js).
 
 The script seems to listen on port 8124.
 
