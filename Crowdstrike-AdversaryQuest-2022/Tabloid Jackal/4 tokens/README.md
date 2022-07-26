@@ -379,8 +379,8 @@ See [pwn_tokens.py](./pwn_tokens.py) for the fully automated solution script.
 
 ### Final Run / Flag Time!
 
-```txt
-└─$ ./pwn_tokens.py                                                                                                     1 ⨯
+```console
+$ ./pwn_tokens.py                                                                                                     1 ⨯
 [*] Registering user jigvccslxx with editorial pw=pwedit and mail pw=pwmail
 [*] Requesting password reset token for user jigvccslxx
 [*] Gathering reset tokens from mailbox
