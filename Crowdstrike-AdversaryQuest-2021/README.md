@@ -9,7 +9,7 @@ It consisted of three tracks for the fictive Cyberthreat actors Catapult Spider,
 My write-ups for some of the challenges can be found here
 
 - [Catapult Spider - #3 Module Wow](./Catapult%20Spider/Module%20Wow)
-- [Protective Penguin - #1 Portal](./Protective%20Penguin/Portal
+- [Protective Penguin - #1 Portal](./Protective%20Penguin/Portal)
 - [Protective Penguin - #3 Egg Hunt](./Protective%20Penguin/Egg%20Hunt)
 - [Protective Penguin - #4 Exfiltrat0r](./Protective%20Penguin/Exfiltrat0r)
 - [Space Jackal - #1 Proclamation](./Space%20Jackal/Proclamation)
