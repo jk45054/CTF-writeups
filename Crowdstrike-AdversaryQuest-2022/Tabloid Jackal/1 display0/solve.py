@@ -68,19 +68,19 @@ print(f"[*] Hashing Target OS Environment Data with SHA256 = {target_hash}")
 
 # display0 uses the first 16 bytes of the (binary representation of) the SHA256 hash value as an AES key
 aes_key = sha256.digest()[:16]
-print(f"[*] Using first 16 bytes of it as AES key = {aes_key}")
+print(f"[*] Using first 16 Bytes as AES Key = {aes_key}")
 
 # display0 carries an encrypted payload that is executed upon successful decryption
 encrypted_payload_offset = 0x40e0 
 encrypted_payload_len = 0x7c8d8
-print(f"[*] Carving Encrypted Payload from ELF binary display0 (offset = {hex(encrypted_payload_offset)}, len = {hex(encrypted_payload_len)})")
+print(f"[*] Carving Encrypted Payload from ELF Binary display0 (offset = {hex(encrypted_payload_offset)}, len = {hex(encrypted_payload_len)})")
 
 try:
   with open("./display0", "rb") as f:
     f.seek(encrypted_payload_offset)
     encrypted_payload = f.read(encrypted_payload_len)
 except:
-  print("[!] Oops, couldn't carve the payload")
+  print("[!] Oops, couldn't carve the Payload")
   sys.exit(-1)
 
 # The payload is encrypted with AES-128-CTR
@@ -95,7 +95,7 @@ else:
   print("succeeded!")
 
 # The decrypted payload contains the flag as a string with expected pattern CS{\w+}
-print("[*] Searching decrypted payload for the flag... ", end = "")
+print("[*] Searching decrypted Payload for the Flag... ", end = "")
 p = re.compile(b"CS{\w+}")
 m = p.findall(decrypted_payload)
 
