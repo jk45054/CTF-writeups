@@ -199,7 +199,7 @@ The decrypted payload is another ELF binary, which is executed right away.
 
 How did we know about the specific AES variant being used?
 
-Here is the CTF approach when on time pressure: Fire up CyberChef, click through all possible variants and see if anything useful is spit out.
+Here is the CTF approach when on time pressure: Fire up [CyberChef](https://gchq.github.io/CyberChef/), click through all possible variants and see if anything useful is spit out.
 
 While that doesn't sound very sophisticated, it may be way faster than trying to identify matching source code to compare the disassembly/decompilation with. ;-)
 
