@@ -100,7 +100,7 @@ p = re.compile(b"CS{\w+}")
 m = p.findall(decrypted_payload)
 
 if m:
-  print("succeeded")
+  print("succeeded!")
   print(f"[*] Flag = {m[0].decode('utf-8')}")
 else:
   print("failed, tough luck!")
