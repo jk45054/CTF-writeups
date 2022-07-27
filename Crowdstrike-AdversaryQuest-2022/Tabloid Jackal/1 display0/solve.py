@@ -80,9 +80,6 @@ try:
     f.seek(encrypted_payload_offset)
     encrypted_payload = f.read(encrypted_payload_len)
 except:
-  pass
-
-if len(encrypted_payload) != encrypted_payload_len:
   print("[!] Oops, couldn't carve the payload")
   sys.exit(-1)
 
