@@ -1,6 +1,22 @@
-## Flag
+# Crowdstrike Adversary Quest 2022 / Tabloid Jackal / #1 display0
+
+## Challenge Description
+
+We were approached by our customer "Daily Code" who detected suspicious activity on a VPN gateway. One of their sysadmins did some basic inspection of the system and was able to discover an unknown ELF binary.
+
+For further analysis, the sysadmin sent us the ELF alongside an asciinema recording of their terminal session.
+
+Note: Flags will be easily identifiable by the format “CS{some_secret_flag_text}”. They must be submitted in full, including “CS{“ and “}”).
+
+## Analysis
+
+**TODO**
+
+### Python Implementation
 
 See [solve.py](./solve.py) for the fully automated solution script.
+
+## Now it's Flag Time!
 
 ```console
 $ ./solve.py 
