@@ -207,9 +207,9 @@ LOAD:0001047E SVC             0xB                     ; execve
 
 syscall table: https://syscalls.w3challs.com/?arch=arm_strong
 
-### Write a Decryptor
+### Write a Decrypter
 
-Decryptor for Font-Unix
+Decrypter for Font-Unix
 
 ```python
 import sys
