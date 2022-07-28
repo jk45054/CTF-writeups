@@ -6,7 +6,10 @@ Unfortunately, the incident response team informed us about further unknown acti
 
 ## TL;DR Summary
 
-TL;DR
+- The challenge comprises two ARM Linux executables and the encrypted flag.
+- The cipher is applied by one of the ARM executables that has a corrupted ELF header, somewhat hampering the analysis.
+- Disassembly of it is also hampered by a dynamically calculated branch address switching from ARM to Thumb Code.
+- It's a nice exercise for cross-platform execution and debugging.
 
 ## Pre-Requisites
 
