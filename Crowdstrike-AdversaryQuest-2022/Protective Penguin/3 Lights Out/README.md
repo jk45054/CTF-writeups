@@ -130,7 +130,7 @@ $ qltool run -f ./lds --rootfs ./rootfs/ -v debug
 Usage: ./lds <path>
 ```
 
-So it needs a path name as a command line argument. Why not pass it *Font-Unix* for fun and giggles. After all, *lds* might be the exfiltration componten out of the provided challenges files.
+So it needs a path name as a command line argument. Why not pass it *Font-Unix* for fun and giggles. After all, *lds* might be the exfiltration compontent out of the provided challenges files.
 
 ```console
 $ qltool run -f ./lds --rootfs ./rootfs/ --args ./Font-Unix
@@ -142,13 +142,22 @@ Seems to be missing a *handler*, whatever that may be. This concludes what we ca
 
 ## Advanced Analysis
 
-**TODO** text
+Let's recap what we know/assume so far
+
+- *Font-Unix* contains 20 bytes, which is likely encrypted/encoded data.
+- A path string to `/tmp/.Font-Unix` is found in binary *i*.
+- Binary *i* also contains the path string `/usr/bin/lds`, which may be a reference to the provided file *lds*
+- *i* also contains the path string `/mnt/git-infrastructure/network-services.password`.
+
+It seems to be a good idea to dive deeper into binary *i* and find out what it is doing precisely.
 
 ### File *i*
 
-Loading the file *i* into [Cutter](https://cutter.re) at least for version 2.0.3 based on Rizin version 0.3.0.
+Loading the file *i* as it is into [Cutter](https://cutter.re) at least for version 2.0.3 based on Rizin version 0.3.0 crashes it completely. Great start. ;-)
 
-Trying to open it in IDA Pro yields the warning message *SHT table size or offset is invalid*. We can still stare at some ARM assembly, but preliminary static analysis shows some weird looking code (we can fix later).
+We could try to fix the (maybe deliberately corrupted) ELF headers ([Link](https://reverseengineering.stackexchange.com/questions/12316/fixing-corrupt-elf-header-field-e-shnum-for-use-in-gdb)). We don't have to though.
+
+Trying to open it in IDA Pro yields the warning message *SHT table size or offset is invalid*. We can still stare at some ARM assembly, but static analysis shows some weird looking code beginning @ `0x103EC`.
 
 ```nasm
 LOAD:000103D0 main                                    ; DATA XREF: start+20↑o
@@ -196,28 +205,28 @@ LOAD:000104F4                 BX              LR
 
 We can definitely recognize the suspicious string `/mnt/git-infrastructure/network-services.password` here.
 
-
-**TODO**
-
-- $ qemu-arm -strace -L /usr/arm-linux-gnueabihf/ ./i   // see that it reads the file. create it with fake flag
-
-
-
-
-
-
-
-Interesting part seems to be binary i, which seems to have corrupted ELF headers... IDA pro complains, qiling doesnt load it either
-
-Possible fix (untested/TODO): https://reverseengineering.stackexchange.com/questions/12316/fixing-corrupt-elf-header-field-e-shnum-for-use-in-gdb
-
-
-Let's create this mysterious file `/mnt/git-infrastructure/network-services.password` and put a fake flag string in it.
+Let's run it again, this time with qemu's option `-strace` to log system calls.
 
 ```console
-$ cat network-services.password 
-CS{could_be_a_flag}
+$ qemu-arm -strace -L /usr/arm-linux-gnueabihf/ ./i
+[..]
+23483 open("/mnt/git-infrastructure/network-services.password",O_RDONLY) = -1 errno=2 (No such file or directory)
+23483 read(-2,0x21034,1024) = -1 errno=9 (Bad file descriptor)
+23483 close(-2) = -1 errno=9 (Bad file descriptor)
+23483 open("/tmp/.Font-Unix",O_RDWR|O_CREAT,0700) = 3
+[...]
 ```
+
+So binary *i* is - not unexpectedly - trying to read from file `/mnt/git-infrastructure/network-services.password`. Afterwards it is opening file `/tmp/.Font-Unix` for reading and writing.
+
+Let's supply *i* with a fake flag...
+
+```console
+$ sudo mkdir /mnt/git-infrastructure/
+$ sudo sh -c 'echo "CS{could_be_a_flag}" > /mnt/git-infrastructure/network-services.password'
+```
+
+... and run it again.
 
 ```txt
 $ qemu-arm -strace -L /usr/arm-linux-gnueabihf/ ./i
@@ -249,7 +258,9 @@ $ qemu-arm -strace -L /usr/arm-linux-gnueabihf/ ./i
 16903 execve("/usr/bin/lds",{"/usr/bin/lds","/tmp/.Font-Unix",NULL}) = -1 errno=2 (No such file or directory)
 ```
 
-Yields the following `/tmp/.Font-Unix` content
+Very interesting. *i* seems to read from our fake flag file, write to `/tmp/.Font-Unix` and then execute *lds* with `/tmp/.Font-Unix` as its `path` argument.
+
+What did *i* write to `/tmp/.Font-Unix`?
 
 ```txt
 $ xxd /tmp/.Font-Unix 
@@ -257,26 +268,15 @@ $ xxd /tmp/.Font-Unix
 00000010: 1d88 4b9f                                ..K.
 ```
 
-First 4 hex bytes seem to match the first 4 bytes from the challenge Font-Unix file. Interesting!
+The first four hex bytes match the first four bytes from the challenge file *Font-Unix*. Very interesting, we're onto something!
 
-Run `i` with gdb. Attach with gdb-multiarch
-
-```console
-$ qemu-arm -g 12345 -L /usr/arm-linux-gnueabihf/ ./i
-$ gdb-multiarch ./i
-(gdb) set arch mips
-(gdb) set endian little
-(gdb) target remote localhost:12345
-Remote debugging using localhost:12345
-```
-
-This errors though in gdb and IDA ends somewhere in the unknowns...
-
-Try remote debugging with IDA to `qemu-arm -g`
+Let's do some (remote IDA) debugging on *i*!
 
 ```console
 $ qemu-arm -g 12345 -L /usr/arm-linux-gnueabihf/ ./i
 ```
+
+**TODO**
 
 Set breakpoint in main, step through the code.
 
