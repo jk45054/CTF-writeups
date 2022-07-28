@@ -450,3 +450,7 @@ bytearray(b'CS{c4st0m_1mpl4nts}\n')
 ```
 
 Flag: **CS{c4st0m_1mpl4nts}**
+
+## Links for future Referencing
+
+[RE Radio ARM Binary Images in IDA Pro](https://do1alx.de/2022/reverse-engineering-radios-arm-binary-images-in-ida-pro/)
