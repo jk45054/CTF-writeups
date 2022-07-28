@@ -262,7 +262,7 @@ Very interesting. *i* seems to read from our fake flag file, write to `/tmp/.Fon
 
 What did *i* write to `/tmp/.Font-Unix`?
 
-```txt
+```console
 $ xxd /tmp/.Font-Unix 
 00000000: f26b f6a7 d641 ffd1 5824 5bfa 118c a4c2  .k...A..X$[.....
 00000010: 1d88 4b9f                                ..K.
@@ -276,82 +276,90 @@ Let's do some (remote IDA) debugging on *i*!
 $ qemu-arm -g 12345 -L /usr/arm-linux-gnueabihf/ ./i
 ```
 
-**TODO**
+Connect IDA to the remote gdb debugger and set breakpoint in function **main()**. Start stepping through the code.
 
-Set breakpoint in main, step through the code.
+The interesting code begins after a dynamically calculated jump to `0x103EC` (could be just a jump back to PC after call to `0x10484` from `0x103E8`).
 
-The interesting code starts after a dynamically calculated jump to `0x103EC` (could be just a jump back to PC after call to 0x10484 from 0x103E8).
+What also seems to happens is a [switch from ARM state to Thumb state](https://developer.arm.com/documentation/dui0473/m/overview-of-the-arm-architecture/changing-between-arm--thumb--and-thumbee-state), so that the code beginning @ address `0x103EC` is to be interpreted as `CODE16` instead of `CODE32`.
 
-We can also fix the code display by having IDA interprete the bytes as CODE16 (thumb/non-thumb mode?) -> ALT + G, set T() to 1. It will work correctly out of the box while debugging though.
+We can force IDA to interprete the bytes as CODE16 with hotkey `ALT + G` and set the value for `T()` to 1. This will not be needed during remote debugging though, as IDA will realize the mode switch then automatically.
 
-Code to read in plaintext, open destination file for writing and generating the initial XOR value in R6
+Step-by-step instructions:
+
+- Highlight (misinterpreted) Code from adresses 0x103EC to 0x103FB and undefine it (hotkey `u`)
+- Highlight addresses 0x103EC to 0x10484 and mark it as Thumb Code (hotkey `ALT + g`, set value T to 0x1)
+- Highlight addresses 0x103EC to 0x10484 again and force IDA to analyze it as code (hotkey `c`, option *Force* when prompted)
+
+To make sense of the syscalls, refer to an [ARM syscall table](https://syscalls.w3challs.com/?arch=arm_strong).
+
+The following Thumb code will read the contents of `/mnt/git-infrastructure/network-services.password`, open the destination file `/tmp/.Font-Unix` for writing and calculate the initial XOR value in register R6 based on amounts of (password) bytes read.
 
 ```nasm
-LOAD:000103EC MOV             R0, R8                  ; filename = /mnt/git-infrastructure/network-services.password
-LOAD:000103EE MOVS            R1, #0
-LOAD:000103F0 MOVS            R7, #5
-LOAD:000103F2 SVC             5                       ; open
-LOAD:000103F4 MOV             R5, R0
-LOAD:000103F6 MOV.W           R10, #0x210
-LOAD:000103FA MOV.W           R10, R10,LSL#8
-LOAD:000103FE ADD.W           R10, R10, #0x34 ; '4'
-LOAD:00010402 MOV             R1, R10                 ; buf
-LOAD:00010404 MOV.W           R2, #0x400              ; count
-LOAD:00010408 MOVS            R7, #3
-LOAD:0001040A SVC             3                       ; read
-LOAD:0001040C MOV             R4, R0
-LOAD:0001040E MOV             R0, R5                  ; fd
-LOAD:00010410 MOVS            R7, #6
-LOAD:00010412 SVC             6                       ; close
-LOAD:00010414 MOVS            R0, #0x10608            ; filename = /tmp/.Font-Unix
-LOAD:0001041E MOVS            R1, #0x42 ; 'B'
-LOAD:00010420 MOV.W           R2, #0x1C0
-LOAD:00010424 MOVS            R7, #5
-LOAD:00010426 SVC             5                       ; open
-LOAD:00010428 MOV             R5, R0
-LOAD:0001042A EORS            R6, R6                  ; empty initial XOR value
-LOAD:0001042C ADDS            R6, #0xA5               ; add 0xA5
-LOAD:0001042E EORS            R6, R4                  ; XOR with R4 (amount of bytes read @ 0x1040A)
-LOAD:00010430 MOV             R9, PC
-LOAD:00010432 MOV             R0, R0
+LOAD:000103EC                 CODE16
+LOAD:000103EC                 MOV             R0, R8  ; filename = /mnt/git-infrastructure/network-services.password
+LOAD:000103EE                 MOVS            R1, #0
+LOAD:000103F0                 MOVS            R7, #5  ; syscall number
+LOAD:000103F2                 SVC             5       ; syscall open
+LOAD:000103F4                 MOV             R5, R0  ; fd returned by open
+LOAD:000103F6                 MOV.W           R10, #0x210
+LOAD:000103FA                 MOV.W           R10, R10,LSL#8
+LOAD:000103FE                 ADD.W           R10, R10, #0x34 ; '4'
+LOAD:00010402                 MOV             R1, R10 ; buf
+LOAD:00010404                 MOV.W           R2, #0x400 ; count
+LOAD:00010408                 MOVS            R7, #3  ; syscall number
+LOAD:0001040A                 SVC             3       ; syscall read
+LOAD:0001040C                 MOV             R4, R0  ; save bytes read in R4
+LOAD:0001040E                 MOV             R0, R5  ; fd
+LOAD:00010410                 MOVS            R7, #6  ; syscall number
+LOAD:00010412                 SVC             6       ; syscall close
+LOAD:00010414                 MOVS            R0, #0x10608 ; filename = /tmp/.Font-Unix
+LOAD:0001041E                 MOVS            R1, #0x42 ; 'B'
+LOAD:00010420                 MOV.W           R2, #0x1C0
+LOAD:00010424                 MOVS            R7, #5  ; syscall number
+LOAD:00010426                 SVC             5       ; syscall open
+LOAD:00010428                 MOV             R5, R0
+LOAD:0001042A                 EORS            R6, R6  ; empty initial XOR value
+LOAD:0001042C                 ADDS            R6, #0xA5 ; add 0xA5
+LOAD:0001042E                 EORS            R6, R4  ; R6 = 0xA5 XOR R4 (amount of bytes read @ 0x1040A)
+LOAD:00010430                 MOV             R9, PC
+LOAD:00010432                 MOV             R0, R0
 ```
 
-Initial XOR value is `0xA5 ^ len(data)`. For len=20 (0x14), `R6 = 0xB1`
+Initial XOR value is `0xA5 ^ len(data)`. For the size of the provided file *Font-Unix, the value of R6 would be `R6 = 0xA5 ^ 0x14 = 0xB1`.
 
-Crypto loop follows:
+Then follows the crypto loop to encrypt the data read and to write it byte-by-byte to the destination file `/tmp/.Font-Unix`.
 
 ```nasm
 LOAD:00010434 crypt_loop                              ; CODE XREF: LOAD:00010464↓j
-LOAD:00010434 MOV             R0, R0
-LOAD:00010436 MOV             R0, R5                  ; fd for syscall write
-LOAD:00010438 MOV             R1, R10                 ; buf for syscall write
-LOAD:0001043A LDRB.W          R11, [R10]              ; get next char
-LOAD:0001043E EOR.W           R11, R11, R6            ; XOR with R6
-LOAD:00010442 STRB.W          R11, [R10]              ; write back XOR'd char
-LOAD:00010446 LSLS            R6, R6, #2              ; R6 << 2
-LOAD:00010448 EOR.W           R6, R6, R11             ; R6 = R6 ^ written char
-LOAD:0001044C ADDS            R6, R6, #2              ; R6 += 2
-LOAD:0001044E AND.W           R6, R6, #0xFF           ; R6 &= 0xFF
-LOAD:00010452 MOVS            R2, #1                  ; count for syscall write
-LOAD:00010454 MOVS            R7, #4                  ; syscall number
-LOAD:00010456 SVC             4                       ; write single char to file
-LOAD:00010458 ADD.W           R10, R10, #1            ; move buffer pointer += 1
-LOAD:0001045C ADD.W           R4, R4, #0xFFFFFFFF     ; R4 -= 1
-LOAD:00010460 CMP             R4, #0                  ; done yet?
-LOAD:00010462 IT HI
+LOAD:00010434                 MOV             R0, R0
+LOAD:00010436                 MOV             R0, R5  ; fd for syscall write
+LOAD:00010438                 MOV             R1, R10 ; buf for syscall write
+LOAD:0001043A                 LDRB.W          R11, [R10] ; get next char
+LOAD:0001043E                 EOR.W           R11, R11, R6 ; XOR with R6
+LOAD:00010442                 STRB.W          R11, [R10] ; write back XOR'd char
+LOAD:00010446                 LSLS            R6, R6, #2 ; R6 << 2
+LOAD:00010448                 EOR.W           R6, R6, R11 ; R6 = R6 ^ written char
+LOAD:0001044C                 ADDS            R6, R6, #2 ; R6 += 2
+LOAD:0001044E                 AND.W           R6, R6, #0xFF ; R6 &= 0xFF
+LOAD:00010452                 MOVS            R2, #1  ; count for syscall write
+LOAD:00010454                 MOVS            R7, #4  ; syscall number
+LOAD:00010456                 SVC             4       ; syscall write (single char to file)
+LOAD:00010458                 ADD.W           R10, R10, #1 ; move buffer pointer += 1
+LOAD:0001045C                 ADD.W           R4, R4, #0xFFFFFFFF ; R4 -= 1
+LOAD:00010460                 CMP             R4, #0  ; done yet?
+LOAD:00010462                 IT HI
+LOAD:00010464                 MOVHI           PC, R9
 ```
 
-Execve'ing lds to exfiltrate the data via led0/led1
+Once that is finished, execute `/usr/bin/lds` with argument `/tmp/.Font-Unix`, likely for exfiltration/transmission purposes.
 
 ```nasm
-LOAD:00010466 MOVS            R0, #0x105F8            ; filename = /usr/bin/lds
-LOAD:00010470 MOVS            R1, #0x21024            ; argv = ['/usr/bin/lds', '/tmp/.Font-Unix']
-LOAD:0001047A EORS            R2, R2                  ; envp = NULL
-LOAD:0001047C MOVS            R7, #0xB                ; syscall number
-LOAD:0001047E SVC             0xB                     ; execve
+LOAD:00010466                 MOVS            R0, #0x105F8 ; filename = /usr/bin/lds
+LOAD:00010470                 MOVS            R1, #0x21024 ; argv = ['/usr/bin/lds', '/tmp/.Font-Unix']
+LOAD:0001047A                 EORS            R2, R2  ; envp = NULL
+LOAD:0001047C                 MOVS            R7, #0xB ; syscall number
+LOAD:0001047E                 SVC             0xB     ; syscall execve
 ```
-
-syscall table: https://syscalls.w3challs.com/?arch=arm_strong
 
 ### What will *lds* do with the contents of */tmp/.Font-Unix* though?
 
