@@ -276,11 +276,26 @@ Let's do some (remote IDA) debugging on *i*!
 $ qemu-arm -g 12345 -L /usr/arm-linux-gnueabihf/ ./i
 ```
 
-Connect IDA to the remote gdb debugger and set breakpoint in function **main()**. Start stepping through the code.
+Connect IDA to the remote gdb debugger and set breakpoint in function **main()**. Start stepping through the code especially of function **sub_10484()**.
 
-The interesting code begins after a dynamically calculated jump to `0x103EC` (could be just a jump back to PC after call to `0x10484` from `0x103E8`).
+```nasm
+LOAD:00010484 sub_10484                               ; CODE XREF: main+18↑p
+LOAD:00010484 MOV             R5, R1,LSL R8           ; R8 = 0 => R5 = R1 = argv
+LOAD:00010488 EOR             R5, R5, R2              ; R5 ^= R2 (argv ^ envp) = 0x08
+LOAD:0001048C ADD             R5, R5, #0xF9           ; R5 += 0xF9 = 0x101
+LOAD:00010490 AND             R5, R5, #0xFF           ; R5 &= 0xFF = 0x01
+LOAD:00010494 ADD             R7, R7, R5              ; R7 += R5 => 0x103EC + 1
+LOAD:00010494                                         ; (activates Thumb mode)
+LOAD:00010498 MOV             R8, PC                  ; R8 = ptr to string @ 0x104A0
+LOAD:0001049C BX              R7                      ; branch back to 0x103EC in Thumb mode
+```
 
-What also seems to happens is a [switch from ARM state to Thumb state](https://developer.arm.com/documentation/dui0473/m/overview-of-the-arm-architecture/changing-between-arm--thumb--and-thumbee-state), so that the code beginning @ address `0x103EC` is to be interpreted as `CODE16` instead of `CODE32`.
+All that function **sub_10484()** does is
+
+- Load address of string @ `0x104A0` into register R8 (`/mnt/git-infrastructure/network-services.password`)
+- Branch back to address `0x103EC` in [Thumb mode](https://developer.arm.com/documentation/dui0473/m/overview-of-the-arm-architecture/changing-between-arm--thumb--and-thumbee-state) (lowest Bit = 1)
+
+So beginning @ address `0x103EC`, we have to analyze the code as `CODE16` instead of `CODE32`.
 
 We can force IDA to interprete the bytes as CODE16 with hotkey `ALT + G` and set the value for `T()` to 1. This will not be needed during remote debugging though, as IDA will realize the mode switch then automatically.
 
