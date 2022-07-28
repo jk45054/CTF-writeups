@@ -286,9 +286,9 @@ We can force IDA to interprete the bytes as CODE16 with hotkey `ALT + G` and set
 
 Step-by-step instructions:
 
-- Highlight (misinterpreted) Code from adresses 0x103EC to 0x103FB and undefine it (hotkey `u`)
-- Highlight addresses 0x103EC to 0x10484 and mark it as Thumb Code (hotkey `ALT + g`, set value T to 0x1)
-- Highlight addresses 0x103EC to 0x10484 again and force IDA to analyze it as code (hotkey `c`, option *Force* when prompted)
+- Highlight (misinterpreted) Code from adresses `0x103EC` to `0x103FB` and undefine it (hotkey `u`)
+- Highlight addresses `0x103EC` to `0x10484` and mark it as Thumb Code (hotkey `ALT + g`, set value T to 0x1)
+- Highlight addresses `0x103EC` to `0x10484` again and force IDA to analyze it as code (hotkey `c`, option *Force* when prompted)
 
 To make sense of the syscalls, refer to an [ARM syscall table](https://syscalls.w3challs.com/?arch=arm_strong).
 
@@ -369,17 +369,11 @@ Awesome. Now that we know how the *lds* binary will bridge the air gap with blin
 
 ### Decrypting *Font-Unix*
 
-Python Decrypter for Font-Unix
+With the knowledge gained from analyzing binary *i*, we can write a [decryption program](./decrypt.py) to recover the original content of `/mnt/git-infrastructure/network-services.password` that corresponds to the supplied and encrypted file *Font-Unix*. Just re-implement the crypto loop.
 
 ```python
-import sys
-
-with open(sys.argv[1], "rb") as f:
-    crypted_flag = f.read()
-
 decrypted_flag = bytearray(len(crypted_flag))
 
-# set initial XOR value
 XOR_value = 0xA5 ^ len(crypted_flag)
 
 for i in range(len(crypted_flag)):
