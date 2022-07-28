@@ -158,7 +158,7 @@ It seems to be a good idea to dive deeper into binary *i* and find out what it i
 
 Loading the file *i* as it is into [Cutter](https://cutter.re) at least for version 2.0.3 based on Rizin version 0.3.0 crashes it completely. Great start. ;-)
 
-We could try to fix the (maybe deliberately corrupted) ELF headers ([Link](https://reverseengineering.stackexchange.com/questions/12316/fixing-corrupt-elf-header-field-e-shnum-for-use-in-gdb)). We don't have to though.
+We could try to fix the (maybe deliberately corrupted) ELF headers ([Link](https://reverseengineering.stackexchange.com/questions/12316/fixing-corrupt-elf-header-field-e-shnum-for-use-in-gdb)). We don't have to though - see Addendum section at the end.
 
 Trying to open it in IDA Pro yields the warning message *SHT table size or offset is invalid*. We can still stare at some ARM assembly, but static analysis shows some weird looking code beginning @ `0x103EC`.
 
@@ -451,6 +451,90 @@ bytearray(b'CS{c4st0m_1mpl4nts}\n')
 
 Flag: **CS{c4st0m_1mpl4nts}**
 
-## Links for future Referencing
+## Addendum - Fixing *i*'s ELF Headers
 
-[RE Radio ARM Binary Images in IDA Pro](https://do1alx.de/2022/reverse-engineering-radios-arm-binary-images-in-ida-pro/)
+Let's try to parse the ELF headers with `readelf`. Also [Corkami's visualizations](https://github.com/corkami/pics/blob/master/binary/elf101/elf101.pdf) are always a great resource for understanding binary executable headers.
+
+```console
+$ readelf -h i
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x102e0
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          0 (bytes into file)
+  Flags:                             0x5000400, Version5 EABI, hard-float ABI
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         9
+  Size of section headers:           40 (bytes)
+  Number of section headers:         27
+  Section header string table index: 65535 <corrupt: out of range>
+readelf: Warning: Section 0 has an out of range sh_link value of 66272
+```
+
+```console
+$ xxd -l 0x40 i
+00000000: 7f45 4c46 0101 0100 0000 0000 0000 0000  .ELF............
+00000010: 0200 2800 0100 0000 e002 0100 3400 0000  ..(.........4...
+00000020: 0000 0000 0004 0005 3400 2000 0900 2800  ........4. ...(.
+00000030: 1b00 ffff 0100 0070 a806 0000 a806 0100  .......p........
+```
+
+[Man Page Entry](https://man7.org/linux/man-pages/man5/elf.5.html) or `man 5 elf` say
+```txt
+  e_shoff
+    This member holds the section header table's file offset
+    in bytes.  If the file has no section header table, this
+    member holds zero.
+
+  e_shnum
+    This member holds the number of entries in the section header table.  Thus the product of e_shentsize and e_shnum gives the section header
+    table's size in bytes.  If a file has no section header table, e_shnum holds the value of zero.
+
+  e_shstrndx
+    This member holds the section header table index of the entry associated with the section name string table.  If the file has no section name string
+    table, this member holds the value SHN_UNDEF
+```
+
+What is the numeric value of SHN_UNDEF?
+
+```console
+$ grep -R SHN_UNDEF /usr/include
+/usr/include/elf.h:#define SHN_UNDEF	0		/* Undefined section */
+/usr/include/linux/elf.h:#define SHN_UNDEF	0
+```
+
+Let's see what could be wrong here:
+
+- Start of section headers has value 0 (`e_shoff`, Offset 0x20, 4 bytes)
+- Count of section headers has value 0x1b = 27 (`e_shnum`, Offset 0x48, 2 bytes)
+- Index of the names' section in the table has the value 0xffff = 65535 (`e_shstrndx`, Offset 0x50, 2 bytes)
+
+If there is no section header table, `e_shoff = 0` would be correct, but then `e_shnum` and `e_shstrndx` should also hold value 0.
+
+If there is a section header table, `e_shoff` should point to its offset, `e_shnum` should hold the number of its entries and `e_shstrndx` should have a fitting value.
+
+Let's go with the former assumption first, since we can't find a meaningful offset for a section header table. Patch four bytes at offset 0x48 with value 0x00 each to set both `e_shnum` to 0 and `e_shstrndx` to SHN_UNDEF.
+
+```console
+$ cp i i-patched
+$ dd if=/dev/zero of=i-patched bs=1 count=4 seek=48 conv=notrunc
+4+0 records in
+4+0 records out
+4 bytes copied, 0.0010893 s, 3.7 kB/s
+```
+
+The patched binary *i-patched* can then be loaded into Cutter, Qiling and what-not without errors...
+
+## Further Links
+
+- [RE Radio ARM Binary Images in IDA Pro](https://do1alx.de/2022/reverse-engineering-radios-arm-binary-images-in-ida-pro/)
+- [Fixing Corrupt ELF Headers](https://reverseengineering.stackexchange.com/questions/12316/fixing-corrupt-elf-header-field-e-shnum-for-use-in-gdb)
