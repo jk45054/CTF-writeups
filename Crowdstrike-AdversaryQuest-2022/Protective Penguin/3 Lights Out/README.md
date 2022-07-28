@@ -340,7 +340,7 @@ LOAD:00010430                 MOV             R9, PC
 LOAD:00010432                 MOV             R0, R0
 ```
 
-Initial XOR value is `0xA5 ^ len(data)`. For the size of the provided file *Font-Unix, the value of R6 would be `R6 = 0xA5 ^ 0x14 = 0xB1`.
+Initial XOR value is `0xA5 ^ len(data)`. For the size of the provided file *Font-Unix*, the value of R6 would be `R6 = 0xA5 ^ 0x14 = 0xB1`.
 
 Then follows the crypto loop to encrypt the data read and to write it byte-by-byte to the destination file `/tmp/.Font-Unix`.
 
@@ -378,9 +378,47 @@ LOAD:0001047E                 SVC             0xB     ; syscall execve
 
 ### What will *lds* do with the contents of */tmp/.Font-Unix* though?
 
-**TODO**
+Firing up Cutter for a quick decompilation view of *lds*, we can see that *lds* will try to transmit the (already encrypted) contents of the file given as the command line argument.
 
-Awesome. Now that we know how the *lds* binary will bridge the air gap with blinking leds, we also realize that knowing that is not needed to gain this flag.
+```cpp
+undefined4 main(int argc, char **argv)
+{
+[...]    
+    if (argc == 2) {
+        printf(*(undefined4 *)0x10b4c, argv[1]);
+        uVar1 = transmission_send_file(argv[1]);
+    } else {
+        printf(*(undefined4 *)0x10b48, *argv);
+        uVar1 = 0xffffffff;
+    }
+    return uVar1;
+}
+```
+
+```cpp
+undefined4 transmission_send_file(char *arg1)
+{
+[...]
+    transmission_send_start();
+    var_ch = fopen(arg1, *(undefined4 *)0x10acc);
+    if (var_ch == 0) {
+        uVar2 = 0xffffffff;
+    } else {
+        while( true ) {
+            iStack16 = fread(&filename, 1, 0x80, var_ch);
+            if (iStack16 == 0) break;
+            iVar1 = transmission_send_data((int32_t)&filename, iStack16);
+            if (iVar1 == -1) {
+                transmission_send_error();
+            }
+        }
+        transmission_send_end();
+    }
+    return uVar2;
+}
+```
+
+While it may be interesting to analyze it all, it does not seem to be needed to solve this challenge.
 
 ### Decrypting *Font-Unix*
 
