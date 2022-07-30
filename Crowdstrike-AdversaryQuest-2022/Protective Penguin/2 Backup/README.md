@@ -189,7 +189,7 @@ ENVIRONMENT
 
 Oh - now that seems interesting. *The contents of this environment variable will get added to the command line just after the zip command*. Let's see where the value of the environment variable *ZIPOPT* would land: `zip $ZIPOPT -r -9 "${BACKUP_DST}" ${BACKUP_DIRS}`
 
-### Approach 1 - GTFOBins Shell Style
+### Approach 1 - GTFOBins Interactive Shell
 
 A good resource for inspirational linux shenanigans is [GTFOBins](https://gtfobins.github.io). It does have an entry for [zip](https://gtfobins.github.io/gtfobins/zip/)!
 
@@ -209,7 +209,7 @@ Reading up more about the options
               In cmd, {} is replaced by the name of the temporary archive, otherwise the name of the archive is appended to the end of the command.  The return code is checked for success (0 on Unix).
 ```
 
-One idea is to supply *zip* options to test the archive afterwards (`-T`) and to also supply a different unzip program for that test (`-TT`). Why not have `/bin/sh` do the test? :)
+One idea is to supply *zip* options to test the archive afterwards (`-T`) and to also supply a different unzip program for that test (`-TT`). Why not have `/bin/sh` do the test and hope for an interactive shell to pop? :)
 
 ```console
 $ ZIPOPT=" -T -TT '/bin/sh #' " ./backup
@@ -221,7 +221,7 @@ test of /tmp/temp.zip FAILED
 zip error: Zip file invalid, could not spawn unzip, or wrong unzip (original files unmodified)
 ```
 
-Hmm. That didn't go as planned... yet.
+Hmm. That didn't go as planned...
 
 ### Approach 2 - Elevated Command Execution
 
