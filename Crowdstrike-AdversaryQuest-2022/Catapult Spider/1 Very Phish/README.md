@@ -8,7 +8,9 @@ Note: Flags will be easily identifiable by the format “CS{some_secret_flag_tex
 
 ## TL;DR Summary
 
-TL;DR
+- The provided file is a Microsoft compiled help manual (CHM).
+- It contains a PowerShell script that tries to download and execute four (likely) malicious files.
+- The URIs have to be transcoded from the offline C2 IP address to the still working one in order to retrieve two of the files.
 
 ## Initial Analysis
 
