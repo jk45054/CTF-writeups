@@ -147,6 +147,8 @@ $ ls -l *.exe
 -rw-r--r-- 1 501 dialout   798859 Jul  6 10:51 ransomnote_flag.exe
 ```
 
+Looks like only two of the four files are still available.
+
 The file `ransomnote_flag.exe` contains interesting strings
 
 ```txt
