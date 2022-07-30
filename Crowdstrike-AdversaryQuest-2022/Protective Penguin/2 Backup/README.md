@@ -194,7 +194,7 @@ A good resource for inspirational linux shenanigans is [GTFOBins](https://gtfobi
 One idea is to supply *zip* options to test the archive afterwards (`-T`) and to also supply a different unzip program for that test (`-TT`). Why not have `/bin/sh` do the test? :)
 
 ```console
-$ ZIPOPT=" -T -TT '/bin/sh' " ./backup
+$ ZIPOPT=" -T -TT '/bin/sh #' " ./backup
 [...]
 sh: 1: Syntax error: Unterminated quoted string
 free(): double free detected in tcache 2
