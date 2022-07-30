@@ -136,7 +136,7 @@ The private range IPv4 address `192.168.122.1` is obviously not reachable. But w
 We know from the challenge description that the C2 server at `116.202.161.100` is still online.
 
 - The hex encoded IPv4 address without prefix 0x is `74caa164`.
-- The SHA256 value of that is `c`.
+- The SHA256 value of that is `F5D3271FE6D59C185D85353DFB8794A4FF9B7BDD5661FCCF356766998B6D276B`.
 
 We can now try to download the files from this C2 server.
 
