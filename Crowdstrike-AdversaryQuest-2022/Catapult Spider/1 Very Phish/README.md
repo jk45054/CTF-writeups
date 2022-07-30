@@ -127,7 +127,7 @@ So what are the URI components?
 | 1 | 0xc0a87a01 | Hex encoded IPv4 address 192.168.122.1 |
 | 2 | 42666 | Server TCP port number |
 | 3 | C84BEE34284DA6BBDD16859BB9B961D8A3B32D49D6276676F46798EA510034E4 | Upper cased SHA256 hash value of hex encoded IPv4 address without prefix 0x |
-| 4 | file names | Names of files to download and execute via Start-Process |
+| 4 | encrypter.exe,control.exe,ransomnote_flag.exe,gode.exe | Names of files to download and execute via Start-Process |
 
 The private range IPv4 address `192.168.122.1` is obviously not reachable. But we do know the URI scheme now!
 
