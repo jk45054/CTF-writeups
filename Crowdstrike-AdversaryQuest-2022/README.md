@@ -10,6 +10,7 @@ My write-ups for some of the challenges can be found here
 
 - [Catapult Spider - #1 Very Phish](./Catapult%20Spider/1%20Very%20Phish)
 - [Catapult Spider - #2 Such Control Wow](./Catapult%20Spider/2%20Such%20Control%20Wow)
+- [Protective Penguin - #1 FrontDoor](./Protective%20Penguin/1%20FrontDoor)
 - [Protective Penguin - #2 Backup](./Protective%20Penguin/2%20Backup)
 - [Protective Penguin - #3 Lights Out](./Protective%20Penguin/3%20Lights%20Out)
 - [Tabloid Jackal - #1 display0](./Tabloid%20Jackal/1%20display0)
