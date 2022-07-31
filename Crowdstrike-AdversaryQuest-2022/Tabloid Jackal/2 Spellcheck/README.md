@@ -17,7 +17,7 @@ The challenge is running on Ubuntu 22.04.
 
 ## Pre-Requisites
 
-Later needed for compiling aspell
+Needed later for compiling aspell.
 
 ```txt
 sudo apt install perl
