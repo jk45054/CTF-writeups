@@ -84,7 +84,7 @@ This is likely the script that was used to encrypt the above files.
 
 ## Analysis of the Encryption Script
 
-```python=
+```python
 [...]
 from encrypter import *
 
