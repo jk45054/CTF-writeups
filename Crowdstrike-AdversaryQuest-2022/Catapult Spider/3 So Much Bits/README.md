@@ -353,8 +353,40 @@ $ ./verify_option.py
 
 We have successfully verified the blob structure option 2 (nonce, tag, key)!
 
+Now that we think of it, it totally makes sense to have the AES-GCM metadata (nonce, tag) in front of the encrypted data. Trust but verify!
+
 ## Now it's Flag Time!
 
-**TODO** decrypt the files
+Now that we know how to recover the plaintext file encryption keys, we can try to decrypt the files.
+
+Since we're assuming again that AES-GCM-128 was used, we need to find the nonce and tag of the encrypted file. We expect them to be prepended to the encrypted contents just like above.
+
+```python
+# Decrypt todo.txt.enc
+with open("./notes/todo.txt.enc", "rb") as g:
+  todo = g.read()
+g.close()
+
+file_nonce = todo[0:12]
+file_tag = todo[12:28]
+file_content = todo[28:]
+
+cipher = AES.new(file_encryption_key, AES.MODE_GCM, file_nonce)
+decrypted_file_content = cipher.decrypt_and_verify(file_content, file_tag)
+print(decrypted_file_content.decode())
+```
+
+See [full script decrypt_todo.py](./decrypt_todo.py).
+
+```console
+$ ./decrypt_todo.py                                                                  1 ⨯
+ToDos
+=====
+* Dump firmware
+  * Decrypt firmware?
+* Finish that exploit finally
+* Doge!
+* Push CS{d0g3_s0_n1c3_such_4m4z3} to scoreboard
+```
 
 Flag: **CS{d0g3_s0_n1c3_such_4m4z3}**
