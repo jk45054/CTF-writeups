@@ -237,7 +237,7 @@ $ ./query_encrypt_db.py 16 /home/challenge/notes/todo.txt.enc | xxd -r -p | xxd
 00000050: 646f 2e74 7874 2e65 6e63 0000 0000       do.txt.enc....
 ```
 
-Okay, this already looks **very** similar to how the entry in the challenge file `keys_db` looked like. Comparison:
+Okay, this already looks **very** similar to how the entry in the challenge file `keys.db` looked like. Comparison:
 
 ```console
 $ xxd -l 0x5e keys.db
@@ -253,7 +253,7 @@ The only differences are in bytes 0x10 to 0x2f (32 bytes). If we test with longe
 
 If we are to play around with different path strings, we get the *nonce empty* error if and only if the path length is zero. For the path string `a` and 16 null bytes key, we get this result back:
 
-```txt
+```console
 $ ./query_encrypt_db.py 16 a | xxd -r -p | xxd 
 00000000: 2100 0000 6117 9551 beed 30eb 0442 b325  !...a..Q..0..B.%
 00000010: e969 94f1 95fa 0dc4 ca50 5bbc 2a22 cb15  .i.......P[.*"..
@@ -263,7 +263,7 @@ $ ./query_encrypt_db.py 16 a | xxd -r -p | xxd
 
 If we send a 16 byte null key and a longer path name, like `todo.txt.enc12345`, we get this blob back.
 
-```txt
+```console
 $ ./query_encrypt_db.py 16 /home/challenge/notes/todo.txt.enc12345 | xxd -r -p | xxd 
 00000000: 2c00 0000 7478 742e 656e 6331 3233 3435  ,...txt.enc12345
 00000010: db70 9b44 79f6 eff1 b857 7814 26a1 4584  .p.Dy....Wx.&.E.
@@ -286,7 +286,7 @@ Observations and recap:
 
 ## Approach
 
-Based on what we know so far, we can assume that
+Based on what we know so far, we can assume that:
 
 - The AES-GCM file encryption key to decrypt the files is encrypted by AES-GCM server-side.
 - The file encryption key length is 16 bytes (one AES block), thus we expect the encrypted file encryption key to be 16 bytes long as well.
@@ -296,9 +296,63 @@ Based on what we know so far, we can assume that
   - The following 32 bytes will likely contain the 16 bytes long encrypted file encryption key.
   - The other 16 bytes are likely the AES-GCM tag.
 
-We do not know yet, which of the 32 bytes are the encrypted key bytes and which are the tag bytes.
+We do not know the order yet, in which the encrypted key bytes and the tag bytes are delivered. It could be (nonce, key, tag) or (nonce, tag, key).
 
-**TODO** test out both options, recover file key, let server encrypt it again, compare to keys.db entry. One will match -> correct structure.
+Let's take a look again at the key blobs that we generated for the null key and path `/home/challenge/notes/todo.txt.enc` and the corresponding blob from the local `keys.db`.
+
+```txt
+Generated, null key
+00000000: 2c00 0000 746f 646f 2e74 7874 2e65 6e63  ,...todo.txt.enc
+00000010: a7b2 6309 7bcf c456 b07d 81a6 4358 f383  ..c.{..V.}..CX..
+00000020: 2b98 3d92 e0c0 49a4 63dd 70c7 f07b 69c0  +.=...I.c.p..{i.
+[...]
+```
+
+```txt
+Local file keys.db
+00000000: 2c00 0000 746f 646f 2e74 7874 2e65 6e63  ,...todo.txt.enc
+00000010: e752 8b60 7533 30a0 ba74 e24e 4d2c ef86  .R.`u30..t.NM,..
+00000020: 8f5a 7601 1d5b 5bd5 f7dd c6f2 5fdb 1b42  .Zv..[[....._..B
+```
+
+### Option Nonce, Key, Tag
+
+- Length: `2c00 0000` (4 bytes, value 44)
+- Nonce: `746f 646f 2e74 7874 2e65 6e63` (12 bytes)
+- Encrypted Key: `e752 8b60 7533 30a0 ba74 e24e 4d2c ef86` (16 bytes)
+- Tag: `8f5a 7601 1d5b 5bd5 f7dd c6f2 5fdb 1b42` (16 bytes)
+
+With ...
+
+- `plaintext(file encryption key) = ciphertext(null key) ^ ciphertext(file encryption key)`
+
+... we get
+
+- `plaintext(file encryption key) = a7b263097bcfc456b07d81a64358f383 ^ e7528b60753330a0ba74e24e4d2cef86`
+- `plaintext(file encryption key) = 40e0e8690efcf4f60a0963e80e741c05`
+
+### Option Nonce, Tag, Key
+
+- Length: `2c00 0000` (4 bytes, value 44)
+- Nonce: `746f 646f 2e74 7874 2e65 6e63` (12 bytes)
+- Tag: `e752 8b60 7533 30a0 ba74 e24e 4d2c ef86` (16 bytes)
+- Encrypted Key: `8f5a 7601 1d5b 5bd5 f7dd c6f2 5fdb 1b42` (16 bytes)
+
+- `plaintext(file encryption key) = 2b983d92e0c049a463dd70c7f07b69c0 ^ 8f5a76011d5b5bd5f7ddc6f25fdb1b42`
+- `plaintext(file encryption key) = a4c24b93fd9b12719400b635afa07282`
+
+### Verify the Options
+
+Now we need to verify this by using above key with given file path string and compare the server answer with the local entry in `keys.db` ([see script verify_option.py](./verify_option.py)).
+
+```console
+$ ./verify_option.py 
+[*] Successfully verified option 2
+[=] Recovered file encryption key a4c24b93fd9b12719400b635afa07282
+```
+
+We have successfully verified the blob structure option 2 (nonce, tag, key)!
+
 
 **TODO** decrypt todo.txt
 
