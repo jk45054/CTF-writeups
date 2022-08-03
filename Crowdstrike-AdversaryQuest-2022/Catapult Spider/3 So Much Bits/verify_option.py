@@ -23,23 +23,31 @@ def get_encrypted_key_db(data):
     res = requests.post("http://116.202.161.100:57689/encrypt_db", data=b64encode(encoded_data))
     return b64decode(res.text)
 
+# Load keys.db
+
+with open("./keys.db", "rb") as f:
+  local_keys_db = f.read()
+
 # Verify option (nonce, key, tag) and (nonce, tag, key)
 file_path = "/home/challenge/notes/todo.txt.enc"
 
-key_option_1 = "40e0e8690efcf4f60a0963e80e741c05"
-possible_encrypted_key_option_1 = unhexlify("e7528b60753330a0ba74e24e4d2cef86")
-key_option_2 = "a4c24b93fd9b12719400b635afa07282"
-possible_encrypted_key_option_2 = unhexlify("8f5a76011d5b5bd5f7ddc6f25fdb1b42")
+# Send null key
+nullkey_keys_db = get_encrypted_key_db([["unknown", b"\x00" * 16, file_path]])
 
-key_db_1 = get_encrypted_key_db([["unknown", unhexlify(key_option_1), file_path]])
-key_db_2 = get_encrypted_key_db([["unknown", unhexlify(key_option_2), file_path]])
+offset_16_to_32 = nullkey_keys_db[16:32]
+offset_32_to_48 = nullkey_keys_db[32:48]
 
-if key_db_1[16:32] == possible_encrypted_key_option_1:
+# option 1 (nonce, key, tag)
+possible_plaintext_key_option_1 = bytearray([x^y for x,y in zip(offset_16_to_32, local_keys_db[16:32])])
+option1_keys_db = get_encrypted_key_db([["unknown", possible_plaintext_key_option_1, file_path]])
+if local_keys_db[16:32] == option1_keys_db[16:32]:
   print("[*] Successfully verified option 1")
-  print(f"[=] Recovered file encryption key {key_option_1}")
+  print(f"[=] Recovered file encryption key {hexlify(possible_plaintext_key_option_1)}")
 
-if key_db_2[32:48] == possible_encrypted_key_option_2:
+# option 2 (nonce, tag, key)
+possible_plaintext_key_option_2 = bytearray([x^y for x,y in zip(offset_32_to_48, local_keys_db[32:48])])
+option2_keys_db = get_encrypted_key_db([["unknown", possible_plaintext_key_option_2, file_path]])
+if local_keys_db[32:48] == option2_keys_db[32:48]:
   print("[*] Successfully verified option 2")
-  print(f"[=] Recovered file encryption key {key_option_2}")
-
+  print(f"[=] Recovered file encryption key {hexlify(possible_plaintext_key_option_2)}")
 
