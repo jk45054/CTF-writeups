@@ -76,11 +76,11 @@ $ xxd todo.txt.enc
 
 What directly gets our attention is that the first 12 bytes (`cc2d a24c fa37 2d8b 2006 27f5`) are the same in both encrypted files.
 
-Could be a re-use of crypto material, but that's still speculation here.
+Could be a re-use of crypto material, but that's still speculation at this point in time.
 
 ### File *victim_script.py*
 
-This is likely the script that was used to encrypt the above files.
+This is likely the script that was used to trigger the encryption the above files.
 
 ## Analysis of the Encryption Script
 
@@ -103,7 +103,7 @@ def main():
     write_key_db(key_db)
 ```
 
-We don't know the functionality that is imported from the (actor) module `encrypter`, as it was deleted (*angry face*). Since there are no other references we can recognize, we assume that the functions `generate_path_list()`, `encrypted_files()` and `write_files()` were imported from `encrypter`.
+We don't know the functionality that is imported from the (actor) module `encrypter`, as it was deleted (*angry face*). Since there are no other references we can recognize, we assume that the functions `generate_path_list()`, `encrypt_files()` and `write_files()` were imported from `encrypter`.
 
 - `generate_path_list()` sounds like it may return a list of file path strings to encrypt.
 - `encrypt_files()` is - according to the comment - applying *military-grade* AES-GCM to encrypt the data.
@@ -114,7 +114,7 @@ Afterwards two functions are called that are defined in the supplied script: `ge
 
 ### Function *write_key_db()*
 
-No magic here. This is the culprit to generate file `keys.db`.
+No magic here. This is likely the culprit to generate the supplied file `keys.db`. It will write whatever is passed to the function as an argument, which in turn is the result of function `get_encrypted_key_db()`.
 
 ```python
 def write_key_db(data):
@@ -151,19 +151,156 @@ For each list entry, a data structure is appended to `encoded_data`.
 | Offset | Length | Value | Comment |
 | --- | --- | --- | --- |
 | 0 | 4 | unknown | Length of *key*, Byte order: Little endian |
-| 4 | unknown | unknown | Key length could be 16, 24 or 32 Byte |
-| unknown | 4 | "\x00" * 4 | Some sort of padding |
+| 4 | unknown | unknown | Key length, likely values for AES-GCM would be 16, 24 or 32 Byte |
+| unknown | 4 | "\x00" * 4 | Static value, some sort of padding or delimiter |
 | unknown | 4 | unknown | Length of file path, Little endian |
 | unknown | unknown | unknown | File path string |
-| unknown | 4 | "\x00" * 4 | Some sort of padding |
+| unknown | 4 | "\x00" * 4 | Static value, some sort of padding or delimiter |
 
 Then an HTTP POST request is made to `http://116.202.161.100:57689/encrypt_db` with the base64 encoded value of `encoded_data`.
 
 The result is base64 decoded, return to `main()` and then written to our `keys.db`.
 
+## Finding out more about the Server Encryption API
+
+Let's recap what we figured out this far.
+
+- `encrypt_files()` returns a list of lists with entries like `(unknown, key, path)`.
+- `get_encrypted_key_db()` iterates over this list.
+- For each entry, a data structure is filled with information about the key and file path (see table above) and appended to `encoded_data`.
+- `encoded_data` is base64 encoded and sent to `http://116.202.161.100:57689/encrypt_db`.
+- The result is base64 decoded and written to file `keys_db`.
+
+Since we do not know the key length used or anything else, why don't we begin with forging queries to the web service endpoint `/encrypt_db`?
+
+### Empty Request
+
+Let's be curious and send an empty query.
+
+```console
+$ curl -X POST http://116.202.161.100:57689/encrypt_db    
+Could not encrypt keys: Error during encryption -- Nonce cannot be empty
+```
+
+The server error message reads, that it was unable to encrypt (the supplied) keys. It also adds the reason: The _Nonce_ was empty.
+
+This is very interesting! It seems like any part of the submitted data is going to be used as a nonce. That's usually part of a cryptographic algorithm, which usually should never be used more than once - hence the name nonce (*number used once*).
+
+### Theorize on AES-GCM and Nonce Re-Use
+
+If we remember the source code comment about [AES-GCM](https://en.wikipedia.org/wiki/Galois/Counter_Mode) being used, we can [google around for possible attacks on it with nonce-reuse](https://www.elttam.com/blog/key-recovery-attacks-on-gcm/#content).
+
+```txt
+[...]
+Even a single AES-GCM nonce reuse can be catastrophic.
+A single nonce reuse leaks the xor of plaintexts, so if one plaintext is known the adversary can completely decrypt the other.
+[...]
+```
+
+Awesome, how would it work for us?
+
+The first block of plaintext (16 bytes) will be XOR encrypted by `E(k)` (keystream), which is derived from the server (file) key encryption key and the nonce. So we get `E(K) ^ plaintext(file encryption key) = ciphertext(file encryption key)`.
+
+If we were able to let the server encrypt a 16 byte null key with the same nonce, we get `E(K) ^ plaintext(null key) = ciphertext(null key)`.
+
+Thus we could recover `plainttext(file encryption key)` the following way:
+
+- `E(k) = E(k)`
+- `plaintext(file encryption key) ^ ciphertext(file encryption key) = plaintext(null key) ^ ciphertext(null key)`
+- `plaintext(file encryption key) = ciphertext(null key) ^ ciphertext(file encryption key)`
+
+That's totally awesome. But we still do not know what exactly is used as the nonce value nor do we know the correct key length yet.
+
+### Pivoting on Nonce and Key Length
+
+Let's forge more queries to the server key encryption API by re-using function `get_encrypted_key_db()` with the script [query_encrypt_db.py](./query_encrypt_db.py).
+
+```python
+# Set null key based on sys.argv[1] 16/24/32 Bytes (128/192/256 Bit)
+# Set file path to sys.argv[2]
+# File path /home/challenge/notes/todo.txt.enc (found in keys.db)
+key_len = int(sys.argv[1])
+file_path = sys.argv[2]
+key_db = get_encrypted_key_db([["unknown", b"\x00" * key_len, file_path]])
+print(hexlify(key_db).decode())
+```
+
+Start with a 16 byte null key and a file path string that we know from the challenge files.
+
+```console
+$ ./query_encrypt_db.py 16 /home/challenge/notes/todo.txt.enc | xxd -r -p | xxd 
+00000000: 2c00 0000 746f 646f 2e74 7874 2e65 6e63  ,...todo.txt.enc
+00000010: a7b2 6309 7bcf c456 b07d 81a6 4358 f383  ..c.{..V.}..CX..
+00000020: 2b98 3d92 e0c0 49a4 63dd 70c7 f07b 69c0  +.=...I.c.p..{i.
+00000030: 0000 0000 2200 0000 2f68 6f6d 652f 6368  ....".../home/ch
+00000040: 616c 6c65 6e67 652f 6e6f 7465 732f 746f  allenge/notes/to
+00000050: 646f 2e74 7874 2e65 6e63 0000 0000       do.txt.enc....
+```
+
+Okay, this already looks **very** similar to how the entry in the challenge file `keys_db` looked like. Comparison:
+
+```console
+$ xxd -l 0x5e keys.db
+00000000: 2c00 0000 746f 646f 2e74 7874 2e65 6e63  ,...todo.txt.enc
+00000010: e752 8b60 7533 30a0 ba74 e24e 4d2c ef86  .R.`u30..t.NM,..
+00000020: 8f5a 7601 1d5b 5bd5 f7dd c6f2 5fdb 1b42  .Zv..[[....._..B
+00000030: 0000 0000 2200 0000 2f68 6f6d 652f 6368  ....".../home/ch
+00000040: 616c 6c65 6e67 652f 6e6f 7465 732f 746f  allenge/notes/to
+00000050: 646f 2e74 7874 2e65 6e63 0000 0000       do.txt.enc....
+```
+
+The only differences are in bytes 0x10 to 0x2f (32 bytes). If we test with longer key lengths (192 Bit, 256 Bit), we are returned higher values at the beginning (0x34, 0x3C).
+
+If we are to play around with different path strings, we get the *nonce empty* error if and only if the path length is zero. For the path string `a` and 16 null bytes key, we get this result back:
+
+```txt
+$ ./query_encrypt_db.py 16 a | xxd -r -p | xxd 
+00000000: 2100 0000 6117 9551 beed 30eb 0442 b325  !...a..Q..0..B.%
+00000010: e969 94f1 95fa 0dc4 ca50 5bbc 2a22 cb15  .i.......P[.*"..
+00000020: 0a88 05f0 6000 0000 0001 0000 0061 0000  ....`........a..
+00000030: 0000 
+```
+
+If we send a 16 byte null key and a longer path name, like `todo.txt.enc12345`, we get this blob back.
+
+```txt
+$ ./query_encrypt_db.py 16 /home/challenge/notes/todo.txt.enc12345 | xxd -r -p | xxd 
+00000000: 2c00 0000 7478 742e 656e 6331 3233 3435  ,...txt.enc12345
+00000010: db70 9b44 79f6 eff1 b857 7814 26a1 4584  .p.Dy....Wx.&.E.
+00000020: 2a9d c5da 64e0 9abe c784 82bf d0a9 6bae  *...d.........k.
+00000030: 0000 0000 2700 0000 2f68 6f6d 652f 6368  ....'.../home/ch
+00000040: 616c 6c65 6e67 652f 6e6f 7465 732f 746f  allenge/notes/to
+00000050: 646f 2e74 7874 2e65 6e63 3132 3334 3500  do.txt.enc12345.
+00000060: 0000 00
+```
+
+Observations and recap:
+
+- The first 4 bytes seem to be a length value for the following blob part, followed by a padding of 4 null bytes, followed by a 4 byte length value for the following full path string, followed by a 4 null byte padding.
+- The first length value seems to be calculated by the formula `0x10 + len(key) + max(len(path), 12)`.
+- The path value, or parts of it, seem to be used as a crypto nonce. Which makes sense, as nonce values for AES-GCM are usually 12 bytes long.
+- The source code comment mentions *military-grade AES-GCM*, which uses a nonce and a tag (for decryption).
+- The ransomnote also mentions that it will be impossible to recover files if they would be renamed or deleted.
+  - For AES-GCM decryption of the encrypted file, we will need the file encryption key, nonce and  tag.
+  - The same is true for the decryption of the file encryption keys.
+
 ## Approach
 
+Based on what we know so far, we can assume that
 
+- The AES-GCM file encryption key to decrypt the files is encrypted by AES-GCM server-side.
+- The file encryption key length is 16 bytes (one AES block), thus we expect the encrypted file encryption key to be 16 bytes long as well.
+- The last 12 bytes of the path string are used as the nonce for the file key encryption (or less, if path is smaller).
+- The server API returns a 0x2c sized blob (for key lengths of 16 bytes)
+  - The first 12 bytes are the nonce value.
+  - The following 32 bytes will likely contain the 16 bytes long encrypted file encryption key.
+  - The other 16 bytes are likely the AES-GCM tag.
+
+We do not know yet, which of the 32 bytes are the encrypted key bytes and which are the tag bytes.
+
+**TODO** test out both options, recover file key, let server encrypt it again, compare to keys.db entry. One will match -> correct structure.
+
+**TODO** decrypt todo.txt
 
 
 
