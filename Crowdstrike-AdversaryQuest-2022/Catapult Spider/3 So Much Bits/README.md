@@ -353,11 +353,9 @@ $ ./verify_option.py
 
 We have successfully verified the blob structure option 2 (nonce, tag, key)!
 
-
-**TODO** decrypt todo.txt
-
-
-
 ## Now it's Flag Time!
+
+**TODO** make verify_option.py less statically (load/parse keys.db, online fetch result for null key options1/2, compare)
+**TODO** decrypt the files
 
 Flag: **CS{d0g3_s0_n1c3_such_4m4z3}**
