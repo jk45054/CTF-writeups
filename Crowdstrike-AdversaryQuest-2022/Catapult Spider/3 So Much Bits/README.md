@@ -338,7 +338,6 @@ With ...
 - Nonce: `746f 646f 2e74 7874 2e65 6e63` (12 bytes)
 - Tag: `e752 8b60 7533 30a0 ba74 e24e 4d2c ef86` (16 bytes)
 - Encrypted Key: `8f5a 7601 1d5b 5bd5 f7dd c6f2 5fdb 1b42` (16 bytes)
-
 - `plaintext(file encryption key) = 2b983d92e0c049a463dd70c7f07b69c0 ^ 8f5a76011d5b5bd5f7ddc6f25fdb1b42`
 - `plaintext(file encryption key) = a4c24b93fd9b12719400b635afa07282`
 
