@@ -203,7 +203,7 @@ The first block of plaintext (16 bytes) will be XOR encrypted by `E(k)` (keystre
 
 If we were able to let the server encrypt a 16 byte null key with the same nonce, we get `E(K) ^ plaintext(null key) = ciphertext(null key)`.
 
-Thus we could recover `plainttext(file encryption key)` the following way:
+Thus we could recover `plaintext(file encryption key)` the following way:
 
 - `E(k) = E(k)`
 - `plaintext(file encryption key) ^ ciphertext(file encryption key) = plaintext(null key) ^ ciphertext(null key)`
@@ -278,23 +278,24 @@ Observations and recap:
 
 - The first 4 bytes seem to be a length value for the following blob part, followed by a padding of 4 null bytes, followed by a 4 byte length value for the following full path string, followed by a 4 null byte padding.
 - The first length value seems to be calculated by the formula `0x10 + len(key) + max(len(path), 12)`.
-- The path value, or parts of it, seem to be used as a crypto nonce. Which makes sense, as nonce values for AES-GCM are usually 12 bytes long.
+- The file path string, up to the last 12 bytes, seems to be used as a crypto nonce. Which makes sense, as nonce values for AES-GCM are usually 12 bytes long.
 - The source code comment mentions *military-grade AES-GCM*, which uses a nonce and a tag (for decryption).
 - The ransomnote also mentions that it will be impossible to recover files if they would be renamed or deleted.
-  - For AES-GCM decryption of the encrypted file, we will need the file encryption key, nonce and  tag.
+  - For AES-GCM decryption of the encrypted file, we might need the file encryption key, nonce and tag.
   - The same is true for the decryption of the file encryption keys.
 
 ## Approach
 
 Based on what we know so far, we can assume that:
 
-- The AES-GCM file encryption key to decrypt the files is encrypted by AES-GCM server-side.
+- The AES-GCM file encryption key is encrypted by AES-GCM server-side.
 - The file encryption key length is 16 bytes (one AES block), thus we expect the encrypted file encryption key to be 16 bytes long as well.
 - The last 12 bytes of the path string are used as the nonce for the file key encryption (or less, if path is smaller).
 - The server API returns a 0x2c sized blob (for key lengths of 16 bytes)
   - The first 12 bytes are the nonce value.
-  - The following 32 bytes will likely contain the 16 bytes long encrypted file encryption key.
-  - The other 16 bytes are likely the AES-GCM tag.
+  - The following 32 bytes will likely contain both
+    - The 16 bytes long encrypted file encryption key and
+    - The 16 bytes long AES-GCM tag.
 
 We do not know the order yet, in which the encrypted key bytes and the tag bytes are delivered. It could be (nonce, key, tag) or (nonce, tag, key).
 
@@ -353,7 +354,7 @@ $ ./verify_option.py
 
 We have successfully verified the blob structure option 2 (nonce, tag, key)!
 
-Now that we think of it, it totally makes sense to have the AES-GCM metadata (nonce, tag) in front of the encrypted data. Trust but verify!
+Now that we think of it, it could makes sense to have the AES-GCM metadata (nonce, tag) in front of the encrypted data. But some online sources would have made us expect option 1 with the tag bytes appended to the ciphertext (see for example [section 5.1 of RFC 5116](https://www.rfc-editor.org/rfc/rfc5116)).
 
 ## Now it's Flag Time!
 
