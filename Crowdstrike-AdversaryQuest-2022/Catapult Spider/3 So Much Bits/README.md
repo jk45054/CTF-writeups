@@ -88,7 +88,7 @@ Let's start with taking a look at function `main()`.
 
 ### Function *main()*
 
-```python
+```python {.line-numbers}
 [...]
 from encrypter import *
 [...]
