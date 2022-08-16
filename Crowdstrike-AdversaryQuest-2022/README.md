@@ -28,4 +28,3 @@ I was able to finish with rank #8.
 - [Catapult Spider Track](https://www.crowdstrike.com/blog/catapult-spider-adversary-quest-walkthrough-2022/)
 - [Tabloid Jackal Track](https://www.crowdstrike.com/blog/tabloid-jackal-adversary-quest-walkthrough-2022/)
 - Protective Penguin Track (none yet)
-- 
