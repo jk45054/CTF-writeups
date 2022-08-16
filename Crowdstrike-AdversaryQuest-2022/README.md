@@ -21,3 +21,9 @@ My write-ups for some of the challenges can be found here
 I was able to finish with rank #8.
 
 ![top10](./top10.jpeg)
+
+## Official Walk-Throughs
+
+- [Catapult Spider Track](https://www.crowdstrike.com/blog/catapult-spider-adversary-quest-walkthrough-2022/)
+- [Protective Penguin Track]()
+- [Tabloid Jackal Track](https://www.crowdstrike.com/blog/tabloid-jackal-adversary-quest-walkthrough-2022/)
