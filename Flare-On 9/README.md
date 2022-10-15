@@ -1,6 +1,18 @@
 # Flare-On 9 (2022)
 
-Write-ups for Flare-On 9
+Mandiant hosted their 9th [Flare-On CTF](http://flare-on.com) this year running from 2022-09-30 to 2022-11-11.
+
+It consisted of 11 Reverse Engineering challenges.
+
+## Write-Ups
+
+My write-ups for some of the challenges can be found here
+
+- [N/A](N/A)
+
+## Personal Result
+
+I was able to finish with rank #184.
 
 ![pic1](pics/scoreboard_rank.png)
 
