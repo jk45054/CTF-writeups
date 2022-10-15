@@ -4,6 +4,7 @@ Collection of write-ups for CTF challenges
 
 ## 2022
 
+- [Mandiant's Flare-On 9](./Flare-On%209), finished rank #184
 - [CrowdStrike's Adversary Quest 2022](./Crowdstrike-AdversaryQuest-2022), finished rank #8
 
 ## 2021
