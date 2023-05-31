@@ -20,4 +20,4 @@ I was able to finish with rank #184.
 
 ## Official Solutions
 
-[Flare-On 9 Solution Page](N/A)
+[Flare-On 9 Solution Page](https://www.mandiant.com/resources/blog/flareon9-challenge-solutions)
