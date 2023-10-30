@@ -9,6 +9,7 @@ It consisted of 13 Reverse Engineering challenges.
 My write-ups for some of the challenges can be found here
 
 - [10 kupo](./10_kupo/)
+- [12 HVM](./12_hvm/)
 - [13 y0da](./13_y0da/)
 
 ## Personal Result
