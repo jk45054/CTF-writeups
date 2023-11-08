@@ -2,6 +2,10 @@
 
 Collection of write-ups for CTF challenges
 
+## 2023
+
+- [Google Mandiant's Flare-On 10](./Flare-On%2010), finished rank #82
+
 ## 2022
 
 - [Mandiant's Flare-On 9](./Flare-On%209), finished rank #184
