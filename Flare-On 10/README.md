@@ -8,7 +8,7 @@ All-in-all it has been a blast participating, best CTF of the year! Thanks to ev
 
 ## Write-Ups
 
-My write-ups for some of the challenges can be found here
+My write-ups for some of the challenges can be found here. The most detailed ones are for challenges 7, 10, 12 and 13.
 
 1. [X](./01_X/)
 2. [ItsOnFire](./02_ItsOnFire/)
@@ -16,13 +16,13 @@ My write-ups for some of the challenges can be found here
 4. [aimbot](./04_aimbot/)
 5. [where_am_i](./05_where_am_i/)
 6. [FlareSay](./06_FlareSay/)
-7. [flake](./07_flake/)
+7. [flake](./07_flake/) <- Rabbit-Hole-Deluxe!
 8. [AmongRust](./08_AmongRust/)
 9. [mbransom](./09_mbransom/)
-10. [kupo](./10_kupo/)
+10. [kupo](./10_kupo/) <- The MoogleForth 101
 11. [over_the_rainbow](./11_over_the_rainbow/)
-12. [HVM](./12_HVM/)
-13. [y0da](./13_y0da/)
+12. [HVM](./12_HVM/) <- JIT code decryption & <3 maths
+13. [y0da](./13_y0da/) <- Best overall challenge
 
 ## Personal Result
 
