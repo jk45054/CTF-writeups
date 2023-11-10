@@ -1,0 +1,559 @@
+start @ 32791
+- AoEP: 32701 - start
+- 1800136A2                 call    sub_18000853F    - looks like a main
+- doesnt seem to return from there
+
+main @ 853f
+- does 4 assembly operations with a jmp each
+- then calls 3cede from 5dfef
+- doesnt seem to return from there?
+
+sub 3cede
+- stackstrings
+    - ws2_32.dll
+    - user32.dll
+    - Comspec
+    - SYSTEMROOT
+- creates large stackstring
+    - starts with several spaces. looks like the yoda ascii art sent to the connecting shell client upon login
+    - 5d9e7 mov (end of yoda ascii art)
+    - r15 = 726774c (likely hash of kernel32.LoadLibraryA)
+    - 10ac2 call to 14d24
+        - rax points to hMod ws2_32.dll afterwards
+    - r15d = 726774ch, rcx = "user32.dll"
+    - 63294 calls API lookup 14d24 again
+        - LoadLibraryA of user32.dll
+    - saves hMod user32.dll to rsp+878h and ws2_32.dll to rsp+870h
+    - r9d = 4, r8d = 0x1000, edx = 58h
+    - 30a4f call API lookup with r15d = 0E553A458h
+        - this is likely VirtualAlloc
+        - looks like whatever is looked up is also directely called
+        - first buffer @ 0x1f0000
+    - returns rax = 1f0000, saved to rsp+50h
+    - 40545 call to 445ad with this new buffer address in rcx, rdx = 0, r8 = size
+        - always put bps on and after new calls
+    - 1ab69 call to 4f60e with rcx = 10d4, rdx = offset 4c into first alloc buffer, r8 = size 58h   / 10d4 is put out as yoda life tip number
+    - 45f06 call VirtualAlloc with rcx=0, rdx=0x4000, r8=0x1000, r9=4
+        - returns buffer 2 @ 0x1d20000
+    - writes VA of buffer 2 into buffer 1 @ offset 0x30
+    - 3e738 call VirtualAlloc with rcx=0, rdx=0x4000, r8=0x1000, r9=4
+        - returns buffer 3 @ 1d30000
+    - writes VA of buffer 3 into buffer 1 @ offset 0x38
+    - 297e6 call VirtualAlloc with rcx=0, rdx=0x1000, r8=0x1000, r9=4
+        - returns buffer 4 @ 1d40000
+    - writes VA of buffer 4 into buffer 1 @ offset 0x50
+    - 10eed call WSAStartup (hash 6B8029) with rcx = 0x202, rdx = 0x8fd20 (stack, lpWSAData)
+    - 2c6a6 call CreatePipe (hash EAFCF3E) with rcx = 0x1f0018, rdx = 0x1f0028, r8 = 0x8fa18, r9 = 0
+    - 3151d call CreatePipe (hash EAFCF3E) with rcx = 0x1f0010, rdx = 0x1f0020, r8 = 0x8fa18, r9 = 0
+    - 64abe call socket (hash ED83E9BA) with rcx = 2 AF_INET, rdx = 1 SOCK_STREAM, r8 = 6 IPPROTO_TCP
+    - 2b62 call bind (hash 6737DBC2) with rcx = socket, rdx = 8fa78 (sockaddr_in, ip=0, port=1337), r8 = 0x10
+    - 340e0 call 26aea / write splashscreen
+    - 6569c call listen (hash FF38E9B7) with rcx = 0x104 socket, rdx = 7fffffff
+    - 1ef98 call accept (hash E13BEC74) with rcx = socket, rdx = 0, r8 =0
+        - blocks until connection
+        - nc 192.168.58.212 1337 from a different machine or local
+        - bp on 1efa0 to hit on return from accept
+    - 58750 call GetEnvironmentVariableA (hash DDCEADE7) with rcx = "ComSpec", rdx = 8fc10 buf, r8 = 0x104
+        - yields 'C:\Windows\system32\cmd.exe',0
+    - 6573d call GetEnvironmentVariableA (hash DDCEADE7) with rcx = "SYSTEMROOT", rdx = 8fb00 buf, r8 = 0x104
+        - yields 'C:\Windows',0
+    - 4118a call 2c76c / lookup CreateProcessA
+    - 431a8 call f053 / lookup CreateThread
+    - 47225 call CreateProcessA with rcx = 0, rdx = cmd.exe, ... lpCurrentDirectory = SYSTEMROOT
+        - likely has put some pipe handles in it to connect cmd.exe with accepted peer socket
+        - launches cmd.exe as child process of y0da.exe
+    - 3dfde - compare rax with 1961 / 0x7a9 ??
+    - 5678a call 523bb / send yoda ascii art to peer socket
+    - 5778d call CreateThread 1 with rcx = 0, rdx = 0, r8 = 0x18004928c (lpStartAddress), r9 = 0x1f0000 (lpParam = buffer 1)
+        - bp on 4928c
+    - 62fd5 call 62fd5 call CreateThread 2 with rcx = 0, rdx = 0, r8 = 0x18004e0e7 (lpStartAddress), r9 = 0x1f0000 (lpParam = buffer 1)
+        - bp on 4e0e7
+    - 4df66 call WaitForSingleObject (hash 601D8708) with rcx = 0x114 (is this 1 or 2?), edx = -1
+
+struct buffer 1 seems to be important, offsets
+- 0 listen socket TCP
+- 8 accept peer socket
+- 10 hReadPipe 2
+- 18 hReadPipe 1
+- 20 hWritePipe 2
+- 28 hWritePipe 1
+- 30 VA buffer 2, size 0x4000
+- 38 VA buffer 3, size 0x4000
+- 40 VA resource M4ST3R Y0D4 / encrypted/decrypted jpg
+- 48 size of decrypted resource
+- 4c const 0x10d4  / yoda life tip number (decimal 4308) / overwritten by t1 with 5D1FF27D @ 2f993
+- 50 VA buffer 4, size 0x1000
+
+thread 1 code @ 0x18004928c
+- rsp+120h = VA buf 1 / shared buf
+- rsp+108h = VA ReadFile
+- rsp+100h = VA PeekNamedPipe
+- rsp+f8h = VA mem alloc / memset 0 @ 4d2a5 / final out str
+- rsp+f4h = 0 / gets strlen of shared buf offset 0x50 + 0x97 @ 4bbd0 / final output str len
+- rsp+f0h = 0 / some counter, inc @ 24c76
+- rsp+50h = stackstring up to rsp+e4h: ascii art and M4st3r Y0d4 says:
+- rsp+44h = FF D8 FF E0 / jpg magic bytes
+- rsp+40h = result PeepNamedPipe call @ 15b0f and ReadFile @ 25410
+- rsp+3ch = 0
+- rsp+38h = 0 / supposed to be a buf size 0x4000
+- rsp+34h = 0  / val is added to rsp+f8 -> used as send buf @ 2e367
+- rsp+30h = 0x0a
+- 
+- 128a7 call 48a9a / lookup PeekNamedPipe
+- c955 call 585d3 / lookup ReadFile 
+- 9c57 call VirtualAlloc (hash E553A458) 
+    - save to rsp+ f8, 0x1de0000
+- 3e4fd outer loop / 7d79 inner loop
+    - 15b0f call PeekNamedPipe on hReadPipe1 / buf1 offset 0x18
+    - 25410 call ReadFile with rcx = 0xec, rdx = 0x1d30000  / likely some shell pipe / cmd.exe
+    - 56e0e jnz based on jpg magic marker found @ shared buf offset 40h
+        - 228cf path when decryption has been achieved through gimmie_s3cr3t
+            - 4d2a5 memset rsp+f8h to 0, 0x4000 bytes
+            - 37f76 call 50e82, rcx = shared buf 1
+                - eax = 1de8
+                - rsp+24h = FF D8 FF E0
+                - rsp+28h = FF E1 AA 3B
+                - rsp+2ch = FF E2 A1 C5
+                - bin cmp start of decr buf with FF D8 FF E0 once more @ d7bf
+                - VirtualAlloc @ 1d044 -> rsp+50h
+                - VirtualAlloc @ 14a8 -> rsp+38h
+                - VirtualAlloc @ 2d11b -> rsp+40h / gets 0x39 bytes behind marker FF E1 AA 3B
+                - VirtualAlloc @ 4d764 with PAGE_EXECUTE_READWRITE -> rsp+48h
+                - 5c570 call 358d2 with rcx = VA decr res, rdx = size of decr res, r8 = FF E1 AA 3B
+                    - returns rax = VA to decrypted resouce buffer that starts with FF E1 AA 3B
+                - copy 0x39 bytes from behind that marker to buf @ rsp+40h
+                    - 7F 2B D8 F5 C3 44 6D B7 75 95 89 A7 B9 C3 2C 3F 9E 91 B8 DC 6E 55 A7 51 E6 2C 59 BC 9C 12 98 06 8B A0 50 79 18 AA 29 4E 84 96 5F A6 37 9F ED 9A 33 3C ED 34 2D 63 7F 6C 5A
+                - 2737 call 358d2 with rcx = VA decr res, rdx = size of decr res, r8 = FF E2 A1 C5 rsp+2ch
+                    - returns rax = VA to decrypted resouce buffer that starts with FF E2 A1 C5
+                - copy 0x1c3 bytes from behind that marker to buf @ rsp+48h // this is the RWX buf
+                    - 05 AC 00 00 00 C3 05 E4 00 00 00 C3 05 E8 00 00 00 C3 83 C0 5A C3 83 C0 60 C3 83 C0 70 C3 83 C0 7B C3 05 8F 00 00 00 C3 05 96 00 00 00 C3 03 45 24 C3 48 83 C5 38 C3 39 45 24 C3 FF C0 C3 88 04 0A C3 89 55 10 C3 4C 89 45 18 C3 88 45 20 C3 89 45 24 C3 48 89 4D 08 C3 C7 45 24 00 00 00 00 C3 8B 45 24 C3 8B 45 48 C3 8B 4D 24 C3 48 8B 4D 40 C3 48 8B 55 40 C3 48 8B 55 50 C3 0F B6 04 01 C3 0F B6 45 20 C3 0F B6 0C 0A C3 0F B6 4D 20 C3 F7 D8 C3 F7 D0 C3 0B C1 C3 D1 F8 C3 C1 F8 02 C3 C1 F8 03 C3 C1 F8 05 C3 C1 F8 06 C3 C1 F8 07 C3 D1 E1 C3 C1 E1 02 C3 C1 E1 03 C3 C1 E1 05 C3 C1 E1 06 C3 C1 E1 07 C3 2D B1 00 00 00 C3 2D B2 00 00 00 C3 2D C3 00 00 00 C3 2D C5 00 00 00 C3 2D DC 00 00 00 C3 2D F3 00 00 00 C3 2D FF 00 00 00 C3 83 E8 18 C3 83 E8 1A C3 83 E8 1E C3 83 E8 28 C3 83 E8 36 C3 83 E8 04 C3 83 E8 49 C3 83 E8 56 C3 83 E8 58 C3 2D 81 00 00 00 C3 2D 90 00 00 00 C3 2D 9A 00 00 00 C3 2B 45 24 C3 48 83 ED 38 C3 35 A3 00 00 00 C3 35 B6 00 00 00 C3 35 BF 00 00 00 C3 35 C2 00 00 00 C3 35 C9 00 00 00 C3 35 CB 00 00 00 C3 83 F0 0D C3 35 E1 00 00 00 C3 35 EB 00 00 00 C3 83 F0 16 C3 83 F0 20 C3 83 F0 22 C3 83 F0 25 C3 83 F0 40 C3 83 F0 78 C3 83 F0 7C C3 35 8F 00 00 00 C3 33 45 24 C3 33 C0 C3 33 C1 C3 FF C1 C3 8B C9 C3 81 E1 FF 00 00 00 C3 8B 55 24 C3 83 C2 02 C3 8B D2 C3 4C 8B 45 50 C3 41 0F B6 14 10 C3 D1 FA C3 81 E2 FF 00 00 00 C3 23 CA C3 83 C1 03 C3
+                        - this actually is legit x64 assembly, two instructions each... add/mov + ret
+                        - see RWX_shellcode.asm
+                - 5D1FF27D to shared buf1 + 4ch and rsp+58h @ call @ 23a31
+                - 579e call 38e4a MT19937 init wrapper
+                    - 39ea0 call 20404 - MT19937 init with rcx = twister buf, rdx = 5D1FF27D (seed?)
+                    - stores the twister on the stack @ rsp+20h
+                    - copies twister 0x9c4 bytes to other stack rsp+a10h
+                    - saved to bytes_size_0x9c4_after_t1_MT_stuff.bin
+                    - returns ptr to twister 0x9c4 bytes (624 dwords + 4)
+                - copies these twister 0x9c4 bytes to ptr rsp+70h
+                    - they start with 7d f2 1f 5d ed 06 c3 c7
+                - 643bb loop counter rsp+20h (0) until 0x3c (step 4) / these are MT19937 rand dwords
+                    - 4510f call 63054 pos MT19937 get and generate, rcx = 0x9c4 bytes, rdx the other 0x9c4 bytes, r8 = 0x1c3?
+                        - yields 9DB5DF75 on first run. could be the MT19937 PRGA
+                    - loop seems to generate 0x3c random bytes and copies them somewhere
+                    - first 4 were 9d b5 df 75  / this is static each run
+                    - 9D B5 DF 75 92 C8 67 0B 50 60 0F B3 4E EB D6 67 08 EB 59 E9 CF 7F F5 39 A4 07 CB A2 D3 16 C6 93 18 4B 01 04 64 A5 4D A8 42 7D 24 D0 A8 2B FB AF A1 7D 24 5D 35 EB 3B DE 4D 64 69 A4
+                - after loop
+                - 15ce1 call 4936e pos decrypt magic marker bytes 2 with combo magic marker 1 + MT rands
+                    - 5a9b5 calls a super spaghetti func 1d361
+                        - IDA -> Options -> General -> Graph -> increase nodes from 1000 to 10000
+                        - didnt repair yet, its huge
+                - 
+                - TODO: unsure what actually was changed during call 4936e
+                - 
+                - 5e3cc call 2bddf with rcx = rsp+40h, rdx = 0x38, r8 = shared buf1 offset 50h
+                    - looks like another crypto stuff
+                    - this one generates the yoda says
+                    - OIZC4eMC/UnTPfDDMMaHeQXUHMPZy4LfSgg/HnB5SXVOIyKOBIHMe45B2KBCe5T/
+                    - 4F 49 5A 43 34 65 4D 43 2F 55 6E 54 50 66 44 44 4D 4D 61 48 65 51 58 55 48 4D 50 5A 79 34 4C 66 53 67 67 2F 48 6E 42 35 53 58 56 4F 49 79 4B 4F 42 49 48 4D 65 34 35 42 32 4B 42 43 65 35 54 2F 48 52 66 52 48 5A 34 53 4B 4A 65 33 65 4C 4A 48 65 4D 65 35 49 4D 35 51 51 4A 3D 3D 3D 3D 3D 3D
+
+                - TODO: what actually uses the RWX allocated memory? put a hw bp on it?
+                - 
+            - seems imp! 25cea jnb based on cmp rsp+34h with rsp+f4h
+            - 2e367 send_to_peer_sock -> likely sends the yoda says buf back to shell client
+                - buf = rsp+f8h + rsp+34h
+                - len = rsp+f4h - rsp+34h
+        - 282a7 path if not
+    - 44ddc call send_to_peer_sock_1800523BB (shell prompt, lilkely from cmd.exe output pipe)
+
+thread 1 peeks input pipe from thread 2
+- if there is input from thread 2
+    - check if yoda resource has been decrypted (correct password was supplied to thread 2 after gimmie_s3cr3t shell command)
+        - if it is, do magic on some parts of the jpeg and massage them even more
+            - eventually yielding M4st3r Y0d4 says OIZC4eMC/UnTPfDDMMaHeQXUHMPZy4LfSgg/HnB5SXVOIyKOBIHMe45B2KBCe5T/HRfRHZ4SKJe3eLJHeMe5IM5QQJ====== to remote shell client
+        - if it is not, send input to cmd.exe's readpipe
+        - and relay output back to shell client socket
+- suspend thread 1 if you want to input something and focus on tracing thread 2 processing that input (interesting part, as thread 2 has magic words)
+
+thread 2 code @ 0x18004e0e7
+- seems to create stackstrings
+    - gimmie_advic3
+    - gimmie_s3cr3t
+- 706a call 40069 / lookup WriteFile
+- 514e6 call VirtualAlloc (hash E553A458) 
+- loops
+    - 65bfd call cb82  / recv   (from remote shell client)
+    - 60193 call 1923 / pos copy recv buf
+    - 49359 call 1c6dc / pos get str from recv buf (copy?) and strlen
+    - 524ed call strcmp 374ef with rcx = recv buf string lstrip whitespaces, rdx = gimmie_advic3
+        - if recv buf == gimmie_advic3 -> call 3c5e2 / send back y0da's life tip
+    - 35003 call strcmp 374ef with rdx = gimmie_s3cr3t
+        - if recv buf == gimmie_s3cr3t -> call 216f6 / ask for and process a password
+    - 312b5 call WriteFile with rcx = f8 (possibly cmd.exe read pipe), rdx = buf from recv (shell command)
+
+thread 2 recv's from peer sock remote shell input / commands
+- compares with magic words gimmie_advic3 and gimmie_s3cr3t
+- if recv no magic word
+    - send it as shell command via writefile to handle f8 (possible cmd.exe input)
+        - this is probably the write pipe to thread 1!
+- suspend thread 2 if input was sent/processed and you want to focus on what thread 1 does with it up to cmd.exe output is returned (boring part)
+
+sub 216f6 / ask for and process input pw / called by thread 2 for gimmie s3cr3t
+- correct pw likely has md5 value of AA 32 19 32 CC DD 8C CE 33 4A 1C 33 54 EE D3 B1
+- stackstrings
+- To know the secret, you want? Me the password, give:
+- 476d0 call send   //  Me the password, give
+- 468c4 call recv   // input from remote shell
+- 
+- 578e5 call 1bb76 with rcx = AAAABBBBcr3t when given AAAABBBB // repaired chunks / decompilable
+    - rsp+48h
+    - rsp+40h
+    - rsp+24h
+    - 
+    - generates binary stackstring FFD8FFE0 (jpeg magic bytes) @ esp+20h - but for what?
+        - seen that before somewhere in memory in thread 1 code somewhere after ReadFile
+        - no idea what that is used for.
+        - md5 of jpeg = ab4f3ccba74857c5f2ba0d5b7dbf65e1
+        - md5 of \xff\xd8\xff\xe0 = d03d864b7f43db9ce34df5f720509d0e
+        - 
+    - 32ce3 call 4ebc7 with same rcx / first win check sub on input pw: full md5 and substring md5
+        - sub manually repaired with append chunks, but decompile now fails
+        - sub esp-b8h (size of local vars)
+            - rsp+c0h = VA of copy of input string
+            - rsp+b8h = 0
+            - rsp+b0h = 0 ? if at the very end still 0, then fail
+            - rsp+a0h = 0
+            - rsp+90h = memset 16 bytes to 0, gets the md5 of input pw (16 bytes) first / then for substrings
+            - rsp+88h = 0 <- set to return value from sub 382e1 / next input pw substring up to _
+            - rsp+84h = 0 <- could be the final return success value for 4ebc7 (set to 1 @ 624b2)
+            - rsp+80h = 0 <- set to 1 in success branch after return from e523 (called at 5ead0, first md5 cmp of full input)
+            - rsp+78h = VA buf new VirtualAlloc for input
+        - some binary stack strings, not sure if interleaved
+            - rsp+68h = 48 36 7C 67 0F 61 89 CF 3F 41 3B E3 94 F4 F3 35
+            - rsp+58h = D0 E6 EF 34 E7 6C 41 B0 FA C8 4F 60 82 89 D0 13
+            - rsp+48h = 62 7F E1 1E EE F8 99 4B 72 54 FC 1D A4 A0 A3 C7
+            - rsp+38h = 4C 84 76 DB 19 7A 10 39 15 3C A7 24 67 4F 7E 13
+            - 64 / 0x40 bytes @ esp+38h: 4C 84 76 DB 19 7A 10 39 15 3C A7 24 67 4F 7E 13 62 7F E1 1E EE F8 99 4B 72 54 FC 1D A4 A0 A3 C7 D0 E6 EF 34 E7 6C 41 B0 FA C8 4F 60 82 89 D0 13 48 36 7C 67 0F 61 89 CF 3F 41 3B E3 94 F4 F3 35
+            - rsp+28h = AA 32 19 32 CC DD 8C CE 33 4A 1C 33 54 EE D3 B1  <- md5 value that is first compared against. this seems to be static, not calculated off of something
+            - rsp+24h = 0 (dword) ? if at the very end not 4, then fail / pos amount of positive substring md5 tests
+            - rsp+20h = 5f (byte ptr) _
+            - 
+        - 2a9b4 call 259ad / strlen of given password, yields 0xC on AAAABBBB due to rcx having been AAAABBBBcr3t
+        - ... some buffer copy  // function repaired & decompilable
+        - 
+        - 30832 call 2483 / md5 calc, rcx = VA to copy of input str, rdx = stack buf len 16 (gets md5)
+            - may_the_forth_be_with_you -> ED B2 FD A7 B7 8A 73 99 7A 0C F8 DB F9 16 20 32
+            - 
+            - 383c5 call 126ab / pos md5 init ctx
+                - magic bytes 67452301h, EFCDAB89h, 98BADCFE and 10325476
+            - 49f27 call 4eadc / pos some input copy ...
+            - d1ae call 46790 / could be md5 update
+                - copies like 16 dwords
+                - 3419e call 497bb
+                    - writes binary dword stackstrings, lots, also
+                    - 78 A4 6A D7 56 B7 C7 E8 DB 70 20 24 EE CE BD C1 AF 0F 7C F5 2A C6 87 47 13 46 30 A8 01 95 46 FD D8 98 80 69 AF F7 44 8B B1 5B FF FF BE D7 5C 89 22 11 90 6B 93 71 98 FD 8E 43 79 A6 21 08 B4 49 62 25 1E F6 40 B3 40 C0 51 5A 5E 26 AA C7 B6 E9 5D 10 2F D6 53 14 44 02 81 E6 A1 D8 C8 FB D3 E7 E6 CD E1 21 D6 07 37 C3 87 0D D5 F4 ED 14 5A 45 05 E9 E3 A9 F8 A3 EF FC D9 02 6F 67 8A 4C 2A 8D 42 39 FA FF 81 F6 71 87 22 61 9D 6D 0C 38 E5 FD 44 EA BE A4 A9 CF DE 4B 60 4B BB F6 70 BC BF BE C6 7E 9B 28 FA 27 A1 EA 85 30 EF D4 05 1D 88 04 39 D0 D4 D9 E5 99 DB E6 F8 7C A2 1F 65 56 AC C4 44 22 29 F4 97 FF 2A 43 A7 23 94 AB 39 A0 93 FC C3 59 5B 65 92 CC 0C 8F 7D F4 EF FF D1 5D 84 85 4F 7E A8 6F E0 E6 2C FE 14 43 01 A3 A1 11 08 4E 82 7E 53 F7 35 F2 3A BD BB D2 D7 2A 91 D3 86 EB
+                    - returns 7B3072D4? / thats last DWORD from md5 hash of AAAABBBBcret
+                - does some calc with that stuff <- maybe md5 final is here
+                - returns 4
+            - possible got value CD4178E3CDA4DA38749743AFD472307B, 16 bytes from prior calc = md5 of input pw
+            - 
+        - check 1  hash
+        - 5ead0 call e523 with rcx, rdx / hash comparison, yields !=0 on wrong
+            - is full input pw md5 == AA 32 19 32 CC DD 8C CE 33 4A 1C 33 54 EE D3 B1 / rsp+28h value
+        - success -> sets rsp+80h to 1 and jumps to 476f0, otherwise rsp+80h stays 0
+        - 
+        - split input pw at first underline char and return first substring
+        - 46017 call 382e1 / get first substring up to delimiter char _, e.g. may for may_the_forth_be_with_you
+            - 10435 call f9a0 /  strstr-like
+            - 10435 call f9a0 again rcx = pointer to _, rdx = a (second char)
+            - eventually returns the next word in the input pw up to the next _
+            - 
+        - sets rsp+88h to return value of 382e1, i.e. next substring up to next _ char in input pw
+        - 
+        - 3d377 call md5 2483 again with rcx = substring and rdx = rsp+90h (general md5 buf)
+        - 
+        - loops up to rsp+24 == 4
+        - 31d76 cmp dword rsp+24h with 0 
+            - if it is zero, it leads to 9079 call e523 md5 cmp rcx = rsp+90h, rdx = rsp+38h and r8=10h
+                - is md5 of a substring == 4C 84 76 DB 19 7A 10 39 15 3C A7 24 67 4F 7E 13?
+                - 
+            - if it is one, it leads to 367ce call e523 md5 cmp rcx = rsp+90h, rdx = rsp+48h, r8=10h
+                - is md5 of a substring == 62 7F E1 1E EE F8 99 4B 72 54 FC 1D A4 A0 A3 C7?
+                - 
+            - if it is two, it leads to 367ce call e523 md5 cmp rcx = rsp+90h, rdx = rsp+58h, r8=10h
+                - is md5 of a substring == D0 E6 EF 34 E7 6C 41 B0 FA C8 4F 60 82 89 D0 13?
+                - 
+            - if it is three, it leads to 367ce call e523 md5 cmp rcx = rsp+90h, rdx = rsp+68h, r8=10h
+                - is md5 of a substring == 48 36 7C 67 0F 61 89 CF 3F 41 3B E3 94 F4 F3 35?
+                - 
+            - if its not zero, its compared with 1, 2 and 3 as well
+                - // pos crap comment -> eventually leads to 28f5b call 382e1 comparer with rsp+a0 and rsp+20h
+        - 
+        - win condition seems to be:
+            - the input pw must contain 4 substrings that match the 4 md5 values from rsp+38h to rsp+68h
+            - AND
+            - the whole input pw md5 must match value from rsp+28h
+            - if both conditions are fulfilled, set rsp+84h = 1 @ 624b2
+
+        - return from 4ebc7 with eax = rsp+84h (1 success, 0 fail)
+    - 
+    - 2015c call 3a5e1 / pos MZ check, locate Y0D4 resource (we already know of this)
+        - rsp+50h = 0
+        - rsp+48h = 0  / return value 10125
+        - rsp+40h = 0
+        - rsp+38h = 0   / return value 1d430
+        - rsp+32h = 0
+        - rsp+2ch = M4ST3R
+        - rsp+28h = 0
+        - rsp+24h = Y0D4
+        - rsp+20h = 0  / return value 17dfa
+        - 
+        - 4e95f call 1d430 / check MZ
+        - return value into rsp+38h, fail if 0
+        - 
+        - 5bc0e call 10125  / wrap FindResourceA -> this fits to type/name M4ST3R Y0D4 stackstrings!
+        - return value into rsp+48h, fail if 0
+        - 
+        - b4e9 call 17dfa  / wrap SizeOfResource
+        - return value into rsp+20h, fail if 0
+        - 
+        - return from 3a5e1
+    - 
+    - 36a2e call 5a19a / rc4 decrypt something / likely the prev. located Y0D4 resource
+        - 1c3db call rc4 ksa 4d526 
+        - 5959 call rc4 prga and crypt 4c67
+    - then does a binary strncmp of first 4 decrypted bytes with jpg magic marker FF D8 FF E0
+    - 
+    - return from 1bb76
+- 
+- success -> jmp to 228c1, fail -> jmp to 258ac (possibly)   // could possibly patch here
+    - looks like there is a second branch to success, with rsp+28h > 0x198
+- 258ac -> on fail, output vader ascii art with NO
+- 228c1 -> unknown. patching here usually doesnt work in flareon, as the correct pw might be used for some later stage decryption
+- return from 216f6 (the main gimmie_s3cr3t check function)
+
+sub 4ebc7 / md5 checks
+- full input pw md5 == AA 32 19 32 CC DD 8C CE 33 4A 1C 33 54 EE D3 B1
+- four substring between underline chars must have md5 of
+    - 4C 84 76 DB 19 7A 10 39 15 3C A7 24 67 4F 7E 13  / patience
+    - 62 7F E1 1E EE F8 99 4B 72 54 FC 1D A4 A0 A3 C7  / y0u
+    - D0 E6 EF 34 E7 6C 41 B0 FA C8 4F 60 82 89 D0 13  / must
+    - 48 36 7C 67 0F 61 89 CF 3F 41 3B E3 94 F4 F3 35   / h4v3
+    - https://md5.gromweb.com/?md5=4c8476db197a1039153ca724674f7e13
+
+So we have the four single words that need to be concatenated with underline char.
+Whole word must have md5 of AA 32 19 32 CC DD 8C CE 33 4A 1C 33 54 EE D3 B1
+combine and calc, find -> patience_y0u_must_h4v3
+
+whats with the decrypted resource?
+
+a JPEG -> we know we had the magic marker bytes twice!
+pic reads: th3_fl4g_found_4ou_h4v3_n0t@glare-on.com
+
+
+upon successful password entry, thread 2 calls
+- 171fe call WriteFile with rcx = F0 (pipe rax +20h = hWritePipe2), rdx = 0d 0a, r8 = 2
+- looks like thread 1 picks this up and then sends the yoda says line!?
+
+repair thread 1 / 2 code to find out more what exactly happens there
+- thread 1 has an md5 compare as well @ 419a6
+- enable bp @ 25410 call ReadFile before stepping over thread 2 WriteFile to find out more
+
+
+
+
+
+----- high level thread 1 approach / TODOs
+
+what data do we have?
+- gimmie_s3cr3t hidden shell command with pw patience_y0u_must_h4v3
+- 
+- 0x39 bytes carved from decrypted jpg resource behind marker FF E1 AA 3B
+    - 7F 2B D8 F5 C3 44 6D B7 75 95 89 A7 B9 C3 2C 3F 9E 91 B8 DC 6E 55 A7 51 E6 2C 59 BC 9C 12 98 06 8B A0 50 79 18 AA 29 4E 84 96 5F A6 37 9F ED 9A 33 3C ED 34 2D 63 7F 6C 5A
+    - this could be the flag
+    - 
+- 0x1c3 bytes carved from decrypted jpg resource behind marker FF E2 A1 C5 in an RWX page
+    - this is code, see RWX_shellcode.asm
+    - this could be encoder logic, in parts
+    - 
+- 0x3c random bytes generated by MT19937 with seed 5D1FF27D
+    - 9D B5 DF 75 92 C8 67 0B 50 60 0F B3 4E EB D6 67 08 EB 59 E9 CF 7F F5 39 A4 07 CB A2 D3 16 C6 93 18 4B 01 04 64 A5 4D A8 42 7D 24 D0 A8 2B FB AF A1 7D 24 5D 35 EB 3B DE 4D 64 69 A4
+    - 
+- the 96 char yoda output when given the correct password to gimmie_s3cr3t command
+    - OIZC4eMC/UnTPfDDMMaHeQXUHMPZy4LfSgg/HnB5SXVOIyKOBIHMe45B2KBCe5T/HRfRHZ4SKJe3eLJHeMe5IM5QQJ======
+    - 4F 49 5A 43 34 65 4D 43 2F 55 6E 54 50 66 44 44 4D 4D 61 48 65 51 58 55 48 4D 50 5A 79 34 4C 66 53 67 67 2F 48 6E 42 35 53 58 56 4F 49 79 4B 4F 42 49 48 4D 65 34 35 42 32 4B 42 43 65 35 54 2F 48 52 66 52 48 5A 34 53 4B 4A 65 33 65 4C 4A 48 65 4D 65 35 49 4D 35 51 51 4A 3D 3D 3D 3D 3D 3D
+
+two functions that work on these bytes from thread 1 code
+- 15ce1 call 4936e with rcx = buf 0x39 bytes/flag?, rdx = 0x39 len, r8 = 0x3c MT rands, r9 = 0x1c3 bytes ROP gadgets
+    - massages the 0x39 bytes/flag with MT rands and the RWX page code? to
+    - 73 F7 C0 FE DC EA 92 26 C3 39 B5 8A CF 83 4A 65 9B B8 85 10 32 D7 D6 26 77 36 AA E7 C6 4E 9B D9 6F 86 F3 1C A7 CF DC 5D 67 A1 E6 6C 26 95 3E 4F A2 8C FD BF 77 DA E0 05 DD
+    - takes r9 a lot, adds a value between 0 and 0x1c3 to it and pushes that value
+    - builds a ROP chain on the stack
+    - using ch13_dump_function.py on 0x18001d361, we can dump the function without jmp instructions as disassembly and bytes
+        - 1659 lines
+        - ends just with a ret
+        - will start executing the ROP chain @ 1a81b with last push rsi @ 38a35
+    - see ch13_reassemble_rop_code.py, currently parsing all add rsi, xx
+    - [*] Found RET at 18001a81b, stopping after 1659 instructions, 552 ADDs and 1658 JMPs.
+        - results in 0x18001d361_disassembly.txt and 0x18001d361_bytes.bin
+    - so there are 552 ROP gadgets in the chain
+    - run/debug y0da.exe with breakpoint at 0x18001d361, then
+        - start plugin IDACode
+        - connect to IDA from VSCode
+        - execute ch13_reassemble_rop_code.py -> could also do this with breakpoint condition i guess
+        - if not buggy, the script collects 552 gadget pushes to the stack
+        - the execution order should be reversed, as the top of stack is used first
+        - so the script saves all gadget instructions in reverse push order to files
+        - see 0x18001d361_ropchain_disassembly.asm and 0x18001d361_ropchain_bytes.bin
+        - comparing the first 150 ropchain entries with the dereferencing stack view at breakpoint 1a81b are looking correct
+            - you can increase the number of shown stack entries in dereferencing stack windows -> right click -> stack entries
+        - from what i can tell with my bleeding eyes, the rop reassembly worked nicely
+
+- 4936e ROP chain caller args
+    - rcx = 0x1e30000 (flag bytes), 0x39
+        - 7F 2B D8 F5 C3 44 6D B7 75 95 89 A7 B9 C3 2C 3F 9E 91 B8 DC 6E 55 A7 51 E6 2C 59 BC 9C 12 98 06 8B A0 50 79 18 AA 29 4E 84 96 5F A6 37 9F ED 9A 33 3C ED 34 2D 63 7F 6C 5A
+    - edx = 0x39 (flag len)
+    - r8 = 0x1e20000 (0x3c rand bytes, MT19937 seed 5D1FF27D)
+        - 9D B5 DF 75 92 C8 67 0B 50 60 0F B3 4E EB D6 67 08 EB 59 E9 CF 7F F5 39 A4 07 CB A2 D3 16 C6 93 18 4B 01 04 64 A5 4D A8 42 7D 24 D0 A8 2B FB AF A1 7D 24 5D 35 EB 3B DE 4D 64 69 A4
+    - r9 = 0x1e40000 (the gadgets carved from decrypted jpg, 0x1c3)
+    - the rop chain is executed for each character of the 0x39 bytes carved from decrypted jpg
+        - 1a81b RET starts the ROP chain execution
+        - RBP 0x4edfd0 points to D7 6B 26 12 40 9D BF 5F 13 D6 87 0A EE A2 AC B7 (what is this?)
+        - rcx points to gadget buf, edx flag len, rax flag len, rsi gadget buf, r8 mt rands, r9 gadget buf
+        - accesses
+            - rbp+24h = (unknown stack value)
+            - rbp+40h = p flag bytes
+            - rbp+20h = 0x4edff0 (unknown stack value)
+            - rbp+50h = p MT rands
+            - last write to plaintext flag char @ gadget 520
+                - you could generate this value from flag bytes carved from decrypted jpg
+            - overwrites flag byte[j] with plaintext flag char XOR MT rands j, j+1, j+2, j+3 and stuff
+                - these values get base32 encoded
+                - you could generate the flag from this as well
+                - char ^ MT_rands[j] 
+                    - ^ (MT_rands[j+1] << 1 & 0xff) & (MT_rands[j+2] sar 1 & 0xff)
+                    - ^ (MT_rands[j+3] << 2 & 0xff)
+            - see ch13_decode_yoda_says.py
+
+SOLVE:
+- put breakpoint at end of ROP chain push
+- step through it  abit
+- see that there is a static move [rbp+20h], al   <- here, view in hex!!!
+- the call to 1d361 seems to happen in a loop as well
+- and when it returns, at the memory location identified above, there will be ONE char of the flag for each return from 1d361
+- and it is overwritten
+- use conditional breakpoint @ 15ce1 with ida python snippet
+- print(idaapi.get_bytes(0x1d9dff0,1))    <- mem depends on virtual alloc
+- this will dump out all flag chars
+
+P0w3rfu1_y0u_h4v3_b3c0m3_my_y0ung_flareaw4n@flare-on.com
+
+
+---- misc subs and what they do
+
+sub 3c5e2 / send back yoda's life tip
+- stackstrings
+- No! Try not. Do. Or do not. There is no try.
+- Size of code matters not. Look at me. Judge me by my size, do you?
+- A Jedi uses the Force for knowledge and defense, never for attack.
+- A Jedi's strength flow from their knowledge of assembly.
+- Fear of malware is the path to the dark side.
+- Obfuscation leads to anger. Anger  leads to hate. Hate leads to suffering.
+- Packers, crypters, shellcode. The dark side are they.
+- Train yourself to let go of the decompiler you are afraid to lose.
+- The greatest teacher failure is.
+- Truly wonderful the mind of a reverse engineer is.
+- If no mistake you have made, losing you are. A different game you should play.
+- Won this job in a raffle I did, you think?
+- Y0da's life tip #0x%x: %s
+
+sub 374ef / pos strcmp
+
+sub cb82 / recv
+- 3866e call recv (hash 5FC8D902) with rcx = 0x104, rdx = 0x1f000, r8 = 0x4000 (len), r9 = 0
+- blocks until nc client sends data
+
+sub 40069 / lookup WriteFile
+- 5ef66 lookup WriteFile (hash 5BAE572D)
+
+sub 585d3 / lookup ReadFile 
+- 34ed6 lookup ReadFile (hash BB5F9EAD)
+
+sub 48a9a / lookup PeekNamedPipe
+- 9619 lookup PeekNamedPipe (hash B33CB718)
+
+sub 523bb / send yoda ascii art to peer socket
+- 57ce2 call send (hash 5F38EBC2) with rcx = 0xfc (accept peer socket), rdx = yoda ascii art, r8 = 0x7a9 nToWrite
+
+sub f053 / lookup CreateThread
+- 3809 lookup CreateThread (hash 160D6838)
+
+sub 2c76c / lookup CreateProcessA
+- 2dc31 lookup CreateProcessA (hash 863FCC79) with r14 = 0
+
+sub 26aea  / just writes the flare ascii logo splashscreen
+- 475b call GetStdHandle (hash 53CABB18) with ecx = FFFFFFF5 = -11 = STDOUT
+- thanks for that flare ascii splash stackstring up to 2e879 (end of stackstring)
+- c8fa call WriteConsoleA (hash 5DCB5D71) with rcx = 0x58, rdx = 8e390, r8 = nToWrite (e02), r9 nWritten, ...
+
+sub 4f60e
+- just writes value of rcx into memory at rdx
+
+sub 445ad
+- seems to be a memset. writes value of rdx, r8 times into buf at rcx
+
+sub 14d24 /  this is PEB walking API hash lookup and jmp with ror13add  / was this called with an argument? seems to be r15d = hash
+- r15d = ror13add hash (of dllname + func) name to lookup and jmp to
+- use flare-ida script shellcode_hashes with func ror13AddHash32AddDll to get auto annotations
+- 
+- if r14 == 1, it may just do a lookup without call/jmp
+- 
+- pushes registers
+- 520c7 call to 50caf    / get_PEB
+- bp that and next inst @ 520cc
+- rdx = [peb + 18h] ; PEB_LDR_DATA *Ldr
+- rdx = [rdx + 20h] ; LIST_ENTRY InMemoryOrderModuleList   / type _LDR_DATA_TABLE_ENTRY
+- rsi = [rdx + 50h] ; thats 10h (offset inmemory ptr) + 50h -> BaseDllName.Buffer
+- rcx = byte ptr [rdx +4a] ; should be BaseDllName.MaximumLength
+- 111f6 lodsb -> gets first character of BaseDllName.Buffer into al = "y" for y0da.exe
+- cmp al, 61h "a"
+- upper cased, -20h
+- ror r9d, 0a
+- ror r9d, 3 -> ror r9d, 13
+- add r9d, eax (ror13add)    - AC837B9A for y0da.exe(?)
+- after something is successfully check
+- mov rbp-0c, rdx with rdx = 0x482ff0
+- then rdx = [rdx + 20h] ; this is DllBase  (starting from inmemory offset)
+- gets VA of DLL
+- then does PE parsing +3c = lfa_new
+- rax points to PE header, +18h -> machine cmp with 0x20b (64 bit)
+- then does export parsing
+- then next in memory entry (ntdll) -> 3E9A174F
+- parses ntdll's exports backwards, starts with wcstoul
+- seems to not just look things up but also jmps there (should be @ 6080b)
+    - can bp on 6080b
+- just let it run... hits bp @ 10ac7
+
+sub 50caf / get_PEB
+- gets gs:[60h] & returns to 529cc
+
+
+
+PS:
+
+
+--- IDA Pro repair function frames / chunks
+assign IDA pro hotkeys for
+- delete function like alt shift 5
+- append function tail alt shift 7
+- remove and add chunks to 18004EBC7
+
+repair with ida python seems a bit more complicated
+from ida_kernwin import get_screen_ea
+from ida_funcs import get_func, del_func, append_func_tail
+
+we need
+- a func ptr to the correct function (the target/parent to repair),
+- delete the func that existed at the jump target
+- and then start ea + end ea of the chunk to be appended (the previous wrongly defined func)

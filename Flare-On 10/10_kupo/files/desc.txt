@@ -1,0 +1,38 @@
+Welcome to MoogleForth!
+
+This may be an interesting challenge for you.  The next file on this tape is an
+executable Forth environment which contains a secret and the means for decoding
+and decrypting that secret.  You'll need Ken Thompson's password, which I trust
+you'll be able to find.  Beyond that, you'll need to figure out how the various
+Forth words want their input, which will require some detective work on your
+part.
+
+You can solve this challenge with nothing but the tools available to you on a
+standard 2.11BSD system, such as nm and adb (and if you're not familiar, you
+should read their man pages).  You may find it easier to use a more modern
+disassembler, though you'll need to be able to extract the file from the tape
+for that.  And, of course, you need to know (or learn) how Forth works.  On the
+bright side, I did leave all the symbols in the executable for you, I'm not a
+monster.
+
+The Forth environment is fairly stripped down, but where possible, I've tried
+to conform to standard behaviors for all the standard words.  You can find much
+documentation for Forth 2012 online, with an excellent reference at:
+
+http://lars.nocrew.org/forth2012/alpha.html
+
+Some caveats:
+
+- There's very little error checking here.  You'll probably crash a lot if you
+  provide unexpected input (or fail to provide expected input).  Sometimes,
+  especially if you underflow the stack, the interpreter can get confused.
+  You can always ctrl-C to quit if 'bye' isn't working for you.
+
+- I've basically implemented just enough of the words to build this challenge.
+  In particular, there's no compiler system, so you can't write your own colon
+  definitions.  Sorry!  There was only so much time.
+
+- Some of the words are defined in assembly, most are defined as more Forth.
+  This may make disassembly interesting, but doable.
+
+- It is dark.  You are likely to be eaten by a grue.

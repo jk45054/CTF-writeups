@@ -1,0 +1,109 @@
+adb> :r
+c10: running
+MoogleForth starting. Stack: 3802
+s" test" decrypt key type
+ps      0170000
+pc      0324    decrypt
+sp      0177574
+r5      07326
+r4      02540
+r3      06670
+r2      06413
+r1      07
+r0      02544
+decrypt:        mov     r2,-(sp)
+breakpoint      decrypt:        mov     r2,-(sp)
+adb> :c
+c10: running
+ps      0170000
+pc      0352    decrypt+026
+sp      0177562
+r5      07322
+r4      0352
+r3      06670
+r2      06413
+r1      040
+r0      05214   _var_toin
+decrypt+026:    mov     (sp)+,r4
+breakpoint      decrypt+026:    mov     (sp)+,r4
+adb> :s
+c10: running
+stopped at      decrypt+032:    mov     (r5)+,r1
+adb> :s
+c10: running
+stopped at      decrypt+034:    mov     (r5),r2
+adb> :s
+c10: running
+stopped at      decrypt+036:    mov     02(r5),r0
+adb> :s
+c10: running
+stopped at      decrypt+042:    mov     r3,-(sp)
+adb> <r3=o
+                03
+adb> <r1?o
+07353:          062553
+adb> <r1?x
+07353:          #656b
+adb> <r2=o
+                04
+adb> <r0?o
+07335:          062564
+adb> <r0?x
+07335:          #6574
+adb> :s
+c10: running
+stopped at      decrypt+044:    cmp     r2,r3
+adb> :s
+c10: running
+ps      0170000
+pc      0370    decrypt+044
+sp      0177562
+r5      07326
+r4      02540
+r3      03
+r2      04
+r1      07353   _data_s0+021
+r0      07335   _data_s0+03
+decrypt+044:    cmp     r2,r3
+breakpoint      decrypt+044:    cmp     r2,r3
+adb> :s
+c10: running
+stopped at      decrypt+054:    sub     r3,r2
+adb> :s
+c10: running
+stopped at      decrypt+056:    movb    (r0),r4
+adb> :s
+c10: running
+ps      0170000
+pc      0402    decrypt+056
+sp      0177562
+r5      07326
+r4      02540
+r3      03
+r2      01
+r1      07353   _data_s0+021
+r0      07335   _data_s0+03
+decrypt+056:    movb    (r0),r4
+breakpoint      decrypt+056:    movb    (r0),r4
+adb> :s
+c10: running
+stopped at      decrypt+062:    xor     r4,r5
+adb> <r4=x
+                #74
+adb> <r5=x
+                #6b
+adb> :
+c10: running
+ps      0170000
+pc      0402    decrypt+056
+sp      0177562
+r5      037
+r4      0164
+r3      02
+r2      01
+r1      07354   _data_s0+022
+r0      07336   _data_s0+04
+decrypt+056:    movb    (r0),r4
+breakpoint      decrypt+056:    movb    (r0),r4
+adb>
+

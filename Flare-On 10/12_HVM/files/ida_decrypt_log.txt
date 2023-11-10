@@ -1,0 +1,144 @@
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching init() called!
+do_io_patching: decoded insn @ 0x1c0bc2, canon mnem = in
+[*] Found in instruction @ 0x1c0bc2
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x1b
+[*] Decoding prev2 insn @ 0x1c0bb2
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0x1acf57fbe20bb050
+[*] Encrypted bytes beginning at 0x1c0bc4: b7069357ec8afac7d267d9c4db3ada89d3576e5f017daf7fa4ab60
+[*] Decrypted bytes: 554889e54881ec90000000be00fe0000bf00fc0000e861ffffffc9 using key: 0x1acf57fbe20bb050
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c0b4f, canon mnem = in
+[*] Found in instruction @ 0x1c0b4f
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x4e
+[*] Decoding prev2 insn @ 0x1c0b3f
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0x899409ba9b3b8017
+[*] Encrypted bytes beginning at 0x1c0b51: 8ddba9746d37a633829132fffe0e59da46c5b9a30f177951ba9ccac8f1dc5bc468b2639bc6e5f44c781025148575af1d9db568187f55ab267ac7e44352721f3553f974f2fd78f1cea47e09807461
+[*] Decrypted bytes: 554889e54883ec2048897de8488975e0488b45e84889c7e8abfdffff8945fc488b55e0488b45e84889d64889c7e8dffeffff8945f8837dfc24750d837df8017507b837130000eb05b800000000c9 using key: 0x899409ba9b3b8017
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c0928, canon mnem = in
+[*] Found in instruction @ 0x1c0928
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x125
+[*] Decoding prev2 insn @ 0x1c0918
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0x81ae1af7d4c34557
+[*] Encrypted bytes beginning at 0x1c092a: 1e3581e8ef61fc42dcad23ef266c05e2830628569e2e78f48fccf40cf486fc55460f41c8aa912d6a9516bd7a6916949406803232d538d28179b4e850306274f9e3dcc71e4c57350d65f870a5d811b5c8a49b00b547ac9804cd94277583919ee6f65a84010be94e3a04248fb19f853452ee2e1b76a0fc402707e6c019f26923dd76a37dbe2c184766e60483d0af168674b5944e5ef9733503b54c07823c6a79f7cf5f92e37168c5f18b4dbf37a5e35fc14d1875be3b8cd4f8f3a2410427f3c8f2557140e1eee10532f40ede4f6a3ed2af82365a13ba4aa2b36fb96ee40c3d76eb96f00f911f41c0990e3b6efb665a504613ac875582125f44cfd977d738d83cfefb329f8f412702aa41ed5e6981bf2c1d0844792c99298c6f41b3f6d2f57ef8e51bbaee722f
+[*] Decrypted bytes: 554889e54881ec880000004889bd78ffffff48b82a233337285b404148ba462b202e20205f59488945c0488955c848b8424033212d3d375748ba5d5b4335392c3e2a488945d0488955d848b840555f5a7073756d48ba6c6f72656d697073488945e0488955e8c645f00048b86c6f72656d69707348ba756d6c6f72656d69488945804889558848b87073756d6c6f726548ba6d697073756d6c6f488945904889559848b872656d697073756d48ba6c6f72656d697073488945a0488955a8c645b000488b8578ffffff4889c7e846feffff8945f4c745fc00000000c745f800000000eb358b45f84863d0488b8578ffffff4801d00fb6108b45f848980fb644058031c28b45f848980fb64405c038c275048345fc018345f8018b45f83b45f47cc38b45fcc9 using key: 0x81ae1af7d4c34557
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c0851, canon mnem = in
+[*] Found in instruction @ 0x1c0851
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x2d
+[*] Decoding prev2 insn @ 0x1c0841
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0x5329efaa8087ea73
+[*] Encrypted bytes beginning at 0x1c0853: a0bc53a6aff525d81f6f32b5302eaec034e6ae1d3d8b724a9b848062029a1d035982e3d2f3d685adc427cf4165
+[*] Decrypted bytes: 554889e548897de8c745fc00000000eb048345fc018b45fc4863d0488b45e84801d00fb60084c075e88b45fc5d using key: 0x5329efaa8087ea73
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c0a72, canon mnem = in
+[*] Found in instruction @ 0x1c0a72
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0xb8
+[*] Decoding prev2 insn @ 0x1c0a62
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0xe7d8ad8771e63f39
+[*] Encrypted bytes beginning at 0x1c0a74: efdbc4c8eb7be741f5d7b3b75894614f19a388728da78a1ac80bea4cd9208f686ee24af6a7ce4d3da1e0770e691c067af311efaafbf3bfff1046d2fc66cf935e0bce16ab9c65f35fabc6b2933c919ab60eaf228a0ef4abaa616e1c25d78a4a6e97c3ed776eed3a311e4fd13dfffb8d761507853d1f1daec2d7b38977b7723c9e3df62802561b0d465aa4eb7e57f2479b79ae19a843a9b51c9977720c0031016c63d61fe4a8532380c30db8a99e334b623cbd0644ee62123f
+[*] Decrypted bytes: 554889e54883ec5048897db8488975b048c745c00000000048c745c80000000048c745d00000000048c745d80000000048c745e00000000048c745e800000000c645f000488b45b04889c7e87dfdffff89c1488d55c0488b45b089ce4889c7e809fbffff8945fc8b45fc83e00785c07407b800000000eb3f488b45b88b108b4dfc488d45c089ce4889c7e8acf9ffff488d4dc0488b45b8ba300000004889ce4889c7e878fdffff85c07407b801000000eb05b800000000c9 using key: 0xe7d8ad8771e63f39
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c05f1, canon mnem = in
+[*] Found in instruction @ 0x1c05f1
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x23b
+[*] Decoding prev2 insn @ 0x1c05e1
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0xd3a5541bc79f6df3
+[*] Encrypted bytes beginning at 0x1c05f3: 3e3be05eec2cfa62ba520b54264dc74b52203630a250c769ee94a4d522a2135a8d3801b223e70618bbec286625519cc7627f1f4ad3a01cb33313cf36524e59a03a16831c64845f6833e871e4ba81e94b0c3f85c8ffc6d8f05d7ac53366db78e3578b88858942ac470332c3637b8cbf109b3f75fbf1629cfe3e8720fc4876ecc788f757125cf24a2d56148c8183212c9ad83ec3808f2e0826d02ab751f24b8c70c22d21a773a137a6c6d5447ba3991fc76efc27cd8671bf7e2024a63eea5c787aa7d01810d40cd83b152437ae210c448e6a17e45daf159e42c8531acfac73bc7e214e4db8a51710b09025fda5ad126a24bae5cecb0fa23b25822465c6483eb86e9ab8ba57c4d4d672e4bb7cd8212fbf7807ba8bd0c47023472129407b4002ea328c6bbc89649a78fc1aebfa82862664053a99a2b86df037d01ead300068f60f45d82e9681693136214571e8dbbbf94f9b332c06d88aca186df865a950998ef6ab19b68f34f9fa5fd94e9aa96d5fdd0a90d064a123792536c2ecffa2dd6e84745ae7416b70e45b304ab6e8881b7317ed19dc21f5a885750cb07c38f38410419803fa1e50b8a46e751187e5c073e5d944f43f61f92f8118234b781e49782de0a87762788810d84aac184d21015ab958e22c75bebb51afe93c7196fae45e60c04197204f8132551ee532153e8e8cfc8e32095ed8b90f690bfa644eb7b346394829c1e718225d1039e068491fe99cc23d84418ab6e88cea2b7d5e53493d93d374a13656af97128c041ca1d5282fc8fd31bbf30203bbf78b4776d3004c6f
+[*] Decrypted bytes: 554889e548897dd88975d4488955c88b45d48d500385c00f48c2c1f80289c289d001c001d08945fc8b45d44898488d50ff488b45d84801d00fb6003c3d7504836dfc018b45d44898488d50fe488b45d84801d00fb6003c3d7504836dfc01c745f800000000c745f400000000e9ba0100008b45f84863d0488b45d84801d00fb6003c3d750b8345f801b800000000eb298b45f88d50018955f84863d0488b45d84801d00fb6000fbec04898488d154d0500000fb604100fbec08945f08b45f84863d0488b45d84801d00fb6003c3d750b8345f801b800000000eb298b45f88d50018955f84863d0488b45d84801d00fb6000fbec04898488d15020500000fb604100fbec08945ec8b45f84863d0488b45d84801d00fb6003c3d750b8345f801b800000000eb298b45f88d50018955f84863d0488b45d84801d00fb6000fbec04898488d15b70400000fb604100fbec08945e88b45f84863d0488b45d84801d00fb6003c3d750b8345f801b800000000eb298b45f88d50018955f84863d0488b45d84801d00fb6000fbec04898488d156c0400000fb604100fbec08945e48b45f0c1e01289c28b45ecc1e00c01c28b45e8c1e00601c28b45e401d08945e08b45f43b45fc7d1f8b45e0c1e81089c18b45f48d50018955f44863d0488b45c84801d089ca88108b45f43b45fc7d1f8b45e0c1e80889c18b45f48d50018955f44863d0488b45c84801d089ca88108b45f43b45fc7d188b45f48d50018955f44863d0488b45c84801d08b55e088108b45f83b45d40f8c3afeffff8b45fc5d using key: 0xd3a5541bc79f6df3
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c04bf, canon mnem = in
+[*] Found in instruction @ 0x1c04bf
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x10d
+[*] Decoding prev2 insn @ 0x1c04af
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0x395ee00667d5d2a6
+[*] Encrypted bytes beginning at 0x1c04c1: 04aabeb602b1410bbda700b13389ed0548f3991ac8ddcd3cab9d1bc9da14699361812c9dab35cb37d8c95f13bca71f813055903b54f9839488c9d99a0862bb06344c62cfeaee05a00df9b49970bdc9c5e342a72b2b15f1d752c809598d6230cb1ebe495ce13bea51610b63983b4030b9eeb481a6e88a11beaf2e7a3815fd5e8d0ebdc6184f5ff94fd9ae6b957d623090bb700bb0a6c6378b4840b3904811bc48d447ba8608012384b52dba743c8abdecdd9ad8b32004174ca4fb81690a90ee6361b1d1f3b4af0e1f8d858b80e8d5b0b8f986655fc6ba3eadac62308a07ddeba186d8b747c2c5f5813ecb73ab008cb642f43ac9fdefe6400ca2c413a1d2c8db432d663212b909f0787d3b9186e4
+[*] Decrypted bytes: 554889e54881ecb00000004889bd58ffffff89b554ffffff899550ffffff48c745a00000000048c745a80000000048c745b00000000048c745b80000000048c745c00000000048c745c80000000048c745d00000000048c745d800000000c745fc00000000eb168b45fc48988b9550ffffff89948560ffffff8345fc01837dfc0f7ee4488d9560ffffff488d45a04889d64889c7e84dfbffff8b8554ffffff8d500785c00f48c2c1f8038945f4488b8558ffffff488945e8c745f800000000eb418b45f848984883c001488d14c500000000488b45e8488d34028b45f84898488d14c500000000488b45e8488d0c02488d45a04889c24889cfe862feffff8345f8028b45f83b45f47cb79090c9 using key: 0x395ee00667d5d2a6
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c00b7, canon mnem = in
+[*] Found in instruction @ 0x1c00b7
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x305
+[*] Decoding prev2 insn @ 0x1c00a7
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0x6ddcb037965c7f34
+[*] Encrypted bytes beginning at 0x1c00b9: 1604b46c8a6cd095d0b8b78b05aa750aea7129949626fe9ca66267b6b5cbf0c7ab7515ae3085faacb2f9db5c6f6a37756304eaf46a4610897546d454fae81fa98551439893699397be392981bfb5222da61213a5145c5529e0184e1c6b5ab31e88bb57b2e630272753518fa34b269b4c9f6ddf0aa1282198846fb7f8976c2b869a65eaccb3b397e79ad876b5709590a68db536960e328f91d2f55ff0106726c83d32da4512422478324a05ba1d2fd35418a09db66eef103330919170b4115a98ae55bf88720033d1febb9cbfc016a571cfddb827064f7c5e82a213a3b76d05083c7b01cae7fb87cd8b20668c3c6024ad55d35a2de863b788615f509500b21944f7a075673117ab80e3473b1bebf2001b4a17d25f8d86fa0de419accfb02e1fb57c90424f123835ee1a1d98dfe471615d322341667b3963ed04c85ba02563a74a12694ddabce970dee8161538768626699cf891c5c754c03fe13194f9ef956c97b20b33960f6cdf025312629e008db471e30ba7a09f080d7791c67758479a5e922ba59e4cb64145ba9d3b38a3129b7a4117fef21a277a92ac0550a2794d2b7d29f5ac33bd78873a9ab9e78cf1d7c444173bebb9a623aaf9126bce00f17848637a33b030dbd16e5387a0192ab0b0dd1c588b4f50ba390f9dc42b7c329dc63e526179c0ebeab7cb97d3fd95db5c7b775bdb35f9ffcc087d30e05407138da472632bfd7c0aea051a8dff0c57b25ba8e571c105cc397fa39da0f495308646d79bf3a71a603c04da99368e96bb7760cd0fd9a4d8fe94d284264007dfb54f16d53ec6e7558296969aa7ae5c145e22deea2708338a2b166b07ac62a8df3072bf039fc2ce3fc860c192ec63834083987c3a685f1d70e1cbaa021f3215a807ec4e24e8394bd54981dfdc4c5573a0e9ed8502f9c05598cd65b2bcfd6a84db2819cd8fb5e881bb68245f7c322c5682f19221337ac63cb415a466a24548eee22c6147f176689ccff02dd6f1789b4c3ee98c8713fbe457697242eaa163f9aa91ba95a7dd1e51c11ad7577b5b57d336254006809f5a5efba29bb1103a601229315626fe86d8d9211cfdbbd5a7
+[*] Decrypted bytes: 554889e548897da8488975a0c745fc00000000eb238b45fc4898488d148500000000488b45a04801d08b108b45fc4898895485b08345fc01837dfc0f7ed7c745fc00000000e9640200008b45c08b4db08b55e001cac1c20731d08945c08b45d08b4dc08b55b001cac1c20931d08945d08b45e08b4dd08b55c001cac1c20d31d08945e08b45b08b4de08b55d001cac1ca0e31d08945b08b45d48b4dc48b55b401cac1c20731d08945d48b45e48b4dd48b55c401cac1c20931d08945e48b45b48b4de48b55d401cac1c20d31d08945b48b45c48b4db48b55e401cac1ca0e31d08945c48b45e88b4dd88b55c801cac1c20731d08945e88b45b88b4de88b55d801cac1c20931d08945b88b45c88b4db88b55e801cac1c20d31d08945c88b45d88b4dc88b55b801cac1ca0e31d08945d88b45bc8b4dec8b55dc01cac1c20731d08945bc8b45cc8b4dbc8b55ec01cac1c20931d08945cc8b45dc8b4dcc8b55bc01cac1c20d31d08945dc8b45ec8b4ddc8b55cc01cac1ca0e31d08945ec8b45b48b4db08b55bc01cac1c20731d08945b48b45b88b4db48b55b001cac1c20931d08945b88b45bc8b4db88b55b401cac1c20d31d08945bc8b45b08b4dbc8b55b801cac1ca0e31d08945b08b45c88b4dc48b55c001cac1c20731d08945c88b45cc8b4dc88b55c401cac1c20931d08945cc8b45c08b4dcc8b55c801cac1c20d31d08945c08b45c48b4dc08b55cc01cac1ca0e31d08945c48b45dc8b4dd88b55d401cac1c20731d08945dc8b45d08b4ddc8b55d801cac1c20931d08945d08b45d48b4dd08b55dc01cac1c20d31d08945d48b45d88b4dd48b55d001cac1ca0e31d08945d88b45e08b4dec8b55e801cac1c20731d08945e08b45e48b4de08b55ec01cac1c20931d08945e48b45e88b4de48b55e001cac1c20d31d08945e88b45ec8b4de88b55e401cac1ca0e31d08945ec8345fc02837dfc130f8e92fdffffc745fc00000000eb3b8b45fc48988b4c85b08b45fc4898488d148500000000488b45a04801d08b108b45fc4898488d348500000000488b45a84801f001ca89108345fc01837dfc0f7ebf90905d using key: 0x6ddcb037965c7f34
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c0431, canon mnem = in
+[*] Found in instruction @ 0x1c0431
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x69
+[*] Decoding prev2 insn @ 0x1c0421
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0xb7c5680b4414a725
+[*] Encrypted bytes beginning at 0x1c0433: ca4d192c5873a13f8a2870efa71cef758b88afe0abf6fc720f35c94972e780930446ec8fccba723db57858cf5ff2d95acb643e96f621cbdb67c730d0bc970c286a3cea3c0598c191319b25f92a3897e99ee0df30cd5e310237add411b04eca49029c68149a5e8f3b73
+[*] Decrypted bytes: 554889e54883ec2848897de8488975e0488955d8c745fc07000000eb43488b45e8488b00488945f0488b45e0488b00488b55d88b4dfc89ce4889c7e85effffff488b55e8488b124831c2488b45e8488910488b45e0488b55f0488910836dfc01837dfc0079b79090c9 using key: 0xb7c5680b4414a725
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c03e1, canon mnem = in
+[*] Found in instruction @ 0x1c03e1
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x2b
+[*] Decoding prev2 insn @ 0x1c03d1
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0xdd0b0f81680fd682
+[*] Encrypted bytes beginning at 0x1c03e3: 658fb4ae70f99be76ace7a819e0718af85ee824acd061ced7c6d4d1e5ecef7aa49ace2c628b8cb600c91eb
+[*] Decrypted bytes: 554889e548897df88975f4488955e88b45f44898488d14c500000000488b45e84801d0488b00483345f85d using key: 0xdd0b0f81680fd682
+do_io_patching run() complete!
+Conflicting shortcut: Alt+9; Candidate actions:
+	Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+	WindowActivate9 (Threads)
+Executing action: Edit/Plugins/FlareOn10-Ch12-Patching (FlareOn10-Ch12-Patching)
+do_io_patching: decoded insn @ 0x1c08a3, canon mnem = in
+[*] Found in instruction @ 0x1c08a3
+[*] Decoding prev1 insn
+[*] Found prev1 insn: mov ops[0] reg number 9, immed value 0x60
+[*] Decoding prev2 insn @ 0x1c0893
+[*] Found prev2 insn: mov ops[0] reg number 8, immed value 0xe40cc96ca6b628f0
+[*] Encrypted bytes beginning at 0x1c08a5: 51254143c7b03171ba820f729e31c67fec6f424aff09c0b06b0a4d5f18c1c126f33999130934c7cdcea7f0cce14ab27dbd9b156ad161e4a77348bfcb4c63836ebd4771d09049ef24cab38339fcba3fb6135e2e123d93218eed5ba0fa09344de0
+[*] Decrypted bytes: 554889e548897de8488975e08955dcc745fc00000000c745f800000000eb2c8b45f84863d0488b45e84801d00fb6108b45f84863c8488b45e04801c80fb60038c275048345fc018345f8018b45f83b45dc7ccc8b45fc3b45dc0f94c00fb6c05d using key: 0xe40cc96ca6b628f0
+do_io_patching run() complete!

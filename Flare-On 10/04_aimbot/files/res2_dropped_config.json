@@ -1,0 +1,19 @@
+{
+    "http": {
+        "enabled": true,
+        "host": "127.0.0.1",
+        "port": 57328,
+        "access-token": null,
+        "restricted": true
+    },
+    "autosave": true,
+    "cpu": true,
+    "opencl": false,
+    "cuda": false,
+    "pools": [
+        {
+            "url": "monerohash.com:9999",
+            "user": "49jmq1dCvnAAGpeb6aCFyuaXNB8WMJ6fqLTG4twcSjwyNgHagoaQw5EbCw4mf832RPRpf2CH4srVhAxgtSb6A62P2VwJC47",
+            "keepalive": true,
+            "tls": true
+        }

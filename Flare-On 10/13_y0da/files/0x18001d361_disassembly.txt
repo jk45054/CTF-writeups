@@ -1,0 +1,1659 @@
+0x18001d361 48 8b ec               mov     rbp, rsp
+0x180055298 48 83 c5 08            add     rbp, 8
+0x180038551 49 8b f1               mov     rsi, r9
+0x18001aa0c 48 83 c6 3e            add     rsi, 3Eh ; '>'
+0x18002933c 56                     push    rsi
+0x18003bd06 49 8b f1               mov     rsi, r9
+0x18001a716 48 83 c6 71            add     rsi, 71h ; 'q'
+0x1800389b6 56                     push    rsi
+0x18004d8c5 49 8b f1               mov     rsi, r9
+0x18002e811 48 83 c6 68            add     rsi, 68h ; 'h'
+0x1800514b6 56                     push    rsi
+0x18000ce75 49 8b f1               mov     rsi, r9
+0x18000b4a0 48 81 c6 8c 01 00 00   add     rsi, 18Ch
+0x180051308 56                     push    rsi
+0x18004489d 49 8b f1               mov     rsi, r9
+0x180009247 48 81 c6 95 01 00 00   add     rsi, 195h
+0x18002a62a 56                     push    rsi
+0x180002570 49 8b f1               mov     rsi, r9
+0x180056523 48 81 c6 b2 00 00 00   add     rsi, 0B2h
+0x180039223 56                     push    rsi
+0x18000342e 49 8b f1               mov     rsi, r9
+0x18002f910 48 81 c6 85 00 00 00   add     rsi, 85h
+0x18001eafd 56                     push    rsi
+0x1800407b3 49 8b f1               mov     rsi, r9
+0x18004934b 48 83 c6 76            add     rsi, 76h ; 'v'
+0x180002f1d 56                     push    rsi
+0x1800144a6 49 8b f1               mov     rsi, r9
+0x180010e1e 48 81 c6 92 01 00 00   add     rsi, 192h
+0x180056f9f 56                     push    rsi
+0x180006c76 49 8b f1               mov     rsi, r9
+0x18003f24c 48 81 c6 bf 01 00 00   add     rsi, 1BFh
+0x1800115ff 56                     push    rsi
+0x18006360a 49 8b f1               mov     rsi, r9
+0x18005bea8 48 83 c6 68            add     rsi, 68h ; 'h'
+0x18002b3f7 56                     push    rsi
+0x180037835 49 8b f1               mov     rsi, r9
+0x180064b78 48 81 c6 8c 01 00 00   add     rsi, 18Ch
+0x18003425b 56                     push    rsi
+0x18004aa85 49 8b f1               mov     rsi, r9
+0x180027898 48 81 c6 bc 01 00 00   add     rsi, 1BCh
+0x18005410c 56                     push    rsi
+0x18002adc8 49 8b f1               mov     rsi, r9
+0x18004bbc4 48 81 c6 b5 01 00 00   add     rsi, 1B5h
+0x18005e30b 56                     push    rsi
+0x180056d86 49 8b f1               mov     rsi, r9
+0x18004fee4 48 81 c6 b2 01 00 00   add     rsi, 1B2h
+0x180051874 56                     push    rsi
+0x18003aa9b 49 8b f1               mov     rsi, r9
+0x180011f1f 48 81 c6 ac 01 00 00   add     rsi, 1ACh
+0x1800626ca 56                     push    rsi
+0x18000a24d 49 8b f1               mov     rsi, r9
+0x1800063ca 48 81 c6 a7 01 00 00   add     rsi, 1A7h
+0x180063fae 56                     push    rsi
+0x1800334b7 49 8b f1               mov     rsi, r9
+0x180001e0c 48 81 c6 a4 01 00 00   add     rsi, 1A4h
+0x180020d52 56                     push    rsi
+0x18003ce0c 49 8b f1               mov     rsi, r9
+0x18004baea 48 81 c6 a0 01 00 00   add     rsi, 1A0h
+0x180041a8f 56                     push    rsi
+0x180044a84 49 8b f1               mov     rsi, r9
+0x18003fe11 48 81 c6 9c 01 00 00   add     rsi, 19Ch
+0x18001e9c1 56                     push    rsi
+0x180019b98 49 8b f1               mov     rsi, r9
+0x18003957a 48 81 c6 95 01 00 00   add     rsi, 195h
+0x1800651fd 56                     push    rsi
+0x18004551b 49 8b f1               mov     rsi, r9
+0x1800155b1 48 81 c6 af 00 00 00   add     rsi, 0AFh
+0x180022b41 56                     push    rsi
+0x18003dcd4 49 8b f1               mov     rsi, r9
+0x18000398a 48 81 c6 85 00 00 00   add     rsi, 85h
+0x18004df74 56                     push    rsi
+0x18003fb60 49 8b f1               mov     rsi, r9
+0x1800539a7 48 83 c6 76            add     rsi, 76h ; 'v'
+0x18004ef24 56                     push    rsi
+0x1800091ad 49 8b f1               mov     rsi, r9
+0x180063a3f 48 81 c6 92 01 00 00   add     rsi, 192h
+0x18000c795 56                     push    rsi
+0x18003f592 49 8b f1               mov     rsi, r9
+0x18005091d 48 81 c6 8f 01 00 00   add     rsi, 18Fh
+0x18002817f 56                     push    rsi
+0x18001ccf3 49 8b f1               mov     rsi, r9
+0x180062983 48 83 c6 68            add     rsi, 68h ; 'h'
+0x1800128f3 56                     push    rsi
+0x1800279ca 49 8b f1               mov     rsi, r9
+0x18001d809 48 81 c6 8c 01 00 00   add     rsi, 18Ch
+0x180003489 56                     push    rsi
+0x180028cb3 49 8b f1               mov     rsi, r9
+0x180049be9 48 81 c6 85 00 00 00   add     rsi, 85h
+0x180065ff0 56                     push    rsi
+0x18000158d 49 8b f1               mov     rsi, r9
+0x18005a7ab 48 83 c6 76            add     rsi, 76h ; 'v'
+0x180002b59 56                     push    rsi
+0x180025607 49 8b f1               mov     rsi, r9
+0x180048b1a 48 83 c6 68            add     rsi, 68h ; 'h'
+0x180008ef5 56                     push    rsi
+0x180001c3f 49 8b f1               mov     rsi, r9
+0x180001565 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18003d3d9 56                     push    rsi
+0x180041842 49 8b f1               mov     rsi, r9
+0x180002a5a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180012b29 56                     push    rsi
+0x18000bb27 49 8b f1               mov     rsi, r9
+0x18005a012 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180021f5f 56                     push    rsi
+0x180035d73 49 8b f1               mov     rsi, r9
+0x180064deb 48 81 c6 af 00 00 00   add     rsi, 0AFh
+0x18004f2b0 56                     push    rsi
+0x180047cd0 49 8b f1               mov     rsi, r9
+0x180056b74 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x180033fec 56                     push    rsi
+0x180053a52 49 8b f1               mov     rsi, r9
+0x18003629f 48 81 c6 ab 00 00 00   add     rsi, 0ABh
+0x180017442 56                     push    rsi
+0x1800195fb 49 8b f1               mov     rsi, r9
+0x1800091e0 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005194a 56                     push    rsi
+0x180023ab7 49 8b f1               mov     rsi, r9
+0x18004159a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004f927 56                     push    rsi
+0x18004f3dc 49 8b f1               mov     rsi, r9
+0x180011ecf 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x180057c43 56                     push    rsi
+0x18003a303 49 8b f1               mov     rsi, r9
+0x18000cfcb 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180019a40 56                     push    rsi
+0x180025787 49 8b f1               mov     rsi, r9
+0x180011ab5 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180018254 56                     push    rsi
+0x18001133b 49 8b f1               mov     rsi, r9
+0x180050268 48 81 c6 92 00 00 00   add     rsi, 92h
+0x1800330a7 56                     push    rsi
+0x180008edd 49 8b f1               mov     rsi, r9
+0x180050f16 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180013a7d 56                     push    rsi
+0x180021894 49 8b f1               mov     rsi, r9
+0x18000cecb 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18003a315 56                     push    rsi
+0x18000ac05 49 8b f1               mov     rsi, r9
+0x180040fb7 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x180039dd0 56                     push    rsi
+0x18005235a 49 8b f1               mov     rsi, r9
+0x180031e04 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005e62c 56                     push    rsi
+0x1800161f5 49 8b f1               mov     rsi, r9
+0x18000ea49 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180032237 56                     push    rsi
+0x180033d4d 49 8b f1               mov     rsi, r9
+0x18004ce27 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180054c1e 56                     push    rsi
+0x180035b8d 49 8b f1               mov     rsi, r9
+0x1800281ba 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002ed92 56                     push    rsi
+0x180030aa3 49 8b f1               mov     rsi, r9
+0x180027bff 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004c889 56                     push    rsi
+0x180037f19 49 8b f1               mov     rsi, r9
+0x18003b79b 48 81 c6 26 01 00 00   add     rsi, 126h
+0x180015ece 56                     push    rsi
+0x18002f143 49 8b f1               mov     rsi, r9
+0x18003266c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180064ad4 56                     push    rsi
+0x180057722 49 8b f1               mov     rsi, r9
+0x1800103c3 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180017362 56                     push    rsi
+0x18000dd20 49 8b f1               mov     rsi, r9
+0x18004815a 48 81 c6 41 01 00 00   add     rsi, 141h
+0x180003481 56                     push    rsi
+0x180042f28 49 8b f1               mov     rsi, r9
+0x1800391f2 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800599b3 56                     push    rsi
+0x18001dd14 49 8b f1               mov     rsi, r9
+0x18005f3ef 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002e6d3 56                     push    rsi
+0x18005a9eb 49 8b f1               mov     rsi, r9
+0x1800641a5 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180010ec2 56                     push    rsi
+0x180004c7f 49 8b f1               mov     rsi, r9
+0x18001515f 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800067fb 56                     push    rsi
+0x180009183 49 8b f1               mov     rsi, r9
+0x18005f4fa 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180008192 56                     push    rsi
+0x180025df1 49 8b f1               mov     rsi, r9
+0x180014ef9 48 81 c6 85 01 00 00   add     rsi, 185h
+0x18004da07 56                     push    rsi
+0x180016fd9 49 8b f1               mov     rsi, r9
+0x180061b16 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001864d 56                     push    rsi
+0x18004642e 49 8b f1               mov     rsi, r9
+0x1800475e6 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800067c9 56                     push    rsi
+0x18001afcb 49 8b f1               mov     rsi, r9
+0x18001af25 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18004062a 56                     push    rsi
+0x180024117 49 8b f1               mov     rsi, r9
+0x180021a1d 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18003fb21 56                     push    rsi
+0x18005cfe3 49 8b f1               mov     rsi, r9
+0x180037150 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180019b35 56                     push    rsi
+0x180028f17 49 8b f1               mov     rsi, r9
+0x180017914 48 81 c6 92 00 00 00   add     rsi, 92h
+0x1800194f4 56                     push    rsi
+0x180034dad 49 8b f1               mov     rsi, r9
+0x180049cb8 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004c250 56                     push    rsi
+0x18001cdf2 49 8b f1               mov     rsi, r9
+0x18000e9a7 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800503b1 56                     push    rsi
+0x180028706 49 8b f1               mov     rsi, r9
+0x180046c75 48 81 c6 26 01 00 00   add     rsi, 126h
+0x18001eca5 56                     push    rsi
+0x1800182ae 49 8b f1               mov     rsi, r9
+0x180041df4 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001edf4 56                     push    rsi
+0x180059caf 49 8b f1               mov     rsi, r9
+0x18002db79 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800123ca 56                     push    rsi
+0x18001c235 49 8b f1               mov     rsi, r9
+0x180035f6c 48 81 c6 85 01 00 00   add     rsi, 185h
+0x1800501bb 56                     push    rsi
+0x18004a1c1 49 8b f1               mov     rsi, r9
+0x1800515ad 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180043844 56                     push    rsi
+0x1800438ee 49 8b f1               mov     rsi, r9
+0x1800346cb 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180033bbd 56                     push    rsi
+0x1800179dd 49 8b f1               mov     rsi, r9
+0x18004f9ae 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18002c600 56                     push    rsi
+0x180001fe9 49 8b f1               mov     rsi, r9
+0x18003e9b9 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005ca91 56                     push    rsi
+0x18002d71a 49 8b f1               mov     rsi, r9
+0x180051dc4 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800338a3 56                     push    rsi
+0x18002d5e1 49 8b f1               mov     rsi, r9
+0x180016eab 48 83 c6 06            add     rsi, 6
+0x18002ae95 56                     push    rsi
+0x180027903 49 8b f1               mov     rsi, r9
+0x180028e62 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800574a5 56                     push    rsi
+0x18002f5a6 49 8b f1               mov     rsi, r9
+0x1800168ac 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800178c6 56                     push    rsi
+0x18000aa93 49 8b f1               mov     rsi, r9
+0x180048eb2 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180055518 56                     push    rsi
+0x18004776b 49 8b f1               mov     rsi, r9
+0x18002cf82 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800489c8 56                     push    rsi
+0x180009e3d 49 8b f1               mov     rsi, r9
+0x18000bb50 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800132ff 56                     push    rsi
+0x18004b2c3 49 8b f1               mov     rsi, r9
+0x180025fb7 48 81 c6 26 01 00 00   add     rsi, 126h
+0x1800181d0 56                     push    rsi
+0x18000b724 49 8b f1               mov     rsi, r9
+0x180013208 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002bfa3 56                     push    rsi
+0x18002ca0d 49 8b f1               mov     rsi, r9
+0x1800473f5 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004deb7 56                     push    rsi
+0x1800156aa 49 8b f1               mov     rsi, r9
+0x18003da99 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x180039ec5 56                     push    rsi
+0x18001b0da 49 8b f1               mov     rsi, r9
+0x180032bb5 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18003776b 56                     push    rsi
+0x1800451f1 49 8b f1               mov     rsi, r9
+0x180003223 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800503ff 56                     push    rsi
+0x180031672 49 8b f1               mov     rsi, r9
+0x18005a149 48 81 c6 95 00 00 00   add     rsi, 95h
+0x1800308d3 56                     push    rsi
+0x1800324fa 49 8b f1               mov     rsi, r9
+0x18002f0a0 48 81 c6 b2 00 00 00   add     rsi, 0B2h
+0x180007976 56                     push    rsi
+0x180013190 49 8b f1               mov     rsi, r9
+0x18005d585 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x18001b31d 56                     push    rsi
+0x18003d13f 49 8b f1               mov     rsi, r9
+0x180053037 48 81 c6 a7 00 00 00   add     rsi, 0A7h
+0x1800058c5 56                     push    rsi
+0x1800216c6 49 8b f1               mov     rsi, r9
+0x18001a0e4 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800464b0 56                     push    rsi
+0x18000b861 49 8b f1               mov     rsi, r9
+0x1800208b9 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18003f6d8 56                     push    rsi
+0x18004bdde 49 8b f1               mov     rsi, r9
+0x1800612a2 48 81 c6 26 01 00 00   add     rsi, 126h
+0x1800609f4 56                     push    rsi
+0x180011839 49 8b f1               mov     rsi, r9
+0x18003065d 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004b4ef 56                     push    rsi
+0x180038bcf 49 8b f1               mov     rsi, r9
+0x18000a318 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18003fbb1 56                     push    rsi
+0x1800182d1 49 8b f1               mov     rsi, r9
+0x18004f568 48 81 c6 85 01 00 00   add     rsi, 185h
+0x1800201b7 56                     push    rsi
+0x18004e39d 49 8b f1               mov     rsi, r9
+0x18001bf5c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180027a1b 56                     push    rsi
+0x1800080e8 49 8b f1               mov     rsi, r9
+0x180015954 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000d4ea 56                     push    rsi
+0x18003eaca 49 8b f1               mov     rsi, r9
+0x18004a724 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x180024eec 56                     push    rsi
+0x180044053 49 8b f1               mov     rsi, r9
+0x180050fcd 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800206fc 56                     push    rsi
+0x18003b64b 49 8b f1               mov     rsi, r9
+0x18005a7ce 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800047b8 56                     push    rsi
+0x180025c76 49 8b f1               mov     rsi, r9
+0x18005b873 48 81 c6 10 01 00 00   add     rsi, 110h
+0x1800526b8 56                     push    rsi
+0x180034ce1 49 8b f1               mov     rsi, r9
+0x18006550d 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004d02b 56                     push    rsi
+0x18004f846 49 8b f1               mov     rsi, r9
+0x18003f79a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180024853 56                     push    rsi
+0x180064911 49 8b f1               mov     rsi, r9
+0x180056407 48 81 c6 6b 01 00 00   add     rsi, 16Bh
+0x180053871 56                     push    rsi
+0x180027f6f 49 8b f1               mov     rsi, r9
+0x180046479 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180013618 56                     push    rsi
+0x18002c655 49 8b f1               mov     rsi, r9
+0x180009ff7 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180012f46 56                     push    rsi
+0x1800254a8 49 8b f1               mov     rsi, r9
+0x18000fe18 48 81 c6 26 01 00 00   add     rsi, 126h
+0x18003b317 56                     push    rsi
+0x18001cf72 49 8b f1               mov     rsi, r9
+0x1800246b4 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001a562 56                     push    rsi
+0x18006520c 49 8b f1               mov     rsi, r9
+0x18003ec68 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180023423 56                     push    rsi
+0x18002f80f 49 8b f1               mov     rsi, r9
+0x180003f39 48 81 c6 67 01 00 00   add     rsi, 167h
+0x18006513c 56                     push    rsi
+0x180037d94 49 8b f1               mov     rsi, r9
+0x1800520f0 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001a26c 56                     push    rsi
+0x18002ecaf 49 8b f1               mov     rsi, r9
+0x18005bfed 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18001db19 56                     push    rsi
+0x1800253df 49 8b f1               mov     rsi, r9
+0x180045eba 48 81 c6 95 00 00 00   add     rsi, 95h
+0x18003c104 56                     push    rsi
+0x180019221 49 8b f1               mov     rsi, r9
+0x1800466f0 48 81 c6 b6 00 00 00   add     rsi, 0B6h
+0x1800045d1 56                     push    rsi
+0x18002f503 49 8b f1               mov     rsi, r9
+0x180006fe2 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x180057482 56                     push    rsi
+0x18000d843 49 8b f1               mov     rsi, r9
+0x18001e8a1 48 81 c6 a3 00 00 00   add     rsi, 0A3h
+0x18004e4c7 56                     push    rsi
+0x18001b6c9 49 8b f1               mov     rsi, r9
+0x18003326b 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002ddbb 56                     push    rsi
+0x18002eb7b 49 8b f1               mov     rsi, r9
+0x1800395d7 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18003ac3c 56                     push    rsi
+0x18003cf62 49 8b f1               mov     rsi, r9
+0x18002c0ff 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x180013fde 56                     push    rsi
+0x18003bd45 49 8b f1               mov     rsi, r9
+0x180032696 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800277a8 56                     push    rsi
+0x180023894 49 8b f1               mov     rsi, r9
+0x18004c3b0 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002125a 56                     push    rsi
+0x180002dde 49 8b f1               mov     rsi, r9
+0x18000e990 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x1800308ff 56                     push    rsi
+0x180060170 49 8b f1               mov     rsi, r9
+0x18000e83d 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005de68 56                     push    rsi
+0x18004ea5c 49 8b f1               mov     rsi, r9
+0x18000c20e 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180022e78 56                     push    rsi
+0x180010511 49 8b f1               mov     rsi, r9
+0x1800042e3 48 81 c6 85 01 00 00   add     rsi, 185h
+0x180008a00 56                     push    rsi
+0x18002aa93 49 8b f1               mov     rsi, r9
+0x18003efae 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180038598 56                     push    rsi
+0x18001ac06 49 8b f1               mov     rsi, r9
+0x18002b0d0 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180042da5 56                     push    rsi
+0x1800144b0 49 8b f1               mov     rsi, r9
+0x18002e1f0 48 81 c6 f8 00 00 00   add     rsi, 0F8h
+0x18004c712 56                     push    rsi
+0x18001ce9c 49 8b f1               mov     rsi, r9
+0x180051182 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180046a81 56                     push    rsi
+0x18000f1c3 49 8b f1               mov     rsi, r9
+0x180036cb0 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180017749 56                     push    rsi
+0x1800280a3 49 8b f1               mov     rsi, r9
+0x180009b6c 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180060834 56                     push    rsi
+0x18002f6b4 49 8b f1               mov     rsi, r9
+0x18003e81f 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180059e69 56                     push    rsi
+0x180032b3d 49 8b f1               mov     rsi, r9
+0x18001b3b3 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180042937 56                     push    rsi
+0x18000b56d 49 8b f1               mov     rsi, r9
+0x180042fd0 48 81 c6 08 01 00 00   add     rsi, 108h
+0x18002d92f 56                     push    rsi
+0x1800461cf 49 8b f1               mov     rsi, r9
+0x180014e1c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800627e3 56                     push    rsi
+0x1800424d8 49 8b f1               mov     rsi, r9
+0x18005f877 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004d243 56                     push    rsi
+0x180050be6 49 8b f1               mov     rsi, r9
+0x18000d147 48 81 c6 85 01 00 00   add     rsi, 185h
+0x180036669 56                     push    rsi
+0x18003a8e4 49 8b f1               mov     rsi, r9
+0x180028086 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000d4da 56                     push    rsi
+0x180042ee8 49 8b f1               mov     rsi, r9
+0x18002cd2d 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180029cdb 56                     push    rsi
+0x180016c47 49 8b f1               mov     rsi, r9
+0x180040f4f 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x18002fd9f 56                     push    rsi
+0x18001e01f 49 8b f1               mov     rsi, r9
+0x180051451 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001c504 56                     push    rsi
+0x180026969 49 8b f1               mov     rsi, r9
+0x180026b6f 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800547d0 56                     push    rsi
+0x18003fb71 49 8b f1               mov     rsi, r9
+0x180050ad6 48 81 c6 95 00 00 00   add     rsi, 95h
+0x1800623ce 56                     push    rsi
+0x180050df3 49 8b f1               mov     rsi, r9
+0x1800598a7 48 81 c6 ba 00 00 00   add     rsi, 0BAh
+0x180037bc4 56                     push    rsi
+0x180030ccb 49 8b f1               mov     rsi, r9
+0x1800354e6 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x18002b752 56                     push    rsi
+0x1800026bd 49 8b f1               mov     rsi, r9
+0x18001ad71 48 81 c6 9f 00 00 00   add     rsi, 9Fh
+0x180058035 56                     push    rsi
+0x18003b53a 49 8b f1               mov     rsi, r9
+0x180047198 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002bfd9 56                     push    rsi
+0x18003f75a 49 8b f1               mov     rsi, r9
+0x180042913 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800446b9 56                     push    rsi
+0x1800524a6 49 8b f1               mov     rsi, r9
+0x180035f2a 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18001c860 56                     push    rsi
+0x1800607fb 49 8b f1               mov     rsi, r9
+0x180005508 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180061949 56                     push    rsi
+0x180029afe 49 8b f1               mov     rsi, r9
+0x180039ed0 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180064be2 56                     push    rsi
+0x180051064 49 8b f1               mov     rsi, r9
+0x180006e7a 48 81 c6 85 01 00 00   add     rsi, 185h
+0x180025acd 56                     push    rsi
+0x180014956 49 8b f1               mov     rsi, r9
+0x1800272c5 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180012703 56                     push    rsi
+0x18001f4b1 49 8b f1               mov     rsi, r9
+0x1800210fb 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180030fd4 56                     push    rsi
+0x18001f29a 49 8b f1               mov     rsi, r9
+0x18002f41c 48 81 c6 26 01 00 00   add     rsi, 126h
+0x180045d9b 56                     push    rsi
+0x18004dbc8 49 8b f1               mov     rsi, r9
+0x180017148 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004b945 56                     push    rsi
+0x18002efe3 49 8b f1               mov     rsi, r9
+0x18003194e 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002d84d 56                     push    rsi
+0x18003b895 49 8b f1               mov     rsi, r9
+0x1800297d0 48 81 c6 47 01 00 00   add     rsi, 147h
+0x180037cc2 56                     push    rsi
+0x18001d0cd 49 8b f1               mov     rsi, r9
+0x18004b716 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001e972 56                     push    rsi
+0x180012f1e 49 8b f1               mov     rsi, r9
+0x18000d63d 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180043e48 56                     push    rsi
+0x180026617 49 8b f1               mov     rsi, r9
+0x1800513d6 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x180050108 56                     push    rsi
+0x1800403ab 49 8b f1               mov     rsi, r9
+0x180050a3c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180050d85 56                     push    rsi
+0x180004cd9 49 8b f1               mov     rsi, r9
+0x18000f8bb 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180050717 56                     push    rsi
+0x180037a54 49 8b f1               mov     rsi, r9
+0x18002a0c9 48 81 c6 95 00 00 00   add     rsi, 95h
+0x1800424ba 56                     push    rsi
+0x18000f0b1 49 8b f1               mov     rsi, r9
+0x1800080a7 48 81 c6 af 00 00 00   add     rsi, 0AFh
+0x180017ff6 56                     push    rsi
+0x18001f64b 49 8b f1               mov     rsi, r9
+0x180027fea 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x18002154e 56                     push    rsi
+0x18003d51a 49 8b f1               mov     rsi, r9
+0x180053aa9 48 81 c6 ab 00 00 00   add     rsi, 0ABh
+0x18005b71b 56                     push    rsi
+0x18001b503 49 8b f1               mov     rsi, r9
+0x180025d68 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004b65a 56                     push    rsi
+0x180013996 49 8b f1               mov     rsi, r9
+0x180004178 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180020e0e 56                     push    rsi
+0x18005e196 49 8b f1               mov     rsi, r9
+0x18005a449 48 81 c6 6f 01 00 00   add     rsi, 16Fh
+0x18000ca05 56                     push    rsi
+0x18005d68e 49 8b f1               mov     rsi, r9
+0x1800466bd 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180011583 56                     push    rsi
+0x18000de4e 49 8b f1               mov     rsi, r9
+0x1800151ad 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004797d 56                     push    rsi
+0x18004e37c 49 8b f1               mov     rsi, r9
+0x18002a55a 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x18002a271 56                     push    rsi
+0x180061f6e 49 8b f1               mov     rsi, r9
+0x18002b2d2 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180048fa0 56                     push    rsi
+0x180023991 49 8b f1               mov     rsi, r9
+0x18004fa7e 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004e449 56                     push    rsi
+0x18003d02c 49 8b f1               mov     rsi, r9
+0x18002ab73 48 81 c6 85 01 00 00   add     rsi, 185h
+0x180010cd3 56                     push    rsi
+0x18005b0d2 49 8b f1               mov     rsi, r9
+0x180051050 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005d026 56                     push    rsi
+0x18002be5a 49 8b f1               mov     rsi, r9
+0x180061030 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000d926 56                     push    rsi
+0x18004359c 49 8b f1               mov     rsi, r9
+0x180006563 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18000352c 56                     push    rsi
+0x18001d91a 49 8b f1               mov     rsi, r9
+0x180003a60 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001a0f2 56                     push    rsi
+0x180024863 49 8b f1               mov     rsi, r9
+0x18003eefb 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005f895 56                     push    rsi
+0x18003d9d4 49 8b f1               mov     rsi, r9
+0x1800451a6 48 81 c6 85 01 00 00   add     rsi, 185h
+0x18001f7c4 56                     push    rsi
+0x18004906a 49 8b f1               mov     rsi, r9
+0x18000a900 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180021e1b 56                     push    rsi
+0x1800048b3 49 8b f1               mov     rsi, r9
+0x180025368 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180044977 56                     push    rsi
+0x180008dd8 49 8b f1               mov     rsi, r9
+0x180023f49 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18002a175 56                     push    rsi
+0x180049767 49 8b f1               mov     rsi, r9
+0x18001c284 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004b42d 56                     push    rsi
+0x18000abd4 49 8b f1               mov     rsi, r9
+0x18002b32d 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005f614 56                     push    rsi
+0x18006477e 49 8b f1               mov     rsi, r9
+0x180042168 48 81 c6 5d 01 00 00   add     rsi, 15Dh
+0x18005b3b4 56                     push    rsi
+0x18000b099 49 8b f1               mov     rsi, r9
+0x18005e748 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000fac8 56                     push    rsi
+0x18005c08b 49 8b f1               mov     rsi, r9
+0x18002a913 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180052a56 56                     push    rsi
+0x180065f4c 49 8b f1               mov     rsi, r9
+0x180008d74 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x18000f5e8 56                     push    rsi
+0x180031f38 49 8b f1               mov     rsi, r9
+0x180048adb 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180022b3a 56                     push    rsi
+0x18002d2d0 49 8b f1               mov     rsi, r9
+0x180057ef3 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180023ea5 56                     push    rsi
+0x18003327f 49 8b f1               mov     rsi, r9
+0x1800383f2 48 81 c6 77 01 00 00   add     rsi, 177h
+0x180049073 56                     push    rsi
+0x180008e0e 49 8b f1               mov     rsi, r9
+0x180056d30 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002ae8a 56                     push    rsi
+0x1800136bb 49 8b f1               mov     rsi, r9
+0x180035350 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18003e877 56                     push    rsi
+0x18005e5cf 49 8b f1               mov     rsi, r9
+0x1800634e2 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18004d412 56                     push    rsi
+0x18003eede 49 8b f1               mov     rsi, r9
+0x180061510 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800485cc 56                     push    rsi
+0x180020c8b 49 8b f1               mov     rsi, r9
+0x1800192ac 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800548e7 56                     push    rsi
+0x18001d5e1 49 8b f1               mov     rsi, r9
+0x1800553f3 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x180010a63 56                     push    rsi
+0x18002ba1b 49 8b f1               mov     rsi, r9
+0x18005fa95 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800427d2 56                     push    rsi
+0x180044161 49 8b f1               mov     rsi, r9
+0x18001958f 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800288bb 56                     push    rsi
+0x18002e0de 49 8b f1               mov     rsi, r9
+0x18000c51d 48 83 c6 12            add     rsi, 12h
+0x18004df03 56                     push    rsi
+0x18003fed0 49 8b f1               mov     rsi, r9
+0x18004daaf 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004242b 56                     push    rsi
+0x1800048e2 49 8b f1               mov     rsi, r9
+0x180043e2e 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18001620b 56                     push    rsi
+0x18001c4a1 49 8b f1               mov     rsi, r9
+0x1800139d6 48 81 c6 95 00 00 00   add     rsi, 95h
+0x1800155bf 56                     push    rsi
+0x180049aa3 49 8b f1               mov     rsi, r9
+0x18000c650 48 81 c6 c2 00 00 00   add     rsi, 0C2h
+0x18002eb42 56                     push    rsi
+0x180056cbd 49 8b f1               mov     rsi, r9
+0x18003fd8d 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x18004bf48 56                     push    rsi
+0x18005329d 49 8b f1               mov     rsi, r9
+0x18002b3e1 48 81 c6 98 00 00 00   add     rsi, 98h
+0x18002f4c8 56                     push    rsi
+0x180035bec 49 8b f1               mov     rsi, r9
+0x18002b358 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800388d8 56                     push    rsi
+0x1800575ed 49 8b f1               mov     rsi, r9
+0x180013314 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180004502 56                     push    rsi
+0x180024c95 49 8b f1               mov     rsi, r9
+0x18005aff4 48 83 c6 22            add     rsi, 22h ; '"'
+0x1800492ee 56                     push    rsi
+0x18001732d 49 8b f1               mov     rsi, r9
+0x1800577ba 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18003804d 56                     push    rsi
+0x180053a7c 49 8b f1               mov     rsi, r9
+0x180034391 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180029748 56                     push    rsi
+0x180003e7a 49 8b f1               mov     rsi, r9
+0x18006037c 48 81 c6 57 01 00 00   add     rsi, 157h
+0x18001baaf 56                     push    rsi
+0x180062b60 49 8b f1               mov     rsi, r9
+0x18003768a 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180025405 56                     push    rsi
+0x180015530 49 8b f1               mov     rsi, r9
+0x18003d7ab 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800087a8 56                     push    rsi
+0x180006a14 49 8b f1               mov     rsi, r9
+0x180055efe 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x180026d1e 56                     push    rsi
+0x18003b4fb 49 8b f1               mov     rsi, r9
+0x180055ce3 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180049709 56                     push    rsi
+0x180054bae 49 8b f1               mov     rsi, r9
+0x18005c90a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004b32a 56                     push    rsi
+0x180058376 49 8b f1               mov     rsi, r9
+0x180046e22 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18004b1c2 56                     push    rsi
+0x180026304 49 8b f1               mov     rsi, r9
+0x18001c18e 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180033b85 56                     push    rsi
+0x18003af7b 49 8b f1               mov     rsi, r9
+0x180044685 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000eed4 56                     push    rsi
+0x180037fcb 49 8b f1               mov     rsi, r9
+0x1800038f2 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x1800146f8 56                     push    rsi
+0x1800243ff 49 8b f1               mov     rsi, r9
+0x18001c9c8 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004154a 56                     push    rsi
+0x18005f04b 49 8b f1               mov     rsi, r9
+0x180044932 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002b094 56                     push    rsi
+0x180035864 49 8b f1               mov     rsi, r9
+0x1800571bb 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180050752 56                     push    rsi
+0x18004dfe9 49 8b f1               mov     rsi, r9
+0x180051f96 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180036df5 56                     push    rsi
+0x180021f40 49 8b f1               mov     rsi, r9
+0x1800177de 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800620a0 56                     push    rsi
+0x180060cd1 49 8b f1               mov     rsi, r9
+0x180007650 48 81 c6 c6 00 00 00   add     rsi, 0C6h
+0x180005bac 56                     push    rsi
+0x1800211f7 49 8b f1               mov     rsi, r9
+0x1800042fd 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18003bcdf 56                     push    rsi
+0x18003b86b 49 8b f1               mov     rsi, r9
+0x180012032 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18003f226 56                     push    rsi
+0x1800068db 49 8b f1               mov     rsi, r9
+0x180019d5a 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x1800105fd 56                     push    rsi
+0x1800276c3 49 8b f1               mov     rsi, r9
+0x18002736e 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180041913 56                     push    rsi
+0x180050962 49 8b f1               mov     rsi, r9
+0x18002c507 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180057b45 56                     push    rsi
+0x180026d2f 49 8b f1               mov     rsi, r9
+0x180059b4c 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180009fbf 56                     push    rsi
+0x18003cce5 49 8b f1               mov     rsi, r9
+0x18005d8f0 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180014ecc 56                     push    rsi
+0x18002ffd0 49 8b f1               mov     rsi, r9
+0x180056219 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180051586 56                     push    rsi
+0x180019f9f 49 8b f1               mov     rsi, r9
+0x180005d14 48 81 c6 35 01 00 00   add     rsi, 135h
+0x18003c3ea 56                     push    rsi
+0x180017753 49 8b f1               mov     rsi, r9
+0x180056367 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180009944 56                     push    rsi
+0x1800044c2 49 8b f1               mov     rsi, r9
+0x18002d37f 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180052998 56                     push    rsi
+0x18004b367 49 8b f1               mov     rsi, r9
+0x18002f368 48 81 c6 f4 00 00 00   add     rsi, 0F4h
+0x18000f321 56                     push    rsi
+0x18003a242 49 8b f1               mov     rsi, r9
+0x180062529 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800589c7 56                     push    rsi
+0x18003f1d4 49 8b f1               mov     rsi, r9
+0x180052b5f 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002400a 56                     push    rsi
+0x18003ae69 49 8b f1               mov     rsi, r9
+0x180025253 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18000be91 56                     push    rsi
+0x18006242d 49 8b f1               mov     rsi, r9
+0x18000f2b8 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004a73e 56                     push    rsi
+0x18001e94e 49 8b f1               mov     rsi, r9
+0x180051fef 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005f95b 56                     push    rsi
+0x18001cffd 49 8b f1               mov     rsi, r9
+0x180007605 48 81 c6 4d 01 00 00   add     rsi, 14Dh
+0x18004a1ad 56                     push    rsi
+0x18000d659 49 8b f1               mov     rsi, r9
+0x1800393c6 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180030767 56                     push    rsi
+0x18003d156 49 8b f1               mov     rsi, r9
+0x180016a01 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004c5e6 56                     push    rsi
+0x1800226f9 49 8b f1               mov     rsi, r9
+0x18000c7c8 48 81 c6 95 00 00 00   add     rsi, 95h
+0x1800595f1 56                     push    rsi
+0x180060686 49 8b f1               mov     rsi, r9
+0x18002f5ec 48 81 c6 b2 00 00 00   add     rsi, 0B2h
+0x1800152d7 56                     push    rsi
+0x18002f5e0 49 8b f1               mov     rsi, r9
+0x18005617d 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x1800314c3 56                     push    rsi
+0x180022397 49 8b f1               mov     rsi, r9
+0x180033607 48 81 c6 a7 00 00 00   add     rsi, 0A7h
+0x18002c9c0 56                     push    rsi
+0x1800469a8 49 8b f1               mov     rsi, r9
+0x180057e4e 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001daa0 56                     push    rsi
+0x18005a398 49 8b f1               mov     rsi, r9
+0x180021e7c 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005baf7 56                     push    rsi
+0x18000fe52 49 8b f1               mov     rsi, r9
+0x18003b7c1 48 81 c6 26 01 00 00   add     rsi, 126h
+0x180061fed 56                     push    rsi
+0x180009e7c 49 8b f1               mov     rsi, r9
+0x18005bf65 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800495fe 56                     push    rsi
+0x1800511d1 49 8b f1               mov     rsi, r9
+0x1800504c7 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180043067 56                     push    rsi
+0x18004438c 49 8b f1               mov     rsi, r9
+0x180002c41 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180011f72 56                     push    rsi
+0x180053465 49 8b f1               mov     rsi, r9
+0x1800111c8 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180012014 56                     push    rsi
+0x180037a69 49 8b f1               mov     rsi, r9
+0x180029e21 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005e760 56                     push    rsi
+0x18003c14d 49 8b f1               mov     rsi, r9
+0x180065b87 48 81 c6 2f 01 00 00   add     rsi, 12Fh
+0x180053666 56                     push    rsi
+0x180014a8c 49 8b f1               mov     rsi, r9
+0x1800370e9 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180046f51 56                     push    rsi
+0x18005bcf7 49 8b f1               mov     rsi, r9
+0x1800270d3 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180051388 56                     push    rsi
+0x180056057 49 8b f1               mov     rsi, r9
+0x180040956 48 83 c6 28            add     rsi, 28h ; '('
+0x18001d725 56                     push    rsi
+0x180008af8 49 8b f1               mov     rsi, r9
+0x1800471d1 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180058ea0 56                     push    rsi
+0x180005e66 49 8b f1               mov     rsi, r9
+0x18001b832 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18001f5eb 56                     push    rsi
+0x18000e831 49 8b f1               mov     rsi, r9
+0x180037737 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x180052590 56                     push    rsi
+0x1800582cb 49 8b f1               mov     rsi, r9
+0x180014165 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800304f1 56                     push    rsi
+0x180026ed5 49 8b f1               mov     rsi, r9
+0x180020388 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005e202 56                     push    rsi
+0x180040b82 49 8b f1               mov     rsi, r9
+0x180023501 48 81 c6 95 00 00 00   add     rsi, 95h
+0x18001a1cf 56                     push    rsi
+0x180042953 49 8b f1               mov     rsi, r9
+0x180041ff5 48 81 c6 be 00 00 00   add     rsi, 0BEh
+0x18001abb7 56                     push    rsi
+0x18000ff5c 49 8b f1               mov     rsi, r9
+0x180022596 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x180045045 56                     push    rsi
+0x18000cbdc 49 8b f1               mov     rsi, r9
+0x180009a13 48 81 c6 9b 00 00 00   add     rsi, 9Bh
+0x180051660 56                     push    rsi
+0x18003da14 49 8b f1               mov     rsi, r9
+0x18002359b 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002635f 56                     push    rsi
+0x18001799e 49 8b f1               mov     rsi, r9
+0x18005720a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180015b38 56                     push    rsi
+0x180058d53 49 8b f1               mov     rsi, r9
+0x18001103b 48 81 c6 7b 01 00 00   add     rsi, 17Bh
+0x180024c19 56                     push    rsi
+0x180023827 49 8b f1               mov     rsi, r9
+0x18006498d 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180012933 56                     push    rsi
+0x1800403cf 49 8b f1               mov     rsi, r9
+0x18005f882 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800411b4 56                     push    rsi
+0x180065da7 49 8b f1               mov     rsi, r9
+0x18002bad1 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180054964 56                     push    rsi
+0x180020b68 49 8b f1               mov     rsi, r9
+0x180056d50 48 81 c6 af 00 00 00   add     rsi, 0AFh
+0x180020445 56                     push    rsi
+0x1800515d4 49 8b f1               mov     rsi, r9
+0x180061628 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x18000a5c7 56                     push    rsi
+0x18001b4ae 49 8b f1               mov     rsi, r9
+0x18002f19b 48 81 c6 ab 00 00 00   add     rsi, 0ABh
+0x18001fc63 56                     push    rsi
+0x180032dd0 49 8b f1               mov     rsi, r9
+0x180001caa 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180030e50 56                     push    rsi
+0x18004d08e 49 8b f1               mov     rsi, r9
+0x18005282b 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180002eb9 56                     push    rsi
+0x180065455 49 8b f1               mov     rsi, r9
+0x18005dc5e 48 81 c6 de 00 00 00   add     rsi, 0DEh
+0x18002e4ed 56                     push    rsi
+0x180058f06 49 8b f1               mov     rsi, r9
+0x180033549 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000f7ba 56                     push    rsi
+0x180053ffa 49 8b f1               mov     rsi, r9
+0x180011b9d 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18003e899 56                     push    rsi
+0x180024c6a 49 8b f1               mov     rsi, r9
+0x180044176 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180044480 56                     push    rsi
+0x180059d90 49 8b f1               mov     rsi, r9
+0x18006221e 48 81 c6 be 00 00 00   add     rsi, 0BEh
+0x18003243e 56                     push    rsi
+0x18003bec0 49 8b f1               mov     rsi, r9
+0x18005be4c 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x18004e586 56                     push    rsi
+0x18002f567 49 8b f1               mov     rsi, r9
+0x1800155f0 48 81 c6 9b 00 00 00   add     rsi, 9Bh
+0x18003b2b4 56                     push    rsi
+0x180029e36 49 8b f1               mov     rsi, r9
+0x18003a536 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005add3 56                     push    rsi
+0x180010c92 49 8b f1               mov     rsi, r9
+0x18004f28d 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002159d 56                     push    rsi
+0x180062e13 49 8b f1               mov     rsi, r9
+0x18000f35a 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x18003e988 56                     push    rsi
+0x180003632 49 8b f1               mov     rsi, r9
+0x180036fd9 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001d12e 56                     push    rsi
+0x18000da2a 49 8b f1               mov     rsi, r9
+0x1800472f5 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002af3d 56                     push    rsi
+0x1800426ea 49 8b f1               mov     rsi, r9
+0x1800417b2 48 81 c6 26 01 00 00   add     rsi, 126h
+0x1800252a5 56                     push    rsi
+0x180033dc7 49 8b f1               mov     rsi, r9
+0x180064274 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180018a57 56                     push    rsi
+0x18000af6f 49 8b f1               mov     rsi, r9
+0x180038aab 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005bf92 56                     push    rsi
+0x180009c3a 49 8b f1               mov     rsi, r9
+0x18001e628 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x180015760 56                     push    rsi
+0x1800061ca 49 8b f1               mov     rsi, r9
+0x180007ed2 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180016be3 56                     push    rsi
+0x180052e23 49 8b f1               mov     rsi, r9
+0x18005db38 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005c7cc 56                     push    rsi
+0x180017212 49 8b f1               mov     rsi, r9
+0x18005f007 48 81 c6 fc 00 00 00   add     rsi, 0FCh
+0x180049a40 56                     push    rsi
+0x18004cbeb 49 8b f1               mov     rsi, r9
+0x180040363 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005927c 56                     push    rsi
+0x180038c6f 49 8b f1               mov     rsi, r9
+0x180061a8e 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180055b2c 56                     push    rsi
+0x180008f99 49 8b f1               mov     rsi, r9
+0x18003f129 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18001b2e9 56                     push    rsi
+0x18004e27c 49 8b f1               mov     rsi, r9
+0x180011d95 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001f45f 56                     push    rsi
+0x18004acb2 49 8b f1               mov     rsi, r9
+0x1800547dd 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180053e61 56                     push    rsi
+0x18003984e 49 8b f1               mov     rsi, r9
+0x18001d942 48 81 c6 1a 01 00 00   add     rsi, 11Ah
+0x180057387 56                     push    rsi
+0x180036eb3 49 8b f1               mov     rsi, r9
+0x18000e5e3 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800019ae 56                     push    rsi
+0x180045ef7 49 8b f1               mov     rsi, r9
+0x180061b7c 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000c832 56                     push    rsi
+0x18005bb06 49 8b f1               mov     rsi, r9
+0x1800031e4 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x18005e76b 56                     push    rsi
+0x18005bc24 49 8b f1               mov     rsi, r9
+0x18005db9c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000bf72 56                     push    rsi
+0x18001e7e9 49 8b f1               mov     rsi, r9
+0x18002fe77 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000ee2d 56                     push    rsi
+0x180059801 49 8b f1               mov     rsi, r9
+0x180053b44 48 81 c6 95 00 00 00   add     rsi, 95h
+0x18001c46b 56                     push    rsi
+0x18005bd66 49 8b f1               mov     rsi, r9
+0x180062615 48 81 c6 be 00 00 00   add     rsi, 0BEh
+0x18004bc97 56                     push    rsi
+0x180034bbd 49 8b f1               mov     rsi, r9
+0x1800445bf 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x18005b531 56                     push    rsi
+0x18005c196 49 8b f1               mov     rsi, r9
+0x18005bede 48 81 c6 9b 00 00 00   add     rsi, 9Bh
+0x180019671 56                     push    rsi
+0x18000821c 49 8b f1               mov     rsi, r9
+0x18006596b 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180008e60 56                     push    rsi
+0x1800174c0 49 8b f1               mov     rsi, r9
+0x180031770 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000add4 56                     push    rsi
+0x18004de27 49 8b f1               mov     rsi, r9
+0x18003d59c 48 81 c6 cc 00 00 00   add     rsi, 0CCh
+0x180010579 56                     push    rsi
+0x1800452e2 49 8b f1               mov     rsi, r9
+0x180053508 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005f755 56                     push    rsi
+0x18004a398 49 8b f1               mov     rsi, r9
+0x1800036d9 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180064320 56                     push    rsi
+0x18004075b 49 8b f1               mov     rsi, r9
+0x1800252e1 48 81 c6 85 01 00 00   add     rsi, 185h
+0x1800401ea 56                     push    rsi
+0x180003959 49 8b f1               mov     rsi, r9
+0x18000608d 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800576e7 56                     push    rsi
+0x18005ade9 49 8b f1               mov     rsi, r9
+0x18002c694 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005e417 56                     push    rsi
+0x180054bf6 49 8b f1               mov     rsi, r9
+0x180047b5a 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18001baf6 56                     push    rsi
+0x18002729d 49 8b f1               mov     rsi, r9
+0x180012923 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002d31f 56                     push    rsi
+0x18001caf1 49 8b f1               mov     rsi, r9
+0x18003894e 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18001535e 56                     push    rsi
+0x18004693c 49 8b f1               mov     rsi, r9
+0x18001554f 48 81 c6 14 01 00 00   add     rsi, 114h
+0x18003e9db 56                     push    rsi
+0x180063144 49 8b f1               mov     rsi, r9
+0x18003b138 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001d97e 56                     push    rsi
+0x18006425b 49 8b f1               mov     rsi, r9
+0x180040175 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005a85d 56                     push    rsi
+0x18002b6ea 49 8b f1               mov     rsi, r9
+0x18000686c 48 81 c6 63 01 00 00   add     rsi, 163h
+0x18002e0cb 56                     push    rsi
+0x18004812c 49 8b f1               mov     rsi, r9
+0x180053ea9 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18003f4c1 56                     push    rsi
+0x180004ee4 49 8b f1               mov     rsi, r9
+0x18001c35a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180047fe4 56                     push    rsi
+0x18003ed5d 49 8b f1               mov     rsi, r9
+0x180018902 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18000c23f 56                     push    rsi
+0x180061206 49 8b f1               mov     rsi, r9
+0x18002de2d 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800026fd 56                     push    rsi
+0x180048b07 49 8b f1               mov     rsi, r9
+0x18003bddd 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800124f2 56                     push    rsi
+0x18000bba0 49 8b f1               mov     rsi, r9
+0x18005ae58 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18000cac7 56                     push    rsi
+0x18005a229 49 8b f1               mov     rsi, r9
+0x180023a0b 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001624a 56                     push    rsi
+0x18005477e 49 8b f1               mov     rsi, r9
+0x180045c29 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180001199 56                     push    rsi
+0x18002fe24 49 8b f1               mov     rsi, r9
+0x1800323b8 48 81 c6 20 01 00 00   add     rsi, 120h
+0x1800569aa 56                     push    rsi
+0x180025649 49 8b f1               mov     rsi, r9
+0x18003eea6 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000c877 56                     push    rsi
+0x18002fff4 49 8b f1               mov     rsi, r9
+0x18002be13 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180017851 56                     push    rsi
+0x18004e5b3 49 8b f1               mov     rsi, r9
+0x1800647e2 48 81 c6 73 01 00 00   add     rsi, 173h
+0x18000363d 56                     push    rsi
+0x18005e976 49 8b f1               mov     rsi, r9
+0x18005486c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180059a35 56                     push    rsi
+0x180055d65 49 8b f1               mov     rsi, r9
+0x180046b09 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004d3c1 56                     push    rsi
+0x180014f07 49 8b f1               mov     rsi, r9
+0x18001b735 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180037bff 56                     push    rsi
+0x18000b240 49 8b f1               mov     rsi, r9
+0x1800171e4 48 81 c6 b6 00 00 00   add     rsi, 0B6h
+0x18002d5d1 56                     push    rsi
+0x18004843c 49 8b f1               mov     rsi, r9
+0x180003d07 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x180050429 56                     push    rsi
+0x180026147 49 8b f1               mov     rsi, r9
+0x18005eae6 48 81 c6 a3 00 00 00   add     rsi, 0A3h
+0x18005330b 56                     push    rsi
+0x18002fb31 49 8b f1               mov     rsi, r9
+0x1800095b9 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180060166 56                     push    rsi
+0x180064b00 49 8b f1               mov     rsi, r9
+0x18000263a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800359b5 56                     push    rsi
+0x180013070 49 8b f1               mov     rsi, r9
+0x18006223d 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180038fa4 56                     push    rsi
+0x18003a61f 49 8b f1               mov     rsi, r9
+0x180056ab8 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800393e6 56                     push    rsi
+0x1800469da 49 8b f1               mov     rsi, r9
+0x18001a5c9 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180021ec1 56                     push    rsi
+0x180035cc7 49 8b f1               mov     rsi, r9
+0x18000e3a3 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18003519c 56                     push    rsi
+0x18000bcae 49 8b f1               mov     rsi, r9
+0x180055586 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18003c9e3 56                     push    rsi
+0x18004964b 49 8b f1               mov     rsi, r9
+0x18000fa89 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005b255 56                     push    rsi
+0x1800015d5 49 8b f1               mov     rsi, r9
+0x180022764 48 81 c6 85 01 00 00   add     rsi, 185h
+0x1800279e6 56                     push    rsi
+0x18006185e 49 8b f1               mov     rsi, r9
+0x180051ba0 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005b1d9 56                     push    rsi
+0x180061552 49 8b f1               mov     rsi, r9
+0x18002ed13 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002372e 56                     push    rsi
+0x1800401d6 49 8b f1               mov     rsi, r9
+0x18005e6fe 48 81 c6 95 00 00 00   add     rsi, 95h
+0x18004f8ae 56                     push    rsi
+0x180040c4c 49 8b f1               mov     rsi, r9
+0x180057683 48 81 c6 b2 00 00 00   add     rsi, 0B2h
+0x18001373f 56                     push    rsi
+0x18003833f 49 8b f1               mov     rsi, r9
+0x18002f473 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x1800038e2 56                     push    rsi
+0x18003e996 49 8b f1               mov     rsi, r9
+0x18003c787 48 81 c6 a7 00 00 00   add     rsi, 0A7h
+0x180026811 56                     push    rsi
+0x1800130eb 49 8b f1               mov     rsi, r9
+0x180063f0f 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180032435 56                     push    rsi
+0x18000cc76 49 8b f1               mov     rsi, r9
+0x18002f924 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180049f43 56                     push    rsi
+0x18000eb09 49 8b f1               mov     rsi, r9
+0x18002bf65 48 81 c6 85 01 00 00   add     rsi, 185h
+0x18001378e 56                     push    rsi
+0x180059efe 49 8b f1               mov     rsi, r9
+0x180026ea9 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004c41a 56                     push    rsi
+0x1800068bb 49 8b f1               mov     rsi, r9
+0x18001ff1f 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18001fb52 56                     push    rsi
+0x180022a8a 49 8b f1               mov     rsi, r9
+0x18004eb2c 48 81 c6 0c 01 00 00   add     rsi, 10Ch
+0x180008df6 56                     push    rsi
+0x180032528 49 8b f1               mov     rsi, r9
+0x180063550 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180049f77 56                     push    rsi
+0x18003e9ee 49 8b f1               mov     rsi, r9
+0x18004475a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002fdb2 56                     push    rsi
+0x180049f37 49 8b f1               mov     rsi, r9
+0x1800016c4 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x1800193bd 56                     push    rsi
+0x18001840e 49 8b f1               mov     rsi, r9
+0x180050d29 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180015c69 56                     push    rsi
+0x18002fa80 49 8b f1               mov     rsi, r9
+0x18005ad1e 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005d258 56                     push    rsi
+0x18002a1dc 49 8b f1               mov     rsi, r9
+0x180042047 48 83 c6 0c            add     rsi, 0Ch
+0x18000ba2b 56                     push    rsi
+0x180047a50 49 8b f1               mov     rsi, r9
+0x180008be3 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800173cf 56                     push    rsi
+0x180023f98 49 8b f1               mov     rsi, r9
+0x180005523 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180059bf5 56                     push    rsi
+0x18005228f 49 8b f1               mov     rsi, r9
+0x18003d074 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18005b0fb 56                     push    rsi
+0x18004b7a7 49 8b f1               mov     rsi, r9
+0x18000d86c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180026ba8 56                     push    rsi
+0x180008944 49 8b f1               mov     rsi, r9
+0x18000fafa 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000558a 56                     push    rsi
+0x18001fa99 49 8b f1               mov     rsi, r9
+0x18000171b 48 81 c6 95 00 00 00   add     rsi, 95h
+0x18004dee1 56                     push    rsi
+0x18005a5b6 49 8b f1               mov     rsi, r9
+0x180006fb0 48 81 c6 be 00 00 00   add     rsi, 0BEh
+0x18004b2f2 56                     push    rsi
+0x18005766f 49 8b f1               mov     rsi, r9
+0x180015d6e 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x18000f7cb 56                     push    rsi
+0x18002f483 49 8b f1               mov     rsi, r9
+0x18002a4eb 48 81 c6 9b 00 00 00   add     rsi, 9Bh
+0x18005c5b0 56                     push    rsi
+0x18000ab55 49 8b f1               mov     rsi, r9
+0x180014637 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180040eb6 56                     push    rsi
+0x18001c51c 49 8b f1               mov     rsi, r9
+0x18002a49a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005c40f 56                     push    rsi
+0x18002d983 49 8b f1               mov     rsi, r9
+0x18005aa82 48 81 c6 00 01 00 00   add     rsi, 100h
+0x18002722b 56                     push    rsi
+0x18000db72 49 8b f1               mov     rsi, r9
+0x18002a58c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180063ad1 56                     push    rsi
+0x180013ba4 49 8b f1               mov     rsi, r9
+0x180013708 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180059fe6 56                     push    rsi
+0x18004eb74 49 8b f1               mov     rsi, r9
+0x180029815 48 81 c6 92 00 00 00   add     rsi, 92h
+0x18003f17f 56                     push    rsi
+0x180061937 49 8b f1               mov     rsi, r9
+0x1800435db 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180004508 56                     push    rsi
+0x18000f495 49 8b f1               mov     rsi, r9
+0x18000db80 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005c336 56                     push    rsi
+0x180044d7b 49 8b f1               mov     rsi, r9
+0x1800182ba 48 83 c6 1a            add     rsi, 1Ah
+0x180015352 56                     push    rsi
+0x18004cd8c 49 8b f1               mov     rsi, r9
+0x180011f54 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180059e8f 56                     push    rsi
+0x180026ca8 49 8b f1               mov     rsi, r9
+0x180060be0 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000ca96 56                     push    rsi
+0x18003d5d8 49 8b f1               mov     rsi, r9
+0x1800225ba 48 81 c6 7f 01 00 00   add     rsi, 17Fh
+0x1800643cb 56                     push    rsi
+0x180005fc8 49 8b f1               mov     rsi, r9
+0x180049590 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001d0da 56                     push    rsi
+0x180044b43 49 8b f1               mov     rsi, r9
+0x18003a587 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18004b0df 56                     push    rsi
+0x18003a6fe 49 8b f1               mov     rsi, r9
+0x18005ef45 48 81 c6 26 01 00 00   add     rsi, 126h
+0x180043f71 56                     push    rsi
+0x180053680 49 8b f1               mov     rsi, r9
+0x18002c537 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800225d6 56                     push    rsi
+0x18003c2a6 49 8b f1               mov     rsi, r9
+0x18004331a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800303da 56                     push    rsi
+0x18005c95d 49 8b f1               mov     rsi, r9
+0x1800602c3 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180031e14 56                     push    rsi
+0x18004dcc7 49 8b f1               mov     rsi, r9
+0x18004a3e9 48 81 c6 af 00 00 00   add     rsi, 0AFh
+0x180018a90 56                     push    rsi
+0x18000a4f0 49 8b f1               mov     rsi, r9
+0x1800095cc 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x1800043e6 56                     push    rsi
+0x180052330 49 8b f1               mov     rsi, r9
+0x180059b92 48 81 c6 ab 00 00 00   add     rsi, 0ABh
+0x18001ebea 56                     push    rsi
+0x18002c1ab 49 8b f1               mov     rsi, r9
+0x1800207b9 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180022ed2 56                     push    rsi
+0x180011501 49 8b f1               mov     rsi, r9
+0x180019808 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002cdd1 56                     push    rsi
+0x180011d22 49 8b f1               mov     rsi, r9
+0x180033065 48 81 c6 ea 00 00 00   add     rsi, 0EAh
+0x1800619af 56                     push    rsi
+0x180046df5 49 8b f1               mov     rsi, r9
+0x180029073 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180011153 56                     push    rsi
+0x18005407b 49 8b f1               mov     rsi, r9
+0x1800477f8 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180039f01 56                     push    rsi
+0x180044021 49 8b f1               mov     rsi, r9
+0x180061ac9 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180008204 56                     push    rsi
+0x18003a8ef 49 8b f1               mov     rsi, r9
+0x18004a101 48 81 c6 af 00 00 00   add     rsi, 0AFh
+0x18003aeb2 56                     push    rsi
+0x18005b6ff 49 8b f1               mov     rsi, r9
+0x18003f97a 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x1800105f4 56                     push    rsi
+0x180033962 49 8b f1               mov     rsi, r9
+0x18004e970 48 81 c6 ab 00 00 00   add     rsi, 0ABh
+0x18004dddd 56                     push    rsi
+0x18000fedc 49 8b f1               mov     rsi, r9
+0x18005709f 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001467c 56                     push    rsi
+0x18005283e 49 8b f1               mov     rsi, r9
+0x180059335 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002a107 56                     push    rsi
+0x180044ced 49 8b f1               mov     rsi, r9
+0x180007291 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180048643 56                     push    rsi
+0x180061590 49 8b f1               mov     rsi, r9
+0x18000906b 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800605ba 56                     push    rsi
+0x180008a8f 49 8b f1               mov     rsi, r9
+0x18003f1f8 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180065b37 56                     push    rsi
+0x180056865 49 8b f1               mov     rsi, r9
+0x180017c8e 48 81 c6 d8 00 00 00   add     rsi, 0D8h
+0x18004ea94 56                     push    rsi
+0x1800601a5 49 8b f1               mov     rsi, r9
+0x180053f00 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004b47f 56                     push    rsi
+0x1800571e5 49 8b f1               mov     rsi, r9
+0x18003908c 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002a28d 56                     push    rsi
+0x18002ad92 49 8b f1               mov     rsi, r9
+0x1800213ab 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x18003e186 56                     push    rsi
+0x180007375 49 8b f1               mov     rsi, r9
+0x180050224 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180044f58 56                     push    rsi
+0x18000bd68 49 8b f1               mov     rsi, r9
+0x180055401 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800142f2 56                     push    rsi
+0x180036931 49 8b f1               mov     rsi, r9
+0x180061486 48 81 c6 85 01 00 00   add     rsi, 185h
+0x18000caf5 56                     push    rsi
+0x1800181f7 49 8b f1               mov     rsi, r9
+0x18000e7c6 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800431b3 56                     push    rsi
+0x18005d85e 49 8b f1               mov     rsi, r9
+0x1800600d2 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18001ba5d 56                     push    rsi
+0x180063413 49 8b f1               mov     rsi, r9
+0x1800567d0 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180001359 56                     push    rsi
+0x1800147cb 49 8b f1               mov     rsi, r9
+0x18005e41d 48 81 c6 be 00 00 00   add     rsi, 0BEh
+0x180038417 56                     push    rsi
+0x180035629 49 8b f1               mov     rsi, r9
+0x1800302b9 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x180059a15 56                     push    rsi
+0x1800283b3 49 8b f1               mov     rsi, r9
+0x1800364f1 48 81 c6 9b 00 00 00   add     rsi, 9Bh
+0x1800338b4 56                     push    rsi
+0x180034007 49 8b f1               mov     rsi, r9
+0x18003411b 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180058634 56                     push    rsi
+0x18003a223 49 8b f1               mov     rsi, r9
+0x180058e6d 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000a550 56                     push    rsi
+0x18002ddf1 49 8b f1               mov     rsi, r9
+0x18005ce9b 48 81 c6 85 01 00 00   add     rsi, 185h
+0x18002b89b 56                     push    rsi
+0x1800050be 49 8b f1               mov     rsi, r9
+0x180007031 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005fb4b 56                     push    rsi
+0x180020682 49 8b f1               mov     rsi, r9
+0x180037bd6 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800122a5 56                     push    rsi
+0x18003c4f5 49 8b f1               mov     rsi, r9
+0x180011903 48 81 c6 e4 00 00 00   add     rsi, 0E4h
+0x180036156 56                     push    rsi
+0x1800073be 49 8b f1               mov     rsi, r9
+0x1800491d7 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000b022 56                     push    rsi
+0x180028f8d 49 8b f1               mov     rsi, r9
+0x18003ca03 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180048853 56                     push    rsi
+0x1800383fe 49 8b f1               mov     rsi, r9
+0x180045a14 48 81 c6 85 01 00 00   add     rsi, 185h
+0x180046d53 56                     push    rsi
+0x180003fb9 49 8b f1               mov     rsi, r9
+0x18000ebb7 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002f44c 56                     push    rsi
+0x180012814 49 8b f1               mov     rsi, r9
+0x18002f659 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180013c9c 56                     push    rsi
+0x180055a57 49 8b f1               mov     rsi, r9
+0x180006607 48 81 c6 26 01 00 00   add     rsi, 126h
+0x18005c5d6 56                     push    rsi
+0x18000a21e 49 8b f1               mov     rsi, r9
+0x18004c9d0 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001626e 56                     push    rsi
+0x18002ff66 49 8b f1               mov     rsi, r9
+0x180052a1a 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18001f6cd 56                     push    rsi
+0x180035da6 49 8b f1               mov     rsi, r9
+0x1800628b5 48 81 c6 85 01 00 00   add     rsi, 185h
+0x18000b4cd 56                     push    rsi
+0x180046dd4 49 8b f1               mov     rsi, r9
+0x180065391 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800021f5 56                     push    rsi
+0x180058803 49 8b f1               mov     rsi, r9
+0x180049f06 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180021ff7 56                     push    rsi
+0x1800628a1 49 8b f1               mov     rsi, r9
+0x180022194 48 81 c6 f0 00 00 00   add     rsi, 0F0h
+0x18002dad8 56                     push    rsi
+0x1800406c6 49 8b f1               mov     rsi, r9
+0x180051515 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800049df 56                     push    rsi
+0x180037e5b 49 8b f1               mov     rsi, r9
+0x18002cc55 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800445f5 56                     push    rsi
+0x180056a8e 49 8b f1               mov     rsi, r9
+0x18000288b 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180062b4d 56                     push    rsi
+0x18004baa4 49 8b f1               mov     rsi, r9
+0x1800211cb 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000a0e3 56                     push    rsi
+0x1800020db 49 8b f1               mov     rsi, r9
+0x18001fa20 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180020132 56                     push    rsi
+0x18004a98f 49 8b f1               mov     rsi, r9
+0x180056cec 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18003236f 56                     push    rsi
+0x18003b5b6 49 8b f1               mov     rsi, r9
+0x18004af66 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18001fefb 56                     push    rsi
+0x18004df56 49 8b f1               mov     rsi, r9
+0x180035bc6 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005c59c 56                     push    rsi
+0x180008452 49 8b f1               mov     rsi, r9
+0x1800189e6 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180038489 56                     push    rsi
+0x180002b12 49 8b f1               mov     rsi, r9
+0x18005ba7d 48 81 c6 b6 00 00 00   add     rsi, 0B6h
+0x180036a59 56                     push    rsi
+0x180016174 49 8b f1               mov     rsi, r9
+0x18000eaf5 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x1800238d5 56                     push    rsi
+0x18005004b 49 8b f1               mov     rsi, r9
+0x180003fd4 48 81 c6 a3 00 00 00   add     rsi, 0A3h
+0x18003c19a 56                     push    rsi
+0x18003ff5e 49 8b f1               mov     rsi, r9
+0x18005bbf1 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180027b1f 56                     push    rsi
+0x180049941 49 8b f1               mov     rsi, r9
+0x18001bb04 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800573f6 56                     push    rsi
+0x180024078 49 8b f1               mov     rsi, r9
+0x180036b39 48 83 c6 16            add     rsi, 16h
+0x180028696 56                     push    rsi
+0x180019be9 49 8b f1               mov     rsi, r9
+0x180063f52 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004a2dd 56                     push    rsi
+0x180056b92 49 8b f1               mov     rsi, r9
+0x180049539 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000ed8f 56                     push    rsi
+0x18002d7bc 49 8b f1               mov     rsi, r9
+0x180043fd4 48 81 c6 85 01 00 00   add     rsi, 185h
+0x180064d5b 56                     push    rsi
+0x18000aaf4 49 8b f1               mov     rsi, r9
+0x18003ded1 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004946e 56                     push    rsi
+0x18001b48c 49 8b f1               mov     rsi, r9
+0x180063fa4 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180024282 56                     push    rsi
+0x18005acf3 49 8b f1               mov     rsi, r9
+0x18003150d 48 81 c6 d2 00 00 00   add     rsi, 0D2h
+0x18003eed6 56                     push    rsi
+0x1800565db 49 8b f1               mov     rsi, r9
+0x1800593fe 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180013d10 56                     push    rsi
+0x1800589aa 49 8b f1               mov     rsi, r9
+0x180053b62 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800376f8 56                     push    rsi
+0x18002d7a6 49 8b f1               mov     rsi, r9
+0x18000d81a 48 81 c6 3b 01 00 00   add     rsi, 13Bh
+0x1800427ef 56                     push    rsi
+0x18004a3ad 49 8b f1               mov     rsi, r9
+0x18004fa34 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180035d92 56                     push    rsi
+0x180012f9b 49 8b f1               mov     rsi, r9
+0x18004a9c9 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800608de 56                     push    rsi
+0x180037519 49 8b f1               mov     rsi, r9
+0x180059a27 48 83 c6 1e            add     rsi, 1Eh
+0x18004ff2a 56                     push    rsi
+0x1800382b3 49 8b f1               mov     rsi, r9
+0x18002235f 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180042557 56                     push    rsi
+0x18000204b 49 8b f1               mov     rsi, r9
+0x18004c495 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180055b78 56                     push    rsi
+0x180032114 49 8b f1               mov     rsi, r9
+0x180015731 48 81 c6 8f 00 00 00   add     rsi, 8Fh
+0x180014460 56                     push    rsi
+0x180034d3e 49 8b f1               mov     rsi, r9
+0x180008ab2 48 81 c6 80 00 00 00   add     rsi, 80h
+0x180002d11 56                     push    rsi
+0x1800204dc 49 8b f1               mov     rsi, r9
+0x18000c949 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000cd84 56                     push    rsi
+0x1800594a9 49 8b f1               mov     rsi, r9
+0x18005bc89 48 81 c6 53 01 00 00   add     rsi, 153h
+0x180005c8a 56                     push    rsi
+0x180031a04 49 8b f1               mov     rsi, r9
+0x18001d264 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004aac3 56                     push    rsi
+0x18000c2dc 49 8b f1               mov     rsi, r9
+0x180016f8e 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180021939 56                     push    rsi
+0x18002e969 49 8b f1               mov     rsi, r9
+0x18001ee67 48 81 c6 92 00 00 00   add     rsi, 92h
+0x1800422a1 56                     push    rsi
+0x18005edfc 49 8b f1               mov     rsi, r9
+0x180017da2 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800270ed 56                     push    rsi
+0x18000537b 49 8b f1               mov     rsi, r9
+0x180052dec 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180061345 56                     push    rsi
+0x18003a7a6 49 8b f1               mov     rsi, r9
+0x18000dfe9 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18001500d 56                     push    rsi
+0x18000a4ab 49 8b f1               mov     rsi, r9
+0x180053a8f 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800625b2 56                     push    rsi
+0x1800453d8 49 8b f1               mov     rsi, r9
+0x18002fd8d 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180011768 56                     push    rsi
+0x180019f6f 49 8b f1               mov     rsi, r9
+0x18004ec39 48 81 c6 95 00 00 00   add     rsi, 95h
+0x18005492a 56                     push    rsi
+0x18001cf28 49 8b f1               mov     rsi, r9
+0x18005779e 48 81 c6 b2 00 00 00   add     rsi, 0B2h
+0x1800108da 56                     push    rsi
+0x18005e2af 49 8b f1               mov     rsi, r9
+0x18001644b 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x180036e6f 56                     push    rsi
+0x18002ac9b 49 8b f1               mov     rsi, r9
+0x18000712b 48 81 c6 a7 00 00 00   add     rsi, 0A7h
+0x180044c3c 56                     push    rsi
+0x1800333ec 49 8b f1               mov     rsi, r9
+0x180024f9f 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800530dc 56                     push    rsi
+0x18003b0b3 49 8b f1               mov     rsi, r9
+0x180051399 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180059ac8 56                     push    rsi
+0x180050b57 49 8b f1               mov     rsi, r9
+0x1800464c0 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180022fc7 56                     push    rsi
+0x18003c2dc 49 8b f1               mov     rsi, r9
+0x18005205f 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18003deb0 56                     push    rsi
+0x180041e34 49 8b f1               mov     rsi, r9
+0x18005a8cc 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180003bad 56                     push    rsi
+0x180034551 49 8b f1               mov     rsi, r9
+0x180016978 48 81 c6 95 00 00 00   add     rsi, 95h
+0x1800145d6 56                     push    rsi
+0x180028aa2 49 8b f1               mov     rsi, r9
+0x180006f79 48 81 c6 be 00 00 00   add     rsi, 0BEh
+0x18004b8d1 56                     push    rsi
+0x1800551ca 49 8b f1               mov     rsi, r9
+0x180032d82 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x1800557c2 56                     push    rsi
+0x18001d137 49 8b f1               mov     rsi, r9
+0x180058d03 48 81 c6 9b 00 00 00   add     rsi, 9Bh
+0x180026bdb 56                     push    rsi
+0x1800012a7 49 8b f1               mov     rsi, r9
+0x18001178b 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800602db 56                     push    rsi
+0x180053939 49 8b f1               mov     rsi, r9
+0x18003e162 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18002a3db 56                     push    rsi
+0x1800414d5 49 8b f1               mov     rsi, r9
+0x180060beb 48 83 c6 2e            add     rsi, 2Eh ; '.'
+0x18000cdfc 56                     push    rsi
+0x180021cda 49 8b f1               mov     rsi, r9
+0x1800652b1 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18004c53d 56                     push    rsi
+0x18001a970 49 8b f1               mov     rsi, r9
+0x1800316d1 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800343bf 56                     push    rsi
+0x180018910 49 8b f1               mov     rsi, r9
+0x180064f8e 48 81 c6 95 00 00 00   add     rsi, 95h
+0x1800571fa 56                     push    rsi
+0x1800625a6 49 8b f1               mov     rsi, r9
+0x180009216 48 81 c6 ba 00 00 00   add     rsi, 0BAh
+0x18006476f 56                     push    rsi
+0x180060fee 49 8b f1               mov     rsi, r9
+0x180045fba 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x1800051d9 56                     push    rsi
+0x180060963 49 8b f1               mov     rsi, r9
+0x18002d6e4 48 81 c6 9f 00 00 00   add     rsi, 9Fh
+0x18005bfe7 56                     push    rsi
+0x180020c3c 49 8b f1               mov     rsi, r9
+0x18000cc19 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800094f5 56                     push    rsi
+0x18004af85 49 8b f1               mov     rsi, r9
+0x18002cb00 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180062009 56                     push    rsi
+0x180006279 49 8b f1               mov     rsi, r9
+0x18004d73d 48 81 c6 26 01 00 00   add     rsi, 126h
+0x180041d68 56                     push    rsi
+0x18003f45a 49 8b f1               mov     rsi, r9
+0x180008637 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000eb67 56                     push    rsi
+0x180045571 49 8b f1               mov     rsi, r9
+0x18002b035 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180049ac8 56                     push    rsi
+0x180046faa 49 8b f1               mov     rsi, r9
+0x180058f17 48 81 c6 92 00 00 00   add     rsi, 92h
+0x180053eb8 56                     push    rsi
+0x18004da9d 49 8b f1               mov     rsi, r9
+0x18003cf54 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002a247 56                     push    rsi
+0x18002dd12 49 8b f1               mov     rsi, r9
+0x1800382a1 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005af4b 56                     push    rsi
+0x18000d895 49 8b f1               mov     rsi, r9
+0x18002334f 48 81 c6 85 01 00 00   add     rsi, 185h
+0x180035c55 56                     push    rsi
+0x180041db0 49 8b f1               mov     rsi, r9
+0x18006014c 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000f1fa 56                     push    rsi
+0x18000839c 49 8b f1               mov     rsi, r9
+0x18001fc6c 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x1800440d7 56                     push    rsi
+0x18000c4a1 49 8b f1               mov     rsi, r9
+0x180032ec7 48 81 c6 04 01 00 00   add     rsi, 104h
+0x180007616 56                     push    rsi
+0x18000f834 49 8b f1               mov     rsi, r9
+0x1800096df 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18005a670 56                     push    rsi
+0x18001e8db 49 8b f1               mov     rsi, r9
+0x18005f1b6 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x180024e1e 56                     push    rsi
+0x18004c511 49 8b f1               mov     rsi, r9
+0x180033a04 48 81 c6 85 01 00 00   add     rsi, 185h
+0x18002c7de 56                     push    rsi
+0x18005d5a8 49 8b f1               mov     rsi, r9
+0x180008122 48 81 c6 80 00 00 00   add     rsi, 80h
+0x1800178e0 56                     push    rsi
+0x180032a27 49 8b f1               mov     rsi, r9
+0x18001e1dd 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000c7a4 56                     push    rsi
+0x180005e4c 49 8b f1               mov     rsi, r9
+0x180008577 48 83 c6 00            add     rsi, 0
+0x18001ee31 56                     push    rsi
+0x1800592e2 49 8b f1               mov     rsi, r9
+0x18005866e 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18000197c 56                     push    rsi
+0x18005d1b3 49 8b f1               mov     rsi, r9
+0x18000e660 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18005c63e 56                     push    rsi
+0x18001918c 49 8b f1               mov     rsi, r9
+0x18005143f 48 81 c6 95 00 00 00   add     rsi, 95h
+0x180004460 56                     push    rsi
+0x18004b86e 49 8b f1               mov     rsi, r9
+0x180005eea 48 81 c6 ba 00 00 00   add     rsi, 0BAh
+0x18001e1ae 56                     push    rsi
+0x180055170 49 8b f1               mov     rsi, r9
+0x180021a90 48 81 c6 8a 00 00 00   add     rsi, 8Ah
+0x180056a7a 56                     push    rsi
+0x1800482e6 49 8b f1               mov     rsi, r9
+0x180039f27 48 81 c6 9f 00 00 00   add     rsi, 9Fh
+0x18006109f 56                     push    rsi
+0x180059621 49 8b f1               mov     rsi, r9
+0x180056950 48 81 c6 80 00 00 00   add     rsi, 80h
+0x18002ebe7 56                     push    rsi
+0x180035dc1 49 8b f1               mov     rsi, r9
+0x18001462b 48 83 c6 4b            add     rsi, 4Bh ; 'K'
+0x18000d17d 56                     push    rsi
+0x18002cbac 49 8b f1               mov     rsi, r9
+0x180012b7b 48 83 c6 7b            add     rsi, 7Bh ; '{'
+0x180025cfc 56                     push    rsi
+0x1800552cd 49 8b f1               mov     rsi, r9
+0x180003251 48 83 c6 6c            add     rsi, 6Ch ; 'l'
+0x18003a4ab 56                     push    rsi
+0x18005cdf6 49 8b f1               mov     rsi, r9
+0x1800495a0 48 83 c6 60            add     rsi, 60h ; '`'
+0x180038a35 56                     push    rsi
+0x18001a81b c3                     retn; start executing the ROP chain built @ 1d361

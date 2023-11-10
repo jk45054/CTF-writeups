@@ -1,0 +1,121 @@
+In general requests to adb are of the form address  [, count] command] [;]
+large man page, yikes
+
+     If address is present then dot is set to address.   Initially
+     dot is set to 0.  For most commands count specifies how many
+     times the command will be executed.  The default coun is 1.
+     Address and coun are expressions.
+
+EXPRESSIONS
+
+. the value of dot
+" last typed address
+
+     integer
+            An octal number if integer begins with a 0; a hexade-
+            cimal number if preceded by #; otherwise a decimal
+            number.
+
+< name   value of name, variable name or register name. register names printed by $r
+
+symbol names from symbol table can be used. prefix _ for external symbols
+@expr    dereference exp
+
+     Dyadic operators are left associative and are less binding
+     than monadic operators.
+
+COMMANDS
+     Most commands consist of a verb followed by a modifier or
+     list of modifiers.  The following verbs are available.  (The
+     commands `?' and `/' may be followed by `*'; see ADDRESSES
+     for further details.)
+
+?f   locations started at address are printed according to fomart f. dot is incremented
+=f   the value of address itself is printed )
+
+formats
+
+     A format consists of one or more characters that specify a
+     style of printing.  Each format character may be preceded by
+     a decimal integer that is a repeat count for the format
+     character.  While stepping through a format dot is incre-
+     mented temporarily by the amount given for each format
+     letter.  If no format is given then the last format is used.
+     The format letters available are as follows.
+
+          o 2  Print 2 bytes in octal.  All octal numbers output
+               by adb are preceded by 0.
+          O 4  Print 4 bytes in octal.
+          q 2  Print in signed octal.
+          Q 4  Print long signed octal.
+          d 2  Print in decimal.
+          D 4  Print long decimal.
+          x 2  Print 2 bytes in hexadecimal.
+          X 4  Print 4 bytes in hexadecimal.
+          u 2  Print as an unsigned decimal number.
+          U 4  Print long unsigned decimal.
+          f 4  Print the 32 bit value as a floating point number.
+          F 8  Print double floating point.
+          b 1  Print the addressed byte in octal.
+          c 1  Print the addressed character.
+          C 1  Print the addressed character using the following
+               escape convention.  the standard escape convention
+               where control characters are printed as ^X and the
+               delete character is printed as ^?.
+          s n  Print the addressed characters until a zero char-
+               acter is reached.
+          S n  Print a string using the ^X escape convention (see
+               C above).  n is the length of the string including
+               its zero terminator.
+          Y 4  Print 4 bytes in date format (see [4mctime[m(3)).
+          i n  Print as machine instructions.  n is the number of
+               bytes occupied by the instruction.  This style of
+               printing causes variables 1 and 2 to be set to the
+               offset parts of the source and destination respec-
+               tively.
+          a 0  Print the value of dot in symbolic form.  Symbols
+               are checked to ensure that they have an appropri-
+               ate type as indicated below.
+            /  local or global data symbol
+            ?  local or global text symbol
+            =  local or global absolute symbol
+          p 2  Print the addressed value in symbolic form using
+               the same rules for symbol lookup as a.
+
+$r   print registers, dot is set to pc
+$b  list bps
+$a  algol stack backtrace
+$c   c stack backtrace
+$e   names and values of externals variables
+$q   exit from adb
+$m  print address map
+
+:b c    set bp a address (c is  command to be executed on bp hit)
+:d     delete bp at address
+:r    run as a subprocess, if address is given - use it as entrypoint
+:c   continue
+:s   single step
+
+VARIABLES
+     Adb provides a number of variables.  Named variables are set
+     initially by adb but are not used subsequently (except for
+     c).  Numbered variables are reserved for communication as
+     follows.
+
+     0    The last value printed.
+     1    The last offset part of an instruction source.
+     2    The previous value of variable 1.
+     9    The count on the last $< or $<< command.
+
+     On entry the following are set from the system header in the
+     corfil.  If corfil does not appear to be a core file then
+     these values are set from objfil.
+
+     b    The base address of the data segment.
+     d    The data segment size.
+     e    The entry point.
+     m    The `magic' number (0405, 0407, 0410, 0411, 0430 or
+          0431).  The object is overlaid if m is 0430 or 0431.
+     o    The sum of the overlay segment sizes (if overlaid).
+     s    The stack segment size.
+     t    The text segment size.

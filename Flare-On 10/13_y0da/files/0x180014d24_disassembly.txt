@@ -1,0 +1,90 @@
+0x180014d24 55                     push    rbp
+0x18004e367 48 8b ec               mov     rbp, rsp
+0x18006026f 48 83 ec 10            sub     rsp, 10h
+0x18002638b 44 89 7d f0            mov     [rbp-10h], r15d
+0x180046e8d 41 51                  push    r9
+0x180033d18 41 50                  push    r8
+0x180045a89 52                     push    rdx
+0x18002d085 51                     push    rcx
+0x180001ed8 56                     push    rsi
+0x18005da61 53                     push    rbx
+0x1800520c7 e8 e3 eb ff ff         call    get_PEB_180050CAF
+0x18004198c b8 18 00 00 00         mov     eax, 18h
+0x180028f52 48 8b 14 02            mov     rdx, [rdx+rax]
+0x18002fb15 b8 20 00 00 00         mov     eax, 20h ; ' '
+0x1800188ce 48 8b 14 02            mov     rdx, [rdx+rax]
+0x1800231f1 b8 50 00 00 00         mov     eax, 50h ; 'P'
+0x1800037a9 48 8b 34 02            mov     rsi, [rdx+rax]
+0x180015d18 b8 4a 00 00 00         mov     eax, 4Ah ; 'J'
+0x1800149f5 48 0f b7 0c 02         movzx   rcx, word ptr [rdx+rax]
+0x180024131 4d 33 c9               xor     r9, r9
+0x18002c282 33 c0                  xor     eax, eax
+0x1800111f6 ac                     lodsb
+0x180037568 3c 61                  cmp     al, 61h ; 'a'
+0x1800635a4 0f 8c 26 8b fe ff      jl      loc_18004C0D0
+0x18004527b 2c 20                  sub     al, 20h ; ' '
+0x18004c0d0 41 c1 c9 0a            ror     r9d, 0Ah
+0x1800162bf 41 c1 c9 03            ror     r9d, 3
+0x180063b7a 44 03 c8               add     r9d, eax
+0x18000c12b 48 ff c9               dec     rcx
+0x180047f8b 0f 85 f1 42 fe ff      jnz     loc_18002C282
+0x180010065 48 89 55 f4            mov     [rbp-0Ch], rdx
+0x180019c78 44 89 4d fc            mov     [rbp-4], r9d
+0x180016b71 bb 20 00 00 00         mov     ebx, 20h ; ' '
+0x18004060a 48 8b 14 1a            mov     rdx, [rdx+rbx]
+0x18004f1e8 48 c7 c3 3c 00 00 00   mov     rbx, 3Ch ; '<'
+0x1800391c7 8b 04 1a               mov     eax, [rdx+rbx]
+0x18001b203 48 03 c2               add     rax, rdx
+0x18004db64 bb 0b 02 00 00         mov     ebx, 20Bh
+0x1800556a5 66 39 58 18            cmp     [rax+18h], bx
+0x180037fd6 0f 85 8a fc fd ff      jnz     loc_180017C66
+0x18004ef33 bb 88 00 00 00         mov     ebx, 88h
+0x180063130 8b 04 18               mov     eax, [rax+rbx]
+0x18003c5da 48 85 c0               test    rax, rax
+0x18005c38b 0f 84 d5 b8 fb ff      jz      loc_180017C66
+0x1800482fb 48 03 c2               add     rax, rdx
+0x180027962 50                     push    rax
+0x18001a184 bb 18 00 00 00         mov     ebx, 18h
+0x1800260c9 8b 0c 18               mov     ecx, [rax+rbx]
+0x1800605d2 bb 20 00 00 00         mov     ebx, 20h ; ' '
+0x18002e0ff 44 8b 04 18            mov     r8d, [rax+rbx]
+0x18003a174 4c 03 c2               add     r8, rdx
+0x1800081f2 48 85 c9               test    rcx, rcx
+0x18004d2ee 0f 84 af 24 00 00      jz      loc_18004F7A3
+0x180005e54 48 ff c9               dec     rcx
+0x180024436 41 8b 34 88            mov     esi, [r8+rcx*4]
+0x180055763 48 03 f2               add     rsi, rdx
+0x180050cfa 4d 33 c9               xor     r9, r9
+0x18004cd49 33 c0                  xor     eax, eax
+0x18005b3d5 ac                     lodsb
+0x180035303 41 c1 c9 08            ror     r9d, 8
+0x18002ce79 41 c1 c9 05            ror     r9d, 5
+0x18003f161 44 03 c8               add     r9d, eax
+0x18004f4c4 3a c4                  cmp     al, ah
+0x18000c96c 0f 85 d7 03 04 00      jnz     loc_18004CD49
+0x180020f8f 44 03 4d fc            add     r9d, [rbp-4]
+0x18005f378 44 3b 4d f0            cmp     r9d, [rbp-10h]
+0x180044870 0f 85 7c 39 fc ff      jnz     loc_1800081F2
+0x180036c74 58                     pop     rax
+0x1800138bf bb 24 00 00 00         mov     ebx, 24h ; '$'
+0x18004fb29 44 8b 04 18            mov     r8d, [rax+rbx]
+0x18000bf51 4c 03 c2               add     r8, rdx
+0x180032466 66 41 8b 0c 48         mov     cx, [r8+rcx*2]
+0x18002da84 bb 1c 00 00 00         mov     ebx, 1Ch
+0x180035d36 44 8b 04 18            mov     r8d, [rax+rbx]
+0x1800279da 4c 03 c2               add     r8, rdx
+0x18003a34f 41 8b 04 88            mov     eax, [r8+rcx*4]
+0x1800168d9 48 03 c2               add     rax, rdx
+0x1800376ab 5b                     pop     rbx
+0x1800427c1 5e                     pop     rsi
+0x18005e5d9 59                     pop     rcx
+0x180062138 5a                     pop     rdx
+0x180030481 41 58                  pop     r8
+0x18000540a 41 59                  pop     r9
+0x18003f9fc c9                     leave
+0x180030b30 41 5a                  pop     r10
+0x18001df97 48 83 ec 20            sub     rsp, 20h
+0x180023f25 41 52                  push    r10
+0x1800404e3 41 83 fe 01            cmp     r14d, 1
+0x18002fbd6 0f 85 2f 0c 03 00      jnz     loc_18006080B; kernel32.VirtualFree
+0x180002da9 c3                     retn

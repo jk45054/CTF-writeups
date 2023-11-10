@@ -1,0 +1,66 @@
+> py .\calc_argv2_forward.py
+Inner loop i for b64d input of buf = bytearray(b'AAAABBBBCCCCDDDD')
+----
+i=7
+temp_q1 = 4141414142424242 (bytes value = reversed endianness)
+q1_i_prev = 0x4242424241414141
+q2_i_prev = 0x4444444443434343
+s[7] = 0xf52461025f241cb9
+q1_i = 0x4242424241414141 ^ 0x4444444443434343 ^ 0xf52461025f241cb9 = bb1e265d046722f3 (bytes value = reversed endianness)
+q2_i = 4141414142424242 (bytes value = reversed endianness)
+----
+i=6
+temp_q1 = bb1e265d046722f3 (bytes value = reversed endianness)
+q1_i_prev = 0xf32267045d261ebb
+q2_i_prev = 0x4242424241414141
+s[6] = 0xa318fafa780c846d
+q1_i = 0xf32267045d261ebb ^ 0x4242424241414141 ^ 0xa318fafa780c846d = 97db6b64bcdf7812 (bytes value = reversed endianness)
+q2_i = bb1e265d046722f3 (bytes value = reversed endianness)
+----
+i=5
+temp_q1 = 97db6b64bcdf7812 (bytes value = reversed endianness)
+q1_i_prev = 0x1278dfbc646bdb97
+q2_i_prev = 0xf32267045d261ebb
+s[5] = 0x780c846df5246102
+q1_i = 0x1278dfbc646bdb97 ^ 0xf32267045d261ebb ^ 0x780c846df5246102 = 2ea469ccd53c5699 (bytes value = reversed endianness)
+q2_i = 97db6b64bcdf7812 (bytes value = reversed endianness)
+----
+i=4
+temp_q1 = 2ea469ccd53c5699 (bytes value = reversed endianness)
+q1_i_prev = 0x99563cd5cc69a42e
+q2_i_prev = 0x1278dfbc646bdb97
+s[4] = 0x5f241cb9a318fafa
+q1_i = 0x99563cd5cc69a42e ^ 0x1278dfbc646bdb97 ^ 0x5f241cb9a318fafa = 43851a0bd0ff0ad4 (bytes value = reversed endianness)
+q2_i = 2ea469ccd53c5699 (bytes value = reversed endianness)
+----
+i=3
+temp_q1 = 43851a0bd0ff0ad4 (bytes value = reversed endianness)
+q1_i_prev = 0xd40affd00b1a8543
+q2_i_prev = 0x99563cd5cc69a42e
+s[3] = 0xa318fafa780c846d
+q1_i = 0xd40affd00b1a8543 ^ 0x99563cd5cc69a42e ^ 0xa318fafa780c846d = 00a57fbfff3944ee (bytes value = reversed endianness)
+q2_i = 43851a0bd0ff0ad4 (bytes value = reversed endianness)
+----
+i=2
+temp_q1 = 00a57fbfff3944ee (bytes value = reversed endianness)
+q1_i_prev = 0xee4439ffbf7fa500
+q2_i_prev = 0xd40affd00b1a8543
+s[2] = 0xf52461025f241cb9
+q1_i = 0xee4439ffbf7fa500 ^ 0xd40affd00b1a8543 ^ 0xf52461025f241cb9 = fa3c41eb2da76acf (bytes value = reversed endianness)
+q2_i = 00a57fbfff3944ee (bytes value = reversed endianness)
+----
+i=1
+temp_q1 = fa3c41eb2da76acf (bytes value = reversed endianness)
+q1_i_prev = 0xcf6aa72deb413cfa
+q2_i_prev = 0xee4439ffbf7fa500
+s[1] = 0x5f241cb9a318fafa
+q1_i = 0xcf6aa72deb413cfa ^ 0xee4439ffbf7fa500 ^ 0x5f241cb9a318fafa = 006326f76b820a7e (bytes value = reversed endianness)
+q2_i = fa3c41eb2da76acf (bytes value = reversed endianness)
+----
+i=0
+temp_q1 = 006326f76b820a7e (bytes value = reversed endianness)
+q1_i_prev = 0x7e0a826bf7266300
+q2_i_prev = 0xcf6aa72deb413cfa
+s[0] = 0x780c846df5246102
+q1_i = 0x7e0a826bf7266300 ^ 0xcf6aa72deb413cfa ^ 0x780c846df5246102 = f83e43e92ba16cc9 (bytes value = reversed endianness)
+q2_i = 006326f76b820a7e (bytes value = reversed endianness)
