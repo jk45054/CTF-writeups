@@ -36,5 +36,5 @@ I'm happy to have achieved this year's goal of reaching top 100 with finishing r
 
 ## Official Solutions
 
-[Flare-On 10 Solution Page](N/A)
+[Flare-On 10 Solution Page](https://www.mandiant.com/resources/blog/flareon10-challenge-solutions)
 
