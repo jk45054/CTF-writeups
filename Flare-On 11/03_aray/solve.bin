@@ -1,0 +1,1 @@
+rule flareon { strings: Bf = "1RuleADayK33p$Malw4r3Aw4y@flare-on.com" condition: $f }

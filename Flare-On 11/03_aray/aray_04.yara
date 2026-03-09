@@ -1,0 +1,449 @@
+import "hash"
+
+rule aray
+{
+    meta:
+        description = "Matches on b7dc94ca98aa58dabb5404541c812db2"
+    condition:
+        filesize == 85
+// remove tautologies 
+and hash.md5(0, filesize) == "b7dc94ca98aa58dabb5404541c812db2"
+and filesize ^ uint8(11) != 107
+and uint8(55) & 128 == 0
+and uint8(58) + 25 == 122
+and uint8(7) & 128 == 0
+and uint8(17) > 31
+and uint8(68) > 10
+and uint8(56) < 155
+and filesize ^ uint8(75) != 25
+and filesize ^ uint8(28) != 12
+and uint8(35) < 160
+and uint8(3) & 128 == 0
+and uint8(56) & 128 == 0
+and uint8(4) > 30
+and uint8(15) & 128 == 0
+and uint8(19) < 151
+and filesize ^ uint8(73) != 17
+and filesize ^ uint8(31) != 5
+and uint8(3) > 21
+and uint8(54) & 128 == 0
+and filesize ^ uint8(66) != 146
+and filesize ^ uint8(77) != 22
+and uint8(66) < 133
+and uint8(46) < 154
+and uint8(55) > 5
+and uint8(36) + 4 == 72
+and filesize ^ uint8(82) != 228
+and filesize ^ uint8(13) != 42
+and filesize ^ uint8(6) != 39
+and uint8(33) < 160
+and filesize ^ uint8(55) != 244
+and filesize ^ uint8(15) != 205
+and filesize ^ uint8(3) != 43
+and filesize ^ uint8(54) != 39
+and uint8(28) & 128 == 0
+and uint8(10) < 146
+and filesize ^ uint8(56) != 246
+and filesize ^ uint8(32) != 77
+and uint8(73) > 26
+and uint8(36) > 11
+and uint8(70) > 6
+and filesize ^ uint8(33) != 27
+and uint8(48) & 128 == 0
+and filesize ^ uint8(74) != 45
+and uint8(27) ^ 21 == 40
+and filesize ^ uint8(67) != 63
+and filesize ^ uint8(0) != 16
+and uint8(50) > 19
+and uint8(27) < 147
+and filesize ^ uint8(40) != 230
+and filesize ^ uint8(2) != 205
+and uint8(69) < 148
+and uint8(16) & 128 == 0
+and uint8(63) > 31
+and uint8(14) & 128 == 0
+and uint8(35) > 1
+and filesize ^ uint8(11) != 33
+and uint8(52) < 136
+and uint8(54) > 15
+and filesize ^ uint8(20) != 83
+and uint8(43) > 24
+and uint8(82) < 152
+and filesize ^ uint8(79) != 186
+and filesize ^ uint8(83) != 197
+and uint8(39) < 134
+and filesize ^ uint8(43) != 33
+and uint8(72) > 10
+and uint8(83) < 134
+and uint8(40) < 131
+and filesize ^ uint8(47) != 11
+and filesize ^ uint8(71) != 3
+and uint8(65) - 29 == 70
+and uint8(58) > 30
+and filesize ^ uint8(37) != 37
+and uint8(60) < 130
+and uint8(27) & 128 == 0
+and uint8(3) < 141
+and uint8(73) & 128 == 0
+and filesize ^ uint8(70) != 209
+and filesize ^ uint8(2) != 54
+and filesize ^ uint8(20) != 17
+and uint8(33) > 18
+and filesize ^ uint8(62) != 15
+and filesize ^ uint8(10) != 44
+and uint8(71) > 19
+and filesize ^ uint8(50) != 86
+and uint8(45) ^ 9 == 104
+and uint8(8) < 133
+and uint8(31) < 145
+and uint8(14) > 20
+and filesize ^ uint8(49) != 156
+and uint8(47) > 13
+and uint8(29) > 22
+and filesize ^ uint8(17) != 16
+and filesize ^ uint8(12) != 226
+and filesize ^ uint8(65) != 28
+and uint8(45) & 128 == 0
+and filesize ^ uint8(6) != 129
+and filesize ^ uint8(62) != 246
+and uint8(36) & 128 == 0
+and uint8(10) & 128 == 0
+and uint8(62) > 1
+and uint8(33) & 128 == 0
+and filesize ^ uint8(83) != 31
+and uint8(11) > 18
+and uint8(80) < 143
+and uint8(43) < 160
+and uint8(1) > 19
+and uint8(44) < 147
+and filesize ^ uint8(63) != 34
+and filesize ^ uint8(44) != 17
+and uint8(74) + 11 == 116
+and uint8(48) < 136
+and uint8(47) < 142
+and uint8(58) < 146
+and filesize ^ uint8(71) != 128
+and uint8(45) < 136
+and uint8(43) & 128 == 0
+and filesize ^ uint8(43) != 251
+and uint8(65) > 1
+and uint8(24) & 128 == 0
+and uint8(37) < 139
+and filesize ^ uint8(28) != 238
+and uint8(78) & 128 == 0
+and filesize ^ uint8(13) != 219
+and filesize ^ uint8(53) != 243
+and uint8(81) & 128 == 0
+and filesize ^ uint8(65) != 215
+and filesize ^ uint8(0) != 41
+and uint8(84) < 129
+and uint8(60) & 128 == 0
+and uint8(20) > 1
+and uint8(34) & 128 == 0
+and uint8(21) & 128 == 0
+and uint8(9) < 151
+and filesize ^ uint8(39) != 49
+and filesize ^ uint8(60) != 142
+and filesize ^ uint8(69) != 30
+and uint8(30) > 6
+and uint8(65) & 128 == 0
+and uint8(29) < 157
+and uint8(57) & 128 == 0
+and filesize ^ uint8(29) != 37
+and uint8(77) > 5
+and filesize ^ uint8(16) != 144
+and uint8(37) & 128 == 0
+and filesize ^ uint8(25) != 47
+and uint8(67) & 128 == 0
+and filesize ^ uint8(24) != 94
+and uint8(68) < 138
+and uint8(57) < 138
+and filesize ^ uint8(27) != 43
+and filesize ^ uint8(30) != 18
+and filesize ^ uint8(59) != 13
+and uint8(56) > 8
+and uint8(69) & 128 == 0
+and uint8(18) & 128 == 0
+and uint8(64) < 154
+and uint8(76) & 128 == 0
+and filesize ^ uint8(84) != 3
+and filesize ^ uint8(38) != 84
+and uint8(32) < 140
+and filesize ^ uint8(42) != 91
+and uint8(40) > 15
+and uint8(27) > 23
+and filesize ^ uint8(18) != 234
+and uint8(68) & 128 == 0
+and uint8(7) < 131
+and uint8(72) < 134
+and uint8(16) > 25
+and uint8(26) > 31
+and uint8(65) < 149
+and filesize ^ uint8(51) != 0
+and uint8(66) > 30
+and filesize ^ uint8(68) != 8
+and uint8(1) & 128 == 0
+and filesize ^ uint8(81) != 7
+and uint8(24) < 148
+and uint8(12) < 147
+and uint8(74) < 152
+and filesize ^ uint8(21) != 27
+and filesize ^ uint8(23) != 18
+and uint8(38) & 128 == 0
+and filesize ^ uint8(19) != 31
+and uint8(82) > 3
+and uint8(5) & 128 == 0
+and uint8(75) - 30 == 86
+and uint8(54) < 152
+and uint8(75) < 142
+and uint8(30) & 128 == 0
+and uint8(79) & 128 == 0
+and filesize ^ uint8(59) != 194
+and uint8(61) & 128 == 0
+and uint8(70) < 139
+and uint8(77) & 128 == 0
+and uint8(13) & 128 == 0
+and uint8(21) < 138
+and filesize ^ uint8(46) != 186
+and uint8(61) < 160
+and filesize ^ uint8(34) != 39
+and uint8(6) > 6
+and uint8(35) & 128 == 0
+and uint8(23) < 141
+and filesize ^ uint8(82) != 32
+and filesize ^ uint8(48) != 29
+and uint8(59) & 128 == 0
+and filesize ^ uint8(39) != 18
+and filesize ^ uint8(45) != 146
+and uint8(80) & 128 == 0
+and uint8(16) < 134
+and uint8(74) > 1
+and uint8(23) & 128 == 0
+and uint8(32) & 128 == 0
+and filesize ^ uint8(47) != 119
+and filesize ^ uint8(63) != 135
+and uint8(64) > 27
+and uint8(32) > 28
+and filesize ^ uint8(24) != 217
+and uint8(53) < 144
+and uint8(29) & 128 == 0
+and filesize ^ uint8(76) != 88
+and filesize ^ uint8(55) != 17
+and uint8(26) & 128 == 0
+and uint8(51) > 7
+and uint8(12) > 19
+and filesize ^ uint8(14) != 99
+and filesize ^ uint8(37) != 141
+and filesize ^ uint8(14) != 161
+and filesize ^ uint8(67) != 55
+and filesize ^ uint8(53) != 19
+and uint8(30) < 131
+and uint8(0) & 128 == 0
+and uint8(66) & 128 == 0
+and uint8(41) > 5
+and uint8(71) & 128 == 0
+and uint8(4) < 139
+and uint8(77) < 154
+and filesize ^ uint8(12) != 116
+and uint8(39) > 7
+and uint8(75) & 128 == 0
+and uint8(78) > 24
+and uint8(69) > 25
+and uint8(2) + 11 == 119
+and uint8(15) < 156
+and filesize ^ uint8(69) != 241
+and filesize ^ uint8(35) != 18
+and filesize ^ uint8(17) != 208
+and filesize ^ uint8(4) != 23
+and filesize ^ uint8(75) != 35
+and uint8(83) & 128 == 0
+and filesize ^ uint8(26) != 161
+and filesize ^ uint8(18) != 33
+and uint8(6) < 155
+and uint8(41) < 140
+and filesize ^ uint8(68) != 135
+and filesize ^ uint8(9) != 5
+and uint8(9) & 128 == 0
+and filesize ^ uint8(36) != 95
+and uint8(7) > 18
+and filesize ^ uint8(23) != 242
+and uint8(62) < 146
+and uint8(49) & 128 == 0
+and uint8(62) & 128 == 0
+and uint8(4) & 128 == 0
+and filesize ^ uint8(58) != 12
+and uint8(72) & 128 == 0
+and uint8(18) > 13
+and filesize ^ uint8(42) != 1
+and uint8(53) & 128 == 0
+and filesize ^ uint8(78) != 163
+and uint8(60) > 14
+and uint8(79) > 31
+and uint8(22) < 152
+and filesize ^ uint8(64) != 50
+and filesize ^ uint8(19) != 222
+and uint8(81) < 131
+and uint8(7) - 15 == 82
+and filesize ^ uint8(51) != 204
+and uint8(28) > 27
+and filesize ^ uint8(61) != 94
+and uint8(76) > 2
+and filesize ^ uint8(77) != 223
+and uint8(19) > 4
+and uint8(80) > 2
+and filesize ^ uint8(35) != 120
+and filesize ^ uint8(22) != 31
+and uint8(10) > 9
+and uint8(22) > 20
+and uint8(38) < 135
+and filesize ^ uint8(10) != 205
+and uint8(25) & 128 == 0
+and uint8(13) < 147
+and uint8(42) & 128 == 0
+and filesize ^ uint8(48) != 99
+and filesize ^ uint8(16) != 7
+and uint8(11) < 154
+and filesize ^ uint8(76) != 30
+and filesize ^ uint8(74) != 193
+and filesize ^ uint8(52) != 22
+and filesize ^ uint8(36) != 6
+and uint8(44) & 128 == 0
+and uint8(50) & 128 == 0
+and filesize ^ uint8(25) != 224
+and uint8(15) > 26
+and filesize ^ uint8(60) != 43
+and uint8(22) & 128 == 0
+and uint8(82) & 128 == 0
+and uint8(75) > 30
+and filesize ^ uint8(15) != 27
+and uint8(23) > 2
+and uint8(34) < 138
+and filesize ^ uint8(31) != 32
+and filesize ^ uint8(81) != 242
+and filesize ^ uint8(54) != 141
+and uint8(63) & 128 == 0
+and uint8(0) < 129
+and uint8(8) & 128 == 0
+and uint8(61) > 12
+and uint8(24) > 22
+and uint8(46) & 128 == 0
+and uint8(21) - 21 == 94
+and uint8(67) < 144
+and uint8(48) > 15
+and uint8(37) > 16
+and uint8(42) < 157
+and uint8(16) ^ 7 == 115
+and uint8(13) > 21
+and filesize ^ uint8(45) != 19
+and uint8(47) & 128 == 0
+and filesize ^ uint8(80) != 56
+and filesize ^ uint8(78) != 6
+and uint8(73) < 136
+and filesize ^ uint8(52) != 238
+and filesize ^ uint8(7) != 15
+and filesize ^ uint8(66) != 51
+and uint8(59) > 4
+and uint8(46) > 22
+and filesize ^ uint8(3) != 147
+and uint8(36) < 146
+and uint8(26) < 132
+and uint8(6) & 128 == 0
+and filesize ^ uint8(30) != 249
+and filesize ^ uint8(5) != 243
+and uint8(70) & 128 == 0
+and uint8(59) < 141
+and filesize ^ uint8(79) != 104
+and filesize ^ uint8(5) != 43
+and filesize ^ uint8(72) != 219
+and uint8(52) > 25
+and uint8(74) & 128 == 0
+and uint8(28) < 160
+and uint8(51) & 128 == 0
+and uint8(83) > 16
+and uint8(31) > 7
+and uint8(84) & 128 == 0
+and filesize ^ uint8(46) != 18
+and uint8(2) > 20
+and uint8(5) < 158
+and filesize ^ uint8(32) != 30
+and filesize ^ uint8(50) != 219
+and uint8(26) - 7 == 25
+and uint8(53) > 24
+and filesize ^ uint8(9) != 164
+and filesize ^ uint8(80) != 236
+and filesize ^ uint8(84) != 231
+and filesize ^ uint8(49) != 10
+and uint8(67) > 27
+and uint8(64) & 128 == 0
+and filesize ^ uint8(27) != 244
+and uint8(12) & 128 == 0
+and uint8(51) < 139
+and uint8(5) > 14
+and filesize ^ uint8(34) != 115
+and filesize ^ uint8(38) != 8
+and filesize ^ uint8(72) != 37
+and uint8(20) & 128 == 0
+and uint8(17) < 150
+and filesize ^ uint8(70) != 41
+and uint8(17) & 128 == 0
+and uint8(19) & 128 == 0
+and filesize ^ uint8(33) != 157
+and uint8(21) > 7
+and uint8(58) & 128 == 0
+and uint8(71) < 130
+and uint8(41) & 128 == 0
+and uint8(57) > 11
+and filesize ^ uint8(8) != 2
+and filesize ^ uint8(57) != 186
+and uint8(11) & 128 == 0
+and uint8(2) < 147
+and uint8(78) < 141
+and uint8(38) > 18
+and filesize ^ uint8(41) != 233
+and uint8(18) < 137
+and uint8(40) & 128 == 0
+and filesize ^ uint8(21) != 188
+and filesize ^ uint8(57) != 14
+and filesize ^ uint8(4) != 253
+and uint8(14) < 153
+and uint8(31) & 128 == 0
+and uint8(81) > 11
+and uint8(2) & 128 == 0
+and filesize ^ uint8(22) != 191
+and uint8(44) > 5
+and uint8(84) + 3 == 128
+and uint8(20) < 135
+and filesize ^ uint8(73) != 61
+and filesize ^ uint8(26) != 44
+and uint8(1) < 158
+and filesize ^ uint8(29) != 158
+and uint8(49) < 129
+and filesize ^ uint8(64) != 158
+and uint8(25) < 154
+and uint8(63) < 129
+and uint8(84) > 26
+and uint8(39) & 128 == 0
+and uint8(25) > 27
+and uint8(49) > 27
+and uint8(9) > 23
+and filesize ^ uint8(7) != 221
+and uint8(50) < 138
+and uint8(76) < 156
+and filesize ^ uint8(61) != 239
+and filesize ^ uint8(8) != 107
+and uint8(79) < 146
+and filesize ^ uint8(40) != 49
+and uint8(0) > 30
+and uint8(45) > 17
+and filesize ^ uint8(1) != 232
+and filesize ^ uint8(56) != 22
+and uint8(42) > 3
+and uint8(52) & 128 == 0
+and uint8(55) < 153
+and filesize ^ uint8(41) != 74
+and filesize ^ uint8(1) != 0
+and filesize ^ uint8(44) != 96
+and filesize ^ uint8(58) != 77
+and uint8(34) > 18
+and uint8(8) > 3
+}
