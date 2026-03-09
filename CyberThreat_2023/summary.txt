@@ -1,0 +1,34 @@
+Zipnosis
+--------
+- Using built-in windows zip functionality on this file throws an error
+- 7z extracts a bait jpg, which is empty and irrelevant
+- Inspection with hex editor yields a hidden PNG file
+- Some PNG header metadata bytes and field names are reversed
+- Patch them to repair the PNG
+Flag: flag{z1ps4r3fun}
+
+Whisper
+-------
+- Inspection with wireshark hints at audio data transferred to a headset via usb packets
+- Extract usb.iso.data with tshark
+- Import raw data into audacity to yield the flag audio text
+Flag: flag{usbpcap1337}
+
+Fileosophy
+----------
+- Encrypted NTFS filesystem, possibly with AES-ECB or any other block cipher that yields the same ciphertext for each sector/block
+- Identify 512 byte XOR key by finding 512 byte repeating patterns (possibly empty sectors)
+- XOR'ing whole file with that 512 byte key yields an NTFS filesystem (as hinted by the challenge name)
+- Parse with fls, dump flag.txt with icat
+Flag: flag{ntfsnullsarebountiful}
+
+EXEploration
+------------
+- 32 Bit Windows Console PE EXE, packed
+- Packer identification: VMProtect
+- Executable expects a password as argument, possibly to output the flag
+- Unpacking possible to find the original "main" function code that checks argc and calls a validation function if an argument is given
+- Validation function seems to be virtualized though
+- Devirtualization is not needed to get the flag, but might be to find the correct password
+- Creating a minidump after validation failed and looking for strings in it yields possible flag parts
+Flag: flag{vmpr0t3cted}

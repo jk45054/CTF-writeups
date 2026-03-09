@@ -1,0 +1,377 @@
+die: 32 bit windows console app
+pestudio: very high entropy 7,969
+weird section names
+- executable: .Zq~ and .w-6
+iat in .b<> and import in .w-6
+
+obviously packed
+
+> .\EXEploration.exe
+Usage: Z:\CTF\cyberthreat2023\EXEploration\EXEploration.exe <password>
+
+> .\EXEploration.exe 1
+Validation error
+
+observe execution with API Monitor v2 32-bit
+#	Time of Day	Thread	Module	API	Return Value	Error	Duration
+3826	4:59:12.186 AM	1	EXEploration.exe	LocalAlloc ( LMEM_FIXED, 200 )	0x01366310		0.0000061
+3828	4:59:12.186 AM	1	EXEploration.exe	GetModuleHandleA ( "kernel32.dll" )	0x77520000		0.0000080
+3834	4:59:12.186 AM	1	EXEploration.exe	GetModuleHandleA ( "ntdll.dll" )	0x77c10000		0.0000031
+3840	4:59:12.201 AM	1	EXEploration.exe	GetModuleFileNameW ( 0x00370000, 0x010ff3a0, 254 )	78		0.0000029
+3842	4:59:12.233 AM	1	EXEploration.exe	LocalAlloc ( LMEM_FIXED, 15980 )	0x01367fd8		0.0000538
+3844	4:59:12.577 AM	1	EXEploration.exe	LocalFree ( 0x01367fd8 )	NULL		0.0000053
+3846	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "KERNEL32.dll" )	0x77520000		0.0000078
+3852	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000027
+3858	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000023
+3864	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000020
+3870	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000019
+3876	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000018
+3882	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000022
+3888	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000019
+3894	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000022
+3900	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "KERNEL32.dll" )	0x77520000		0.0000024
+3906	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000022
+3912	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000018
+3918	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000015
+3924	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000020
+3930	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000024
+3936	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000022
+3942	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000021
+3948	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000019
+3954	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "NTDLL" )	0x77c10000		0.0000021
+3960	4:59:12.577 AM	1	EXEploration.exe	GetModuleHandleA ( "USER32.dll" )	0x76570000		0.0000028
+
+observe execution with API Monitor v2 32-bit, attach via context switch, arg = "1"
+
+the program seems to perform an integrity check on its own module and terminates execution with a window popup reading
+"File corrupted! This program has been manipulated and maybe it's infected by a Virus or cracked. This file won't work anymore."
+this happens for example when flipping the dll_can_move bit with CFF Explorer (no ASLR = always same VA's = easier to debug)
+
+#	Time of Day	Thread	Module	API	Return Value	Error	Duration
+1	5:21:57.586 AM	1	EXEploration_noaslr.exe	LocalAlloc ( LMEM_FIXED, 200 )	0x00f47bc0		0.0000067
+3	5:21:57.586 AM	1	EXEploration_noaslr.exe	GetModuleHandleA ( "kernel32.dll" )	0x77520000		0.0000073
+9	5:21:57.586 AM	1	EXEploration_noaslr.exe	GetModuleHandleA ( "ntdll.dll" )	0x77c10000		0.0000019
+15	5:21:57.602 AM	1	EXEploration_noaslr.exe	GetModuleFileNameW ( 0x00400000, 0x0019f518, 260 )	85		0.0000024
+17	5:21:57.602 AM	1	EXEploration_noaslr.exe	GetModuleHandleA ( "ntdll.dll" )	0x77c10000		0.0000061
+23	5:22:12.207 AM	1	EXEploration_noaslr.exe	ExitProcess ( 3735929054 )			
+
+randomly debugging _noaslr version got me into a dynamically allocated region 0xee0000 with string reference "Unpacked.exe" @ 0xee3818
+00EE3098 "Failed to find fixed version info signature in ntdll.dll VS_VERSION_INFO"
+code seems to begin at 0xee1000
+00EE3138 L"1337"
+00EE327C "Malware called ResumeThread"
+These strings seem to be arguments to DbgPrint
+Looks to be some kind of hooking library code
+
+Calls to imported
+- LoadLibraryA: 00841931, 00C9C62C
+- GetProcAddress: 00832C2B, 00C7C0BD
+- GetModuleHandleA: 00C8EEC0
+
+Call eax
+- 007E10CA -> ntdll!NtRaiseHardError -> shortly after popup with File corrupted -> kernel32!ExitProcess
+
+--- back to debugging original sample ---
+second bp on LocalAlloc @ RVA 0x3c4618 allocates 0x3e6c bytes
+put bp on HeapAlloc -> RtlAllocateHeap to find out where. It should return a pointer to newly-allocated heap block. Whatever that means
+At this time of debugging, the ERW memory likely used to be filled with the hooking dll code is still empty. Size is 0x8000. This should have been allocated with VirtualAlloc(Ex) or similar?
+
+a rep stosd @ RVA 0x39bb1d copies data to this region
+
+does some env var parsing, allocating heap via RtlAllocHeap for each
+- done around call @ offset 0x1bc20 in section .Zq~ once it is filled with code (whereever that came from)
+- offset 0x1625a could be DllMain, with check arg_4, 1 (DLL_PROCESS_ATTACH) -> could breakpoint there to see who's calling that?
+
+runs until several calls to NtQueryInformationProcess, once with ProcessDebugPort Param
+
+----
+
+larger unpacked code regions (ERW):
+- hooking library 
+- section .Zq~ -> does stuff with environment variables (and likely more)
+  - it is written to from section .w-6 @ RVA 0x446f62 (move [ecx+edi], dl)
+  - how is dl calculated, what is the origin? no idea
+  - after it is fully written, a LocalFree breakpoint hits next
+  - then follow some GetModuleHandleA breakpoints that seem to do API lookups (ecx holds pointer to dll name, esi pointer to function name in export table)
+  - looks like it does another integrity check on the written section. because after setting a software breakpoint (int cc) @ supposed dll main RVA 0x1625a, it pops up with the message box and exits (as if started with _noaslr patch)
+
+how to get section .Zq~ contents fast (might miss important stuff!): debug until first bp hit to LocalFree
+- this will have section .Zq~ filled
+  - dumped to section_.Zq~.bin
+  - DllMain likely @ RVA 0x1625a
+- hooking dll is loaded to dynamic ERW section size 0x8000, code starting at offset 0x1000
+  - dumped to exeploration_noaslr_00EE0000.bin
+  - DllMain likely @ RVA 0x1f11
+
+after LocalFree bp hit -> set hardware breakpoints on exec on DllMains
+- hw bp on DllMain .Zq~ will be hit
+
+looks like there is more VirtualAlloc stuff and following GetModuleHandleA API lookups
+-> this could be another dll payload loading?
+- a VirtualAlloc bp hits with PAGE_EXECUTE_READWRITE, size 0x1000
+- set hw breakpoint on access dword
+--> execution stops soon after -> this could be the final payload we are looking for!
+
+---
+
+call @ RVA 0xd4f35 inside .Zq~ will write some bytes to VirtualAlloc'd region, but there seems to be some anti debug/program exits prematurely
+-> put hw breakpoint on execution onto start of this virtualalloc'd region
+   - every bp hit looks like ESI holds a string/export name for a function
+- looks like this program allocates executable pages and copies bytes from Nt* native API functions there and then executes the copies instead of the Nt* native API function.
+- looks like this region only gets this code:
+03220000 | B8 50000000              | mov eax,50                                       | 50:'P'
+03220005 | E9 8B2FA674              | jmp ntdll.77C82F95                               |
+0322000A | B8 50000000              | mov eax,50                                       | 50:'P'
+0322000F | FF25 15002203            | jmp dword ptr ds:[3220015]                       | <- jump back to 0xe40d70 (in .Zq~)
+03220015 | 70 0D                    | jo 3220024                                       |
+03220017 | E4 00                    | in al,0                                          |
+- looks like ntddl!ZwProtectVirtualMemory (eax=0x50) got a trampoline to offset 0xf into the recently allocated memory
+
+--- different attempt:
+
+Executing .\EXEploration.exe without arguments makes it yank "Usage: $0 <password>"
+Executing .\EXEploration.exe with argument A1B2C3D4E5 makes it calc a lot longer (if you would let it run, it will yank "Validation error" and exit).
+- Attached debugger during second execution
+- Pause execution & write a minidump "attached.dmp"
+- Looking at strings in the dump, we can find both strings "Usage: %s <password>" and "Validation error"
+
+With help of windbg opening the attached.dmp, do !address to see memory map.
+0:000> s -a c10000 3a80000 "Usage"
+00d68870  55 73 61 67 65 3a 20 25-73 20 3c 70 61 73 73 77  Usage: %s <passw
+0:000> s -a c10000 3a80000 "Validation"
+00d68888  56 61 6c 69 64 61 74 69-6f 6e 20 65 72 72 6f 72  Validation error
+
+These offsets are inside .rdata section (but not visible in the image on disk!). in dump @ 0xd63000 -> offset 0x5870 / 0x5888 to the beginning of .rdata (noaslr 0x413000 + 0x5870 = 0x418870)
+
+Program arg for test run with A1B2C3D4E5 @
+0:000> s -a c10000 3a80000 "A1B2C3D4E5"
+01cf41f7  41 31 42 32 43 33 44 34-45 35 00 50 00 2d 00 41  A1B2C3D4E5.P.-.A
+01cf4e89  41 31 42 32 43 33 44 34-45 35 00 00 00 00 00 24  A1B2C3D4E5.....$
+03971bf9  41 31 42 32 43 33 44 34-45 35 00 00 00 00 00 9b  A1B2C3D4E5......
+
+first two are in Heap 0, second in Heap 1
+
+Q: at what point in time are those strings already available? (in terms of above breakpoints)
+-> already visible at first LocalFree bp (maybe even earlier) -> between second LocalAlloc (size 0x3e6c) and LocalFree
+   - find code that writes to the string offsets in .rdata with hw write bp
+
+minidump @ localfree (returned to user code) -> localfree.dmp
+dumpulator from there -> breaks at syscall ZwAccessCheck
+
+someone uploaded the sample to VirusTotal, around 17 May as CT23.exe (maybe author)?
+It is detected as VMProtect
+
+It looks like all strings for the protected payload are readable @ LocalFree in .rdata, so the password validation does not seem to be a simple string comparison - at least there is no obviously looking password string in .rdata
+
+The (packer) code seems to be virtualized with VMProtect. At least thats how it seems to be...
+Some parts in .rdata could be shellcode or crypted stuff
+another interesting string is %08x next to Usage/Validation error. Could be used for sscanf possibly?
+
+Manual unpacking guidance for older VMProtect 3.x samples
+
+-Open the binary in x64dbg
+-Enable the VMProtect profile via Plugins→ScyllaHide→Load Profile
+-Run once until you hit the entry point (F9)
+-Set a breakpoint (F2) on GetCommandLineA in the Symbols window
+-Run (F9) until you hit GetCommandLineA
+-Disable the GetCommandLineA breakpoint
+-Place a hardware breakpoint on NtProtectVirtualMemory
+-Keep running (F9) and wait until NtProtectVirtualMemory is called with the .text section for the current binary as parameter in the rdx register
+-Step out until the NtProtectVirtualMemory call finishes
+-Go into Memory Map, and find the sections for your binary
+-Right click the .text section and Set Page Memory Rights
+-Remove execute permissions from all pages
+-Run (F9) and you should arrive at OEP
+-Dump or analyze from there
+
+GetCommandLineA is called from inside sub @ offset 0x1603a in section .Zq~
+Following the hardware breakpoints on ZwVirtualProtect, on the fourth hit of this breakpoint, the Usage %s <password> output is displayed when sample is called without an argument
+
+Following hw bps on ZwVirtualProtect, on/before fifth hit of the bp, Validation error appears 
+
+---
+
+Start sample with arg 11223344 in x64dbg
+set sw bp on kernel32!GetCommandLineA
+run until it
+disable sw bp & set hw exec bp on ntdll!ZwProtectVirtualMemory
+run/f9 until first hit
+peek at .text section -> see some real code near RVA 0x4b6
+
+002114B6 | 837C24 04 02             | cmp dword ptr ss:[esp+4],2                       |
+002114BB | 8B4424 08                | mov eax,dword ptr ss:[esp+8]                     |
+002114BF | 74 12                    | je exeploration.2114D3                           |
+002114C1 | FF30                     | push dword ptr ds:[eax]                          |
+002114C3 | 68 70882200              | push exeploration.228870                         | 228870:"Usage: %s <password>\n\n"
+002114C8 | E8 39FBFFFF              | call exeploration.211006                         |
+002114CD | 59                       | pop ecx                                          |
+002114CE | 33C0                     | xor eax,eax                                      |
+002114D0 | 59                       | pop ecx                                          |
+002114D1 | 40                       | inc eax                                          |
+002114D2 | C3                       | ret                                              |
+002114D3 | FF70 04                  | push dword ptr ds:[eax+4]                        |
+002114D6 | E8 65FBFFFF              | call exeploration.211040                         |
+002114DB | 59                       | pop ecx                                          |
+002114DC | 85C0                     | test eax,eax                                     |
+002114DE | 75 0B                    | jne exeploration.2114EB                          |
+002114E0 | 68 88882200              | push exeploration.228888                         | 228888:"Validation error"
+002114E5 | E8 F0220000              | call exeploration.2137DA                         |
+002114EA | 59                       | pop ecx                                          |
+002114EB | 33C0                     | xor eax,eax                                      |
+002114ED | C3                       | ret                                              |
+
+set sw bp on 0x2114b6 (offset 0x4b6 into .text)
+run/f9 to hit hw bp 2-3 times more until sw bp is hit
+
+actually, the main function is already visible at 0x2114b6 in .text at sw bp hit on GetCommandLineA
+.text section is written to from offset 
+00656F62 | 881439                   | mov byte ptr ds:[ecx+edi],dl                     |
+original main starts at 0x2114b6 (RVA 0x4b6) -> setting hardware bp on access dword on 0x2114b6 will be hit twice, seemingly an encrypted copy and then decryption in place. after second hit, string references are already there usage/validation. This is even before bp on GetCommandLineA is hit.
+
+After three hw bp hits on ZwProtectVirtualMemory (enable after sw bp GetCommandLineA is hit and disabled),
+the main code is executed (sw bp on 0x2114b6 is hit)
+
+do a minidump in this state -> Dumpulator breaks @ Syscall ZwQueryInformationJobObject
+
+check 0x214cd9 -> could this be a normal function?
+
+actually, there is a lot of "normal" looking code with ascii character comparisons, see for example
+00213D8D | 8D49 00                  | lea ecx,dword ptr ds:[ecx]                       |
+00213D90 | 80F9 65                  | cmp cl,65                                        | 65:'e'
+00213D93 | 74 0D                    | je exeploration.213DA2                           |
+00213D95 | 80F9 45                  | cmp cl,45                                        | 45:'E'
+00213D98 | 74 08                    | je exeploration.213DA2                           |
+00213D9A | 8A48 01                  | mov cl,byte ptr ds:[eax+1]                       |
+00213D9D | 40                       | inc eax                                          |
+00213D9E | 84C9                     | test cl,cl                                       |
+00213DA0 | 75 EE                    | jne exeploration.213D90                          |
+
+and
+
+00214175 | 75 E7                    | jne exeploration.21415E                          |
+00214177 | 3C 6A                    | cmp al,6A                                        | 6A:'j'
+00214179 | 0F8F B1000000            | jg exeploration.214230                           |
+0021417F | 0F84 A2000000            | je exeploration.214227                           |
+00214185 | 3C 49                    | cmp al,49                                        | 49:'I'
+00214187 | 74 43                    | je exeploration.2141CC                           |
+00214189 | 3C 4C                    | cmp al,4C                                        | 4C:'L'
+0021418B | 74 33                    | je exeploration.2141C0                           |
+0021418D | 3C 54                    | cmp al,54                                        | 54:'T'
+0021418F | 74 23                    | je exeploration.2141B4                           |
+00214191 | 3C 68                    | cmp al,68                                        | 68:'h'
+00214193 | 0F85 D8000000            | jne exeploration.214271                          |
+00214199 | 8B41 10                  | mov eax,dword ptr ds:[ecx+10]                    |
+0021419C | 8038 68                  | cmp byte ptr ds:[eax],68                         | 68:'h'
+0021419F | 75 0C                    | jne exeploration.2141AD                          |
+
+lots of character checks branch to 0x214271 (mov al, 1)
+
+interesting prologue @ 0x214274
+
+---
+
+dumped EXE with OEP 0x2114b6 as EXEploration_dump.exe -> this won't run as expected, because there is no c-runtime start. Other than that it is runnable
+dumped process as minidump with EIP on 0x2114b6 as main.dmp
+- can be traced with dumpulator et al
+
+0x212070 bp hit twice/several times. longer execution time in call to 0x4xxxx
+bp ExitProcess hit for termination (stopped after validation error)
+
+sw bp GetCommandLineA (once, then disable & enable hw bp ZwProtectVirtualMemory)
+set sw bp on 0x2114b6 (main)
+hit hw bp three times before hitting sw bp 0x2114b6
+
+211746 = EP into .text?
+
+minidump validationerror -> strings -> {vmpflagcted
+0:000> s -a 0x1170000 L1000000 vmp
+012ff415  76 6d 70 66 6c 61 67 63-74 65 64 06 cb 00 00 00  vmpflagcted.....
+
+||2:2:006> db 0x12ff400 0x12ff600
+012ff400  5c f8 2f 01 00 80 1a 01-c8 71 88 ad de 63 47 00  \./......q...cG.
+012ff410  5c f8 2f 01 7b 76 6d 70-66 6c 61 67 63 74 65 64  \./.{vmpflagcted
+012ff420  06 cb 00 00 00 00 00 00-70 53 46 01 00 00 00 00  ........pSF.....
+012ff430  00 00 00 00 c6 cc 45 01-00 00 00 00 00 00 00 00  ......E.........
+012ff440  00 00 00 00 c6 cc 45 01-7e 44 f2 74 00 01 00 00  ......E.~D.t....
+012ff450  ac d3 c5 94 1b df 05 5a-5f 5f 5f 7d 96 30 07 77  .......Z___}.0.w
+012ff460  2c 61 0e ee ba 51 09 99-19 c4 6d 07 72 30 74 33  ,a...Q....m.r0t3
+012ff470  35 a5 63 e9 a3 95 64 9e-32 88 db 0e a4 b8 dc 79  5.c...d.2......y
+
+if string was built in dword (= 4 chars), we got the substrings {vmp flag cted ___} and r0t3
+
+DONE: could be flag{vmpr0t3cted} or flag{vmpr0t3cted___}
+
+---
+
+CTF challenge from Cyberthreat 2023 (EXEploration)
+Link: https://www.cyberthreat23.com/#challenges
+Unknown VMProtect version. No $stub at entrypoint, just a single call into a section named .w-6
+ER sections .text and .Zq~ are empty at beginning
+.Zq~ will receive extensive (obfuscated) code regions. Could be Virtual Machine code.
+.text section will receive unpacked original main function with visible string references from .rdata
+-> password validation function is virtualized though :-/
+Another ERW section will be dynamically allocated and filled with code that resembles some kind of a hooking DLL with code that seems to patch native API functions and lots of seemingly anti-debug/anti-analysis strings (like lots of names of disassemblers and debuggers).
+-> The strings from this section are not-googleable, which is unexpected.
+Example strings:
+> !address
+  BaseAddr EndAddr+1 RgnSize     Type       State                 Protect             Usage
+-----------------------------------------------------------------------------------------------
++   fd0000   fd8000     8000 MEM_PRIVATE MEM_COMMIT  PAGE_EXECUTE_READWRITE             <unknown>  [................]
+
+> s -[l6]sa fd0000 fe0000
+00fd30e4  "VirtualProtectEx failed on ntdll"
+00fd327c  "Malware called ResumeThread"
+00fd3a6c  "HookLibraryx86.dll"
+00fd3a7f  "HookDllData"
+00fd3ba5  "HookedNtMapViewOfSection"
+00fd3bbe  "HookedNtOpenFile"
+00fd3bcf  "HookedNtQueryInformationProcess"
+00fd3c23  "HookedNtQuerySystemInformation"
+00fd3e76  "LdrFindResource_U"
+00fd3e8a  "NtProtectVirtualMemory"
+00fd3ea4  "NtWriteVirtualMemory"
+
+How to get to unpacked main with x32dbg and solve the challenge
+- sw bp on kernel32!GetCommandLineA
+- when hit, disable it and put hw bp on NtProtectVirtualMemory
+- f9/run to hit hw bp three times
+- check .text section, find original main() code @ 0x2114b6 (RVA x4b6)
+- set sw bp on main()
+- while unpacked exe can be dumped, it will be missing the c runtime setup for main to properly work
+- tracing back in ida from 0x2114b6
+  - 0x2115c4 calls 0x2114b6 @ 0x2116a9
+  - 0x211746 jumps to 0x2115c4 @ 0x21174b
+  - both 0x2115c4 and 0x211746 are hit when sw bp are put on them, both do not work as OEP though for dumped exe
+- validation function is 0x211040 called in 0x2114b6 (main) @ 0x2114d6 with param argv[1]
+  - it is virtualized though, enjoy reversing/debugging that
+- put sw bp on 0x2114db (instruction after validation function)
+- f9/run until it is hit
+- minidump validationerror.dmp
+- open minidump in windbg
+- find vmp* string with s -a 0 L3000000 vmp
+- should be in a stack region somehow inaccessible from x32dbg
+- identify region with !address x (in my example 0x12ff415)
+db 12ff400 12ff500
+012ff400  5c f8 2f 01 00 80 1a 01-c8 71 88 ad de 63 47 00  \./......q...cG.
+012ff410  5c f8 2f 01 7b 76 6d 70-66 6c 61 67 63 74 65 64  \./.{vmpflagcted
+012ff420  06 cb 00 00 00 00 00 00-70 53 46 01 00 00 00 00  ........pSF.....
+012ff430  00 00 00 00 c6 cc 45 01-00 00 00 00 00 00 00 00  ......E.........
+012ff440  00 00 00 00 c6 cc 45 01-7e 44 f2 74 00 01 00 00  ......E.~D.t....
+012ff450  ac d3 c5 94 1b df 05 5a-5f 5f 5f 7d 96 30 07 77  .......Z___}.0.w
+012ff460  2c 61 0e ee ba 51 09 99-19 c4 6d 07 72 30 74 33  ,a...Q....m.r0t3
+- guess that flag parts in this stack region are double word (= 4 character) pieces
+- put together flag{vmpr0t3cted} as solution
+- no idea how to get the password for getting the flag on cli
+
+---
+
+Additional ideas:
+- put hardware access dword bp on argv[1] @ 0x133ff28 before entering validation function
+- f9/run
+- hw bp hit @ 0x49088f, where the str pointer is dereferenced
+0049088F | 36:8B11                  | mov edx,dword ptr ss:[ecx]                       | edx:"11223344", [ecx]:"11223344"
+- str ptr is copied to 0x133faca, set hw access word bp on that
+0030677A | 8B0E                     | mov ecx,dword ptr ds:[esi]                       | ecx:"11223344", [esi]:"11223344"
+-> continue following the memory access as it is copied around
+
+

@@ -1,0 +1,11 @@
+- double click in windows throws zip error (interesting)
+- 7zip extracts a bait jpg, but that is empty and irrelevant
+- opening Zipnosis.zip with HxD to find hidden data
+- seems to be a png beginning at offset 0x2fe5 up to and including 0x355b
+- carve out with HxD (save selection)
+- png is slightly corrupt and needs repairs in png header field names
+- magic bytes at beginning reversed: change 47 4e 50 89 to 89 50 4e 47
+- IHDR name reversed: change 52 44 48 49 to 49 48 44 52
+- IEND name reversed: change 44 4e 45 49 to 49 45 4e 44
+
+find flag{z1ps4r3fun}

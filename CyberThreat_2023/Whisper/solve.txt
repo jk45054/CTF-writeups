@@ -1,0 +1,7 @@
+- looks like usb traffic between host and a headset
+- could be audio data, maybe UAC2 encoded or something else
+
+tshark -r Whisper.pcapng -T fields -e usb.iso.data | xxd -r -p > audio.raw
+Import raw into audacity, effect pitch and tempo -> x2 -> done
+
+flag{usbpcap1337}
