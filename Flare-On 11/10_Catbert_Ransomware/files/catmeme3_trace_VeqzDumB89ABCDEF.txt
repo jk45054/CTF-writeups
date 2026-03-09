@@ -1,0 +1,1241 @@
+[*] Loaded 970 bytes vm code from catmeme3.jpg.c4tb, patching key b'VeqzDumB89ABCDEF'
+MEM WRITE: MEM[00] = 6556 ("eV")
+MEM WRITE: MEM[01] = 7a71 ("zq")
+MEM WRITE: MEM[02] = 7544 ("uD")
+MEM WRITE: MEM[03] = 426d ("Bm")
+MEM WRITE: MEM[04] = 3938 ("98")
+MEM WRITE: MEM[05] = 4241 ("BA")
+MEM WRITE: MEM[06] = 4443 ("DC")
+MEM WRITE: MEM[07] = 4645 ("FE")
+MEM READ : MEM[03] = 426d ("Bm")
+----------------------------------------
+PC: 42 OP:1e SHL              SP:3
+CALC SHL: 426d << 30 = 426d000000000000 ("Bm......")
+STACK[1] = 426d000000000000 ("Bm......")
+STACK[0] = 8 (".")
+MEM READ : MEM[02] = 7544 ("uD")
+----------------------------------------
+PC: 4a OP:1e SHL              SP:4
+CALC SHL: 7544 << 20 = 754400000000 ("uD....")
+STACK[2] = 754400000000 ("uD....")
+STACK[1] = 426d000000000000 ("Bm......")
+STACK[0] = 8 (".")
+----------------------------------------
+PC: 4b OP:1b OR               SP:3
+CALC OR: 426d000000000000 | 754400000000 = 426d754400000000 ("BmuD....")
+STACK[1] = 426d754400000000 ("BmuD....")
+STACK[0] = 8 (".")
+MEM READ : MEM[01] = 7a71 ("zq")
+----------------------------------------
+PC: 53 OP:1e SHL              SP:4
+CALC SHL: 7a71 << 10 = 7a710000 ("zq..")
+STACK[2] = 7a710000 ("zq..")
+STACK[1] = 426d754400000000 ("BmuD....")
+STACK[0] = 8 (".")
+----------------------------------------
+PC: 54 OP:1b OR               SP:3
+CALC OR: 426d754400000000 | 7a710000 = 426d75447a710000 ("BmuDzq..")
+STACK[1] = 426d75447a710000 ("BmuDzq..")
+STACK[0] = 8 (".")
+MEM READ : MEM[00] = 6556 ("eV")
+----------------------------------------
+PC: 59 OP:1b OR               SP:3
+CALC OR: 426d75447a710000 | 6556 = 426d75447a716556 ("BmuDzqeV")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 8 (".")
+MEM WRITE: MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[07] = 4645 ("FE")
+----------------------------------------
+PC: 65 OP:1e SHL              SP:3
+CALC SHL: 4645 << 30 = 4645000000000000 ("FE......")
+STACK[1] = 4645000000000000 ("FE......")
+STACK[0] = 9 (".")
+MEM READ : MEM[06] = 4443 ("DC")
+----------------------------------------
+PC: 6d OP:1e SHL              SP:4
+CALC SHL: 4443 << 20 = 444300000000 ("DC....")
+STACK[2] = 444300000000 ("DC....")
+STACK[1] = 4645000000000000 ("FE......")
+STACK[0] = 9 (".")
+----------------------------------------
+PC: 6e OP:1b OR               SP:3
+CALC OR: 4645000000000000 | 444300000000 = 4645444300000000 ("FEDC....")
+STACK[1] = 4645444300000000 ("FEDC....")
+STACK[0] = 9 (".")
+MEM READ : MEM[05] = 4241 ("BA")
+----------------------------------------
+PC: 76 OP:1e SHL              SP:4
+CALC SHL: 4241 << 10 = 42410000 ("BA..")
+STACK[2] = 42410000 ("BA..")
+STACK[1] = 4645444300000000 ("FEDC....")
+STACK[0] = 9 (".")
+----------------------------------------
+PC: 77 OP:1b OR               SP:3
+CALC OR: 4645444300000000 | 42410000 = 4645444342410000 ("FEDCBA..")
+STACK[1] = 4645444342410000 ("FEDCBA..")
+STACK[0] = 9 (".")
+MEM READ : MEM[04] = 3938 ("98")
+----------------------------------------
+PC: 7c OP:1b OR               SP:3
+CALC OR: 4645444342410000 | 3938 = 4645444342413938 ("FEDCBA98")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 9 (".")
+MEM WRITE: MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM WRITE: MEM[1e] = ffff ("..")
+MEM READ : MEM[1e] = ffff ("..")
+MEM WRITE: MEM[1d] = ffff ("..")
+MEM READ : MEM[1e] = ffff ("..")
+----------------------------------------
+PC: 97 OP:1e SHL              SP:3
+CALC SHL: ffff << 10 = ffff0000 ("....")
+STACK[1] = ffff0000 ("....")
+STACK[0] = 1e (".")
+MEM READ : MEM[1d] = ffff ("..")
+----------------------------------------
+PC: 9c OP:1b OR               SP:3
+CALC OR: ffff0000 | ffff = ffffffff ("....")
+STACK[1] = ffffffff ("....")
+STACK[0] = 1e (".")
+MEM WRITE: MEM[1e] = ffffffff ("....")
+MEM WRITE: MEM[1b] = 0 ("")
+MEM WRITE: MEM[1f] = 0 ("")
+MEM WRITE: MEM[20] = 0 ("")
+MEM WRITE: MEM[13] = 1505 ("..")
+MEM READ : MEM[1b] = 0 ("")
+----------------------------------------
+PC: c1 OP:12 CMP_L            SP:2
+CMP: 0 ("") < 4 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC: c2 OP:10 JNZ               10f ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1b] = 0 ("")
+----------------------------------------
+PC: d3 OP: d MUL              SP:4
+CALC MUL: 8 * 0 = 0 ("")
+STACK[2] = 0 ("")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+----------------------------------------
+PC: d4 OP:1f SHR              SP:3
+CALC SHR: 426d75447a716556 >> 0 = 426d75447a716556 ("BmuDzqeV")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1c] = 426d75447a716556 ("BmuDzqeV")
+----------------------------------------
+PC: e0 OP:1c AND              SP:3
+CALC AND: 426d75447a716556 & ff = 56 ("V")
+STACK[1] = 56 ("V")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 56 ("V")
+MEM READ : MEM[13] = 1505 ("..")
+MEM WRITE: MEM[1d] = 1505 ("..")
+MEM READ : MEM[13] = 1505 ("..")
+----------------------------------------
+PC: f4 OP:1e SHL              SP:3
+CALC SHL: 1505 << 5 = 2a0a0 ("...")
+STACK[1] = 2a0a0 ("...")
+STACK[0] = 13 (".")
+MEM READ : MEM[1d] = 1505 ("..")
+----------------------------------------
+PC: f9 OP: 9 ADD              SP:3
+CALC ADD: 2a0a0 + 1505 = 2b5a5 ("...")
+STACK[1] = 2b5a5 ("...")
+STACK[0] = 13 (".")
+MEM READ : MEM[1c] = 56 ("V")
+----------------------------------------
+PC: fe OP: 9 ADD              SP:3
+CALC ADD: 2b5a5 + 56 = 2b5fb ("...")
+STACK[1] = 2b5fb ("...")
+STACK[0] = 13 (".")
+MEM WRITE: MEM[13] = 2b5fb ("...")
+MEM READ : MEM[1b] = 0 ("")
+----------------------------------------
+PC:10a OP: 9 ADD              SP:3
+CALC ADD: 0 + 1 = 1 (".")
+STACK[1] = 1 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 1 (".")
+----------------------------------------
+PC:10c OP: e JMP                ba (".") SP:0
+MEM READ : MEM[1b] = 1 (".")
+----------------------------------------
+PC: c1 OP:12 CMP_L            SP:2
+CMP: 1 (".") < 4 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC: c2 OP:10 JNZ               10f ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1b] = 1 (".")
+----------------------------------------
+PC: d3 OP: d MUL              SP:4
+CALC MUL: 8 * 1 = 8 (".")
+STACK[2] = 8 (".")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+----------------------------------------
+PC: d4 OP:1f SHR              SP:3
+CALC SHR: 426d75447a716556 >> 8 = 426d75447a7165 ("BmuDzqe")
+STACK[1] = 426d75447a7165 ("BmuDzqe")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 426d75447a7165 ("BmuDzqe")
+MEM READ : MEM[1c] = 426d75447a7165 ("BmuDzqe")
+----------------------------------------
+PC: e0 OP:1c AND              SP:3
+CALC AND: 426d75447a7165 & ff = 65 ("e")
+STACK[1] = 65 ("e")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 65 ("e")
+MEM READ : MEM[13] = 2b5fb ("...")
+MEM WRITE: MEM[1d] = 2b5fb ("...")
+MEM READ : MEM[13] = 2b5fb ("...")
+----------------------------------------
+PC: f4 OP:1e SHL              SP:3
+CALC SHL: 2b5fb << 5 = 56bf60 ("V.`")
+STACK[1] = 56bf60 ("V.`")
+STACK[0] = 13 (".")
+MEM READ : MEM[1d] = 2b5fb ("...")
+----------------------------------------
+PC: f9 OP: 9 ADD              SP:3
+CALC ADD: 56bf60 + 2b5fb = 59755b ("Yu[")
+STACK[1] = 59755b ("Yu[")
+STACK[0] = 13 (".")
+MEM READ : MEM[1c] = 65 ("e")
+----------------------------------------
+PC: fe OP: 9 ADD              SP:3
+CALC ADD: 59755b + 65 = 5975c0 ("Yu.")
+STACK[1] = 5975c0 ("Yu.")
+STACK[0] = 13 (".")
+MEM WRITE: MEM[13] = 5975c0 ("Yu.")
+MEM READ : MEM[1b] = 1 (".")
+----------------------------------------
+PC:10a OP: 9 ADD              SP:3
+CALC ADD: 1 + 1 = 2 (".")
+STACK[1] = 2 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 2 (".")
+----------------------------------------
+PC:10c OP: e JMP                ba (".") SP:0
+MEM READ : MEM[1b] = 2 (".")
+----------------------------------------
+PC: c1 OP:12 CMP_L            SP:2
+CMP: 2 (".") < 4 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC: c2 OP:10 JNZ               10f ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1b] = 2 (".")
+----------------------------------------
+PC: d3 OP: d MUL              SP:4
+CALC MUL: 8 * 2 = 10 (".")
+STACK[2] = 10 (".")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+----------------------------------------
+PC: d4 OP:1f SHR              SP:3
+CALC SHR: 426d75447a716556 >> 10 = 426d75447a71 ("BmuDzq")
+STACK[1] = 426d75447a71 ("BmuDzq")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 426d75447a71 ("BmuDzq")
+MEM READ : MEM[1c] = 426d75447a71 ("BmuDzq")
+----------------------------------------
+PC: e0 OP:1c AND              SP:3
+CALC AND: 426d75447a71 & ff = 71 ("q")
+STACK[1] = 71 ("q")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 71 ("q")
+MEM READ : MEM[13] = 5975c0 ("Yu.")
+MEM WRITE: MEM[1d] = 5975c0 ("Yu.")
+MEM READ : MEM[13] = 5975c0 ("Yu.")
+----------------------------------------
+PC: f4 OP:1e SHL              SP:3
+CALC SHL: 5975c0 << 5 = b2eb800 ("....")
+STACK[1] = b2eb800 ("....")
+STACK[0] = 13 (".")
+MEM READ : MEM[1d] = 5975c0 ("Yu.")
+----------------------------------------
+PC: f9 OP: 9 ADD              SP:3
+CALC ADD: b2eb800 + 5975c0 = b882dc0 ("..-.")
+STACK[1] = b882dc0 ("..-.")
+STACK[0] = 13 (".")
+MEM READ : MEM[1c] = 71 ("q")
+----------------------------------------
+PC: fe OP: 9 ADD              SP:3
+CALC ADD: b882dc0 + 71 = b882e31 ("...1")
+STACK[1] = b882e31 ("...1")
+STACK[0] = 13 (".")
+MEM WRITE: MEM[13] = b882e31 ("...1")
+MEM READ : MEM[1b] = 2 (".")
+----------------------------------------
+PC:10a OP: 9 ADD              SP:3
+CALC ADD: 2 + 1 = 3 (".")
+STACK[1] = 3 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 3 (".")
+----------------------------------------
+PC:10c OP: e JMP                ba (".") SP:0
+MEM READ : MEM[1b] = 3 (".")
+----------------------------------------
+PC: c1 OP:12 CMP_L            SP:2
+CMP: 3 (".") < 4 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC: c2 OP:10 JNZ               10f ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1b] = 3 (".")
+----------------------------------------
+PC: d3 OP: d MUL              SP:4
+CALC MUL: 8 * 3 = 18 (".")
+STACK[2] = 18 (".")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+----------------------------------------
+PC: d4 OP:1f SHR              SP:3
+CALC SHR: 426d75447a716556 >> 18 = 426d75447a ("BmuDz")
+STACK[1] = 426d75447a ("BmuDz")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 426d75447a ("BmuDz")
+MEM READ : MEM[1c] = 426d75447a ("BmuDz")
+----------------------------------------
+PC: e0 OP:1c AND              SP:3
+CALC AND: 426d75447a & ff = 7a ("z")
+STACK[1] = 7a ("z")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 7a ("z")
+MEM READ : MEM[13] = b882e31 ("...1")
+MEM WRITE: MEM[1d] = b882e31 ("...1")
+MEM READ : MEM[13] = b882e31 ("...1")
+----------------------------------------
+PC: f4 OP:1e SHL              SP:3
+CALC SHL: b882e31 << 5 = 17105c620 (".q.. ")
+STACK[1] = 17105c620 (".q.. ")
+STACK[0] = 13 (".")
+MEM READ : MEM[1d] = b882e31 ("...1")
+----------------------------------------
+PC: f9 OP: 9 ADD              SP:3
+CALC ADD: 17105c620 + b882e31 = 17c8df451 (".|..Q")
+STACK[1] = 17c8df451 (".|..Q")
+STACK[0] = 13 (".")
+MEM READ : MEM[1c] = 7a ("z")
+----------------------------------------
+PC: fe OP: 9 ADD              SP:3
+CALC ADD: 17c8df451 + 7a = 17c8df4cb (".|...")
+STACK[1] = 17c8df4cb (".|...")
+STACK[0] = 13 (".")
+MEM WRITE: MEM[13] = 17c8df4cb (".|...")
+MEM READ : MEM[1b] = 3 (".")
+----------------------------------------
+PC:10a OP: 9 ADD              SP:3
+CALC ADD: 3 + 1 = 4 (".")
+STACK[1] = 4 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 4 (".")
+----------------------------------------
+PC:10c OP: e JMP                ba (".") SP:0
+MEM READ : MEM[1b] = 4 (".")
+----------------------------------------
+PC: c1 OP:12 CMP_L            SP:2
+CMP: 4 (".") < 4 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC: c2 OP:10 JNZ               10f ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[13] = 17c8df4cb (".|...")
+MEM READ : MEM[1e] = ffffffff ("....")
+----------------------------------------
+PC:11a OP:1c AND              SP:3
+CALC AND: 17c8df4cb & ffffffff = 7c8df4cb ("|...")
+STACK[1] = 7c8df4cb ("|...")
+STACK[0] = 13 (".")
+MEM WRITE: MEM[13] = 7c8df4cb ("|...")
+----------------------------------------
+PC:125 OP:1e SHL              SP:3
+CALC SHL: 7c8d << 10 = 7c8d0000 ("|...")
+STACK[1] = 7c8d0000 ("|...")
+STACK[0] = 14 (".")
+----------------------------------------
+PC:129 OP:1b OR               SP:3
+CALC OR: 7c8d0000 | f4cb = 7c8df4cb ("|...")
+STACK[1] = 7c8df4cb ("|...")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 7c8df4cb ("|...")
+MEM READ : MEM[14] = 7c8df4cb ("|...")
+MEM READ : MEM[13] = 7c8df4cb ("|...")
+----------------------------------------
+PC:133 OP:11 CMP_EQ           SP:2
+CMP: 7c8df4cb ("|...") == 7c8df4cb ("|...") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:134 OP:10 JNZ               143 (".C") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[1f] = 0 ("")
+----------------------------------------
+PC:141 OP: 9 ADD              SP:3
+CALC ADD: 0 + 1 = 1 (".")
+STACK[1] = 1 (".")
+STACK[0] = 1f (".")
+MEM WRITE: MEM[1f] = 1 (".")
+MEM READ : MEM[1f] = 1 (".")
+----------------------------------------
+PC:14a OP:14 CMP_G            SP:2
+CMP: 1 (".") > 0 ("") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:14b OP:10 JNZ               1d9 ("..") SP:1
+[*] JUMP NOT taken
+MEM WRITE: MEM[15] = 0 ("")
+MEM READ : MEM[1b] = 4 (".")
+----------------------------------------
+PC:15c OP:12 CMP_L            SP:2
+CMP: 4 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:15d OP:10 JNZ               1a5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1b] = 4 (".")
+----------------------------------------
+PC:16e OP: d MUL              SP:4
+CALC MUL: 8 * 4 = 20 (" ")
+STACK[2] = 20 (" ")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:16f OP:1f SHR              SP:3
+CALC SHR: 426d75447a716556 >> 20 = 426d7544 ("BmuD")
+STACK[1] = 426d7544 ("BmuD")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 426d7544 ("BmuD")
+MEM READ : MEM[1c] = 426d7544 ("BmuD")
+----------------------------------------
+PC:17b OP:1c AND              SP:3
+CALC AND: 426d7544 & ff = 44 ("D")
+STACK[1] = 44 ("D")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 44 ("D")
+MEM READ : MEM[15] = 0 ("")
+----------------------------------------
+PC:187 OP:21 ROR32            SP:3
+CALC ROR32: ROR32(0, d) = 0 ("")
+STACK[1] = 0 ("")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 0 ("")
+MEM READ : MEM[15] = 0 ("")
+MEM READ : MEM[1c] = 44 ("D")
+----------------------------------------
+PC:194 OP: 9 ADD              SP:3
+CALC ADD: 0 + 44 = 44 ("D")
+STACK[1] = 44 ("D")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 44 ("D")
+MEM READ : MEM[1b] = 4 (".")
+----------------------------------------
+PC:1a0 OP: 9 ADD              SP:3
+CALC ADD: 4 + 1 = 5 (".")
+STACK[1] = 5 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 5 (".")
+----------------------------------------
+PC:1a2 OP: e JMP               155 (".U") SP:0
+MEM READ : MEM[1b] = 5 (".")
+----------------------------------------
+PC:15c OP:12 CMP_L            SP:2
+CMP: 5 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:15d OP:10 JNZ               1a5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1b] = 5 (".")
+----------------------------------------
+PC:16e OP: d MUL              SP:4
+CALC MUL: 8 * 5 = 28 ("(")
+STACK[2] = 28 ("(")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:16f OP:1f SHR              SP:3
+CALC SHR: 426d75447a716556 >> 28 = 426d75 ("Bmu")
+STACK[1] = 426d75 ("Bmu")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 426d75 ("Bmu")
+MEM READ : MEM[1c] = 426d75 ("Bmu")
+----------------------------------------
+PC:17b OP:1c AND              SP:3
+CALC AND: 426d75 & ff = 75 ("u")
+STACK[1] = 75 ("u")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 75 ("u")
+MEM READ : MEM[15] = 44 ("D")
+----------------------------------------
+PC:187 OP:21 ROR32            SP:3
+CALC ROR32: ROR32(44, d) = 2200000 (". ..")
+STACK[1] = 2200000 (". ..")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 2200000 (". ..")
+MEM READ : MEM[15] = 2200000 (". ..")
+MEM READ : MEM[1c] = 75 ("u")
+----------------------------------------
+PC:194 OP: 9 ADD              SP:3
+CALC ADD: 2200000 + 75 = 2200075 (". .u")
+STACK[1] = 2200075 (". .u")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 2200075 (". .u")
+MEM READ : MEM[1b] = 5 (".")
+----------------------------------------
+PC:1a0 OP: 9 ADD              SP:3
+CALC ADD: 5 + 1 = 6 (".")
+STACK[1] = 6 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 6 (".")
+----------------------------------------
+PC:1a2 OP: e JMP               155 (".U") SP:0
+MEM READ : MEM[1b] = 6 (".")
+----------------------------------------
+PC:15c OP:12 CMP_L            SP:2
+CMP: 6 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:15d OP:10 JNZ               1a5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1b] = 6 (".")
+----------------------------------------
+PC:16e OP: d MUL              SP:4
+CALC MUL: 8 * 6 = 30 ("0")
+STACK[2] = 30 ("0")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:16f OP:1f SHR              SP:3
+CALC SHR: 426d75447a716556 >> 30 = 426d ("Bm")
+STACK[1] = 426d ("Bm")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 426d ("Bm")
+MEM READ : MEM[1c] = 426d ("Bm")
+----------------------------------------
+PC:17b OP:1c AND              SP:3
+CALC AND: 426d & ff = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 6d ("m")
+MEM READ : MEM[15] = 2200075 (". .u")
+----------------------------------------
+PC:187 OP:21 ROR32            SP:3
+CALC ROR32: ROR32(2200075, d) = 3a81100 ("....")
+STACK[1] = 3a81100 ("....")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 3a81100 ("....")
+MEM READ : MEM[15] = 3a81100 ("....")
+MEM READ : MEM[1c] = 6d ("m")
+----------------------------------------
+PC:194 OP: 9 ADD              SP:3
+CALC ADD: 3a81100 + 6d = 3a8116d ("...m")
+STACK[1] = 3a8116d ("...m")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 3a8116d ("...m")
+MEM READ : MEM[1b] = 6 (".")
+----------------------------------------
+PC:1a0 OP: 9 ADD              SP:3
+CALC ADD: 6 + 1 = 7 (".")
+STACK[1] = 7 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 7 (".")
+----------------------------------------
+PC:1a2 OP: e JMP               155 (".U") SP:0
+MEM READ : MEM[1b] = 7 (".")
+----------------------------------------
+PC:15c OP:12 CMP_L            SP:2
+CMP: 7 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:15d OP:10 JNZ               1a5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 426d75447a716556 ("BmuDzqeV")
+MEM READ : MEM[1b] = 7 (".")
+----------------------------------------
+PC:16e OP: d MUL              SP:4
+CALC MUL: 8 * 7 = 38 ("8")
+STACK[2] = 38 ("8")
+STACK[1] = 426d75447a716556 ("BmuDzqeV")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:16f OP:1f SHR              SP:3
+CALC SHR: 426d75447a716556 >> 38 = 42 ("B")
+STACK[1] = 42 ("B")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 42 ("B")
+MEM READ : MEM[1c] = 42 ("B")
+----------------------------------------
+PC:17b OP:1c AND              SP:3
+CALC AND: 42 & ff = 42 ("B")
+STACK[1] = 42 ("B")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 42 ("B")
+MEM READ : MEM[15] = 3a8116d ("...m")
+----------------------------------------
+PC:187 OP:21 ROR32            SP:3
+CALC ROR32: ROR32(3a8116d, d) = 8b681d40 (".h.@")
+STACK[1] = 8b681d40 (".h.@")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 8b681d40 (".h.@")
+MEM READ : MEM[15] = 8b681d40 (".h.@")
+MEM READ : MEM[1c] = 42 ("B")
+----------------------------------------
+PC:194 OP: 9 ADD              SP:3
+CALC ADD: 8b681d40 + 42 = 8b681d82 (".h..")
+STACK[1] = 8b681d82 (".h..")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 8b681d82 (".h..")
+MEM READ : MEM[1b] = 7 (".")
+----------------------------------------
+PC:1a0 OP: 9 ADD              SP:3
+CALC ADD: 7 + 1 = 8 (".")
+STACK[1] = 8 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 8 (".")
+----------------------------------------
+PC:1a2 OP: e JMP               155 (".U") SP:0
+MEM READ : MEM[1b] = 8 (".")
+----------------------------------------
+PC:15c OP:12 CMP_L            SP:2
+CMP: 8 (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:15d OP:10 JNZ               1a5 ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 8b681d82 (".h..")
+MEM READ : MEM[1e] = ffffffff ("....")
+----------------------------------------
+PC:1b0 OP:1c AND              SP:3
+CALC AND: 8b681d82 & ffffffff = 8b681d82 (".h..")
+STACK[1] = 8b681d82 (".h..")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 8b681d82 (".h..")
+----------------------------------------
+PC:1bb OP:1e SHL              SP:3
+CALC SHL: 8b68 << 10 = 8b680000 (".h..")
+STACK[1] = 8b680000 (".h..")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:1bf OP:1b OR               SP:3
+CALC OR: 8b680000 | 1d82 = 8b681d82 (".h..")
+STACK[1] = 8b681d82 (".h..")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 8b681d82 (".h..")
+MEM READ : MEM[16] = 8b681d82 (".h..")
+MEM READ : MEM[15] = 8b681d82 (".h..")
+----------------------------------------
+PC:1c9 OP:11 CMP_EQ           SP:2
+CMP: 8b681d82 (".h..") == 8b681d82 (".h..") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1ca OP:10 JNZ               1d9 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[1f] = 1 (".")
+----------------------------------------
+PC:1d7 OP: 9 ADD              SP:3
+CALC ADD: 1 + 1 = 2 (".")
+STACK[1] = 2 (".")
+STACK[0] = 1f (".")
+MEM WRITE: MEM[1f] = 2 (".")
+MEM READ : MEM[1f] = 2 (".")
+----------------------------------------
+PC:1e0 OP:14 CMP_G            SP:2
+CMP: 2 (".") > 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1e1 OP:10 JNZ               29e ("..") SP:1
+[*] JUMP NOT taken
+MEM WRITE: MEM[11] = 1 (".")
+MEM WRITE: MEM[12] = 0 ("")
+MEM WRITE: MEM[17] = 0 ("")
+MEM WRITE: MEM[1b] = 0 ("")
+MEM READ : MEM[1b] = 0 ("")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 0 ("") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1b] = 0 ("")
+----------------------------------------
+PC:219 OP: d MUL              SP:4
+CALC MUL: 8 * 0 = 0 ("")
+STACK[2] = 0 ("")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:21a OP:1f SHR              SP:3
+CALC SHR: 4645444342413938 >> 0 = 4645444342413938 ("FEDCBA98")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1c] = 4645444342413938 ("FEDCBA98")
+----------------------------------------
+PC:226 OP:1c AND              SP:3
+CALC AND: 4645444342413938 & ff = 38 ("8")
+STACK[1] = 38 ("8")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 38 ("8")
+MEM READ : MEM[11] = 1 (".")
+MEM READ : MEM[1c] = 38 ("8")
+----------------------------------------
+PC:233 OP: 9 ADD              SP:3
+CALC ADD: 1 + 38 = 39 ("9")
+STACK[1] = 39 ("9")
+STACK[0] = 11 (".")
+----------------------------------------
+PC:237 OP:1d MOD              SP:3
+CALC MOD: 39 % fff1 = 39 ("9")
+STACK[1] = 39 ("9")
+STACK[0] = 11 (".")
+MEM WRITE: MEM[11] = 39 ("9")
+MEM READ : MEM[12] = 0 ("")
+MEM READ : MEM[11] = 39 ("9")
+----------------------------------------
+PC:244 OP: 9 ADD              SP:3
+CALC ADD: 0 + 39 = 39 ("9")
+STACK[1] = 39 ("9")
+STACK[0] = 12 (".")
+----------------------------------------
+PC:248 OP:1d MOD              SP:3
+CALC MOD: 39 % fff1 = 39 ("9")
+STACK[1] = 39 ("9")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = 39 ("9")
+MEM READ : MEM[1b] = 0 ("")
+----------------------------------------
+PC:254 OP: 9 ADD              SP:3
+CALC ADD: 0 + 1 = 1 (".")
+STACK[1] = 1 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 1 (".")
+----------------------------------------
+PC:256 OP: e JMP               200 ("..") SP:0
+MEM READ : MEM[1b] = 1 (".")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 1 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1b] = 1 (".")
+----------------------------------------
+PC:219 OP: d MUL              SP:4
+CALC MUL: 8 * 1 = 8 (".")
+STACK[2] = 8 (".")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:21a OP:1f SHR              SP:3
+CALC SHR: 4645444342413938 >> 8 = 46454443424139 ("FEDCBA9")
+STACK[1] = 46454443424139 ("FEDCBA9")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 46454443424139 ("FEDCBA9")
+MEM READ : MEM[1c] = 46454443424139 ("FEDCBA9")
+----------------------------------------
+PC:226 OP:1c AND              SP:3
+CALC AND: 46454443424139 & ff = 39 ("9")
+STACK[1] = 39 ("9")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 39 ("9")
+MEM READ : MEM[11] = 39 ("9")
+MEM READ : MEM[1c] = 39 ("9")
+----------------------------------------
+PC:233 OP: 9 ADD              SP:3
+CALC ADD: 39 + 39 = 72 ("r")
+STACK[1] = 72 ("r")
+STACK[0] = 11 (".")
+----------------------------------------
+PC:237 OP:1d MOD              SP:3
+CALC MOD: 72 % fff1 = 72 ("r")
+STACK[1] = 72 ("r")
+STACK[0] = 11 (".")
+MEM WRITE: MEM[11] = 72 ("r")
+MEM READ : MEM[12] = 39 ("9")
+MEM READ : MEM[11] = 72 ("r")
+----------------------------------------
+PC:244 OP: 9 ADD              SP:3
+CALC ADD: 39 + 72 = ab (".")
+STACK[1] = ab (".")
+STACK[0] = 12 (".")
+----------------------------------------
+PC:248 OP:1d MOD              SP:3
+CALC MOD: ab % fff1 = ab (".")
+STACK[1] = ab (".")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = ab (".")
+MEM READ : MEM[1b] = 1 (".")
+----------------------------------------
+PC:254 OP: 9 ADD              SP:3
+CALC ADD: 1 + 1 = 2 (".")
+STACK[1] = 2 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 2 (".")
+----------------------------------------
+PC:256 OP: e JMP               200 ("..") SP:0
+MEM READ : MEM[1b] = 2 (".")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 2 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1b] = 2 (".")
+----------------------------------------
+PC:219 OP: d MUL              SP:4
+CALC MUL: 8 * 2 = 10 (".")
+STACK[2] = 10 (".")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:21a OP:1f SHR              SP:3
+CALC SHR: 4645444342413938 >> 10 = 464544434241 ("FEDCBA")
+STACK[1] = 464544434241 ("FEDCBA")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 464544434241 ("FEDCBA")
+MEM READ : MEM[1c] = 464544434241 ("FEDCBA")
+----------------------------------------
+PC:226 OP:1c AND              SP:3
+CALC AND: 464544434241 & ff = 41 ("A")
+STACK[1] = 41 ("A")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 41 ("A")
+MEM READ : MEM[11] = 72 ("r")
+MEM READ : MEM[1c] = 41 ("A")
+----------------------------------------
+PC:233 OP: 9 ADD              SP:3
+CALC ADD: 72 + 41 = b3 (".")
+STACK[1] = b3 (".")
+STACK[0] = 11 (".")
+----------------------------------------
+PC:237 OP:1d MOD              SP:3
+CALC MOD: b3 % fff1 = b3 (".")
+STACK[1] = b3 (".")
+STACK[0] = 11 (".")
+MEM WRITE: MEM[11] = b3 (".")
+MEM READ : MEM[12] = ab (".")
+MEM READ : MEM[11] = b3 (".")
+----------------------------------------
+PC:244 OP: 9 ADD              SP:3
+CALC ADD: ab + b3 = 15e (".^")
+STACK[1] = 15e (".^")
+STACK[0] = 12 (".")
+----------------------------------------
+PC:248 OP:1d MOD              SP:3
+CALC MOD: 15e % fff1 = 15e (".^")
+STACK[1] = 15e (".^")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = 15e (".^")
+MEM READ : MEM[1b] = 2 (".")
+----------------------------------------
+PC:254 OP: 9 ADD              SP:3
+CALC ADD: 2 + 1 = 3 (".")
+STACK[1] = 3 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 3 (".")
+----------------------------------------
+PC:256 OP: e JMP               200 ("..") SP:0
+MEM READ : MEM[1b] = 3 (".")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 3 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1b] = 3 (".")
+----------------------------------------
+PC:219 OP: d MUL              SP:4
+CALC MUL: 8 * 3 = 18 (".")
+STACK[2] = 18 (".")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:21a OP:1f SHR              SP:3
+CALC SHR: 4645444342413938 >> 18 = 4645444342 ("FEDCB")
+STACK[1] = 4645444342 ("FEDCB")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 4645444342 ("FEDCB")
+MEM READ : MEM[1c] = 4645444342 ("FEDCB")
+----------------------------------------
+PC:226 OP:1c AND              SP:3
+CALC AND: 4645444342 & ff = 42 ("B")
+STACK[1] = 42 ("B")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 42 ("B")
+MEM READ : MEM[11] = b3 (".")
+MEM READ : MEM[1c] = 42 ("B")
+----------------------------------------
+PC:233 OP: 9 ADD              SP:3
+CALC ADD: b3 + 42 = f5 (".")
+STACK[1] = f5 (".")
+STACK[0] = 11 (".")
+----------------------------------------
+PC:237 OP:1d MOD              SP:3
+CALC MOD: f5 % fff1 = f5 (".")
+STACK[1] = f5 (".")
+STACK[0] = 11 (".")
+MEM WRITE: MEM[11] = f5 (".")
+MEM READ : MEM[12] = 15e (".^")
+MEM READ : MEM[11] = f5 (".")
+----------------------------------------
+PC:244 OP: 9 ADD              SP:3
+CALC ADD: 15e + f5 = 253 (".S")
+STACK[1] = 253 (".S")
+STACK[0] = 12 (".")
+----------------------------------------
+PC:248 OP:1d MOD              SP:3
+CALC MOD: 253 % fff1 = 253 (".S")
+STACK[1] = 253 (".S")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = 253 (".S")
+MEM READ : MEM[1b] = 3 (".")
+----------------------------------------
+PC:254 OP: 9 ADD              SP:3
+CALC ADD: 3 + 1 = 4 (".")
+STACK[1] = 4 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 4 (".")
+----------------------------------------
+PC:256 OP: e JMP               200 ("..") SP:0
+MEM READ : MEM[1b] = 4 (".")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 4 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1b] = 4 (".")
+----------------------------------------
+PC:219 OP: d MUL              SP:4
+CALC MUL: 8 * 4 = 20 (" ")
+STACK[2] = 20 (" ")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:21a OP:1f SHR              SP:3
+CALC SHR: 4645444342413938 >> 20 = 46454443 ("FEDC")
+STACK[1] = 46454443 ("FEDC")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 46454443 ("FEDC")
+MEM READ : MEM[1c] = 46454443 ("FEDC")
+----------------------------------------
+PC:226 OP:1c AND              SP:3
+CALC AND: 46454443 & ff = 43 ("C")
+STACK[1] = 43 ("C")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 43 ("C")
+MEM READ : MEM[11] = f5 (".")
+MEM READ : MEM[1c] = 43 ("C")
+----------------------------------------
+PC:233 OP: 9 ADD              SP:3
+CALC ADD: f5 + 43 = 138 (".8")
+STACK[1] = 138 (".8")
+STACK[0] = 11 (".")
+----------------------------------------
+PC:237 OP:1d MOD              SP:3
+CALC MOD: 138 % fff1 = 138 (".8")
+STACK[1] = 138 (".8")
+STACK[0] = 11 (".")
+MEM WRITE: MEM[11] = 138 (".8")
+MEM READ : MEM[12] = 253 (".S")
+MEM READ : MEM[11] = 138 (".8")
+----------------------------------------
+PC:244 OP: 9 ADD              SP:3
+CALC ADD: 253 + 138 = 38b ("..")
+STACK[1] = 38b ("..")
+STACK[0] = 12 (".")
+----------------------------------------
+PC:248 OP:1d MOD              SP:3
+CALC MOD: 38b % fff1 = 38b ("..")
+STACK[1] = 38b ("..")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = 38b ("..")
+MEM READ : MEM[1b] = 4 (".")
+----------------------------------------
+PC:254 OP: 9 ADD              SP:3
+CALC ADD: 4 + 1 = 5 (".")
+STACK[1] = 5 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 5 (".")
+----------------------------------------
+PC:256 OP: e JMP               200 ("..") SP:0
+MEM READ : MEM[1b] = 5 (".")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 5 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1b] = 5 (".")
+----------------------------------------
+PC:219 OP: d MUL              SP:4
+CALC MUL: 8 * 5 = 28 ("(")
+STACK[2] = 28 ("(")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:21a OP:1f SHR              SP:3
+CALC SHR: 4645444342413938 >> 28 = 464544 ("FED")
+STACK[1] = 464544 ("FED")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 464544 ("FED")
+MEM READ : MEM[1c] = 464544 ("FED")
+----------------------------------------
+PC:226 OP:1c AND              SP:3
+CALC AND: 464544 & ff = 44 ("D")
+STACK[1] = 44 ("D")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 44 ("D")
+MEM READ : MEM[11] = 138 (".8")
+MEM READ : MEM[1c] = 44 ("D")
+----------------------------------------
+PC:233 OP: 9 ADD              SP:3
+CALC ADD: 138 + 44 = 17c (".|")
+STACK[1] = 17c (".|")
+STACK[0] = 11 (".")
+----------------------------------------
+PC:237 OP:1d MOD              SP:3
+CALC MOD: 17c % fff1 = 17c (".|")
+STACK[1] = 17c (".|")
+STACK[0] = 11 (".")
+MEM WRITE: MEM[11] = 17c (".|")
+MEM READ : MEM[12] = 38b ("..")
+MEM READ : MEM[11] = 17c (".|")
+----------------------------------------
+PC:244 OP: 9 ADD              SP:3
+CALC ADD: 38b + 17c = 507 ("..")
+STACK[1] = 507 ("..")
+STACK[0] = 12 (".")
+----------------------------------------
+PC:248 OP:1d MOD              SP:3
+CALC MOD: 507 % fff1 = 507 ("..")
+STACK[1] = 507 ("..")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = 507 ("..")
+MEM READ : MEM[1b] = 5 (".")
+----------------------------------------
+PC:254 OP: 9 ADD              SP:3
+CALC ADD: 5 + 1 = 6 (".")
+STACK[1] = 6 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 6 (".")
+----------------------------------------
+PC:256 OP: e JMP               200 ("..") SP:0
+MEM READ : MEM[1b] = 6 (".")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 6 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1b] = 6 (".")
+----------------------------------------
+PC:219 OP: d MUL              SP:4
+CALC MUL: 8 * 6 = 30 ("0")
+STACK[2] = 30 ("0")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:21a OP:1f SHR              SP:3
+CALC SHR: 4645444342413938 >> 30 = 4645 ("FE")
+STACK[1] = 4645 ("FE")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 4645 ("FE")
+MEM READ : MEM[1c] = 4645 ("FE")
+----------------------------------------
+PC:226 OP:1c AND              SP:3
+CALC AND: 4645 & ff = 45 ("E")
+STACK[1] = 45 ("E")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 45 ("E")
+MEM READ : MEM[11] = 17c (".|")
+MEM READ : MEM[1c] = 45 ("E")
+----------------------------------------
+PC:233 OP: 9 ADD              SP:3
+CALC ADD: 17c + 45 = 1c1 ("..")
+STACK[1] = 1c1 ("..")
+STACK[0] = 11 (".")
+----------------------------------------
+PC:237 OP:1d MOD              SP:3
+CALC MOD: 1c1 % fff1 = 1c1 ("..")
+STACK[1] = 1c1 ("..")
+STACK[0] = 11 (".")
+MEM WRITE: MEM[11] = 1c1 ("..")
+MEM READ : MEM[12] = 507 ("..")
+MEM READ : MEM[11] = 1c1 ("..")
+----------------------------------------
+PC:244 OP: 9 ADD              SP:3
+CALC ADD: 507 + 1c1 = 6c8 ("..")
+STACK[1] = 6c8 ("..")
+STACK[0] = 12 (".")
+----------------------------------------
+PC:248 OP:1d MOD              SP:3
+CALC MOD: 6c8 % fff1 = 6c8 ("..")
+STACK[1] = 6c8 ("..")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = 6c8 ("..")
+MEM READ : MEM[1b] = 6 (".")
+----------------------------------------
+PC:254 OP: 9 ADD              SP:3
+CALC ADD: 6 + 1 = 7 (".")
+STACK[1] = 7 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 7 (".")
+----------------------------------------
+PC:256 OP: e JMP               200 ("..") SP:0
+MEM READ : MEM[1b] = 7 (".")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 7 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 4645444342413938 ("FEDCBA98")
+MEM READ : MEM[1b] = 7 (".")
+----------------------------------------
+PC:219 OP: d MUL              SP:4
+CALC MUL: 8 * 7 = 38 ("8")
+STACK[2] = 38 ("8")
+STACK[1] = 4645444342413938 ("FEDCBA98")
+STACK[0] = 1c (".")
+----------------------------------------
+PC:21a OP:1f SHR              SP:3
+CALC SHR: 4645444342413938 >> 38 = 46 ("F")
+STACK[1] = 46 ("F")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 46 ("F")
+MEM READ : MEM[1c] = 46 ("F")
+----------------------------------------
+PC:226 OP:1c AND              SP:3
+CALC AND: 46 & ff = 46 ("F")
+STACK[1] = 46 ("F")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 46 ("F")
+MEM READ : MEM[11] = 1c1 ("..")
+MEM READ : MEM[1c] = 46 ("F")
+----------------------------------------
+PC:233 OP: 9 ADD              SP:3
+CALC ADD: 1c1 + 46 = 207 ("..")
+STACK[1] = 207 ("..")
+STACK[0] = 11 (".")
+----------------------------------------
+PC:237 OP:1d MOD              SP:3
+CALC MOD: 207 % fff1 = 207 ("..")
+STACK[1] = 207 ("..")
+STACK[0] = 11 (".")
+MEM WRITE: MEM[11] = 207 ("..")
+MEM READ : MEM[12] = 6c8 ("..")
+MEM READ : MEM[11] = 207 ("..")
+----------------------------------------
+PC:244 OP: 9 ADD              SP:3
+CALC ADD: 6c8 + 207 = 8cf ("..")
+STACK[1] = 8cf ("..")
+STACK[0] = 12 (".")
+----------------------------------------
+PC:248 OP:1d MOD              SP:3
+CALC MOD: 8cf % fff1 = 8cf ("..")
+STACK[1] = 8cf ("..")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = 8cf ("..")
+MEM READ : MEM[1b] = 7 (".")
+----------------------------------------
+PC:254 OP: 9 ADD              SP:3
+CALC ADD: 7 + 1 = 8 (".")
+STACK[1] = 8 (".")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 8 (".")
+----------------------------------------
+PC:256 OP: e JMP               200 ("..") SP:0
+MEM READ : MEM[1b] = 8 (".")
+----------------------------------------
+PC:207 OP:12 CMP_L            SP:2
+CMP: 8 (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:208 OP:10 JNZ               259 (".Y") SP:1
+[*] JUMP taken
+MEM READ : MEM[12] = 8cf ("..")
+----------------------------------------
+PC:263 OP:1e SHL              SP:3
+CALC SHL: 8cf << 10 = 8cf0000 ("....")
+STACK[1] = 8cf0000 ("....")
+STACK[0] = 17 (".")
+MEM READ : MEM[11] = 207 ("..")
+----------------------------------------
+PC:268 OP:1b OR               SP:3
+CALC OR: 8cf0000 | 207 = 8cf0207 ("....")
+STACK[1] = 8cf0207 ("....")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 8cf0207 ("....")
+MEM READ : MEM[17] = 8cf0207 ("....")
+MEM READ : MEM[1e] = ffffffff ("....")
+----------------------------------------
+PC:275 OP:1c AND              SP:3
+CALC AND: 8cf0207 & ffffffff = 8cf0207 ("....")
+STACK[1] = 8cf0207 ("....")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 8cf0207 ("....")
+----------------------------------------
+PC:280 OP:1e SHL              SP:3
+CALC SHL: f91 << 10 = f910000 ("....")
+STACK[1] = f910000 ("....")
+STACK[0] = 18 (".")
+----------------------------------------
+PC:284 OP:1b OR               SP:3
+CALC OR: f910000 | 374 = f910374 ("...t")
+STACK[1] = f910374 ("...t")
+STACK[0] = 18 (".")
+MEM WRITE: MEM[18] = f910374 ("...t")
+MEM READ : MEM[18] = f910374 ("...t")
+MEM READ : MEM[17] = 8cf0207 ("....")
+----------------------------------------
+PC:28e OP:11 CMP_EQ           SP:2
+CMP: f910374 ("...t") == 8cf0207 ("....") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:28f OP:10 JNZ               29e ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[1f] = 2 (".")
+----------------------------------------
+PC:2a5 OP:14 CMP_G            SP:2
+CMP: 2 (".") > 2 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:2a6 OP:10 JNZ               3b2 ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[1f] = 2 (".")
+----------------------------------------
+PC:3b9 OP:11 CMP_EQ           SP:2
+CMP: 2 (".") == 4 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:3ba OP:10 JNZ               3c4 ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[20] = 0 ("")
+----------------------------------------
+PC:3c8 OP:19 POP_VM_RESULT    SP:1
+[*] VM RESULT set to 0
+----------------------------------------
+PC:3c9 OP:18 EXIT             SP:0

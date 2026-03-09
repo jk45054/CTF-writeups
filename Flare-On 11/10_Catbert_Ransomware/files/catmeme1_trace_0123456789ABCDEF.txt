@@ -1,0 +1,916 @@
+[*] Loaded 601 bytes vm code from catmeme1.jpg.c4tb, patching key b'0123456789ABCDEF'
+[*] Executing one step at pc 0
+PC:  0 OP: 1 PUSH_IMM            0 ("") SP:0
+STACK 0 = 0 ("")
+[*] Executing one step at pc 3
+PC:  3 OP: 1 PUSH_IMM         3130 ("10") SP:1
+STACK 1 = 3130 ("10")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 6
+PC:  6 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 3130 ("10") to addr 0
+[*] Executing one step at pc 7
+PC:  7 OP: 1 PUSH_IMM            1 (".") SP:0
+STACK 0 = 1 (".")
+[*] Executing one step at pc a
+PC:  a OP: 1 PUSH_IMM         3332 ("32") SP:1
+STACK 1 = 3332 ("32")
+STACK 0 = 1 (".")
+[*] Executing one step at pc d
+PC:  d OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 3332 ("32") to addr 1
+[*] Executing one step at pc e
+PC:  e OP: 1 PUSH_IMM            2 (".") SP:0
+STACK 0 = 2 (".")
+[*] Executing one step at pc 11
+PC: 11 OP: 1 PUSH_IMM         3534 ("54") SP:1
+STACK 1 = 3534 ("54")
+STACK 0 = 2 (".")
+[*] Executing one step at pc 14
+PC: 14 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 3534 ("54") to addr 2
+[*] Executing one step at pc 15
+PC: 15 OP: 1 PUSH_IMM            3 (".") SP:0
+STACK 0 = 3 (".")
+[*] Executing one step at pc 18
+PC: 18 OP: 1 PUSH_IMM         3736 ("76") SP:1
+STACK 1 = 3736 ("76")
+STACK 0 = 3 (".")
+[*] Executing one step at pc 1b
+PC: 1b OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 3736 ("76") to addr 3
+[*] Executing one step at pc 1c
+PC: 1c OP: 1 PUSH_IMM            4 (".") SP:0
+STACK 0 = 4 (".")
+[*] Executing one step at pc 1f
+PC: 1f OP: 1 PUSH_IMM         3938 ("98") SP:1
+STACK 1 = 3938 ("98")
+STACK 0 = 4 (".")
+[*] Executing one step at pc 22
+PC: 22 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 3938 ("98") to addr 4
+[*] Executing one step at pc 23
+PC: 23 OP: 1 PUSH_IMM            5 (".") SP:0
+STACK 0 = 5 (".")
+[*] Executing one step at pc 26
+PC: 26 OP: 1 PUSH_IMM         4241 ("BA") SP:1
+STACK 1 = 4241 ("BA")
+STACK 0 = 5 (".")
+[*] Executing one step at pc 29
+PC: 29 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 4241 ("BA") to addr 5
+[*] Executing one step at pc 2a
+PC: 2a OP: 1 PUSH_IMM            6 (".") SP:0
+STACK 0 = 6 (".")
+[*] Executing one step at pc 2d
+PC: 2d OP: 1 PUSH_IMM         4443 ("DC") SP:1
+STACK 1 = 4443 ("DC")
+STACK 0 = 6 (".")
+[*] Executing one step at pc 30
+PC: 30 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 4443 ("DC") to addr 6
+[*] Executing one step at pc 31
+PC: 31 OP: 1 PUSH_IMM            7 (".") SP:0
+STACK 0 = 7 (".")
+[*] Executing one step at pc 34
+PC: 34 OP: 1 PUSH_IMM         4645 ("FE") SP:1
+STACK 1 = 4645 ("FE")
+STACK 0 = 7 (".")
+[*] Executing one step at pc 37
+PC: 37 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 4645 ("FE") to addr 7
+[*] Executing one step at pc 38
+PC: 38 OP: 1 PUSH_IMM            a (".") SP:0
+STACK 0 = a (".")
+[*] Executing one step at pc 3b
+PC: 3b OP: 1 PUSH_IMM         6144 ("aD") SP:1
+STACK 1 = 6144 ("aD")
+STACK 0 = a (".")
+[*] Executing one step at pc 3e
+PC: 3e OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6144 ("aD") to addr a
+[*] Executing one step at pc 3f
+PC: 3f OP: 1 PUSH_IMM            b (".") SP:0
+STACK 0 = b (".")
+[*] Executing one step at pc 42
+PC: 42 OP: 1 PUSH_IMM         7534 ("u4") SP:1
+STACK 1 = 7534 ("u4")
+STACK 0 = b (".")
+[*] Executing one step at pc 45
+PC: 45 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 7534 ("u4") to addr b
+[*] Executing one step at pc 46
+PC: 46 OP: 1 PUSH_IMM            c (".") SP:0
+STACK 0 = c (".")
+[*] Executing one step at pc 49
+PC: 49 OP: 1 PUSH_IMM         6962 ("ib") SP:1
+STACK 1 = 6962 ("ib")
+STACK 0 = c (".")
+[*] Executing one step at pc 4c
+PC: 4c OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6962 ("ib") to addr c
+[*] Executing one step at pc 4d
+PC: 4d OP: 1 PUSH_IMM            d (".") SP:0
+STACK 0 = d (".")
+[*] Executing one step at pc 50
+PC: 50 OP: 1 PUSH_IMM         6c63 ("lc") SP:1
+STACK 1 = 6c63 ("lc")
+STACK 0 = d (".")
+[*] Executing one step at pc 53
+PC: 53 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6c63 ("lc") to addr d
+[*] Executing one step at pc 54
+PC: 54 OP: 1 PUSH_IMM            e (".") SP:0
+STACK 0 = e (".")
+[*] Executing one step at pc 57
+PC: 57 OP: 1 PUSH_IMM         3165 ("1e") SP:1
+STACK 1 = 3165 ("1e")
+STACK 0 = e (".")
+[*] Executing one step at pc 5a
+PC: 5a OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 3165 ("1e") to addr e
+[*] Executing one step at pc 5b
+PC: 5b OP: 1 PUSH_IMM            f (".") SP:0
+STACK 0 = f (".")
+[*] Executing one step at pc 5e
+PC: 5e OP: 1 PUSH_IMM         6669 ("fi") SP:1
+STACK 1 = 6669 ("fi")
+STACK 0 = f (".")
+[*] Executing one step at pc 61
+PC: 61 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6669 ("fi") to addr f
+[*] Executing one step at pc 62
+PC: 62 OP: 1 PUSH_IMM           10 (".") SP:0
+STACK 0 = 10 (".")
+[*] Executing one step at pc 65
+PC: 65 OP: 1 PUSH_IMM         6265 ("be") SP:1
+STACK 1 = 6265 ("be")
+STACK 0 = 10 (".")
+[*] Executing one step at pc 68
+PC: 68 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6265 ("be") to addr 10
+[*] Executing one step at pc 69
+PC: 69 OP: 1 PUSH_IMM           11 (".") SP:0
+STACK 0 = 11 (".")
+[*] Executing one step at pc 6c
+PC: 6c OP: 1 PUSH_IMM         6230 ("b0") SP:1
+STACK 1 = 6230 ("b0")
+STACK 0 = 11 (".")
+[*] Executing one step at pc 6f
+PC: 6f OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6230 ("b0") to addr 11
+[*] Executing one step at pc 70
+PC: 70 OP: 1 PUSH_IMM            8 (".") SP:0
+STACK 0 = 8 (".")
+[*] Executing one step at pc 73
+PC: 73 OP: 1 PUSH_IMM            3 (".") SP:1
+STACK 1 = 3 (".")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 76
+PC: 76 OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 3736 ("76")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 77
+PC: 77 OP: 1 PUSH_IMM           30 ("0") SP:2
+STACK 2 = 30 ("0")
+STACK 1 = 3736 ("76")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 7a
+PC: 7a OP:1e SHL              SP:3
+STACK 1 = 3736000000000000 ("76......")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 7b
+PC: 7b OP: 1 PUSH_IMM            2 (".") SP:2
+STACK 2 = 2 (".")
+STACK 1 = 3736000000000000 ("76......")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 7e
+PC: 7e OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 3534 ("54")
+STACK 1 = 3736000000000000 ("76......")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 7f
+PC: 7f OP: 1 PUSH_IMM           20 (" ") SP:3
+STACK 3 = 20 (" ")
+STACK 2 = 3534 ("54")
+STACK 1 = 3736000000000000 ("76......")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 82
+PC: 82 OP:1e SHL              SP:4
+STACK 2 = 353400000000 ("54....")
+STACK 1 = 3736000000000000 ("76......")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 83
+PC: 83 OP:1b OR               SP:3
+STACK 1 = 3736353400000000 ("7654....")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 84
+PC: 84 OP: 1 PUSH_IMM            1 (".") SP:2
+STACK 2 = 1 (".")
+STACK 1 = 3736353400000000 ("7654....")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 87
+PC: 87 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 3332 ("32")
+STACK 1 = 3736353400000000 ("7654....")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 88
+PC: 88 OP: 1 PUSH_IMM           10 (".") SP:3
+STACK 3 = 10 (".")
+STACK 2 = 3332 ("32")
+STACK 1 = 3736353400000000 ("7654....")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 8b
+PC: 8b OP:1e SHL              SP:4
+STACK 2 = 33320000 ("32..")
+STACK 1 = 3736353400000000 ("7654....")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 8c
+PC: 8c OP:1b OR               SP:3
+STACK 1 = 3736353433320000 ("765432..")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 8d
+PC: 8d OP: 1 PUSH_IMM            0 ("") SP:2
+STACK 2 = 0 ("")
+STACK 1 = 3736353433320000 ("765432..")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 90
+PC: 90 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 3130 ("10")
+STACK 1 = 3736353433320000 ("765432..")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 91
+PC: 91 OP:1b OR               SP:3
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 8 (".")
+[*] Executing one step at pc 92
+PC: 92 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 3736353433323130 ("76543210") to addr 8
+[*] Executing one step at pc 93
+PC: 93 OP: 1 PUSH_IMM            9 (".") SP:0
+STACK 0 = 9 (".")
+[*] Executing one step at pc 96
+PC: 96 OP: 1 PUSH_IMM            7 (".") SP:1
+STACK 1 = 7 (".")
+STACK 0 = 9 (".")
+[*] Executing one step at pc 99
+PC: 99 OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 4645 ("FE")
+STACK 0 = 9 (".")
+[*] Executing one step at pc 9a
+PC: 9a OP: 1 PUSH_IMM           30 ("0") SP:2
+STACK 2 = 30 ("0")
+STACK 1 = 4645 ("FE")
+STACK 0 = 9 (".")
+[*] Executing one step at pc 9d
+PC: 9d OP:1e SHL              SP:3
+STACK 1 = 4645000000000000 ("FE......")
+STACK 0 = 9 (".")
+[*] Executing one step at pc 9e
+PC: 9e OP: 1 PUSH_IMM            6 (".") SP:2
+STACK 2 = 6 (".")
+STACK 1 = 4645000000000000 ("FE......")
+STACK 0 = 9 (".")
+[*] Executing one step at pc a1
+PC: a1 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 4443 ("DC")
+STACK 1 = 4645000000000000 ("FE......")
+STACK 0 = 9 (".")
+[*] Executing one step at pc a2
+PC: a2 OP: 1 PUSH_IMM           20 (" ") SP:3
+STACK 3 = 20 (" ")
+STACK 2 = 4443 ("DC")
+STACK 1 = 4645000000000000 ("FE......")
+STACK 0 = 9 (".")
+[*] Executing one step at pc a5
+PC: a5 OP:1e SHL              SP:4
+STACK 2 = 444300000000 ("DC....")
+STACK 1 = 4645000000000000 ("FE......")
+STACK 0 = 9 (".")
+[*] Executing one step at pc a6
+PC: a6 OP:1b OR               SP:3
+STACK 1 = 4645444300000000 ("FEDC....")
+STACK 0 = 9 (".")
+[*] Executing one step at pc a7
+PC: a7 OP: 1 PUSH_IMM            5 (".") SP:2
+STACK 2 = 5 (".")
+STACK 1 = 4645444300000000 ("FEDC....")
+STACK 0 = 9 (".")
+[*] Executing one step at pc aa
+PC: aa OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 4241 ("BA")
+STACK 1 = 4645444300000000 ("FEDC....")
+STACK 0 = 9 (".")
+[*] Executing one step at pc ab
+PC: ab OP: 1 PUSH_IMM           10 (".") SP:3
+STACK 3 = 10 (".")
+STACK 2 = 4241 ("BA")
+STACK 1 = 4645444300000000 ("FEDC....")
+STACK 0 = 9 (".")
+[*] Executing one step at pc ae
+PC: ae OP:1e SHL              SP:4
+STACK 2 = 42410000 ("BA..")
+STACK 1 = 4645444300000000 ("FEDC....")
+STACK 0 = 9 (".")
+[*] Executing one step at pc af
+PC: af OP:1b OR               SP:3
+STACK 1 = 4645444342410000 ("FEDCBA..")
+STACK 0 = 9 (".")
+[*] Executing one step at pc b0
+PC: b0 OP: 1 PUSH_IMM            4 (".") SP:2
+STACK 2 = 4 (".")
+STACK 1 = 4645444342410000 ("FEDCBA..")
+STACK 0 = 9 (".")
+[*] Executing one step at pc b3
+PC: b3 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 3938 ("98")
+STACK 1 = 4645444342410000 ("FEDCBA..")
+STACK 0 = 9 (".")
+[*] Executing one step at pc b4
+PC: b4 OP:1b OR               SP:3
+STACK 1 = 4645444342413938 ("FEDCBA98")
+STACK 0 = 9 (".")
+[*] Executing one step at pc b5
+PC: b5 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 4645444342413938 ("FEDCBA98") to addr 9
+[*] Executing one step at pc b6
+PC: b6 OP: 1 PUSH_IMM           12 (".") SP:0
+STACK 0 = 12 (".")
+[*] Executing one step at pc b9
+PC: b9 OP: 1 PUSH_IMM            d (".") SP:1
+STACK 1 = d (".")
+STACK 0 = 12 (".")
+[*] Executing one step at pc bc
+PC: bc OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 6c63 ("lc")
+STACK 0 = 12 (".")
+[*] Executing one step at pc bd
+PC: bd OP: 1 PUSH_IMM           30 ("0") SP:2
+STACK 2 = 30 ("0")
+STACK 1 = 6c63 ("lc")
+STACK 0 = 12 (".")
+[*] Executing one step at pc c0
+PC: c0 OP:1e SHL              SP:3
+STACK 1 = 6c63000000000000 ("lc......")
+STACK 0 = 12 (".")
+[*] Executing one step at pc c1
+PC: c1 OP: 1 PUSH_IMM            c (".") SP:2
+STACK 2 = c (".")
+STACK 1 = 6c63000000000000 ("lc......")
+STACK 0 = 12 (".")
+[*] Executing one step at pc c4
+PC: c4 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 6962 ("ib")
+STACK 1 = 6c63000000000000 ("lc......")
+STACK 0 = 12 (".")
+[*] Executing one step at pc c5
+PC: c5 OP: 1 PUSH_IMM           20 (" ") SP:3
+STACK 3 = 20 (" ")
+STACK 2 = 6962 ("ib")
+STACK 1 = 6c63000000000000 ("lc......")
+STACK 0 = 12 (".")
+[*] Executing one step at pc c8
+PC: c8 OP:1e SHL              SP:4
+STACK 2 = 696200000000 ("ib....")
+STACK 1 = 6c63000000000000 ("lc......")
+STACK 0 = 12 (".")
+[*] Executing one step at pc c9
+PC: c9 OP:1b OR               SP:3
+STACK 1 = 6c63696200000000 ("lcib....")
+STACK 0 = 12 (".")
+[*] Executing one step at pc ca
+PC: ca OP: 1 PUSH_IMM            b (".") SP:2
+STACK 2 = b (".")
+STACK 1 = 6c63696200000000 ("lcib....")
+STACK 0 = 12 (".")
+[*] Executing one step at pc cd
+PC: cd OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 7534 ("u4")
+STACK 1 = 6c63696200000000 ("lcib....")
+STACK 0 = 12 (".")
+[*] Executing one step at pc ce
+PC: ce OP: 1 PUSH_IMM           10 (".") SP:3
+STACK 3 = 10 (".")
+STACK 2 = 7534 ("u4")
+STACK 1 = 6c63696200000000 ("lcib....")
+STACK 0 = 12 (".")
+[*] Executing one step at pc d1
+PC: d1 OP:1e SHL              SP:4
+STACK 2 = 75340000 ("u4..")
+STACK 1 = 6c63696200000000 ("lcib....")
+STACK 0 = 12 (".")
+[*] Executing one step at pc d2
+PC: d2 OP:1b OR               SP:3
+STACK 1 = 6c63696275340000 ("lcibu4..")
+STACK 0 = 12 (".")
+[*] Executing one step at pc d3
+PC: d3 OP: 1 PUSH_IMM            a (".") SP:2
+STACK 2 = a (".")
+STACK 1 = 6c63696275340000 ("lcibu4..")
+STACK 0 = 12 (".")
+[*] Executing one step at pc d6
+PC: d6 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 6144 ("aD")
+STACK 1 = 6c63696275340000 ("lcibu4..")
+STACK 0 = 12 (".")
+[*] Executing one step at pc d7
+PC: d7 OP:1b OR               SP:3
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 12 (".")
+[*] Executing one step at pc d8
+PC: d8 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6c63696275346144 ("lcibu4aD") to addr 12
+[*] Executing one step at pc d9
+PC: d9 OP: 1 PUSH_IMM           13 (".") SP:0
+STACK 0 = 13 (".")
+[*] Executing one step at pc dc
+PC: dc OP: 1 PUSH_IMM           11 (".") SP:1
+STACK 1 = 11 (".")
+STACK 0 = 13 (".")
+[*] Executing one step at pc df
+PC: df OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 6230 ("b0")
+STACK 0 = 13 (".")
+[*] Executing one step at pc e0
+PC: e0 OP: 1 PUSH_IMM           30 ("0") SP:2
+STACK 2 = 30 ("0")
+STACK 1 = 6230 ("b0")
+STACK 0 = 13 (".")
+[*] Executing one step at pc e3
+PC: e3 OP:1e SHL              SP:3
+STACK 1 = 6230000000000000 ("b0......")
+STACK 0 = 13 (".")
+[*] Executing one step at pc e4
+PC: e4 OP: 1 PUSH_IMM           10 (".") SP:2
+STACK 2 = 10 (".")
+STACK 1 = 6230000000000000 ("b0......")
+STACK 0 = 13 (".")
+[*] Executing one step at pc e7
+PC: e7 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 6265 ("be")
+STACK 1 = 6230000000000000 ("b0......")
+STACK 0 = 13 (".")
+[*] Executing one step at pc e8
+PC: e8 OP: 1 PUSH_IMM           20 (" ") SP:3
+STACK 3 = 20 (" ")
+STACK 2 = 6265 ("be")
+STACK 1 = 6230000000000000 ("b0......")
+STACK 0 = 13 (".")
+[*] Executing one step at pc eb
+PC: eb OP:1e SHL              SP:4
+STACK 2 = 626500000000 ("be....")
+STACK 1 = 6230000000000000 ("b0......")
+STACK 0 = 13 (".")
+[*] Executing one step at pc ec
+PC: ec OP:1b OR               SP:3
+STACK 1 = 6230626500000000 ("b0be....")
+STACK 0 = 13 (".")
+[*] Executing one step at pc ed
+PC: ed OP: 1 PUSH_IMM            f (".") SP:2
+STACK 2 = f (".")
+STACK 1 = 6230626500000000 ("b0be....")
+STACK 0 = 13 (".")
+[*] Executing one step at pc f0
+PC: f0 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 6669 ("fi")
+STACK 1 = 6230626500000000 ("b0be....")
+STACK 0 = 13 (".")
+[*] Executing one step at pc f1
+PC: f1 OP: 1 PUSH_IMM           10 (".") SP:3
+STACK 3 = 10 (".")
+STACK 2 = 6669 ("fi")
+STACK 1 = 6230626500000000 ("b0be....")
+STACK 0 = 13 (".")
+[*] Executing one step at pc f4
+PC: f4 OP:1e SHL              SP:4
+STACK 2 = 66690000 ("fi..")
+STACK 1 = 6230626500000000 ("b0be....")
+STACK 0 = 13 (".")
+[*] Executing one step at pc f5
+PC: f5 OP:1b OR               SP:3
+STACK 1 = 6230626566690000 ("b0befi..")
+STACK 0 = 13 (".")
+[*] Executing one step at pc f6
+PC: f6 OP: 1 PUSH_IMM            e (".") SP:2
+STACK 2 = e (".")
+STACK 1 = 6230626566690000 ("b0befi..")
+STACK 0 = 13 (".")
+[*] Executing one step at pc f9
+PC: f9 OP: 5 PUSH_IND_MEM     SP:3
+STACK 2 = 3165 ("1e")
+STACK 1 = 6230626566690000 ("b0befi..")
+STACK 0 = 13 (".")
+[*] Executing one step at pc fa
+PC: fa OP:1b OR               SP:3
+STACK 1 = 6230626566693165 ("b0befi1e")
+STACK 0 = 13 (".")
+[*] Executing one step at pc fb
+PC: fb OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6230626566693165 ("b0befi1e") to addr 13
+[*] Executing one step at pc fc
+PC: fc OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc ff
+PC: ff OP: 1 PUSH_IMM            0 ("") SP:1
+STACK 1 = 0 ("")
+STACK 0 = 14 (".")
+[*] Executing one step at pc 102
+PC:102 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 0 ("") to addr 14
+[*] Executing one step at pc 103
+PC:103 OP: 1 PUSH_IMM           18 (".") SP:0
+STACK 0 = 18 (".")
+[*] Executing one step at pc 106
+PC:106 OP: 1 PUSH_IMM            1 (".") SP:1
+STACK 1 = 1 (".")
+STACK 0 = 18 (".")
+[*] Executing one step at pc 109
+PC:109 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 1 (".") to addr 18
+[*] Executing one step at pc 10a
+PC:10a OP: 1 PUSH_IMM           17 (".") SP:0
+STACK 0 = 17 (".")
+[*] Executing one step at pc 10d
+PC:10d OP: 1 PUSH_IMM            0 ("") SP:1
+STACK 1 = 0 ("")
+STACK 0 = 17 (".")
+[*] Executing one step at pc 110
+PC:110 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 0 ("") to addr 17
+[*] Executing one step at pc 111
+PC:111 OP: 1 PUSH_IMM           19 (".") SP:0
+STACK 0 = 19 (".")
+[*] Executing one step at pc 114
+PC:114 OP: 1 PUSH_IMM            0 ("") SP:1
+STACK 1 = 0 ("")
+STACK 0 = 19 (".")
+[*] Executing one step at pc 117
+PC:117 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 0 ("") to addr 19
+[*] Executing one step at pc 118
+PC:118 OP: 1 PUSH_IMM           18 (".") SP:0
+STACK 0 = 18 (".")
+[*] Executing one step at pc 11b
+PC:11b OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 1 (".")
+[*] Executing one step at pc 11c
+PC:11c OP: 1 PUSH_IMM            1 (".") SP:1
+STACK 1 = 1 (".")
+STACK 0 = 1 (".")
+[*] Executing one step at pc 11f
+PC:11f OP:11 CMP_EQ           SP:2
+STACK 0 = 1 (".")
+[*] Executing one step at pc 120
+PC:120 OP:10 JNZ               241 (".A") SP:1
+[*] Executing one step at pc 123
+PC:123 OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc 126
+PC:126 OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 127
+PC:127 OP: 1 PUSH_IMM            8 (".") SP:1
+STACK 1 = 8 (".")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 12a
+PC:12a OP:12 CMP_L            SP:2
+STACK 0 = 1 (".")
+[*] Executing one step at pc 12b
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] Executing one step at pc 12e
+PC:12e OP: 1 PUSH_IMM           15 (".") SP:0
+STACK 0 = 15 (".")
+[*] Executing one step at pc 131
+PC:131 OP: 1 PUSH_IMM            8 (".") SP:1
+STACK 1 = 8 (".")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 134
+PC:134 OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 135
+PC:135 OP: 1 PUSH_IMM            8 (".") SP:2
+STACK 2 = 8 (".")
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 138
+PC:138 OP: 1 PUSH_IMM           14 (".") SP:3
+STACK 3 = 14 (".")
+STACK 2 = 8 (".")
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 13b
+PC:13b OP: 5 PUSH_IND_MEM     SP:4
+STACK 3 = 0 ("")
+STACK 2 = 8 (".")
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 13c
+PC:13c OP: d MUL              SP:4
+STACK 2 = 0 ("")
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 13d
+PC:13d OP:1f SHR              SP:3
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 13e
+PC:13e OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 3736353433323130 ("76543210") to addr 15
+[*] Executing one step at pc 13f
+PC:13f OP: 1 PUSH_IMM           16 (".") SP:0
+STACK 0 = 16 (".")
+[*] Executing one step at pc 142
+PC:142 OP: 1 PUSH_IMM           12 (".") SP:1
+STACK 1 = 12 (".")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 145
+PC:145 OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 146
+PC:146 OP: 1 PUSH_IMM            8 (".") SP:2
+STACK 2 = 8 (".")
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 149
+PC:149 OP: 1 PUSH_IMM           14 (".") SP:3
+STACK 3 = 14 (".")
+STACK 2 = 8 (".")
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 14c
+PC:14c OP: 5 PUSH_IND_MEM     SP:4
+STACK 3 = 0 ("")
+STACK 2 = 8 (".")
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 14d
+PC:14d OP: d MUL              SP:4
+STACK 2 = 0 ("")
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 14e
+PC:14e OP:1f SHR              SP:3
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 14f
+PC:14f OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 6c63696275346144 ("lcibu4aD") to addr 16
+[*] Executing one step at pc 150
+PC:150 OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc 153
+PC:153 OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 154
+PC:154 OP: 1 PUSH_IMM            7 (".") SP:1
+STACK 1 = 7 (".")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 157
+PC:157 OP:14 CMP_G            SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 158
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] Executing one step at pc 17d
+PC:17d OP: 1 PUSH_IMM           15 (".") SP:0
+STACK 0 = 15 (".")
+[*] Executing one step at pc 180
+PC:180 OP: 1 PUSH_IMM           15 (".") SP:1
+STACK 1 = 15 (".")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 183
+PC:183 OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 184
+PC:184 OP: 1 PUSH_IMM           ff (".") SP:2
+STACK 2 = ff (".")
+STACK 1 = 3736353433323130 ("76543210")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 187
+PC:187 OP:1c AND              SP:3
+STACK 1 = 30 ("0")
+STACK 0 = 15 (".")
+[*] Executing one step at pc 188
+PC:188 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 30 ("0") to addr 15
+[*] Executing one step at pc 189
+PC:189 OP: 1 PUSH_IMM           16 (".") SP:0
+STACK 0 = 16 (".")
+[*] Executing one step at pc 18c
+PC:18c OP: 1 PUSH_IMM           16 (".") SP:1
+STACK 1 = 16 (".")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 18f
+PC:18f OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 190
+PC:190 OP: 1 PUSH_IMM           ff (".") SP:2
+STACK 2 = ff (".")
+STACK 1 = 6c63696275346144 ("lcibu4aD")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 193
+PC:193 OP:1c AND              SP:3
+STACK 1 = 44 ("D")
+STACK 0 = 16 (".")
+[*] Executing one step at pc 194
+PC:194 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 44 ("D") to addr 16
+[*] Executing one step at pc 195
+PC:195 OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc 198
+PC:198 OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 199
+PC:199 OP: 1 PUSH_IMM            2 (".") SP:1
+STACK 1 = 2 (".")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 19c
+PC:19c OP:11 CMP_EQ           SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 19d
+PC:19d OP:10 JNZ               1ac ("..") SP:1
+[*] Executing one step at pc 1ac
+PC:1ac OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc 1af
+PC:1af OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1b0
+PC:1b0 OP: 1 PUSH_IMM            9 (".") SP:1
+STACK 1 = 9 (".")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1b3
+PC:1b3 OP:11 CMP_EQ           SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1b4
+PC:1b4 OP:10 JNZ               1c3 ("..") SP:1
+[*] Executing one step at pc 1c3
+PC:1c3 OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc 1c6
+PC:1c6 OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1c7
+PC:1c7 OP: 1 PUSH_IMM            d (".") SP:1
+STACK 1 = d (".")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1ca
+PC:1ca OP:11 CMP_EQ           SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1cb
+PC:1cb OP:10 JNZ               1da ("..") SP:1
+[*] Executing one step at pc 1da
+PC:1da OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc 1dd
+PC:1dd OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1de
+PC:1de OP: 1 PUSH_IMM            f (".") SP:1
+STACK 1 = f (".")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1e1
+PC:1e1 OP:11 CMP_EQ           SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1e2
+PC:1e2 OP:10 JNZ               1f1 ("..") SP:1
+[*] Executing one step at pc 1f1
+PC:1f1 OP: 1 PUSH_IMM           15 (".") SP:0
+STACK 0 = 15 (".")
+[*] Executing one step at pc 1f4
+PC:1f4 OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 30 ("0")
+[*] Executing one step at pc 1f5
+PC:1f5 OP: 1 PUSH_IMM           16 (".") SP:1
+STACK 1 = 16 (".")
+STACK 0 = 30 ("0")
+[*] Executing one step at pc 1f8
+PC:1f8 OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 44 ("D")
+STACK 0 = 30 ("0")
+[*] Executing one step at pc 1f9
+PC:1f9 OP:11 CMP_EQ           SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1fa
+PC:1fa OP: 1 PUSH_IMM            0 ("") SP:1
+STACK 1 = 0 ("")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 1fd
+PC:1fd OP:11 CMP_EQ           SP:2
+STACK 0 = 1 (".")
+[*] Executing one step at pc 1fe
+PC:1fe OP:10 JNZ               208 ("..") SP:1
+[*] Executing one step at pc 201
+PC:201 OP: 1 PUSH_IMM           18 (".") SP:0
+STACK 0 = 18 (".")
+[*] Executing one step at pc 204
+PC:204 OP: 1 PUSH_IMM            0 ("") SP:1
+STACK 1 = 0 ("")
+STACK 0 = 18 (".")
+[*] Executing one step at pc 207
+PC:207 OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 0 ("") to addr 18
+[*] Executing one step at pc 208
+PC:208 OP: 1 PUSH_IMM           15 (".") SP:0
+STACK 0 = 15 (".")
+[*] Executing one step at pc 20b
+PC:20b OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 30 ("0")
+[*] Executing one step at pc 20c
+PC:20c OP: 1 PUSH_IMM           16 (".") SP:1
+STACK 1 = 16 (".")
+STACK 0 = 30 ("0")
+[*] Executing one step at pc 20f
+PC:20f OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 44 ("D")
+STACK 0 = 30 ("0")
+[*] Executing one step at pc 210
+PC:210 OP:11 CMP_EQ           SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 211
+PC:211 OP:10 JNZ               220 (". ") SP:1
+[*] Executing one step at pc 220
+PC:220 OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc 223
+PC:223 OP: 1 PUSH_IMM           14 (".") SP:1
+STACK 1 = 14 (".")
+STACK 0 = 14 (".")
+[*] Executing one step at pc 226
+PC:226 OP: 5 PUSH_IND_MEM     SP:2
+STACK 1 = 0 ("")
+STACK 0 = 14 (".")
+[*] Executing one step at pc 227
+PC:227 OP: 1 PUSH_IMM            1 (".") SP:2
+STACK 2 = 1 (".")
+STACK 1 = 0 ("")
+STACK 0 = 14 (".")
+[*] Executing one step at pc 22a
+PC:22a OP: 9 ADD              SP:3
+STACK 1 = 1 (".")
+STACK 0 = 14 (".")
+[*] Executing one step at pc 22b
+PC:22b OP: 6 POP_IND_MEM      SP:2
+MEM WRITE 1 (".") to addr 14
+[*] Executing one step at pc 22c
+PC:22c OP: 1 PUSH_IMM           14 (".") SP:0
+STACK 0 = 14 (".")
+[*] Executing one step at pc 22f
+PC:22f OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 1 (".")
+[*] Executing one step at pc 230
+PC:230 OP: 1 PUSH_IMM            f (".") SP:1
+STACK 1 = f (".")
+STACK 0 = 1 (".")
+[*] Executing one step at pc 233
+PC:233 OP:14 CMP_G            SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 234
+PC:234 OP:10 JNZ               23e (".>") SP:1
+[*] Executing one step at pc 23e
+PC:23e OP: e JMP               118 ("..") SP:0
+[*] Executing one step at pc 118
+PC:118 OP: 1 PUSH_IMM           18 (".") SP:0
+STACK 0 = 18 (".")
+[*] Executing one step at pc 11b
+PC:11b OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 11c
+PC:11c OP: 1 PUSH_IMM            1 (".") SP:1
+STACK 1 = 1 (".")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 11f
+PC:11f OP:11 CMP_EQ           SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 120
+PC:120 OP:10 JNZ               241 (".A") SP:1
+[*] Executing one step at pc 241
+PC:241 OP: 1 PUSH_IMM           17 (".") SP:0
+STACK 0 = 17 (".")
+[*] Executing one step at pc 244
+PC:244 OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 245
+PC:245 OP: 1 PUSH_IMM           10 (".") SP:1
+STACK 1 = 10 (".")
+STACK 0 = 0 ("")
+[*] Executing one step at pc 248
+PC:248 OP:11 CMP_EQ           SP:2
+STACK 0 = 0 ("")
+[*] Executing one step at pc 249
+PC:249 OP:10 JNZ               253 (".S") SP:1
+[*] Executing one step at pc 253
+PC:253 OP: 1 PUSH_IMM           19 (".") SP:0
+STACK 0 = 19 (".")
+[*] Executing one step at pc 256
+PC:256 OP: 5 PUSH_IND_MEM     SP:1
+STACK 0 = 0 ("")
+[*] Executing one step at pc 257
+PC:257 OP:19 POP_VM_RESULT    SP:1
+[*] VM RESULT set to 0
+[*] Executing one step at pc 258
+PC:258 OP:18 EXIT             SP:0

@@ -1,0 +1,479 @@
+[*] Loaded 970 bytes vm code from catmeme3.jpg.c4tb, patching key b'0123456789ABCDEF'
+EA:  0 OP: 1 PUSH_IMM            0 ("")
+EA:  3 OP: 1 PUSH_IMM         3130 ("10")
+EA:  6 OP: 6 POP_IND_MEM     
+EA:  7 OP: 1 PUSH_IMM            1 (".")
+EA:  a OP: 1 PUSH_IMM         3332 ("32")
+EA:  d OP: 6 POP_IND_MEM     
+EA:  e OP: 1 PUSH_IMM            2 (".")
+EA: 11 OP: 1 PUSH_IMM         3534 ("54")
+EA: 14 OP: 6 POP_IND_MEM     
+EA: 15 OP: 1 PUSH_IMM            3 (".")
+EA: 18 OP: 1 PUSH_IMM         3736 ("76")
+EA: 1b OP: 6 POP_IND_MEM     
+EA: 1c OP: 1 PUSH_IMM            4 (".")
+EA: 1f OP: 1 PUSH_IMM         3938 ("98")
+EA: 22 OP: 6 POP_IND_MEM     
+EA: 23 OP: 1 PUSH_IMM            5 (".")
+EA: 26 OP: 1 PUSH_IMM         4241 ("BA")
+EA: 29 OP: 6 POP_IND_MEM     
+EA: 2a OP: 1 PUSH_IMM            6 (".")
+EA: 2d OP: 1 PUSH_IMM         4443 ("DC")
+EA: 30 OP: 6 POP_IND_MEM     
+EA: 31 OP: 1 PUSH_IMM            7 (".")
+EA: 34 OP: 1 PUSH_IMM         4645 ("FE")
+EA: 37 OP: 6 POP_IND_MEM     
+EA: 38 OP: 1 PUSH_IMM            8 (".")
+EA: 3b OP: 1 PUSH_IMM            3 (".")
+EA: 3e OP: 5 PUSH_IND_MEM    
+EA: 3f OP: 1 PUSH_IMM           30 ("0")
+EA: 42 OP:1e SHL             
+EA: 43 OP: 1 PUSH_IMM            2 (".")
+EA: 46 OP: 5 PUSH_IND_MEM    
+EA: 47 OP: 1 PUSH_IMM           20 (" ")
+EA: 4a OP:1e SHL             
+EA: 4b OP:1b OR              
+EA: 4c OP: 1 PUSH_IMM            1 (".")
+EA: 4f OP: 5 PUSH_IND_MEM    
+EA: 50 OP: 1 PUSH_IMM           10 (".")
+EA: 53 OP:1e SHL             
+EA: 54 OP:1b OR              
+EA: 55 OP: 1 PUSH_IMM            0 ("")
+EA: 58 OP: 5 PUSH_IND_MEM    
+EA: 59 OP:1b OR              
+EA: 5a OP: 6 POP_IND_MEM     
+EA: 5b OP: 1 PUSH_IMM            9 (".")
+EA: 5e OP: 1 PUSH_IMM            7 (".")
+EA: 61 OP: 5 PUSH_IND_MEM    
+EA: 62 OP: 1 PUSH_IMM           30 ("0")
+EA: 65 OP:1e SHL             
+EA: 66 OP: 1 PUSH_IMM            6 (".")
+EA: 69 OP: 5 PUSH_IND_MEM    
+EA: 6a OP: 1 PUSH_IMM           20 (" ")
+EA: 6d OP:1e SHL             
+EA: 6e OP:1b OR              
+EA: 6f OP: 1 PUSH_IMM            5 (".")
+EA: 72 OP: 5 PUSH_IND_MEM    
+EA: 73 OP: 1 PUSH_IMM           10 (".")
+EA: 76 OP:1e SHL             
+EA: 77 OP:1b OR              
+EA: 78 OP: 1 PUSH_IMM            4 (".")
+EA: 7b OP: 5 PUSH_IND_MEM    
+EA: 7c OP:1b OR              
+EA: 7d OP: 6 POP_IND_MEM     
+EA: 7e OP: 1 PUSH_IMM           1e (".")
+EA: 81 OP: 1 PUSH_IMM         ffff ("..")
+EA: 84 OP: 6 POP_IND_MEM     
+EA: 85 OP: 1 PUSH_IMM           1d (".")
+EA: 88 OP: 1 PUSH_IMM           1e (".")
+EA: 8b OP: 5 PUSH_IND_MEM    
+EA: 8c OP: 6 POP_IND_MEM     
+EA: 8d OP: 1 PUSH_IMM           1e (".")
+EA: 90 OP: 1 PUSH_IMM           1e (".")
+EA: 93 OP: 5 PUSH_IND_MEM    
+EA: 94 OP: 1 PUSH_IMM           10 (".")
+EA: 97 OP:1e SHL             
+EA: 98 OP: 1 PUSH_IMM           1d (".")
+EA: 9b OP: 5 PUSH_IND_MEM    
+EA: 9c OP:1b OR              
+EA: 9d OP: 6 POP_IND_MEM     
+EA: 9e OP: 1 PUSH_IMM           1b (".")
+EA: a1 OP: 1 PUSH_IMM            0 ("")
+EA: a4 OP: 6 POP_IND_MEM     
+EA: a5 OP: 1 PUSH_IMM           1f (".")
+EA: a8 OP: 1 PUSH_IMM            0 ("")
+EA: ab OP: 6 POP_IND_MEM     
+EA: ac OP: 1 PUSH_IMM           20 (" ")
+EA: af OP: 1 PUSH_IMM            0 ("")
+EA: b2 OP: 6 POP_IND_MEM     
+EA: b3 OP: 1 PUSH_IMM           13 (".")
+EA: b6 OP: 1 PUSH_IMM         1505 ("..")
+EA: b9 OP: 6 POP_IND_MEM     
+EA: ba OP: 1 PUSH_IMM           1b (".")
+EA: bd OP: 5 PUSH_IND_MEM    
+EA: be OP: 1 PUSH_IMM            4 (".")
+EA: c1 OP:12 CMP_L           
+EA: c2 OP:10 JNZ               10f ("..")
+EA: c5 OP: 1 PUSH_IMM           1c (".")
+EA: c8 OP: 1 PUSH_IMM            8 (".")
+EA: cb OP: 5 PUSH_IND_MEM    
+EA: cc OP: 1 PUSH_IMM            8 (".")
+EA: cf OP: 1 PUSH_IMM           1b (".")
+EA: d2 OP: 5 PUSH_IND_MEM    
+EA: d3 OP: d MUL             
+EA: d4 OP:1f SHR             
+EA: d5 OP: 6 POP_IND_MEM     
+EA: d6 OP: 1 PUSH_IMM           1c (".")
+EA: d9 OP: 1 PUSH_IMM           1c (".")
+EA: dc OP: 5 PUSH_IND_MEM    
+EA: dd OP: 1 PUSH_IMM           ff (".")
+EA: e0 OP:1c AND             
+EA: e1 OP: 6 POP_IND_MEM     
+EA: e2 OP: 1 PUSH_IMM           1d (".")
+EA: e5 OP: 1 PUSH_IMM           13 (".")
+EA: e8 OP: 5 PUSH_IND_MEM    
+EA: e9 OP: 6 POP_IND_MEM     
+EA: ea OP: 1 PUSH_IMM           13 (".")
+EA: ed OP: 1 PUSH_IMM           13 (".")
+EA: f0 OP: 5 PUSH_IND_MEM    
+EA: f1 OP: 1 PUSH_IMM            5 (".")
+EA: f4 OP:1e SHL             
+EA: f5 OP: 1 PUSH_IMM           1d (".")
+EA: f8 OP: 5 PUSH_IND_MEM    
+EA: f9 OP: 9 ADD             
+EA: fa OP: 1 PUSH_IMM           1c (".")
+EA: fd OP: 5 PUSH_IND_MEM    
+EA: fe OP: 9 ADD             
+EA: ff OP: 6 POP_IND_MEM     
+EA:100 OP: 1 PUSH_IMM           1b (".")
+EA:103 OP: 1 PUSH_IMM           1b (".")
+EA:106 OP: 5 PUSH_IND_MEM    
+EA:107 OP: 1 PUSH_IMM            1 (".")
+EA:10a OP: 9 ADD             
+EA:10b OP: 6 POP_IND_MEM     
+EA:10c OP: e JMP                ba (".")
+EA:10f OP: 1 PUSH_IMM           13 (".")
+EA:112 OP: 1 PUSH_IMM           13 (".")
+EA:115 OP: 5 PUSH_IND_MEM    
+EA:116 OP: 1 PUSH_IMM           1e (".")
+EA:119 OP: 5 PUSH_IND_MEM    
+EA:11a OP:1c AND             
+EA:11b OP: 6 POP_IND_MEM     
+EA:11c OP: 1 PUSH_IMM           14 (".")
+EA:11f OP: 1 PUSH_IMM         7c8d ("|.")
+EA:122 OP: 1 PUSH_IMM           10 (".")
+EA:125 OP:1e SHL             
+EA:126 OP: 1 PUSH_IMM         f4cb ("..")
+EA:129 OP:1b OR              
+EA:12a OP: 6 POP_IND_MEM     
+EA:12b OP: 1 PUSH_IMM           14 (".")
+EA:12e OP: 5 PUSH_IND_MEM    
+EA:12f OP: 1 PUSH_IMM           13 (".")
+EA:132 OP: 5 PUSH_IND_MEM    
+EA:133 OP:11 CMP_EQ          
+EA:134 OP:10 JNZ               143 (".C")
+EA:137 OP: 1 PUSH_IMM           1f (".")
+EA:13a OP: 1 PUSH_IMM           1f (".")
+EA:13d OP: 5 PUSH_IND_MEM    
+EA:13e OP: 1 PUSH_IMM            1 (".")
+EA:141 OP: 9 ADD             
+EA:142 OP: 6 POP_IND_MEM     
+EA:143 OP: 1 PUSH_IMM           1f (".")
+EA:146 OP: 5 PUSH_IND_MEM    
+EA:147 OP: 1 PUSH_IMM            0 ("")
+EA:14a OP:14 CMP_G           
+EA:14b OP:10 JNZ               1d9 ("..")
+EA:14e OP: 1 PUSH_IMM           15 (".")
+EA:151 OP: 1 PUSH_IMM            0 ("")
+EA:154 OP: 6 POP_IND_MEM     
+EA:155 OP: 1 PUSH_IMM           1b (".")
+EA:158 OP: 5 PUSH_IND_MEM    
+EA:159 OP: 1 PUSH_IMM            8 (".")
+EA:15c OP:12 CMP_L           
+EA:15d OP:10 JNZ               1a5 ("..")
+EA:160 OP: 1 PUSH_IMM           1c (".")
+EA:163 OP: 1 PUSH_IMM            8 (".")
+EA:166 OP: 5 PUSH_IND_MEM    
+EA:167 OP: 1 PUSH_IMM            8 (".")
+EA:16a OP: 1 PUSH_IMM           1b (".")
+EA:16d OP: 5 PUSH_IND_MEM    
+EA:16e OP: d MUL             
+EA:16f OP:1f SHR             
+EA:170 OP: 6 POP_IND_MEM     
+EA:171 OP: 1 PUSH_IMM           1c (".")
+EA:174 OP: 1 PUSH_IMM           1c (".")
+EA:177 OP: 5 PUSH_IND_MEM    
+EA:178 OP: 1 PUSH_IMM           ff (".")
+EA:17b OP:1c AND             
+EA:17c OP: 6 POP_IND_MEM     
+EA:17d OP: 1 PUSH_IMM           15 (".")
+EA:180 OP: 1 PUSH_IMM           15 (".")
+EA:183 OP: 5 PUSH_IND_MEM    
+EA:184 OP: 1 PUSH_IMM            d (".")
+EA:187 OP:21 ROR32           
+EA:188 OP: 6 POP_IND_MEM     
+EA:189 OP: 1 PUSH_IMM           15 (".")
+EA:18c OP: 1 PUSH_IMM           15 (".")
+EA:18f OP: 5 PUSH_IND_MEM    
+EA:190 OP: 1 PUSH_IMM           1c (".")
+EA:193 OP: 5 PUSH_IND_MEM    
+EA:194 OP: 9 ADD             
+EA:195 OP: 6 POP_IND_MEM     
+EA:196 OP: 1 PUSH_IMM           1b (".")
+EA:199 OP: 1 PUSH_IMM           1b (".")
+EA:19c OP: 5 PUSH_IND_MEM    
+EA:19d OP: 1 PUSH_IMM            1 (".")
+EA:1a0 OP: 9 ADD             
+EA:1a1 OP: 6 POP_IND_MEM     
+EA:1a2 OP: e JMP               155 (".U")
+EA:1a5 OP: 1 PUSH_IMM           15 (".")
+EA:1a8 OP: 1 PUSH_IMM           15 (".")
+EA:1ab OP: 5 PUSH_IND_MEM    
+EA:1ac OP: 1 PUSH_IMM           1e (".")
+EA:1af OP: 5 PUSH_IND_MEM    
+EA:1b0 OP:1c AND             
+EA:1b1 OP: 6 POP_IND_MEM     
+EA:1b2 OP: 1 PUSH_IMM           16 (".")
+EA:1b5 OP: 1 PUSH_IMM         8b68 (".h")
+EA:1b8 OP: 1 PUSH_IMM           10 (".")
+EA:1bb OP:1e SHL             
+EA:1bc OP: 1 PUSH_IMM         1d82 ("..")
+EA:1bf OP:1b OR              
+EA:1c0 OP: 6 POP_IND_MEM     
+EA:1c1 OP: 1 PUSH_IMM           16 (".")
+EA:1c4 OP: 5 PUSH_IND_MEM    
+EA:1c5 OP: 1 PUSH_IMM           15 (".")
+EA:1c8 OP: 5 PUSH_IND_MEM    
+EA:1c9 OP:11 CMP_EQ          
+EA:1ca OP:10 JNZ               1d9 ("..")
+EA:1cd OP: 1 PUSH_IMM           1f (".")
+EA:1d0 OP: 1 PUSH_IMM           1f (".")
+EA:1d3 OP: 5 PUSH_IND_MEM    
+EA:1d4 OP: 1 PUSH_IMM            1 (".")
+EA:1d7 OP: 9 ADD             
+EA:1d8 OP: 6 POP_IND_MEM     
+EA:1d9 OP: 1 PUSH_IMM           1f (".")
+EA:1dc OP: 5 PUSH_IND_MEM    
+EA:1dd OP: 1 PUSH_IMM            1 (".")
+EA:1e0 OP:14 CMP_G           
+EA:1e1 OP:10 JNZ               29e ("..")
+EA:1e4 OP: 1 PUSH_IMM           11 (".")
+EA:1e7 OP: 1 PUSH_IMM            1 (".")
+EA:1ea OP: 6 POP_IND_MEM     
+EA:1eb OP: 1 PUSH_IMM           12 (".")
+EA:1ee OP: 1 PUSH_IMM            0 ("")
+EA:1f1 OP: 6 POP_IND_MEM     
+EA:1f2 OP: 1 PUSH_IMM           17 (".")
+EA:1f5 OP: 1 PUSH_IMM            0 ("")
+EA:1f8 OP: 6 POP_IND_MEM     
+EA:1f9 OP: 1 PUSH_IMM           1b (".")
+EA:1fc OP: 1 PUSH_IMM            0 ("")
+EA:1ff OP: 6 POP_IND_MEM     
+EA:200 OP: 1 PUSH_IMM           1b (".")
+EA:203 OP: 5 PUSH_IND_MEM    
+EA:204 OP: 1 PUSH_IMM            8 (".")
+EA:207 OP:12 CMP_L           
+EA:208 OP:10 JNZ               259 (".Y")
+EA:20b OP: 1 PUSH_IMM           1c (".")
+EA:20e OP: 1 PUSH_IMM            9 (".")
+EA:211 OP: 5 PUSH_IND_MEM    
+EA:212 OP: 1 PUSH_IMM            8 (".")
+EA:215 OP: 1 PUSH_IMM           1b (".")
+EA:218 OP: 5 PUSH_IND_MEM    
+EA:219 OP: d MUL             
+EA:21a OP:1f SHR             
+EA:21b OP: 6 POP_IND_MEM     
+EA:21c OP: 1 PUSH_IMM           1c (".")
+EA:21f OP: 1 PUSH_IMM           1c (".")
+EA:222 OP: 5 PUSH_IND_MEM    
+EA:223 OP: 1 PUSH_IMM           ff (".")
+EA:226 OP:1c AND             
+EA:227 OP: 6 POP_IND_MEM     
+EA:228 OP: 1 PUSH_IMM           11 (".")
+EA:22b OP: 1 PUSH_IMM           11 (".")
+EA:22e OP: 5 PUSH_IND_MEM    
+EA:22f OP: 1 PUSH_IMM           1c (".")
+EA:232 OP: 5 PUSH_IND_MEM    
+EA:233 OP: 9 ADD             
+EA:234 OP: 1 PUSH_IMM         fff1 ("..")
+EA:237 OP:1d MOD             
+EA:238 OP: 6 POP_IND_MEM     
+EA:239 OP: 1 PUSH_IMM           12 (".")
+EA:23c OP: 1 PUSH_IMM           12 (".")
+EA:23f OP: 5 PUSH_IND_MEM    
+EA:240 OP: 1 PUSH_IMM           11 (".")
+EA:243 OP: 5 PUSH_IND_MEM    
+EA:244 OP: 9 ADD             
+EA:245 OP: 1 PUSH_IMM         fff1 ("..")
+EA:248 OP:1d MOD             
+EA:249 OP: 6 POP_IND_MEM     
+EA:24a OP: 1 PUSH_IMM           1b (".")
+EA:24d OP: 1 PUSH_IMM           1b (".")
+EA:250 OP: 5 PUSH_IND_MEM    
+EA:251 OP: 1 PUSH_IMM            1 (".")
+EA:254 OP: 9 ADD             
+EA:255 OP: 6 POP_IND_MEM     
+EA:256 OP: e JMP               200 ("..")
+EA:259 OP: 1 PUSH_IMM           17 (".")
+EA:25c OP: 1 PUSH_IMM           12 (".")
+EA:25f OP: 5 PUSH_IND_MEM    
+EA:260 OP: 1 PUSH_IMM           10 (".")
+EA:263 OP:1e SHL             
+EA:264 OP: 1 PUSH_IMM           11 (".")
+EA:267 OP: 5 PUSH_IND_MEM    
+EA:268 OP:1b OR              
+EA:269 OP: 6 POP_IND_MEM     
+EA:26a OP: 1 PUSH_IMM           17 (".")
+EA:26d OP: 1 PUSH_IMM           17 (".")
+EA:270 OP: 5 PUSH_IND_MEM    
+EA:271 OP: 1 PUSH_IMM           1e (".")
+EA:274 OP: 5 PUSH_IND_MEM    
+EA:275 OP:1c AND             
+EA:276 OP: 6 POP_IND_MEM     
+EA:277 OP: 1 PUSH_IMM           18 (".")
+EA:27a OP: 1 PUSH_IMM          f91 ("..")
+EA:27d OP: 1 PUSH_IMM           10 (".")
+EA:280 OP:1e SHL             
+EA:281 OP: 1 PUSH_IMM          374 (".t")
+EA:284 OP:1b OR              
+EA:285 OP: 6 POP_IND_MEM     
+EA:286 OP: 1 PUSH_IMM           18 (".")
+EA:289 OP: 5 PUSH_IND_MEM    
+EA:28a OP: 1 PUSH_IMM           17 (".")
+EA:28d OP: 5 PUSH_IND_MEM    
+EA:28e OP:11 CMP_EQ          
+EA:28f OP:10 JNZ               29e ("..")
+EA:292 OP: 1 PUSH_IMM           1f (".")
+EA:295 OP: 1 PUSH_IMM           1f (".")
+EA:298 OP: 5 PUSH_IND_MEM    
+EA:299 OP: 1 PUSH_IMM            1 (".")
+EA:29c OP: 9 ADD             
+EA:29d OP: 6 POP_IND_MEM     
+EA:29e OP: 1 PUSH_IMM           1f (".")
+EA:2a1 OP: 5 PUSH_IND_MEM    
+EA:2a2 OP: 1 PUSH_IMM            2 (".")
+EA:2a5 OP:14 CMP_G           
+EA:2a6 OP:10 JNZ               3b2 ("..")
+EA:2a9 OP: 1 PUSH_IMM            a (".")
+EA:2ac OP: 1 PUSH_IMM          193 ("..")
+EA:2af OP: 6 POP_IND_MEM     
+EA:2b0 OP: 1 PUSH_IMM            b (".")
+EA:2b3 OP: 1 PUSH_IMM          100 ("..")
+EA:2b6 OP: 6 POP_IND_MEM     
+EA:2b7 OP: 1 PUSH_IMM            c (".")
+EA:2ba OP: 1 PUSH_IMM            b (".")
+EA:2bd OP: 5 PUSH_IND_MEM    
+EA:2be OP: 1 PUSH_IMM           10 (".")
+EA:2c1 OP:1e SHL             
+EA:2c2 OP: 1 PUSH_IMM            a (".")
+EA:2c5 OP: 5 PUSH_IND_MEM    
+EA:2c6 OP:1b OR              
+EA:2c7 OP: 6 POP_IND_MEM     
+EA:2c8 OP: 1 PUSH_IMM            d (".")
+EA:2cb OP: 1 PUSH_IMM         9dc5 ("..")
+EA:2ce OP: 6 POP_IND_MEM     
+EA:2cf OP: 1 PUSH_IMM            e (".")
+EA:2d2 OP: 1 PUSH_IMM         811c ("..")
+EA:2d5 OP: 6 POP_IND_MEM     
+EA:2d6 OP: 1 PUSH_IMM            f (".")
+EA:2d9 OP: 1 PUSH_IMM            e (".")
+EA:2dc OP: 5 PUSH_IND_MEM    
+EA:2dd OP: 1 PUSH_IMM           10 (".")
+EA:2e0 OP:1e SHL             
+EA:2e1 OP: 1 PUSH_IMM            d (".")
+EA:2e4 OP: 5 PUSH_IND_MEM    
+EA:2e5 OP:1b OR              
+EA:2e6 OP: 6 POP_IND_MEM     
+EA:2e7 OP: 1 PUSH_IMM           10 (".")
+EA:2ea OP: 1 PUSH_IMM            1 (".")
+EA:2ed OP: 1 PUSH_IMM           20 (" ")
+EA:2f0 OP:1e SHL             
+EA:2f1 OP: 6 POP_IND_MEM     
+EA:2f2 OP: 1 PUSH_IMM           19 (".")
+EA:2f5 OP: 1 PUSH_IMM            f (".")
+EA:2f8 OP: 5 PUSH_IND_MEM    
+EA:2f9 OP: 6 POP_IND_MEM     
+EA:2fa OP: 1 PUSH_IMM           1b (".")
+EA:2fd OP: 1 PUSH_IMM            0 ("")
+EA:300 OP: 6 POP_IND_MEM     
+EA:301 OP: 1 PUSH_IMM           1b (".")
+EA:304 OP: 5 PUSH_IND_MEM    
+EA:305 OP: 1 PUSH_IMM           10 (".")
+EA:308 OP:12 CMP_L           
+EA:309 OP:10 JNZ               37e (".~")
+EA:30c OP: 1 PUSH_IMM           1b (".")
+EA:30f OP: 5 PUSH_IND_MEM    
+EA:310 OP: 1 PUSH_IMM            8 (".")
+EA:313 OP:12 CMP_L           
+EA:314 OP:10 JNZ               328 (".(")
+EA:317 OP: 1 PUSH_IMM           1c (".")
+EA:31a OP: 1 PUSH_IMM            8 (".")
+EA:31d OP: 5 PUSH_IND_MEM    
+EA:31e OP: 1 PUSH_IMM            8 (".")
+EA:321 OP: 1 PUSH_IMM           1b (".")
+EA:324 OP: 5 PUSH_IND_MEM    
+EA:325 OP: d MUL             
+EA:326 OP:1f SHR             
+EA:327 OP: 6 POP_IND_MEM     
+EA:328 OP: 1 PUSH_IMM           1b (".")
+EA:32b OP: 5 PUSH_IND_MEM    
+EA:32c OP: 1 PUSH_IMM            7 (".")
+EA:32f OP:14 CMP_G           
+EA:330 OP:10 JNZ               344 (".D")
+EA:333 OP: 1 PUSH_IMM           1c (".")
+EA:336 OP: 1 PUSH_IMM            9 (".")
+EA:339 OP: 5 PUSH_IND_MEM    
+EA:33a OP: 1 PUSH_IMM            8 (".")
+EA:33d OP: 1 PUSH_IMM           1b (".")
+EA:340 OP: 5 PUSH_IND_MEM    
+EA:341 OP: d MUL             
+EA:342 OP:1f SHR             
+EA:343 OP: 6 POP_IND_MEM     
+EA:344 OP: 1 PUSH_IMM           1c (".")
+EA:347 OP: 1 PUSH_IMM           1c (".")
+EA:34a OP: 5 PUSH_IND_MEM    
+EA:34b OP: 1 PUSH_IMM           ff (".")
+EA:34e OP:1c AND             
+EA:34f OP: 6 POP_IND_MEM     
+EA:350 OP: 1 PUSH_IMM           19 (".")
+EA:353 OP: 1 PUSH_IMM           19 (".")
+EA:356 OP: 5 PUSH_IND_MEM    
+EA:357 OP: 1 PUSH_IMM            c (".")
+EA:35a OP: 5 PUSH_IND_MEM    
+EA:35b OP: d MUL             
+EA:35c OP: 1 PUSH_IMM           10 (".")
+EA:35f OP: 5 PUSH_IND_MEM    
+EA:360 OP:1d MOD             
+EA:361 OP: 6 POP_IND_MEM     
+EA:362 OP: 1 PUSH_IMM           19 (".")
+EA:365 OP: 1 PUSH_IMM           19 (".")
+EA:368 OP: 5 PUSH_IND_MEM    
+EA:369 OP: 1 PUSH_IMM           1c (".")
+EA:36c OP: 5 PUSH_IND_MEM    
+EA:36d OP:1a XOR             
+EA:36e OP: 6 POP_IND_MEM     
+EA:36f OP: 1 PUSH_IMM           1b (".")
+EA:372 OP: 1 PUSH_IMM           1b (".")
+EA:375 OP: 5 PUSH_IND_MEM    
+EA:376 OP: 1 PUSH_IMM            1 (".")
+EA:379 OP: 9 ADD             
+EA:37a OP: 6 POP_IND_MEM     
+EA:37b OP: e JMP               301 ("..")
+EA:37e OP: 1 PUSH_IMM           19 (".")
+EA:381 OP: 1 PUSH_IMM           19 (".")
+EA:384 OP: 5 PUSH_IND_MEM    
+EA:385 OP: 1 PUSH_IMM           1e (".")
+EA:388 OP: 5 PUSH_IND_MEM    
+EA:389 OP:1c AND             
+EA:38a OP: 6 POP_IND_MEM     
+EA:38b OP: 1 PUSH_IMM           1a (".")
+EA:38e OP: 1 PUSH_IMM         31f0 ("1.")
+EA:391 OP: 1 PUSH_IMM           10 (".")
+EA:394 OP:1e SHL             
+EA:395 OP: 1 PUSH_IMM          9d2 ("..")
+EA:398 OP:1b OR              
+EA:399 OP: 6 POP_IND_MEM     
+EA:39a OP: 1 PUSH_IMM           1a (".")
+EA:39d OP: 5 PUSH_IND_MEM    
+EA:39e OP: 1 PUSH_IMM           19 (".")
+EA:3a1 OP: 5 PUSH_IND_MEM    
+EA:3a2 OP:11 CMP_EQ          
+EA:3a3 OP:10 JNZ               3b2 ("..")
+EA:3a6 OP: 1 PUSH_IMM           1f (".")
+EA:3a9 OP: 1 PUSH_IMM           1f (".")
+EA:3ac OP: 5 PUSH_IND_MEM    
+EA:3ad OP: 1 PUSH_IMM            1 (".")
+EA:3b0 OP: 9 ADD             
+EA:3b1 OP: 6 POP_IND_MEM     
+EA:3b2 OP: 1 PUSH_IMM           1f (".")
+EA:3b5 OP: 5 PUSH_IND_MEM    
+EA:3b6 OP: 1 PUSH_IMM            4 (".")
+EA:3b9 OP:11 CMP_EQ          
+EA:3ba OP:10 JNZ               3c4 ("..")
+EA:3bd OP: 1 PUSH_IMM           20 (" ")
+EA:3c0 OP: 1 PUSH_IMM            1 (".")
+EA:3c3 OP: 6 POP_IND_MEM     
+EA:3c4 OP: 1 PUSH_IMM           20 (" ")
+EA:3c7 OP: 5 PUSH_IND_MEM    
+EA:3c8 OP:19 POP_VM_RESULT   
+EA:3c9 OP:18 EXIT            

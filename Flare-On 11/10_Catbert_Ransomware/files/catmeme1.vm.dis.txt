@@ -1,0 +1,294 @@
+[*] Loaded 601 bytes vm code from catmeme1.jpg.c4tb, patching key b'0123456789ABCDEF'
+PC:  0 OP: 1 PUSH_IMM            0
+PC:  3 OP: 1 PUSH_IMM         3130
+PC:  6 OP: 6 POP_IND_MEM     
+PC:  7 OP: 1 PUSH_IMM            1
+PC:  a OP: 1 PUSH_IMM         3332
+PC:  d OP: 6 POP_IND_MEM     
+PC:  e OP: 1 PUSH_IMM            2
+PC: 11 OP: 1 PUSH_IMM         3534
+PC: 14 OP: 6 POP_IND_MEM     
+PC: 15 OP: 1 PUSH_IMM            3
+PC: 18 OP: 1 PUSH_IMM         3736
+PC: 1b OP: 6 POP_IND_MEM     
+PC: 1c OP: 1 PUSH_IMM            4
+PC: 1f OP: 1 PUSH_IMM         3938
+PC: 22 OP: 6 POP_IND_MEM     
+PC: 23 OP: 1 PUSH_IMM            5
+PC: 26 OP: 1 PUSH_IMM         4241
+PC: 29 OP: 6 POP_IND_MEM     
+PC: 2a OP: 1 PUSH_IMM            6
+PC: 2d OP: 1 PUSH_IMM         4443
+PC: 30 OP: 6 POP_IND_MEM     
+PC: 31 OP: 1 PUSH_IMM            7
+PC: 34 OP: 1 PUSH_IMM         4645
+PC: 37 OP: 6 POP_IND_MEM     
+PC: 38 OP: 1 PUSH_IMM            a
+PC: 3b OP: 1 PUSH_IMM         6144
+PC: 3e OP: 6 POP_IND_MEM     
+PC: 3f OP: 1 PUSH_IMM            b
+PC: 42 OP: 1 PUSH_IMM         7534
+PC: 45 OP: 6 POP_IND_MEM     
+PC: 46 OP: 1 PUSH_IMM            c
+PC: 49 OP: 1 PUSH_IMM         6962
+PC: 4c OP: 6 POP_IND_MEM     
+PC: 4d OP: 1 PUSH_IMM            d
+PC: 50 OP: 1 PUSH_IMM         6c63
+PC: 53 OP: 6 POP_IND_MEM     
+PC: 54 OP: 1 PUSH_IMM            e
+PC: 57 OP: 1 PUSH_IMM         3165
+PC: 5a OP: 6 POP_IND_MEM     
+PC: 5b OP: 1 PUSH_IMM            f
+PC: 5e OP: 1 PUSH_IMM         6669
+PC: 61 OP: 6 POP_IND_MEM     
+PC: 62 OP: 1 PUSH_IMM           10
+PC: 65 OP: 1 PUSH_IMM         6265
+PC: 68 OP: 6 POP_IND_MEM     
+PC: 69 OP: 1 PUSH_IMM           11
+PC: 6c OP: 1 PUSH_IMM         6230
+PC: 6f OP: 6 POP_IND_MEM     
+PC: 70 OP: 1 PUSH_IMM            8
+PC: 73 OP: 1 PUSH_IMM            3
+PC: 76 OP: 5 PUSH_IND_MEM    
+PC: 77 OP: 1 PUSH_IMM           30
+PC: 7a OP:1e SHL             
+PC: 7b OP: 1 PUSH_IMM            2
+PC: 7e OP: 5 PUSH_IND_MEM    
+PC: 7f OP: 1 PUSH_IMM           20
+PC: 82 OP:1e SHL             
+PC: 83 OP:1b OR              
+PC: 84 OP: 1 PUSH_IMM            1
+PC: 87 OP: 5 PUSH_IND_MEM    
+PC: 88 OP: 1 PUSH_IMM           10
+PC: 8b OP:1e SHL             
+PC: 8c OP:1b OR              
+PC: 8d OP: 1 PUSH_IMM            0
+PC: 90 OP: 5 PUSH_IND_MEM    
+PC: 91 OP:1b OR              
+PC: 92 OP: 6 POP_IND_MEM     
+PC: 93 OP: 1 PUSH_IMM            9
+PC: 96 OP: 1 PUSH_IMM            7
+PC: 99 OP: 5 PUSH_IND_MEM    
+PC: 9a OP: 1 PUSH_IMM           30
+PC: 9d OP:1e SHL             
+PC: 9e OP: 1 PUSH_IMM            6
+PC: a1 OP: 5 PUSH_IND_MEM    
+PC: a2 OP: 1 PUSH_IMM           20
+PC: a5 OP:1e SHL             
+PC: a6 OP:1b OR              
+PC: a7 OP: 1 PUSH_IMM            5
+PC: aa OP: 5 PUSH_IND_MEM    
+PC: ab OP: 1 PUSH_IMM           10
+PC: ae OP:1e SHL             
+PC: af OP:1b OR              
+PC: b0 OP: 1 PUSH_IMM            4
+PC: b3 OP: 5 PUSH_IND_MEM    
+PC: b4 OP:1b OR              
+PC: b5 OP: 6 POP_IND_MEM     
+PC: b6 OP: 1 PUSH_IMM           12
+PC: b9 OP: 1 PUSH_IMM            d
+PC: bc OP: 5 PUSH_IND_MEM    
+PC: bd OP: 1 PUSH_IMM           30
+PC: c0 OP:1e SHL             
+PC: c1 OP: 1 PUSH_IMM            c
+PC: c4 OP: 5 PUSH_IND_MEM    
+PC: c5 OP: 1 PUSH_IMM           20
+PC: c8 OP:1e SHL             
+PC: c9 OP:1b OR              
+PC: ca OP: 1 PUSH_IMM            b
+PC: cd OP: 5 PUSH_IND_MEM    
+PC: ce OP: 1 PUSH_IMM           10
+PC: d1 OP:1e SHL             
+PC: d2 OP:1b OR              
+PC: d3 OP: 1 PUSH_IMM            a
+PC: d6 OP: 5 PUSH_IND_MEM    
+PC: d7 OP:1b OR              
+PC: d8 OP: 6 POP_IND_MEM     
+PC: d9 OP: 1 PUSH_IMM           13
+PC: dc OP: 1 PUSH_IMM           11
+PC: df OP: 5 PUSH_IND_MEM    
+PC: e0 OP: 1 PUSH_IMM           30
+PC: e3 OP:1e SHL             
+PC: e4 OP: 1 PUSH_IMM           10
+PC: e7 OP: 5 PUSH_IND_MEM    
+PC: e8 OP: 1 PUSH_IMM           20
+PC: eb OP:1e SHL             
+PC: ec OP:1b OR              
+PC: ed OP: 1 PUSH_IMM            f
+PC: f0 OP: 5 PUSH_IND_MEM    
+PC: f1 OP: 1 PUSH_IMM           10
+PC: f4 OP:1e SHL             
+PC: f5 OP:1b OR              
+PC: f6 OP: 1 PUSH_IMM            e
+PC: f9 OP: 5 PUSH_IND_MEM    
+PC: fa OP:1b OR              
+PC: fb OP: 6 POP_IND_MEM     
+PC: fc OP: 1 PUSH_IMM           14
+PC: ff OP: 1 PUSH_IMM            0
+PC:102 OP: 6 POP_IND_MEM     
+PC:103 OP: 1 PUSH_IMM           18
+PC:106 OP: 1 PUSH_IMM            1
+PC:109 OP: 6 POP_IND_MEM     
+PC:10a OP: 1 PUSH_IMM           17
+PC:10d OP: 1 PUSH_IMM            0
+PC:110 OP: 6 POP_IND_MEM     
+PC:111 OP: 1 PUSH_IMM           19
+PC:114 OP: 1 PUSH_IMM            0
+PC:117 OP: 6 POP_IND_MEM     
+PC:118 OP: 1 PUSH_IMM           18
+PC:11b OP: 5 PUSH_IND_MEM    
+PC:11c OP: 1 PUSH_IMM            1
+PC:11f OP:11 CMP_EQ          
+PC:120 OP:10 JNZ               241
+PC:123 OP: 1 PUSH_IMM           14
+PC:126 OP: 5 PUSH_IND_MEM    
+PC:127 OP: 1 PUSH_IMM            8
+PC:12a OP:12 CMP_L           
+PC:12b OP:10 JNZ               150
+PC:12e OP: 1 PUSH_IMM           15
+PC:131 OP: 1 PUSH_IMM            8
+PC:134 OP: 5 PUSH_IND_MEM    
+PC:135 OP: 1 PUSH_IMM            8
+PC:138 OP: 1 PUSH_IMM           14
+PC:13b OP: 5 PUSH_IND_MEM    
+PC:13c OP: d MUL             
+PC:13d OP:1f SHR             
+PC:13e OP: 6 POP_IND_MEM     
+PC:13f OP: 1 PUSH_IMM           16
+PC:142 OP: 1 PUSH_IMM           12
+PC:145 OP: 5 PUSH_IND_MEM    
+PC:146 OP: 1 PUSH_IMM            8
+PC:149 OP: 1 PUSH_IMM           14
+PC:14c OP: 5 PUSH_IND_MEM    
+PC:14d OP: d MUL             
+PC:14e OP:1f SHR             
+PC:14f OP: 6 POP_IND_MEM     
+PC:150 OP: 1 PUSH_IMM           14
+PC:153 OP: 5 PUSH_IND_MEM    
+PC:154 OP: 1 PUSH_IMM            7
+PC:157 OP:14 CMP_G           
+PC:158 OP:10 JNZ               17d
+PC:15b OP: 1 PUSH_IMM           15
+PC:15e OP: 1 PUSH_IMM            9
+PC:161 OP: 5 PUSH_IND_MEM    
+PC:162 OP: 1 PUSH_IMM            8
+PC:165 OP: 1 PUSH_IMM           14
+PC:168 OP: 5 PUSH_IND_MEM    
+PC:169 OP: d MUL             
+PC:16a OP:1f SHR             
+PC:16b OP: 6 POP_IND_MEM     
+PC:16c OP: 1 PUSH_IMM           16
+PC:16f OP: 1 PUSH_IMM           13
+PC:172 OP: 5 PUSH_IND_MEM    
+PC:173 OP: 1 PUSH_IMM            8
+PC:176 OP: 1 PUSH_IMM           14
+PC:179 OP: 5 PUSH_IND_MEM    
+PC:17a OP: d MUL             
+PC:17b OP:1f SHR             
+PC:17c OP: 6 POP_IND_MEM     
+PC:17d OP: 1 PUSH_IMM           15
+PC:180 OP: 1 PUSH_IMM           15
+PC:183 OP: 5 PUSH_IND_MEM    
+PC:184 OP: 1 PUSH_IMM           ff
+PC:187 OP:1c AND             
+PC:188 OP: 6 POP_IND_MEM     
+PC:189 OP: 1 PUSH_IMM           16
+PC:18c OP: 1 PUSH_IMM           16
+PC:18f OP: 5 PUSH_IND_MEM    
+PC:190 OP: 1 PUSH_IMM           ff
+PC:193 OP:1c AND             
+PC:194 OP: 6 POP_IND_MEM     
+PC:195 OP: 1 PUSH_IMM           14
+PC:198 OP: 5 PUSH_IND_MEM    
+PC:199 OP: 1 PUSH_IMM            2
+PC:19c OP:11 CMP_EQ          
+PC:19d OP:10 JNZ               1ac
+PC:1a0 OP: 1 PUSH_IMM           16
+PC:1a3 OP: 1 PUSH_IMM           16
+PC:1a6 OP: 5 PUSH_IND_MEM    
+PC:1a7 OP: 1 PUSH_IMM            4
+PC:1aa OP:24 ROL8            
+PC:1ab OP: 6 POP_IND_MEM     
+PC:1ac OP: 1 PUSH_IMM           14
+PC:1af OP: 5 PUSH_IND_MEM    
+PC:1b0 OP: 1 PUSH_IMM            9
+PC:1b3 OP:11 CMP_EQ          
+PC:1b4 OP:10 JNZ               1c3
+PC:1b7 OP: 1 PUSH_IMM           16
+PC:1ba OP: 1 PUSH_IMM           16
+PC:1bd OP: 5 PUSH_IND_MEM    
+PC:1be OP: 1 PUSH_IMM            2
+PC:1c1 OP:25 ROR8            
+PC:1c2 OP: 6 POP_IND_MEM     
+PC:1c3 OP: 1 PUSH_IMM           14
+PC:1c6 OP: 5 PUSH_IND_MEM    
+PC:1c7 OP: 1 PUSH_IMM            d
+PC:1ca OP:11 CMP_EQ          
+PC:1cb OP:10 JNZ               1da
+PC:1ce OP: 1 PUSH_IMM           16
+PC:1d1 OP: 1 PUSH_IMM           16
+PC:1d4 OP: 5 PUSH_IND_MEM    
+PC:1d5 OP: 1 PUSH_IMM            7
+PC:1d8 OP:24 ROL8            
+PC:1d9 OP: 6 POP_IND_MEM     
+PC:1da OP: 1 PUSH_IMM           14
+PC:1dd OP: 5 PUSH_IND_MEM    
+PC:1de OP: 1 PUSH_IMM            f
+PC:1e1 OP:11 CMP_EQ          
+PC:1e2 OP:10 JNZ               1f1
+PC:1e5 OP: 1 PUSH_IMM           16
+PC:1e8 OP: 1 PUSH_IMM           16
+PC:1eb OP: 5 PUSH_IND_MEM    
+PC:1ec OP: 1 PUSH_IMM            7
+PC:1ef OP:24 ROL8            
+PC:1f0 OP: 6 POP_IND_MEM     
+PC:1f1 OP: 1 PUSH_IMM           15
+PC:1f4 OP: 5 PUSH_IND_MEM    
+PC:1f5 OP: 1 PUSH_IMM           16
+PC:1f8 OP: 5 PUSH_IND_MEM    
+PC:1f9 OP:11 CMP_EQ          
+PC:1fa OP: 1 PUSH_IMM            0
+PC:1fd OP:11 CMP_EQ          
+PC:1fe OP:10 JNZ               208
+PC:201 OP: 1 PUSH_IMM           18
+PC:204 OP: 1 PUSH_IMM            0
+PC:207 OP: 6 POP_IND_MEM     
+PC:208 OP: 1 PUSH_IMM           15
+PC:20b OP: 5 PUSH_IND_MEM    
+PC:20c OP: 1 PUSH_IMM           16
+PC:20f OP: 5 PUSH_IND_MEM    
+PC:210 OP:11 CMP_EQ          
+PC:211 OP:10 JNZ               220
+PC:214 OP: 1 PUSH_IMM           17
+PC:217 OP: 1 PUSH_IMM           17
+PC:21a OP: 5 PUSH_IND_MEM    
+PC:21b OP: 1 PUSH_IMM            1
+PC:21e OP: 9 ADD             
+PC:21f OP: 6 POP_IND_MEM     
+PC:220 OP: 1 PUSH_IMM           14
+PC:223 OP: 1 PUSH_IMM           14
+PC:226 OP: 5 PUSH_IND_MEM    
+PC:227 OP: 1 PUSH_IMM            1
+PC:22a OP: 9 ADD             
+PC:22b OP: 6 POP_IND_MEM     
+PC:22c OP: 1 PUSH_IMM           14
+PC:22f OP: 5 PUSH_IND_MEM    
+PC:230 OP: 1 PUSH_IMM            f
+PC:233 OP:14 CMP_G           
+PC:234 OP:10 JNZ               23e
+PC:237 OP: 1 PUSH_IMM           18
+PC:23a OP: 1 PUSH_IMM            0
+PC:23d OP: 6 POP_IND_MEM     
+PC:23e OP: e JMP               118
+PC:241 OP: 1 PUSH_IMM           17
+PC:244 OP: 5 PUSH_IND_MEM    
+PC:245 OP: 1 PUSH_IMM           10
+PC:248 OP:11 CMP_EQ          
+PC:249 OP:10 JNZ               253
+PC:24c OP: 1 PUSH_IMM           19
+PC:24f OP: 1 PUSH_IMM            1
+PC:252 OP: 6 POP_IND_MEM     
+PC:253 OP: 1 PUSH_IMM           19
+PC:256 OP: 5 PUSH_IND_MEM    
+PC:257 OP:19 POP_VM_RESULT   
+PC:258 OP:18 EXIT            

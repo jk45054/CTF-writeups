@@ -1,0 +1,5665 @@
+[*] Loaded 6397 bytes vm code from your_mind.jpg.c4tb, patching key b'BrainNumbFromVm!'
+MEM WRITE: MEM[00] = 7242 ("rB")
+MEM WRITE: MEM[01] = 6961 ("ia")
+MEM WRITE: MEM[02] = 4e6e ("Nn")
+MEM WRITE: MEM[03] = 6d75 ("mu")
+MEM WRITE: MEM[04] = 4662 ("Fb")
+MEM WRITE: MEM[05] = 6f72 ("or")
+MEM WRITE: MEM[06] = 566d ("Vm")
+MEM WRITE: MEM[07] = 216d ("!m")
+MEM WRITE: MEM[0a] = 7242 ("rB")
+MEM WRITE: MEM[0b] = 6961 ("ia")
+MEM WRITE: MEM[0c] = 4e6e ("Nn")
+MEM WRITE: MEM[0d] = 6d75 ("mu")
+MEM WRITE: MEM[0e] = 4662 ("Fb")
+MEM WRITE: MEM[0f] = 6f72 ("or")
+MEM WRITE: MEM[10] = 566d ("Vm")
+MEM WRITE: MEM[11] = 216d ("!m")
+MEM READ : MEM[03] = 6d75 ("mu")
+----------------------------------------
+PC: 7a OP:1e SHL              SP:3
+CALC SHL: 6d75 << 30 = 6d75000000000000 ("mu......")
+STACK[1] = 6d75000000000000 ("mu......")
+STACK[0] = 8 (".")
+MEM READ : MEM[02] = 4e6e ("Nn")
+----------------------------------------
+PC: 82 OP:1e SHL              SP:4
+CALC SHL: 4e6e << 20 = 4e6e00000000 ("Nn....")
+STACK[2] = 4e6e00000000 ("Nn....")
+STACK[1] = 6d75000000000000 ("mu......")
+STACK[0] = 8 (".")
+----------------------------------------
+PC: 83 OP:1b OR               SP:3
+CALC OR: 6d75000000000000 | 4e6e00000000 = 6d754e6e00000000 ("muNn....")
+STACK[1] = 6d754e6e00000000 ("muNn....")
+STACK[0] = 8 (".")
+MEM READ : MEM[01] = 6961 ("ia")
+----------------------------------------
+PC: 8b OP:1e SHL              SP:4
+CALC SHL: 6961 << 10 = 69610000 ("ia..")
+STACK[2] = 69610000 ("ia..")
+STACK[1] = 6d754e6e00000000 ("muNn....")
+STACK[0] = 8 (".")
+----------------------------------------
+PC: 8c OP:1b OR               SP:3
+CALC OR: 6d754e6e00000000 | 69610000 = 6d754e6e69610000 ("muNnia..")
+STACK[1] = 6d754e6e69610000 ("muNnia..")
+STACK[0] = 8 (".")
+MEM READ : MEM[00] = 7242 ("rB")
+----------------------------------------
+PC: 91 OP:1b OR               SP:3
+CALC OR: 6d754e6e69610000 | 7242 = 6d754e6e69617242 ("muNniarB")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 8 (".")
+MEM WRITE: MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[07] = 216d ("!m")
+----------------------------------------
+PC: 9d OP:1e SHL              SP:3
+CALC SHL: 216d << 30 = 216d000000000000 ("!m......")
+STACK[1] = 216d000000000000 ("!m......")
+STACK[0] = 9 (".")
+MEM READ : MEM[06] = 566d ("Vm")
+----------------------------------------
+PC: a5 OP:1e SHL              SP:4
+CALC SHL: 566d << 20 = 566d00000000 ("Vm....")
+STACK[2] = 566d00000000 ("Vm....")
+STACK[1] = 216d000000000000 ("!m......")
+STACK[0] = 9 (".")
+----------------------------------------
+PC: a6 OP:1b OR               SP:3
+CALC OR: 216d000000000000 | 566d00000000 = 216d566d00000000 ("!mVm....")
+STACK[1] = 216d566d00000000 ("!mVm....")
+STACK[0] = 9 (".")
+MEM READ : MEM[05] = 6f72 ("or")
+----------------------------------------
+PC: ae OP:1e SHL              SP:4
+CALC SHL: 6f72 << 10 = 6f720000 ("or..")
+STACK[2] = 6f720000 ("or..")
+STACK[1] = 216d566d00000000 ("!mVm....")
+STACK[0] = 9 (".")
+----------------------------------------
+PC: af OP:1b OR               SP:3
+CALC OR: 216d566d00000000 | 6f720000 = 216d566d6f720000 ("!mVmor..")
+STACK[1] = 216d566d6f720000 ("!mVmor..")
+STACK[0] = 9 (".")
+MEM READ : MEM[04] = 4662 ("Fb")
+----------------------------------------
+PC: b4 OP:1b OR               SP:3
+CALC OR: 216d566d6f720000 | 4662 = 216d566d6f724662 ("!mVmorFb")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 9 (".")
+MEM WRITE: MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[0d] = 6d75 ("mu")
+----------------------------------------
+PC: c0 OP:1e SHL              SP:3
+CALC SHL: 6d75 << 30 = 6d75000000000000 ("mu......")
+STACK[1] = 6d75000000000000 ("mu......")
+STACK[0] = 12 (".")
+MEM READ : MEM[0c] = 4e6e ("Nn")
+----------------------------------------
+PC: c8 OP:1e SHL              SP:4
+CALC SHL: 4e6e << 20 = 4e6e00000000 ("Nn....")
+STACK[2] = 4e6e00000000 ("Nn....")
+STACK[1] = 6d75000000000000 ("mu......")
+STACK[0] = 12 (".")
+----------------------------------------
+PC: c9 OP:1b OR               SP:3
+CALC OR: 6d75000000000000 | 4e6e00000000 = 6d754e6e00000000 ("muNn....")
+STACK[1] = 6d754e6e00000000 ("muNn....")
+STACK[0] = 12 (".")
+MEM READ : MEM[0b] = 6961 ("ia")
+----------------------------------------
+PC: d1 OP:1e SHL              SP:4
+CALC SHL: 6961 << 10 = 69610000 ("ia..")
+STACK[2] = 69610000 ("ia..")
+STACK[1] = 6d754e6e00000000 ("muNn....")
+STACK[0] = 12 (".")
+----------------------------------------
+PC: d2 OP:1b OR               SP:3
+CALC OR: 6d754e6e00000000 | 69610000 = 6d754e6e69610000 ("muNnia..")
+STACK[1] = 6d754e6e69610000 ("muNnia..")
+STACK[0] = 12 (".")
+MEM READ : MEM[0a] = 7242 ("rB")
+----------------------------------------
+PC: d7 OP:1b OR               SP:3
+CALC OR: 6d754e6e69610000 | 7242 = 6d754e6e69617242 ("muNniarB")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 12 (".")
+MEM WRITE: MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[11] = 216d ("!m")
+----------------------------------------
+PC: e3 OP:1e SHL              SP:3
+CALC SHL: 216d << 30 = 216d000000000000 ("!m......")
+STACK[1] = 216d000000000000 ("!m......")
+STACK[0] = 13 (".")
+MEM READ : MEM[10] = 566d ("Vm")
+----------------------------------------
+PC: eb OP:1e SHL              SP:4
+CALC SHL: 566d << 20 = 566d00000000 ("Vm....")
+STACK[2] = 566d00000000 ("Vm....")
+STACK[1] = 216d000000000000 ("!m......")
+STACK[0] = 13 (".")
+----------------------------------------
+PC: ec OP:1b OR               SP:3
+CALC OR: 216d000000000000 | 566d00000000 = 216d566d00000000 ("!mVm....")
+STACK[1] = 216d566d00000000 ("!mVm....")
+STACK[0] = 13 (".")
+MEM READ : MEM[0f] = 6f72 ("or")
+----------------------------------------
+PC: f4 OP:1e SHL              SP:4
+CALC SHL: 6f72 << 10 = 6f720000 ("or..")
+STACK[2] = 6f720000 ("or..")
+STACK[1] = 216d566d00000000 ("!mVm....")
+STACK[0] = 13 (".")
+----------------------------------------
+PC: f5 OP:1b OR               SP:3
+CALC OR: 216d566d00000000 | 6f720000 = 216d566d6f720000 ("!mVmor..")
+STACK[1] = 216d566d6f720000 ("!mVmor..")
+STACK[0] = 13 (".")
+MEM READ : MEM[0e] = 4662 ("Fb")
+----------------------------------------
+PC: fa OP:1b OR               SP:3
+CALC OR: 216d566d6f720000 | 4662 = 216d566d6f724662 ("!mVmorFb")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 13 (".")
+MEM WRITE: MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM WRITE: MEM[14] = 0 ("")
+MEM WRITE: MEM[18] = 1 (".")
+MEM WRITE: MEM[17] = 0 ("")
+MEM WRITE: MEM[19] = 0 ("")
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 0 ("")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 0 ("") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 0 ("")
+----------------------------------------
+PC:13c OP: d MUL              SP:4
+CALC MUL: 8 * 0 = 0 ("")
+STACK[2] = 0 ("")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:13d OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 0 = 6d754e6e69617242 ("muNniarB")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 0 ("")
+----------------------------------------
+PC:14d OP: d MUL              SP:4
+CALC MUL: 8 * 0 = 0 ("")
+STACK[2] = 0 ("")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:14e OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 0 = 6d754e6e69617242 ("muNniarB")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 0 ("")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 0 ("") > 7 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d754e6e69617242 ("muNniarB")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 6d754e6e69617242 & ff = 42 ("B")
+STACK[1] = 42 ("B")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 42 ("B")
+MEM READ : MEM[16] = 6d754e6e69617242 ("muNniarB")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 6d754e6e69617242 & ff = 42 ("B")
+STACK[1] = 42 ("B")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 42 ("B")
+MEM READ : MEM[15] = 42 ("B")
+MEM READ : MEM[16] = 42 ("B")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 42 ("B") == 42 ("B") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 42 ("B")
+MEM READ : MEM[16] = 42 ("B")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 42 ("B") == 42 ("B") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 0 ("")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 0 + 1 = 1 (".")
+STACK[1] = 1 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 1 (".")
+MEM READ : MEM[14] = 0 ("")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 0 + 1 = 1 (".")
+STACK[1] = 1 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 1 (".")
+MEM READ : MEM[14] = 1 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 1 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 1 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 1 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 1 (".")
+----------------------------------------
+PC:13c OP: d MUL              SP:4
+CALC MUL: 8 * 1 = 8 (".")
+STACK[2] = 8 (".")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:13d OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 8 = 6d754e6e696172 ("muNniar")
+STACK[1] = 6d754e6e696172 ("muNniar")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d754e6e696172 ("muNniar")
+MEM READ : MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 1 (".")
+----------------------------------------
+PC:14d OP: d MUL              SP:4
+CALC MUL: 8 * 1 = 8 (".")
+STACK[2] = 8 (".")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:14e OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 8 = 6d754e6e696172 ("muNniar")
+STACK[1] = 6d754e6e696172 ("muNniar")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d754e6e696172 ("muNniar")
+MEM READ : MEM[14] = 1 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 1 (".") > 7 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d754e6e696172 ("muNniar")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 6d754e6e696172 & ff = 72 ("r")
+STACK[1] = 72 ("r")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 72 ("r")
+MEM READ : MEM[16] = 6d754e6e696172 ("muNniar")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 6d754e6e696172 & ff = 72 ("r")
+STACK[1] = 72 ("r")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 72 ("r")
+MEM READ : MEM[15] = 72 ("r")
+MEM READ : MEM[16] = 72 ("r")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 72 ("r") == 72 ("r") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 72 ("r")
+MEM READ : MEM[16] = 72 ("r")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 72 ("r") == 72 ("r") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 1 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 1 + 1 = 2 (".")
+STACK[1] = 2 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 2 (".")
+MEM READ : MEM[14] = 1 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 1 + 1 = 2 (".")
+STACK[1] = 2 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 2 (".")
+MEM READ : MEM[14] = 2 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 2 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 2 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 2 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 2 (".")
+----------------------------------------
+PC:13c OP: d MUL              SP:4
+CALC MUL: 8 * 2 = 10 (".")
+STACK[2] = 10 (".")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:13d OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 10 = 6d754e6e6961 ("muNnia")
+STACK[1] = 6d754e6e6961 ("muNnia")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d754e6e6961 ("muNnia")
+MEM READ : MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 2 (".")
+----------------------------------------
+PC:14d OP: d MUL              SP:4
+CALC MUL: 8 * 2 = 10 (".")
+STACK[2] = 10 (".")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:14e OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 10 = 6d754e6e6961 ("muNnia")
+STACK[1] = 6d754e6e6961 ("muNnia")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d754e6e6961 ("muNnia")
+MEM READ : MEM[14] = 2 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 2 (".") > 7 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d754e6e6961 ("muNnia")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 6d754e6e6961 & ff = 61 ("a")
+STACK[1] = 61 ("a")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 61 ("a")
+MEM READ : MEM[16] = 6d754e6e6961 ("muNnia")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 6d754e6e6961 & ff = 61 ("a")
+STACK[1] = 61 ("a")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 61 ("a")
+MEM READ : MEM[15] = 61 ("a")
+MEM READ : MEM[16] = 61 ("a")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 61 ("a") == 61 ("a") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 61 ("a")
+MEM READ : MEM[16] = 61 ("a")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 61 ("a") == 61 ("a") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 2 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 2 + 1 = 3 (".")
+STACK[1] = 3 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 3 (".")
+MEM READ : MEM[14] = 2 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 2 + 1 = 3 (".")
+STACK[1] = 3 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 3 (".")
+MEM READ : MEM[14] = 3 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 3 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 3 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 3 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 3 (".")
+----------------------------------------
+PC:13c OP: d MUL              SP:4
+CALC MUL: 8 * 3 = 18 (".")
+STACK[2] = 18 (".")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:13d OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 18 = 6d754e6e69 ("muNni")
+STACK[1] = 6d754e6e69 ("muNni")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d754e6e69 ("muNni")
+MEM READ : MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 3 (".")
+----------------------------------------
+PC:14d OP: d MUL              SP:4
+CALC MUL: 8 * 3 = 18 (".")
+STACK[2] = 18 (".")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:14e OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 18 = 6d754e6e69 ("muNni")
+STACK[1] = 6d754e6e69 ("muNni")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d754e6e69 ("muNni")
+MEM READ : MEM[14] = 3 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 3 (".") > 7 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d754e6e69 ("muNni")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 6d754e6e69 & ff = 69 ("i")
+STACK[1] = 69 ("i")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 69 ("i")
+MEM READ : MEM[16] = 6d754e6e69 ("muNni")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 6d754e6e69 & ff = 69 ("i")
+STACK[1] = 69 ("i")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 69 ("i")
+MEM READ : MEM[15] = 69 ("i")
+MEM READ : MEM[16] = 69 ("i")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 69 ("i") == 69 ("i") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 69 ("i")
+MEM READ : MEM[16] = 69 ("i")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 69 ("i") == 69 ("i") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 3 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 3 + 1 = 4 (".")
+STACK[1] = 4 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 4 (".")
+MEM READ : MEM[14] = 3 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 3 + 1 = 4 (".")
+STACK[1] = 4 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 4 (".")
+MEM READ : MEM[14] = 4 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 4 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 4 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 4 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 4 (".")
+----------------------------------------
+PC:13c OP: d MUL              SP:4
+CALC MUL: 8 * 4 = 20 (" ")
+STACK[2] = 20 (" ")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:13d OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 20 = 6d754e6e ("muNn")
+STACK[1] = 6d754e6e ("muNn")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d754e6e ("muNn")
+MEM READ : MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 4 (".")
+----------------------------------------
+PC:14d OP: d MUL              SP:4
+CALC MUL: 8 * 4 = 20 (" ")
+STACK[2] = 20 (" ")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:14e OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 20 = 6d754e6e ("muNn")
+STACK[1] = 6d754e6e ("muNn")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d754e6e ("muNn")
+MEM READ : MEM[14] = 4 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 4 (".") > 7 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d754e6e ("muNn")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 6d754e6e & ff = 6e ("n")
+STACK[1] = 6e ("n")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6e ("n")
+MEM READ : MEM[16] = 6d754e6e ("muNn")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 6d754e6e & ff = 6e ("n")
+STACK[1] = 6e ("n")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6e ("n")
+MEM READ : MEM[15] = 6e ("n")
+MEM READ : MEM[16] = 6e ("n")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 6e ("n") == 6e ("n") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6e ("n")
+MEM READ : MEM[16] = 6e ("n")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 6e ("n") == 6e ("n") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 4 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 4 + 1 = 5 (".")
+STACK[1] = 5 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 5 (".")
+MEM READ : MEM[14] = 4 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 4 + 1 = 5 (".")
+STACK[1] = 5 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 5 (".")
+MEM READ : MEM[14] = 5 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 5 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 5 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 5 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 5 (".")
+----------------------------------------
+PC:13c OP: d MUL              SP:4
+CALC MUL: 8 * 5 = 28 ("(")
+STACK[2] = 28 ("(")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:13d OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 28 = 6d754e ("muN")
+STACK[1] = 6d754e ("muN")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d754e ("muN")
+MEM READ : MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 5 (".")
+----------------------------------------
+PC:14d OP: d MUL              SP:4
+CALC MUL: 8 * 5 = 28 ("(")
+STACK[2] = 28 ("(")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:14e OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 28 = 6d754e ("muN")
+STACK[1] = 6d754e ("muN")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d754e ("muN")
+MEM READ : MEM[14] = 5 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 5 (".") > 7 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d754e ("muN")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 6d754e & ff = 4e ("N")
+STACK[1] = 4e ("N")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 4e ("N")
+MEM READ : MEM[16] = 6d754e ("muN")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 6d754e & ff = 4e ("N")
+STACK[1] = 4e ("N")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 4e ("N")
+MEM READ : MEM[15] = 4e ("N")
+MEM READ : MEM[16] = 4e ("N")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 4e ("N") == 4e ("N") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 4e ("N")
+MEM READ : MEM[16] = 4e ("N")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 4e ("N") == 4e ("N") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 5 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 5 + 1 = 6 (".")
+STACK[1] = 6 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 6 (".")
+MEM READ : MEM[14] = 5 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 5 + 1 = 6 (".")
+STACK[1] = 6 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 6 (".")
+MEM READ : MEM[14] = 6 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 6 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 6 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 6 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 6 (".")
+----------------------------------------
+PC:13c OP: d MUL              SP:4
+CALC MUL: 8 * 6 = 30 ("0")
+STACK[2] = 30 ("0")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:13d OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 30 = 6d75 ("mu")
+STACK[1] = 6d75 ("mu")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d75 ("mu")
+MEM READ : MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 6 (".")
+----------------------------------------
+PC:14d OP: d MUL              SP:4
+CALC MUL: 8 * 6 = 30 ("0")
+STACK[2] = 30 ("0")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:14e OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 30 = 6d75 ("mu")
+STACK[1] = 6d75 ("mu")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d75 ("mu")
+MEM READ : MEM[14] = 6 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 6 (".") > 7 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d75 ("mu")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 6d75 & ff = 75 ("u")
+STACK[1] = 75 ("u")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 75 ("u")
+MEM READ : MEM[16] = 6d75 ("mu")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 6d75 & ff = 75 ("u")
+STACK[1] = 75 ("u")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 75 ("u")
+MEM READ : MEM[15] = 75 ("u")
+MEM READ : MEM[16] = 75 ("u")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 75 ("u") == 75 ("u") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 75 ("u")
+MEM READ : MEM[16] = 75 ("u")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 75 ("u") == 75 ("u") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 6 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 6 + 1 = 7 (".")
+STACK[1] = 7 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 7 (".")
+MEM READ : MEM[14] = 6 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 6 + 1 = 7 (".")
+STACK[1] = 7 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 7 (".")
+MEM READ : MEM[14] = 7 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 7 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 7 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 7 (".") < 8 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[08] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 7 (".")
+----------------------------------------
+PC:13c OP: d MUL              SP:4
+CALC MUL: 8 * 7 = 38 ("8")
+STACK[2] = 38 ("8")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:13d OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 38 = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d ("m")
+MEM READ : MEM[12] = 6d754e6e69617242 ("muNniarB")
+MEM READ : MEM[14] = 7 (".")
+----------------------------------------
+PC:14d OP: d MUL              SP:4
+CALC MUL: 8 * 7 = 38 ("8")
+STACK[2] = 38 ("8")
+STACK[1] = 6d754e6e69617242 ("muNniarB")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:14e OP:1f SHR              SP:3
+CALC SHR: 6d754e6e69617242 >> 38 = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d ("m")
+MEM READ : MEM[14] = 7 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 7 (".") > 7 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d ("m")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 6d & ff = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 6d ("m")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 6d & ff = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d ("m")
+MEM READ : MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 6d ("m")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 6d ("m") == 6d ("m") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 6d ("m")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 6d ("m") == 6d ("m") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 7 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 7 + 1 = 8 (".")
+STACK[1] = 8 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 8 (".")
+MEM READ : MEM[14] = 7 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 7 + 1 = 8 (".")
+STACK[1] = 8 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 8 (".")
+MEM READ : MEM[14] = 8 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 8 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 8 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 8 (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP taken
+MEM READ : MEM[14] = 8 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 8 (".") > 7 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = 8 (".")
+----------------------------------------
+PC:169 OP: d MUL              SP:4
+CALC MUL: 8 * 8 = 40 ("@")
+STACK[2] = 40 ("@")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:16a OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 0 = 216d566d6f724662 ("!mVmorFb")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = 8 (".")
+----------------------------------------
+PC:17a OP: d MUL              SP:4
+CALC MUL: 8 * 8 = 40 ("@")
+STACK[2] = 40 ("@")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:17b OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 0 = 216d566d6f724662 ("!mVmorFb")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[15] = 216d566d6f724662 ("!mVmorFb")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 216d566d6f724662 & ff = 62 ("b")
+STACK[1] = 62 ("b")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 62 ("b")
+MEM READ : MEM[16] = 216d566d6f724662 ("!mVmorFb")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 216d566d6f724662 & ff = 62 ("b")
+STACK[1] = 62 ("b")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 62 ("b")
+MEM READ : MEM[15] = 62 ("b")
+MEM READ : MEM[16] = 62 ("b")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 62 ("b") == 62 ("b") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 62 ("b")
+MEM READ : MEM[16] = 62 ("b")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 62 ("b") == 62 ("b") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 8 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 8 + 1 = 9 (".")
+STACK[1] = 9 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 9 (".")
+MEM READ : MEM[14] = 8 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 8 + 1 = 9 (".")
+STACK[1] = 9 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 9 (".")
+MEM READ : MEM[14] = 9 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 9 (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = 9 (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: 9 (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP taken
+MEM READ : MEM[14] = 9 (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: 9 (".") > 7 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = 9 (".")
+----------------------------------------
+PC:169 OP: d MUL              SP:4
+CALC MUL: 8 * 9 = 48 ("H")
+STACK[2] = 48 ("H")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:16a OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 8 = 216d566d6f7246 ("!mVmorF")
+STACK[1] = 216d566d6f7246 ("!mVmorF")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 216d566d6f7246 ("!mVmorF")
+MEM READ : MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = 9 (".")
+----------------------------------------
+PC:17a OP: d MUL              SP:4
+CALC MUL: 8 * 9 = 48 ("H")
+STACK[2] = 48 ("H")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:17b OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 8 = 216d566d6f7246 ("!mVmorF")
+STACK[1] = 216d566d6f7246 ("!mVmorF")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 216d566d6f7246 ("!mVmorF")
+MEM READ : MEM[15] = 216d566d6f7246 ("!mVmorF")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 216d566d6f7246 & ff = 46 ("F")
+STACK[1] = 46 ("F")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 46 ("F")
+MEM READ : MEM[16] = 216d566d6f7246 ("!mVmorF")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 216d566d6f7246 & ff = 46 ("F")
+STACK[1] = 46 ("F")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 46 ("F")
+MEM READ : MEM[15] = 46 ("F")
+MEM READ : MEM[16] = 46 ("F")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 46 ("F") == 46 ("F") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 46 ("F")
+MEM READ : MEM[16] = 46 ("F")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 46 ("F") == 46 ("F") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = 9 (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: 9 + 1 = a (".")
+STACK[1] = a (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = a (".")
+MEM READ : MEM[14] = 9 (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: 9 + 1 = a (".")
+STACK[1] = a (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = a (".")
+MEM READ : MEM[14] = a (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: a (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = a (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: a (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP taken
+MEM READ : MEM[14] = a (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: a (".") > 7 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = a (".")
+----------------------------------------
+PC:169 OP: d MUL              SP:4
+CALC MUL: 8 * a = 50 ("P")
+STACK[2] = 50 ("P")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:16a OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 10 = 216d566d6f72 ("!mVmor")
+STACK[1] = 216d566d6f72 ("!mVmor")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 216d566d6f72 ("!mVmor")
+MEM READ : MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = a (".")
+----------------------------------------
+PC:17a OP: d MUL              SP:4
+CALC MUL: 8 * a = 50 ("P")
+STACK[2] = 50 ("P")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:17b OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 10 = 216d566d6f72 ("!mVmor")
+STACK[1] = 216d566d6f72 ("!mVmor")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 216d566d6f72 ("!mVmor")
+MEM READ : MEM[15] = 216d566d6f72 ("!mVmor")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 216d566d6f72 & ff = 72 ("r")
+STACK[1] = 72 ("r")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 72 ("r")
+MEM READ : MEM[16] = 216d566d6f72 ("!mVmor")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 216d566d6f72 & ff = 72 ("r")
+STACK[1] = 72 ("r")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 72 ("r")
+MEM READ : MEM[15] = 72 ("r")
+MEM READ : MEM[16] = 72 ("r")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 72 ("r") == 72 ("r") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 72 ("r")
+MEM READ : MEM[16] = 72 ("r")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 72 ("r") == 72 ("r") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = a (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: a + 1 = b (".")
+STACK[1] = b (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = b (".")
+MEM READ : MEM[14] = a (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: a + 1 = b (".")
+STACK[1] = b (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = b (".")
+MEM READ : MEM[14] = b (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: b (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = b (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: b (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP taken
+MEM READ : MEM[14] = b (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: b (".") > 7 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = b (".")
+----------------------------------------
+PC:169 OP: d MUL              SP:4
+CALC MUL: 8 * b = 58 ("X")
+STACK[2] = 58 ("X")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:16a OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 18 = 216d566d6f ("!mVmo")
+STACK[1] = 216d566d6f ("!mVmo")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 216d566d6f ("!mVmo")
+MEM READ : MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = b (".")
+----------------------------------------
+PC:17a OP: d MUL              SP:4
+CALC MUL: 8 * b = 58 ("X")
+STACK[2] = 58 ("X")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:17b OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 18 = 216d566d6f ("!mVmo")
+STACK[1] = 216d566d6f ("!mVmo")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 216d566d6f ("!mVmo")
+MEM READ : MEM[15] = 216d566d6f ("!mVmo")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 216d566d6f & ff = 6f ("o")
+STACK[1] = 6f ("o")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6f ("o")
+MEM READ : MEM[16] = 216d566d6f ("!mVmo")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 216d566d6f & ff = 6f ("o")
+STACK[1] = 6f ("o")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6f ("o")
+MEM READ : MEM[15] = 6f ("o")
+MEM READ : MEM[16] = 6f ("o")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 6f ("o") == 6f ("o") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6f ("o")
+MEM READ : MEM[16] = 6f ("o")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 6f ("o") == 6f ("o") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = b (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: b + 1 = c (".")
+STACK[1] = c (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = c (".")
+MEM READ : MEM[14] = b (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: b + 1 = c (".")
+STACK[1] = c (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = c (".")
+MEM READ : MEM[14] = c (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: c (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = c (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: c (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP taken
+MEM READ : MEM[14] = c (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: c (".") > 7 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = c (".")
+----------------------------------------
+PC:169 OP: d MUL              SP:4
+CALC MUL: 8 * c = 60 ("`")
+STACK[2] = 60 ("`")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:16a OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 20 = 216d566d ("!mVm")
+STACK[1] = 216d566d ("!mVm")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 216d566d ("!mVm")
+MEM READ : MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = c (".")
+----------------------------------------
+PC:17a OP: d MUL              SP:4
+CALC MUL: 8 * c = 60 ("`")
+STACK[2] = 60 ("`")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:17b OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 20 = 216d566d ("!mVm")
+STACK[1] = 216d566d ("!mVm")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 216d566d ("!mVm")
+MEM READ : MEM[15] = 216d566d ("!mVm")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 216d566d & ff = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 216d566d ("!mVm")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 216d566d & ff = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d ("m")
+MEM READ : MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 6d ("m")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 6d ("m") == 6d ("m") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 6d ("m")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 6d ("m") == 6d ("m") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = c (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: c + 1 = d (".")
+STACK[1] = d (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = d (".")
+MEM READ : MEM[14] = c (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: c + 1 = d (".")
+STACK[1] = d (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = d (".")
+MEM READ : MEM[14] = d (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: d (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = d (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: d (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP taken
+MEM READ : MEM[14] = d (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: d (".") > 7 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = d (".")
+----------------------------------------
+PC:169 OP: d MUL              SP:4
+CALC MUL: 8 * d = 68 ("h")
+STACK[2] = 68 ("h")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:16a OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 28 = 216d56 ("!mV")
+STACK[1] = 216d56 ("!mV")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 216d56 ("!mV")
+MEM READ : MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = d (".")
+----------------------------------------
+PC:17a OP: d MUL              SP:4
+CALC MUL: 8 * d = 68 ("h")
+STACK[2] = 68 ("h")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:17b OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 28 = 216d56 ("!mV")
+STACK[1] = 216d56 ("!mV")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 216d56 ("!mV")
+MEM READ : MEM[15] = 216d56 ("!mV")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 216d56 & ff = 56 ("V")
+STACK[1] = 56 ("V")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 56 ("V")
+MEM READ : MEM[16] = 216d56 ("!mV")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 216d56 & ff = 56 ("V")
+STACK[1] = 56 ("V")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 56 ("V")
+MEM READ : MEM[15] = 56 ("V")
+MEM READ : MEM[16] = 56 ("V")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 56 ("V") == 56 ("V") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 56 ("V")
+MEM READ : MEM[16] = 56 ("V")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 56 ("V") == 56 ("V") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = d (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: d + 1 = e (".")
+STACK[1] = e (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = e (".")
+MEM READ : MEM[14] = d (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: d + 1 = e (".")
+STACK[1] = e (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = e (".")
+MEM READ : MEM[14] = e (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: e (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = e (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: e (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP taken
+MEM READ : MEM[14] = e (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: e (".") > 7 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = e (".")
+----------------------------------------
+PC:169 OP: d MUL              SP:4
+CALC MUL: 8 * e = 70 ("p")
+STACK[2] = 70 ("p")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:16a OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 30 = 216d ("!m")
+STACK[1] = 216d ("!m")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 216d ("!m")
+MEM READ : MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = e (".")
+----------------------------------------
+PC:17a OP: d MUL              SP:4
+CALC MUL: 8 * e = 70 ("p")
+STACK[2] = 70 ("p")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:17b OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 30 = 216d ("!m")
+STACK[1] = 216d ("!m")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 216d ("!m")
+MEM READ : MEM[15] = 216d ("!m")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 216d & ff = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 216d ("!m")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 216d & ff = 6d ("m")
+STACK[1] = 6d ("m")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 6d ("m")
+MEM READ : MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 6d ("m")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 6d ("m") == 6d ("m") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 6d ("m")
+MEM READ : MEM[16] = 6d ("m")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 6d ("m") == 6d ("m") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = e (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: e + 1 = f (".")
+STACK[1] = f (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = f (".")
+MEM READ : MEM[14] = e (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: e + 1 = f (".")
+STACK[1] = f (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = f (".")
+MEM READ : MEM[14] = f (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: f (".") > f (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP taken
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 1 (".")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 1 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[14] = f (".")
+----------------------------------------
+PC:12a OP:12 CMP_L            SP:2
+CMP: f (".") < 8 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:12b OP:10 JNZ               150 (".P") SP:1
+[*] JUMP taken
+MEM READ : MEM[14] = f (".")
+----------------------------------------
+PC:157 OP:14 CMP_G            SP:2
+CMP: f (".") > 7 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:158 OP:10 JNZ               17d (".}") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[09] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = f (".")
+----------------------------------------
+PC:169 OP: d MUL              SP:4
+CALC MUL: 8 * f = 78 ("x")
+STACK[2] = 78 ("x")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 15 (".")
+----------------------------------------
+PC:16a OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 38 = 21 ("!")
+STACK[1] = 21 ("!")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 21 ("!")
+MEM READ : MEM[13] = 216d566d6f724662 ("!mVmorFb")
+MEM READ : MEM[14] = f (".")
+----------------------------------------
+PC:17a OP: d MUL              SP:4
+CALC MUL: 8 * f = 78 ("x")
+STACK[2] = 78 ("x")
+STACK[1] = 216d566d6f724662 ("!mVmorFb")
+STACK[0] = 16 (".")
+----------------------------------------
+PC:17b OP:1f SHR              SP:3
+CALC SHR: 216d566d6f724662 >> 38 = 21 ("!")
+STACK[1] = 21 ("!")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 21 ("!")
+MEM READ : MEM[15] = 21 ("!")
+----------------------------------------
+PC:187 OP:1c AND              SP:3
+CALC AND: 21 & ff = 21 ("!")
+STACK[1] = 21 ("!")
+STACK[0] = 15 (".")
+MEM WRITE: MEM[15] = 21 ("!")
+MEM READ : MEM[16] = 21 ("!")
+----------------------------------------
+PC:193 OP:1c AND              SP:3
+CALC AND: 21 & ff = 21 ("!")
+STACK[1] = 21 ("!")
+STACK[0] = 16 (".")
+MEM WRITE: MEM[16] = 21 ("!")
+MEM READ : MEM[15] = 21 ("!")
+MEM READ : MEM[16] = 21 ("!")
+----------------------------------------
+PC:19d OP:11 CMP_EQ           SP:2
+CMP: 21 ("!") == 21 ("!") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1a1 OP:11 CMP_EQ           SP:2
+CMP: 1 (".") == 0 ("") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:1a2 OP:10 JNZ               1ac ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[15] = 21 ("!")
+MEM READ : MEM[16] = 21 ("!")
+----------------------------------------
+PC:1b4 OP:11 CMP_EQ           SP:2
+CMP: 21 ("!") == 21 ("!") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1b5 OP:10 JNZ               1c4 ("..") SP:1
+[*] JUMP NOT taken
+MEM READ : MEM[17] = f (".")
+----------------------------------------
+PC:1c2 OP: 9 ADD              SP:3
+CALC ADD: f + 1 = 10 (".")
+STACK[1] = 10 (".")
+STACK[0] = 17 (".")
+MEM WRITE: MEM[17] = 10 (".")
+MEM READ : MEM[14] = f (".")
+----------------------------------------
+PC:1ce OP: 9 ADD              SP:3
+CALC ADD: f + 1 = 10 (".")
+STACK[1] = 10 (".")
+STACK[0] = 14 (".")
+MEM WRITE: MEM[14] = 10 (".")
+MEM READ : MEM[14] = 10 (".")
+----------------------------------------
+PC:1d7 OP:14 CMP_G            SP:2
+CMP: 10 (".") > f (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1d8 OP:10 JNZ               1e2 ("..") SP:1
+[*] JUMP NOT taken
+MEM WRITE: MEM[18] = 0 ("")
+----------------------------------------
+PC:1e2 OP: e JMP               118 ("..") SP:0
+MEM READ : MEM[18] = 0 ("")
+----------------------------------------
+PC:11f OP:11 CMP_EQ           SP:2
+CMP: 0 ("") == 1 (".") yielded FALSE
+STACK[0] = 0 ("")
+----------------------------------------
+PC:120 OP:10 JNZ               1e5 ("..") SP:1
+[*] JUMP taken
+MEM READ : MEM[17] = 10 (".")
+----------------------------------------
+PC:1ec OP:11 CMP_EQ           SP:2
+CMP: 10 (".") == 10 (".") yielded TRUE
+STACK[0] = 1 (".")
+----------------------------------------
+PC:1ed OP:10 JNZ              18f7 ("..") SP:1
+[*] JUMP NOT taken
+MEM WRITE: MEM[19] = 1 (".")
+----------------------------------------
+PC:200 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 1a (".")
+MEM WRITE: MEM[1a] = 20 (" ")
+MEM READ : MEM[1a] = 20 (" ")
+----------------------------------------
+PC:206 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:210 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 1b (".")
+MEM WRITE: MEM[1b] = 20 (" ")
+MEM READ : MEM[1b] = 20 (" ")
+----------------------------------------
+PC:216 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:220 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 1c (".")
+MEM WRITE: MEM[1c] = 5f ("_")
+MEM READ : MEM[1c] = 5f ("_")
+----------------------------------------
+PC:226 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:230 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 1d (".")
+MEM WRITE: MEM[1d] = 20 (" ")
+MEM READ : MEM[1d] = 20 (" ")
+----------------------------------------
+PC:236 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:240 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 1e (".")
+MEM WRITE: MEM[1e] = 20 (" ")
+MEM READ : MEM[1e] = 20 (" ")
+----------------------------------------
+PC:246 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:250 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 1f (".")
+MEM WRITE: MEM[1f] = 20 (" ")
+MEM READ : MEM[1f] = 20 (" ")
+----------------------------------------
+PC:256 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:260 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 20 (" ")
+MEM WRITE: MEM[20] = 20 (" ")
+MEM READ : MEM[20] = 20 (" ")
+----------------------------------------
+PC:266 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:270 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 21 ("!")
+MEM WRITE: MEM[21] = 5f ("_")
+MEM READ : MEM[21] = 5f ("_")
+----------------------------------------
+PC:276 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:280 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 22 (""")
+MEM WRITE: MEM[22] = 20 (" ")
+MEM READ : MEM[22] = 20 (" ")
+----------------------------------------
+PC:286 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:290 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 23 ("#")
+MEM WRITE: MEM[23] = 20 (" ")
+MEM READ : MEM[23] = 20 (" ")
+----------------------------------------
+PC:296 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:2a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 24 ("$")
+MEM WRITE: MEM[24] = 20 (" ")
+MEM READ : MEM[24] = 20 (" ")
+----------------------------------------
+PC:2a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:2b0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 25 ("%")
+MEM WRITE: MEM[25] = 20 (" ")
+MEM READ : MEM[25] = 20 (" ")
+----------------------------------------
+PC:2b6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:2c0 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 26 ("&")
+MEM WRITE: MEM[26] = 5f ("_")
+MEM READ : MEM[26] = 5f ("_")
+----------------------------------------
+PC:2c6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:2d0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 27 ("'")
+MEM WRITE: MEM[27] = 20 (" ")
+MEM READ : MEM[27] = 20 (" ")
+----------------------------------------
+PC:2d6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:2e0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 28 ("(")
+MEM WRITE: MEM[28] = 20 (" ")
+MEM READ : MEM[28] = 20 (" ")
+----------------------------------------
+PC:2e6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:2f0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 29 (")")
+MEM WRITE: MEM[29] = 20 (" ")
+MEM READ : MEM[29] = 20 (" ")
+----------------------------------------
+PC:2f6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:300 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 2a ("*")
+MEM WRITE: MEM[2a] = 20 (" ")
+MEM READ : MEM[2a] = 20 (" ")
+----------------------------------------
+PC:306 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:310 OP:1a XOR              SP:3
+CALC XOR: f2 ^ ad = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 2b ("+")
+MEM WRITE: MEM[2b] = 5f ("_")
+MEM READ : MEM[2b] = 5f ("_")
+----------------------------------------
+PC:316 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:320 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 2c (",")
+MEM WRITE: MEM[2c] = 20 (" ")
+MEM READ : MEM[2c] = 20 (" ")
+----------------------------------------
+PC:326 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:330 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 2d ("-")
+MEM WRITE: MEM[2d] = 20 (" ")
+MEM READ : MEM[2d] = 20 (" ")
+----------------------------------------
+PC:336 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:340 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 2e (".")
+MEM WRITE: MEM[2e] = 20 (" ")
+MEM READ : MEM[2e] = 20 (" ")
+----------------------------------------
+PC:346 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:350 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 2f ("/")
+MEM WRITE: MEM[2f] = 20 (" ")
+MEM READ : MEM[2f] = 20 (" ")
+----------------------------------------
+PC:356 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:360 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 30 ("0")
+MEM WRITE: MEM[30] = 5f ("_")
+MEM READ : MEM[30] = 5f ("_")
+----------------------------------------
+PC:366 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:370 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 31 ("1")
+MEM WRITE: MEM[31] = 20 (" ")
+MEM READ : MEM[31] = 20 (" ")
+----------------------------------------
+PC:376 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:380 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 32 ("2")
+MEM WRITE: MEM[32] = 20 (" ")
+MEM READ : MEM[32] = 20 (" ")
+----------------------------------------
+PC:386 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:390 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 33 ("3")
+MEM WRITE: MEM[33] = 20 (" ")
+MEM READ : MEM[33] = 20 (" ")
+----------------------------------------
+PC:396 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:3a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 34 ("4")
+MEM WRITE: MEM[34] = 20 (" ")
+MEM READ : MEM[34] = 20 (" ")
+----------------------------------------
+PC:3a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:3b0 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 35 ("5")
+MEM WRITE: MEM[35] = 5f ("_")
+MEM READ : MEM[35] = 5f ("_")
+----------------------------------------
+PC:3b6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:3c0 OP:1a XOR              SP:3
+CALC XOR: d3 ^ de = d (".")
+STACK[1] = d (".")
+STACK[0] = 36 ("6")
+MEM WRITE: MEM[36] = d (".")
+MEM READ : MEM[36] = d (".")
+----------------------------------------
+PC:3c6 OP:26 PUTCHAR          SP:1
+13
+----------------------------------------
+PC:3d0 OP:1a XOR              SP:3
+CALC XOR: a7 ^ ad = a (".")
+STACK[1] = a (".")
+STACK[0] = 37 ("7")
+MEM WRITE: MEM[37] = a (".")
+MEM READ : MEM[37] = a (".")
+----------------------------------------
+PC:3d6 OP:26 PUTCHAR          SP:1
+10
+----------------------------------------
+PC:3e0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 38 ("8")
+MEM WRITE: MEM[38] = 20 (" ")
+MEM READ : MEM[38] = 20 (" ")
+----------------------------------------
+PC:3e6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:3f0 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 39 ("9")
+MEM WRITE: MEM[39] = 2f ("/")
+MEM READ : MEM[39] = 2f ("/")
+----------------------------------------
+PC:3f6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:400 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 3a (":")
+MEM WRITE: MEM[3a] = 20 (" ")
+MEM READ : MEM[3a] = 20 (" ")
+----------------------------------------
+PC:406 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:410 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 3b (";")
+MEM WRITE: MEM[3b] = 5c ("\")
+MEM READ : MEM[3b] = 5c ("\")
+----------------------------------------
+PC:416 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:420 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 3c ("<")
+MEM WRITE: MEM[3c] = 20 (" ")
+MEM READ : MEM[3c] = 20 (" ")
+----------------------------------------
+PC:426 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:430 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 3d ("=")
+MEM WRITE: MEM[3d] = 20 (" ")
+MEM READ : MEM[3d] = 20 (" ")
+----------------------------------------
+PC:436 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:440 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 3e (">")
+MEM WRITE: MEM[3e] = 2f ("/")
+MEM READ : MEM[3e] = 2f ("/")
+----------------------------------------
+PC:446 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:450 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 3f ("?")
+MEM WRITE: MEM[3f] = 20 (" ")
+MEM READ : MEM[3f] = 20 (" ")
+----------------------------------------
+PC:456 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:460 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 40 ("@")
+MEM WRITE: MEM[40] = 5c ("\")
+MEM READ : MEM[40] = 5c ("\")
+----------------------------------------
+PC:466 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:470 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 41 ("A")
+MEM WRITE: MEM[41] = 20 (" ")
+MEM READ : MEM[41] = 20 (" ")
+----------------------------------------
+PC:476 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:480 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 42 ("B")
+MEM WRITE: MEM[42] = 20 (" ")
+MEM READ : MEM[42] = 20 (" ")
+----------------------------------------
+PC:486 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:490 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 43 ("C")
+MEM WRITE: MEM[43] = 2f ("/")
+MEM READ : MEM[43] = 2f ("/")
+----------------------------------------
+PC:496 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:4a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 44 ("D")
+MEM WRITE: MEM[44] = 20 (" ")
+MEM READ : MEM[44] = 20 (" ")
+----------------------------------------
+PC:4a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:4b0 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 45 ("E")
+MEM WRITE: MEM[45] = 5c ("\")
+MEM READ : MEM[45] = 5c ("\")
+----------------------------------------
+PC:4b6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:4c0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 46 ("F")
+MEM WRITE: MEM[46] = 20 (" ")
+MEM READ : MEM[46] = 20 (" ")
+----------------------------------------
+PC:4c6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:4d0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 47 ("G")
+MEM WRITE: MEM[47] = 20 (" ")
+MEM READ : MEM[47] = 20 (" ")
+----------------------------------------
+PC:4d6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:4e0 OP:1a XOR              SP:3
+CALC XOR: e5 ^ ca = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 48 ("H")
+MEM WRITE: MEM[48] = 2f ("/")
+MEM READ : MEM[48] = 2f ("/")
+----------------------------------------
+PC:4e6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:4f0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 49 ("I")
+MEM WRITE: MEM[49] = 20 (" ")
+MEM READ : MEM[49] = 20 (" ")
+----------------------------------------
+PC:4f6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:500 OP:1a XOR              SP:3
+CALC XOR: 82 ^ de = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 4a ("J")
+MEM WRITE: MEM[4a] = 5c ("\")
+MEM READ : MEM[4a] = 5c ("\")
+----------------------------------------
+PC:506 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:510 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 4b ("K")
+MEM WRITE: MEM[4b] = 20 (" ")
+MEM READ : MEM[4b] = 20 (" ")
+----------------------------------------
+PC:516 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:520 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 4c ("L")
+MEM WRITE: MEM[4c] = 20 (" ")
+MEM READ : MEM[4c] = 20 (" ")
+----------------------------------------
+PC:526 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:530 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 4d ("M")
+MEM WRITE: MEM[4d] = 2f ("/")
+MEM READ : MEM[4d] = 2f ("/")
+----------------------------------------
+PC:536 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:540 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 4e ("N")
+MEM WRITE: MEM[4e] = 20 (" ")
+MEM READ : MEM[4e] = 20 (" ")
+----------------------------------------
+PC:546 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:550 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 4f ("O")
+MEM WRITE: MEM[4f] = 5c ("\")
+MEM READ : MEM[4f] = 5c ("\")
+----------------------------------------
+PC:556 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:560 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 50 ("P")
+MEM WRITE: MEM[50] = 20 (" ")
+MEM READ : MEM[50] = 20 (" ")
+----------------------------------------
+PC:566 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:570 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 51 ("Q")
+MEM WRITE: MEM[51] = 20 (" ")
+MEM READ : MEM[51] = 20 (" ")
+----------------------------------------
+PC:576 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:580 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 52 ("R")
+MEM WRITE: MEM[52] = 2f ("/")
+MEM READ : MEM[52] = 2f ("/")
+----------------------------------------
+PC:586 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:590 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 53 ("S")
+MEM WRITE: MEM[53] = 20 (" ")
+MEM READ : MEM[53] = 20 (" ")
+----------------------------------------
+PC:596 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:5a0 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 54 ("T")
+MEM WRITE: MEM[54] = 5c ("\")
+MEM READ : MEM[54] = 5c ("\")
+----------------------------------------
+PC:5a6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:5b0 OP:1a XOR              SP:3
+CALC XOR: f3 ^ fe = d (".")
+STACK[1] = d (".")
+STACK[0] = 55 ("U")
+MEM WRITE: MEM[55] = d (".")
+MEM READ : MEM[55] = d (".")
+----------------------------------------
+PC:5b6 OP:26 PUTCHAR          SP:1
+13
+----------------------------------------
+PC:5c0 OP:1a XOR              SP:3
+CALC XOR: d4 ^ de = a (".")
+STACK[1] = a (".")
+STACK[0] = 56 ("V")
+MEM WRITE: MEM[56] = a (".")
+MEM READ : MEM[56] = a (".")
+----------------------------------------
+PC:5c6 OP:26 PUTCHAR          SP:1
+10
+----------------------------------------
+PC:5d0 OP:1a XOR              SP:3
+CALC XOR: 85 ^ ad = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 57 ("W")
+MEM WRITE: MEM[57] = 28 ("(")
+MEM READ : MEM[57] = 28 ("(")
+----------------------------------------
+PC:5d6 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:5e0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 58 ("X")
+MEM WRITE: MEM[58] = 20 (" ")
+MEM READ : MEM[58] = 20 (" ")
+----------------------------------------
+PC:5e6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:5f0 OP:1a XOR              SP:3
+CALC XOR: 8b ^ fe = 75 ("u")
+STACK[1] = 75 ("u")
+STACK[0] = 59 ("Y")
+MEM WRITE: MEM[59] = 75 ("u")
+MEM READ : MEM[59] = 75 ("u")
+----------------------------------------
+PC:5f6 OP:26 PUTCHAR          SP:1
+117
+----------------------------------------
+PC:600 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 5a ("Z")
+MEM WRITE: MEM[5a] = 20 (" ")
+MEM READ : MEM[5a] = 20 (" ")
+----------------------------------------
+PC:606 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:610 OP:1a XOR              SP:3
+CALC XOR: 84 ^ ad = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 5b ("[")
+MEM WRITE: MEM[5b] = 29 (")")
+MEM READ : MEM[5b] = 29 (")")
+----------------------------------------
+PC:616 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:620 OP:1a XOR              SP:3
+CALC XOR: e2 ^ ca = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 5c ("\")
+MEM WRITE: MEM[5c] = 28 ("(")
+MEM READ : MEM[5c] = 28 ("(")
+----------------------------------------
+PC:626 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:630 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 5d ("]")
+MEM WRITE: MEM[5d] = 20 (" ")
+MEM READ : MEM[5d] = 20 (" ")
+----------------------------------------
+PC:636 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:640 OP:1a XOR              SP:3
+CALC XOR: b0 ^ de = 6e ("n")
+STACK[1] = 6e ("n")
+STACK[0] = 5e ("^")
+MEM WRITE: MEM[5e] = 6e ("n")
+MEM READ : MEM[5e] = 6e ("n")
+----------------------------------------
+PC:646 OP:26 PUTCHAR          SP:1
+110
+----------------------------------------
+PC:650 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 5f ("_")
+MEM WRITE: MEM[5f] = 20 (" ")
+MEM READ : MEM[5f] = 20 (" ")
+----------------------------------------
+PC:656 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:660 OP:1a XOR              SP:3
+CALC XOR: e3 ^ ca = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 60 ("`")
+MEM WRITE: MEM[60] = 29 (")")
+MEM READ : MEM[60] = 29 (")")
+----------------------------------------
+PC:666 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:670 OP:1a XOR              SP:3
+CALC XOR: d6 ^ fe = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 61 ("a")
+MEM WRITE: MEM[61] = 28 ("(")
+MEM READ : MEM[61] = 28 ("(")
+----------------------------------------
+PC:676 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:680 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 62 ("b")
+MEM WRITE: MEM[62] = 20 (" ")
+MEM READ : MEM[62] = 20 (" ")
+----------------------------------------
+PC:686 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:690 OP:1a XOR              SP:3
+CALC XOR: c9 ^ ad = 64 ("d")
+STACK[1] = 64 ("d")
+STACK[0] = 63 ("c")
+MEM WRITE: MEM[63] = 64 ("d")
+MEM READ : MEM[63] = 64 ("d")
+----------------------------------------
+PC:696 OP:26 PUTCHAR          SP:1
+100
+----------------------------------------
+PC:6a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 64 ("d")
+MEM WRITE: MEM[64] = 20 (" ")
+MEM READ : MEM[64] = 20 (" ")
+----------------------------------------
+PC:6a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:6b0 OP:1a XOR              SP:3
+CALC XOR: d7 ^ fe = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 65 ("e")
+MEM WRITE: MEM[65] = 29 (")")
+MEM READ : MEM[65] = 29 (")")
+----------------------------------------
+PC:6b6 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:6c0 OP:1a XOR              SP:3
+CALC XOR: f6 ^ de = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 66 ("f")
+MEM WRITE: MEM[66] = 28 ("(")
+MEM READ : MEM[66] = 28 ("(")
+----------------------------------------
+PC:6c6 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:6d0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 67 ("g")
+MEM WRITE: MEM[67] = 20 (" ")
+MEM READ : MEM[67] = 20 (" ")
+----------------------------------------
+PC:6d6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:6e0 OP:1a XOR              SP:3
+CALC XOR: f9 ^ ca = 33 ("3")
+STACK[1] = 33 ("3")
+STACK[0] = 68 ("h")
+MEM WRITE: MEM[68] = 33 ("3")
+MEM READ : MEM[68] = 33 ("3")
+----------------------------------------
+PC:6e6 OP:26 PUTCHAR          SP:1
+51
+----------------------------------------
+PC:6f0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 69 ("i")
+MEM WRITE: MEM[69] = 20 (" ")
+MEM READ : MEM[69] = 20 (" ")
+----------------------------------------
+PC:6f6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:700 OP:1a XOR              SP:3
+CALC XOR: f7 ^ de = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 6a ("j")
+MEM WRITE: MEM[6a] = 29 (")")
+MEM READ : MEM[6a] = 29 (")")
+----------------------------------------
+PC:706 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:710 OP:1a XOR              SP:3
+CALC XOR: 85 ^ ad = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 6b ("k")
+MEM WRITE: MEM[6b] = 28 ("(")
+MEM READ : MEM[6b] = 28 ("(")
+----------------------------------------
+PC:716 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:720 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 6c ("l")
+MEM WRITE: MEM[6c] = 20 (" ")
+MEM READ : MEM[6c] = 20 (" ")
+----------------------------------------
+PC:726 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:730 OP:1a XOR              SP:3
+CALC XOR: 8c ^ fe = 72 ("r")
+STACK[1] = 72 ("r")
+STACK[0] = 6d ("m")
+MEM WRITE: MEM[6d] = 72 ("r")
+MEM READ : MEM[6d] = 72 ("r")
+----------------------------------------
+PC:736 OP:26 PUTCHAR          SP:1
+114
+----------------------------------------
+PC:740 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 6e ("n")
+MEM WRITE: MEM[6e] = 20 (" ")
+MEM READ : MEM[6e] = 20 (" ")
+----------------------------------------
+PC:746 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:750 OP:1a XOR              SP:3
+CALC XOR: 84 ^ ad = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 6f ("o")
+MEM WRITE: MEM[6f] = 29 (")")
+MEM READ : MEM[6f] = 29 (")")
+----------------------------------------
+PC:756 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:760 OP:1a XOR              SP:3
+CALC XOR: e2 ^ ca = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 70 ("p")
+MEM WRITE: MEM[70] = 28 ("(")
+MEM READ : MEM[70] = 28 ("(")
+----------------------------------------
+PC:766 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:770 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 71 ("q")
+MEM WRITE: MEM[71] = 20 (" ")
+MEM READ : MEM[71] = 20 (" ")
+----------------------------------------
+PC:776 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:780 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 72 ("r")
+MEM WRITE: MEM[72] = 5f ("_")
+MEM READ : MEM[72] = 5f ("_")
+----------------------------------------
+PC:786 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:790 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 73 ("s")
+MEM WRITE: MEM[73] = 20 (" ")
+MEM READ : MEM[73] = 20 (" ")
+----------------------------------------
+PC:796 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:7a0 OP:1a XOR              SP:3
+CALC XOR: e3 ^ ca = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 74 ("t")
+MEM WRITE: MEM[74] = 29 (")")
+MEM READ : MEM[74] = 29 (")")
+----------------------------------------
+PC:7a6 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:7b0 OP:1a XOR              SP:3
+CALC XOR: f3 ^ fe = d (".")
+STACK[1] = d (".")
+STACK[0] = 75 ("u")
+MEM WRITE: MEM[75] = d (".")
+MEM READ : MEM[75] = d (".")
+----------------------------------------
+PC:7b6 OP:26 PUTCHAR          SP:1
+13
+----------------------------------------
+PC:7c0 OP:1a XOR              SP:3
+CALC XOR: d4 ^ de = a (".")
+STACK[1] = a (".")
+STACK[0] = 76 ("v")
+MEM WRITE: MEM[76] = a (".")
+MEM READ : MEM[76] = a (".")
+----------------------------------------
+PC:7c6 OP:26 PUTCHAR          SP:1
+10
+----------------------------------------
+PC:7d0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 77 ("w")
+MEM WRITE: MEM[77] = 20 (" ")
+MEM READ : MEM[77] = 20 (" ")
+----------------------------------------
+PC:7d6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:7e0 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 78 ("x")
+MEM WRITE: MEM[78] = 5c ("\")
+MEM READ : MEM[78] = 5c ("\")
+----------------------------------------
+PC:7e6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:7f0 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 79 ("y")
+MEM WRITE: MEM[79] = 5f ("_")
+MEM READ : MEM[79] = 5f ("_")
+----------------------------------------
+PC:7f6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:800 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 7a ("z")
+MEM WRITE: MEM[7a] = 2f ("/")
+MEM READ : MEM[7a] = 2f ("/")
+----------------------------------------
+PC:806 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:810 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 7b ("{")
+MEM WRITE: MEM[7b] = 20 (" ")
+MEM READ : MEM[7b] = 20 (" ")
+----------------------------------------
+PC:816 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:820 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 7c ("|")
+MEM WRITE: MEM[7c] = 20 (" ")
+MEM READ : MEM[7c] = 20 (" ")
+----------------------------------------
+PC:826 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:830 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 7d ("}")
+MEM WRITE: MEM[7d] = 5c ("\")
+MEM READ : MEM[7d] = 5c ("\")
+----------------------------------------
+PC:836 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:840 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 7e ("~")
+MEM WRITE: MEM[7e] = 5f ("_")
+MEM READ : MEM[7e] = 5f ("_")
+----------------------------------------
+PC:846 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:850 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 7f (".")
+MEM WRITE: MEM[7f] = 2f ("/")
+MEM READ : MEM[7f] = 2f ("/")
+----------------------------------------
+PC:856 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:860 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 80 (".")
+MEM WRITE: MEM[80] = 20 (" ")
+MEM READ : MEM[80] = 20 (" ")
+----------------------------------------
+PC:866 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:870 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 81 (".")
+MEM WRITE: MEM[81] = 20 (" ")
+MEM READ : MEM[81] = 20 (" ")
+----------------------------------------
+PC:876 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:880 OP:1a XOR              SP:3
+CALC XOR: 82 ^ de = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 82 (".")
+MEM WRITE: MEM[82] = 5c ("\")
+MEM READ : MEM[82] = 5c ("\")
+----------------------------------------
+PC:886 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:890 OP:1a XOR              SP:3
+CALC XOR: f2 ^ ad = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 83 (".")
+MEM WRITE: MEM[83] = 5f ("_")
+MEM READ : MEM[83] = 5f ("_")
+----------------------------------------
+PC:896 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:8a0 OP:1a XOR              SP:3
+CALC XOR: e5 ^ ca = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 84 (".")
+MEM WRITE: MEM[84] = 2f ("/")
+MEM READ : MEM[84] = 2f ("/")
+----------------------------------------
+PC:8a6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:8b0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 85 (".")
+MEM WRITE: MEM[85] = 20 (" ")
+MEM READ : MEM[85] = 20 (" ")
+----------------------------------------
+PC:8b6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:8c0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 86 (".")
+MEM WRITE: MEM[86] = 20 (" ")
+MEM READ : MEM[86] = 20 (" ")
+----------------------------------------
+PC:8c6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:8d0 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 87 (".")
+MEM WRITE: MEM[87] = 5c ("\")
+MEM READ : MEM[87] = 5c ("\")
+----------------------------------------
+PC:8d6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:8e0 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 88 (".")
+MEM WRITE: MEM[88] = 5f ("_")
+MEM READ : MEM[88] = 5f ("_")
+----------------------------------------
+PC:8e6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:8f0 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 89 (".")
+MEM WRITE: MEM[89] = 2f ("/")
+MEM READ : MEM[89] = 2f ("/")
+----------------------------------------
+PC:8f6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:900 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 8a (".")
+MEM WRITE: MEM[8a] = 20 (" ")
+MEM READ : MEM[8a] = 20 (" ")
+----------------------------------------
+PC:906 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:910 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 8b (".")
+MEM WRITE: MEM[8b] = 20 (" ")
+MEM READ : MEM[8b] = 20 (" ")
+----------------------------------------
+PC:916 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:920 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 8c (".")
+MEM WRITE: MEM[8c] = 5c ("\")
+MEM READ : MEM[8c] = 5c ("\")
+----------------------------------------
+PC:926 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:930 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 8d (".")
+MEM WRITE: MEM[8d] = 5f ("_")
+MEM READ : MEM[8d] = 5f ("_")
+----------------------------------------
+PC:936 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:940 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 8e (".")
+MEM WRITE: MEM[8e] = 2f ("/")
+MEM READ : MEM[8e] = 2f ("/")
+----------------------------------------
+PC:946 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:950 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 8f (".")
+MEM WRITE: MEM[8f] = 20 (" ")
+MEM READ : MEM[8f] = 20 (" ")
+----------------------------------------
+PC:956 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:960 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 90 (".")
+MEM WRITE: MEM[90] = 20 (" ")
+MEM READ : MEM[90] = 20 (" ")
+----------------------------------------
+PC:966 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:970 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 91 (".")
+MEM WRITE: MEM[91] = 5c ("\")
+MEM READ : MEM[91] = 5c ("\")
+----------------------------------------
+PC:976 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:980 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 92 (".")
+MEM WRITE: MEM[92] = 5f ("_")
+MEM READ : MEM[92] = 5f ("_")
+----------------------------------------
+PC:986 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:990 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 93 (".")
+MEM WRITE: MEM[93] = 2f ("/")
+MEM READ : MEM[93] = 2f ("/")
+----------------------------------------
+PC:996 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:9a0 OP:1a XOR              SP:3
+CALC XOR: c7 ^ ca = d (".")
+STACK[1] = d (".")
+STACK[0] = 94 (".")
+MEM WRITE: MEM[94] = d (".")
+MEM READ : MEM[94] = d (".")
+----------------------------------------
+PC:9a6 OP:26 PUTCHAR          SP:1
+13
+----------------------------------------
+PC:9b0 OP:1a XOR              SP:3
+CALC XOR: f4 ^ fe = a (".")
+STACK[1] = a (".")
+STACK[0] = 95 (".")
+MEM WRITE: MEM[95] = a (".")
+MEM READ : MEM[95] = a (".")
+----------------------------------------
+PC:9b6 OP:26 PUTCHAR          SP:1
+10
+----------------------------------------
+PC:9c0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 96 (".")
+MEM WRITE: MEM[96] = 20 (" ")
+MEM READ : MEM[96] = 20 (" ")
+----------------------------------------
+PC:9c6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:9d0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 97 (".")
+MEM WRITE: MEM[97] = 20 (" ")
+MEM READ : MEM[97] = 20 (" ")
+----------------------------------------
+PC:9d6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:9e0 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 98 (".")
+MEM WRITE: MEM[98] = 5f ("_")
+MEM READ : MEM[98] = 5f ("_")
+----------------------------------------
+PC:9e6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:9f0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 99 (".")
+MEM WRITE: MEM[99] = 20 (" ")
+MEM READ : MEM[99] = 20 (" ")
+----------------------------------------
+PC:9f6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:a00 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 9a (".")
+MEM WRITE: MEM[9a] = 20 (" ")
+MEM READ : MEM[9a] = 20 (" ")
+----------------------------------------
+PC:a06 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:a10 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 9b (".")
+MEM WRITE: MEM[9b] = 20 (" ")
+MEM READ : MEM[9b] = 20 (" ")
+----------------------------------------
+PC:a16 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:a20 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 9c (".")
+MEM WRITE: MEM[9c] = 20 (" ")
+MEM READ : MEM[9c] = 20 (" ")
+----------------------------------------
+PC:a26 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:a30 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 9d (".")
+MEM WRITE: MEM[9d] = 5f ("_")
+MEM READ : MEM[9d] = 5f ("_")
+----------------------------------------
+PC:a36 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:a40 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 9e (".")
+MEM WRITE: MEM[9e] = 20 (" ")
+MEM READ : MEM[9e] = 20 (" ")
+----------------------------------------
+PC:a46 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:a50 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 9f (".")
+MEM WRITE: MEM[9f] = 20 (" ")
+MEM READ : MEM[9f] = 20 (" ")
+----------------------------------------
+PC:a56 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:a60 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = a0 (".")
+MEM WRITE: MEM[a0] = 20 (" ")
+MEM READ : MEM[a0] = 20 (" ")
+----------------------------------------
+PC:a66 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:a70 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = a1 (".")
+MEM WRITE: MEM[a1] = 20 (" ")
+MEM READ : MEM[a1] = 20 (" ")
+----------------------------------------
+PC:a76 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:a80 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = a2 (".")
+MEM WRITE: MEM[a2] = 5f ("_")
+MEM READ : MEM[a2] = 5f ("_")
+----------------------------------------
+PC:a86 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:a90 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = a3 (".")
+MEM WRITE: MEM[a3] = 20 (" ")
+MEM READ : MEM[a3] = 20 (" ")
+----------------------------------------
+PC:a96 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:aa0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = a4 (".")
+MEM WRITE: MEM[a4] = 20 (" ")
+MEM READ : MEM[a4] = 20 (" ")
+----------------------------------------
+PC:aa6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ab0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = a5 (".")
+MEM WRITE: MEM[a5] = 20 (" ")
+MEM READ : MEM[a5] = 20 (" ")
+----------------------------------------
+PC:ab6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ac0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = a6 (".")
+MEM WRITE: MEM[a6] = 20 (" ")
+MEM READ : MEM[a6] = 20 (" ")
+----------------------------------------
+PC:ac6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ad0 OP:1a XOR              SP:3
+CALC XOR: f2 ^ ad = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = a7 (".")
+MEM WRITE: MEM[a7] = 5f ("_")
+MEM READ : MEM[a7] = 5f ("_")
+----------------------------------------
+PC:ad6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:ae0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = a8 (".")
+MEM WRITE: MEM[a8] = 20 (" ")
+MEM READ : MEM[a8] = 20 (" ")
+----------------------------------------
+PC:ae6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:af0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = a9 (".")
+MEM WRITE: MEM[a9] = 20 (" ")
+MEM READ : MEM[a9] = 20 (" ")
+----------------------------------------
+PC:af6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:b00 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = aa (".")
+MEM WRITE: MEM[aa] = 20 (" ")
+MEM READ : MEM[aa] = 20 (" ")
+----------------------------------------
+PC:b06 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:b10 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ab (".")
+MEM WRITE: MEM[ab] = 20 (" ")
+MEM READ : MEM[ab] = 20 (" ")
+----------------------------------------
+PC:b16 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:b20 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = ac (".")
+MEM WRITE: MEM[ac] = 5f ("_")
+MEM READ : MEM[ac] = 5f ("_")
+----------------------------------------
+PC:b26 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:b30 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ad (".")
+MEM WRITE: MEM[ad] = 20 (" ")
+MEM READ : MEM[ad] = 20 (" ")
+----------------------------------------
+PC:b36 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:b40 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ae (".")
+MEM WRITE: MEM[ae] = 20 (" ")
+MEM READ : MEM[ae] = 20 (" ")
+----------------------------------------
+PC:b46 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:b50 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = af (".")
+MEM WRITE: MEM[af] = 20 (" ")
+MEM READ : MEM[af] = 20 (" ")
+----------------------------------------
+PC:b56 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:b60 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = b0 (".")
+MEM WRITE: MEM[b0] = 20 (" ")
+MEM READ : MEM[b0] = 20 (" ")
+----------------------------------------
+PC:b66 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:b70 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = b1 (".")
+MEM WRITE: MEM[b1] = 5f ("_")
+MEM READ : MEM[b1] = 5f ("_")
+----------------------------------------
+PC:b76 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:b80 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = b2 (".")
+MEM WRITE: MEM[b2] = 20 (" ")
+MEM READ : MEM[b2] = 20 (" ")
+----------------------------------------
+PC:b86 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:b90 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = b3 (".")
+MEM WRITE: MEM[b3] = 20 (" ")
+MEM READ : MEM[b3] = 20 (" ")
+----------------------------------------
+PC:b96 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ba0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = b4 (".")
+MEM WRITE: MEM[b4] = 20 (" ")
+MEM READ : MEM[b4] = 20 (" ")
+----------------------------------------
+PC:ba6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:bb0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = b5 (".")
+MEM WRITE: MEM[b5] = 20 (" ")
+MEM READ : MEM[b5] = 20 (" ")
+----------------------------------------
+PC:bb6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:bc0 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = b6 (".")
+MEM WRITE: MEM[b6] = 5f ("_")
+MEM READ : MEM[b6] = 5f ("_")
+----------------------------------------
+PC:bc6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:bd0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = b7 (".")
+MEM WRITE: MEM[b7] = 20 (" ")
+MEM READ : MEM[b7] = 20 (" ")
+----------------------------------------
+PC:bd6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:be0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = b8 (".")
+MEM WRITE: MEM[b8] = 20 (" ")
+MEM READ : MEM[b8] = 20 (" ")
+----------------------------------------
+PC:be6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:bf0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = b9 (".")
+MEM WRITE: MEM[b9] = 20 (" ")
+MEM READ : MEM[b9] = 20 (" ")
+----------------------------------------
+PC:bf6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:c00 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ba (".")
+MEM WRITE: MEM[ba] = 20 (" ")
+MEM READ : MEM[ba] = 20 (" ")
+----------------------------------------
+PC:c06 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:c10 OP:1a XOR              SP:3
+CALC XOR: f2 ^ ad = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = bb (".")
+MEM WRITE: MEM[bb] = 5f ("_")
+MEM READ : MEM[bb] = 5f ("_")
+----------------------------------------
+PC:c16 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:c20 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = bc (".")
+MEM WRITE: MEM[bc] = 20 (" ")
+MEM READ : MEM[bc] = 20 (" ")
+----------------------------------------
+PC:c26 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:c30 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = bd (".")
+MEM WRITE: MEM[bd] = 20 (" ")
+MEM READ : MEM[bd] = 20 (" ")
+----------------------------------------
+PC:c36 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:c40 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = be (".")
+MEM WRITE: MEM[be] = 20 (" ")
+MEM READ : MEM[be] = 20 (" ")
+----------------------------------------
+PC:c46 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:c50 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = bf (".")
+MEM WRITE: MEM[bf] = 20 (" ")
+MEM READ : MEM[bf] = 20 (" ")
+----------------------------------------
+PC:c56 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:c60 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = c0 (".")
+MEM WRITE: MEM[c0] = 5f ("_")
+MEM READ : MEM[c0] = 5f ("_")
+----------------------------------------
+PC:c66 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:c70 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = c1 (".")
+MEM WRITE: MEM[c1] = 20 (" ")
+MEM READ : MEM[c1] = 20 (" ")
+----------------------------------------
+PC:c76 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:c80 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = c2 (".")
+MEM WRITE: MEM[c2] = 20 (" ")
+MEM READ : MEM[c2] = 20 (" ")
+----------------------------------------
+PC:c86 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:c90 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = c3 (".")
+MEM WRITE: MEM[c3] = 20 (" ")
+MEM READ : MEM[c3] = 20 (" ")
+----------------------------------------
+PC:c96 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ca0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = c4 (".")
+MEM WRITE: MEM[c4] = 20 (" ")
+MEM READ : MEM[c4] = 20 (" ")
+----------------------------------------
+PC:ca6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:cb0 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = c5 (".")
+MEM WRITE: MEM[c5] = 5f ("_")
+MEM READ : MEM[c5] = 5f ("_")
+----------------------------------------
+PC:cb6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:cc0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = c6 (".")
+MEM WRITE: MEM[c6] = 20 (" ")
+MEM READ : MEM[c6] = 20 (" ")
+----------------------------------------
+PC:cc6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:cd0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = c7 (".")
+MEM WRITE: MEM[c7] = 20 (" ")
+MEM READ : MEM[c7] = 20 (" ")
+----------------------------------------
+PC:cd6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ce0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = c8 (".")
+MEM WRITE: MEM[c8] = 20 (" ")
+MEM READ : MEM[c8] = 20 (" ")
+----------------------------------------
+PC:ce6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:cf0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = c9 (".")
+MEM WRITE: MEM[c9] = 20 (" ")
+MEM READ : MEM[c9] = 20 (" ")
+----------------------------------------
+PC:cf6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:d00 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = ca (".")
+MEM WRITE: MEM[ca] = 5f ("_")
+MEM READ : MEM[ca] = 5f ("_")
+----------------------------------------
+PC:d06 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:d10 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = cb (".")
+MEM WRITE: MEM[cb] = 20 (" ")
+MEM READ : MEM[cb] = 20 (" ")
+----------------------------------------
+PC:d16 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:d20 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = cc (".")
+MEM WRITE: MEM[cc] = 20 (" ")
+MEM READ : MEM[cc] = 20 (" ")
+----------------------------------------
+PC:d26 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:d30 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = cd (".")
+MEM WRITE: MEM[cd] = 20 (" ")
+MEM READ : MEM[cd] = 20 (" ")
+----------------------------------------
+PC:d36 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:d40 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ce (".")
+MEM WRITE: MEM[ce] = 20 (" ")
+MEM READ : MEM[ce] = 20 (" ")
+----------------------------------------
+PC:d46 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:d50 OP:1a XOR              SP:3
+CALC XOR: f2 ^ ad = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = cf (".")
+MEM WRITE: MEM[cf] = 5f ("_")
+MEM READ : MEM[cf] = 5f ("_")
+----------------------------------------
+PC:d56 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:d60 OP:1a XOR              SP:3
+CALC XOR: c7 ^ ca = d (".")
+STACK[1] = d (".")
+STACK[0] = d0 (".")
+MEM WRITE: MEM[d0] = d (".")
+MEM READ : MEM[d0] = d (".")
+----------------------------------------
+PC:d66 OP:26 PUTCHAR          SP:1
+13
+----------------------------------------
+PC:d70 OP:1a XOR              SP:3
+CALC XOR: f4 ^ fe = a (".")
+STACK[1] = a (".")
+STACK[0] = d1 (".")
+MEM WRITE: MEM[d1] = a (".")
+MEM READ : MEM[d1] = a (".")
+----------------------------------------
+PC:d76 OP:26 PUTCHAR          SP:1
+10
+----------------------------------------
+PC:d80 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = d2 (".")
+MEM WRITE: MEM[d2] = 20 (" ")
+MEM READ : MEM[d2] = 20 (" ")
+----------------------------------------
+PC:d86 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:d90 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = d3 (".")
+MEM WRITE: MEM[d3] = 2f ("/")
+MEM READ : MEM[d3] = 2f ("/")
+----------------------------------------
+PC:d96 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:da0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = d4 (".")
+MEM WRITE: MEM[d4] = 20 (" ")
+MEM READ : MEM[d4] = 20 (" ")
+----------------------------------------
+PC:da6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:db0 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = d5 (".")
+MEM WRITE: MEM[d5] = 5c ("\")
+MEM READ : MEM[d5] = 5c ("\")
+----------------------------------------
+PC:db6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:dc0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = d6 (".")
+MEM WRITE: MEM[d6] = 20 (" ")
+MEM READ : MEM[d6] = 20 (" ")
+----------------------------------------
+PC:dc6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:dd0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = d7 (".")
+MEM WRITE: MEM[d7] = 20 (" ")
+MEM READ : MEM[d7] = 20 (" ")
+----------------------------------------
+PC:dd6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:de0 OP:1a XOR              SP:3
+CALC XOR: e5 ^ ca = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = d8 (".")
+MEM WRITE: MEM[d8] = 2f ("/")
+MEM READ : MEM[d8] = 2f ("/")
+----------------------------------------
+PC:de6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:df0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = d9 (".")
+MEM WRITE: MEM[d9] = 20 (" ")
+MEM READ : MEM[d9] = 20 (" ")
+----------------------------------------
+PC:df6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:e00 OP:1a XOR              SP:3
+CALC XOR: 82 ^ de = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = da (".")
+MEM WRITE: MEM[da] = 5c ("\")
+MEM READ : MEM[da] = 5c ("\")
+----------------------------------------
+PC:e06 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:e10 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = db (".")
+MEM WRITE: MEM[db] = 20 (" ")
+MEM READ : MEM[db] = 20 (" ")
+----------------------------------------
+PC:e16 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:e20 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = dc (".")
+MEM WRITE: MEM[dc] = 20 (" ")
+MEM READ : MEM[dc] = 20 (" ")
+----------------------------------------
+PC:e26 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:e30 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = dd (".")
+MEM WRITE: MEM[dd] = 2f ("/")
+MEM READ : MEM[dd] = 2f ("/")
+----------------------------------------
+PC:e36 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:e40 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = de (".")
+MEM WRITE: MEM[de] = 20 (" ")
+MEM READ : MEM[de] = 20 (" ")
+----------------------------------------
+PC:e46 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:e50 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = df (".")
+MEM WRITE: MEM[df] = 5c ("\")
+MEM READ : MEM[df] = 5c ("\")
+----------------------------------------
+PC:e56 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:e60 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = e0 (".")
+MEM WRITE: MEM[e0] = 20 (" ")
+MEM READ : MEM[e0] = 20 (" ")
+----------------------------------------
+PC:e66 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:e70 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = e1 (".")
+MEM WRITE: MEM[e1] = 20 (" ")
+MEM READ : MEM[e1] = 20 (" ")
+----------------------------------------
+PC:e76 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:e80 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = e2 (".")
+MEM WRITE: MEM[e2] = 2f ("/")
+MEM READ : MEM[e2] = 2f ("/")
+----------------------------------------
+PC:e86 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:e90 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = e3 (".")
+MEM WRITE: MEM[e3] = 20 (" ")
+MEM READ : MEM[e3] = 20 (" ")
+----------------------------------------
+PC:e96 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ea0 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = e4 (".")
+MEM WRITE: MEM[e4] = 5c ("\")
+MEM READ : MEM[e4] = 5c ("\")
+----------------------------------------
+PC:ea6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:eb0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = e5 (".")
+MEM WRITE: MEM[e5] = 20 (" ")
+MEM READ : MEM[e5] = 20 (" ")
+----------------------------------------
+PC:eb6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ec0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = e6 (".")
+MEM WRITE: MEM[e6] = 20 (" ")
+MEM READ : MEM[e6] = 20 (" ")
+----------------------------------------
+PC:ec6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ed0 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = e7 (".")
+MEM WRITE: MEM[e7] = 2f ("/")
+MEM READ : MEM[e7] = 2f ("/")
+----------------------------------------
+PC:ed6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:ee0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = e8 (".")
+MEM WRITE: MEM[e8] = 20 (" ")
+MEM READ : MEM[e8] = 20 (" ")
+----------------------------------------
+PC:ee6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:ef0 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = e9 (".")
+MEM WRITE: MEM[e9] = 5c ("\")
+MEM READ : MEM[e9] = 5c ("\")
+----------------------------------------
+PC:ef6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:f00 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ea (".")
+MEM WRITE: MEM[ea] = 20 (" ")
+MEM READ : MEM[ea] = 20 (" ")
+----------------------------------------
+PC:f06 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:f10 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = eb (".")
+MEM WRITE: MEM[eb] = 20 (" ")
+MEM READ : MEM[eb] = 20 (" ")
+----------------------------------------
+PC:f16 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:f20 OP:1a XOR              SP:3
+CALC XOR: e5 ^ ca = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = ec (".")
+MEM WRITE: MEM[ec] = 2f ("/")
+MEM READ : MEM[ec] = 2f ("/")
+----------------------------------------
+PC:f26 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:f30 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ed (".")
+MEM WRITE: MEM[ed] = 20 (" ")
+MEM READ : MEM[ed] = 20 (" ")
+----------------------------------------
+PC:f36 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:f40 OP:1a XOR              SP:3
+CALC XOR: 82 ^ de = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = ee (".")
+MEM WRITE: MEM[ee] = 5c ("\")
+MEM READ : MEM[ee] = 5c ("\")
+----------------------------------------
+PC:f46 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:f50 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ef (".")
+MEM WRITE: MEM[ef] = 20 (" ")
+MEM READ : MEM[ef] = 20 (" ")
+----------------------------------------
+PC:f56 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:f60 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = f0 (".")
+MEM WRITE: MEM[f0] = 20 (" ")
+MEM READ : MEM[f0] = 20 (" ")
+----------------------------------------
+PC:f66 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:f70 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = f1 (".")
+MEM WRITE: MEM[f1] = 2f ("/")
+MEM READ : MEM[f1] = 2f ("/")
+----------------------------------------
+PC:f76 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:f80 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = f2 (".")
+MEM WRITE: MEM[f2] = 20 (" ")
+MEM READ : MEM[f2] = 20 (" ")
+----------------------------------------
+PC:f86 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:f90 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = f3 (".")
+MEM WRITE: MEM[f3] = 5c ("\")
+MEM READ : MEM[f3] = 5c ("\")
+----------------------------------------
+PC:f96 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:fa0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = f4 (".")
+MEM WRITE: MEM[f4] = 20 (" ")
+MEM READ : MEM[f4] = 20 (" ")
+----------------------------------------
+PC:fa6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:fb0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = f5 (".")
+MEM WRITE: MEM[f5] = 20 (" ")
+MEM READ : MEM[f5] = 20 (" ")
+----------------------------------------
+PC:fb6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:fc0 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = f6 (".")
+MEM WRITE: MEM[f6] = 2f ("/")
+MEM READ : MEM[f6] = 2f ("/")
+----------------------------------------
+PC:fc6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:fd0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = f7 (".")
+MEM WRITE: MEM[f7] = 20 (" ")
+MEM READ : MEM[f7] = 20 (" ")
+----------------------------------------
+PC:fd6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:fe0 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = f8 (".")
+MEM WRITE: MEM[f8] = 5c ("\")
+MEM READ : MEM[f8] = 5c ("\")
+----------------------------------------
+PC:fe6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:ff0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = f9 (".")
+MEM WRITE: MEM[f9] = 20 (" ")
+MEM READ : MEM[f9] = 20 (" ")
+----------------------------------------
+PC:ff6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1000 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = fa (".")
+MEM WRITE: MEM[fa] = 20 (" ")
+MEM READ : MEM[fa] = 20 (" ")
+----------------------------------------
+PC:1006 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1010 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = fb (".")
+MEM WRITE: MEM[fb] = 2f ("/")
+MEM READ : MEM[fb] = 2f ("/")
+----------------------------------------
+PC:1016 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1020 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = fc (".")
+MEM WRITE: MEM[fc] = 20 (" ")
+MEM READ : MEM[fc] = 20 (" ")
+----------------------------------------
+PC:1026 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1030 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = fd (".")
+MEM WRITE: MEM[fd] = 5c ("\")
+MEM READ : MEM[fd] = 5c ("\")
+----------------------------------------
+PC:1036 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1040 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = fe (".")
+MEM WRITE: MEM[fe] = 20 (" ")
+MEM READ : MEM[fe] = 20 (" ")
+----------------------------------------
+PC:1046 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1050 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = ff (".")
+MEM WRITE: MEM[ff] = 20 (" ")
+MEM READ : MEM[ff] = 20 (" ")
+----------------------------------------
+PC:1056 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1060 OP:1a XOR              SP:3
+CALC XOR: e5 ^ ca = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 100 ("..")
+MEM WRITE: MEM[100] = 2f ("/")
+MEM READ : MEM[100] = 2f ("/")
+----------------------------------------
+PC:1066 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1070 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 101 ("..")
+MEM WRITE: MEM[101] = 20 (" ")
+MEM READ : MEM[101] = 20 (" ")
+----------------------------------------
+PC:1076 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1080 OP:1a XOR              SP:3
+CALC XOR: 82 ^ de = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 102 ("..")
+MEM WRITE: MEM[102] = 5c ("\")
+MEM READ : MEM[102] = 5c ("\")
+----------------------------------------
+PC:1086 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1090 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 103 ("..")
+MEM WRITE: MEM[103] = 20 (" ")
+MEM READ : MEM[103] = 20 (" ")
+----------------------------------------
+PC:1096 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:10a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 104 ("..")
+MEM WRITE: MEM[104] = 20 (" ")
+MEM READ : MEM[104] = 20 (" ")
+----------------------------------------
+PC:10a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:10b0 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 105 ("..")
+MEM WRITE: MEM[105] = 2f ("/")
+MEM READ : MEM[105] = 2f ("/")
+----------------------------------------
+PC:10b6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:10c0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 106 ("..")
+MEM WRITE: MEM[106] = 20 (" ")
+MEM READ : MEM[106] = 20 (" ")
+----------------------------------------
+PC:10c6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:10d0 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 107 ("..")
+MEM WRITE: MEM[107] = 5c ("\")
+MEM READ : MEM[107] = 5c ("\")
+----------------------------------------
+PC:10d6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:10e0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 108 ("..")
+MEM WRITE: MEM[108] = 20 (" ")
+MEM READ : MEM[108] = 20 (" ")
+----------------------------------------
+PC:10e6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:10f0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 109 ("..")
+MEM WRITE: MEM[109] = 20 (" ")
+MEM READ : MEM[109] = 20 (" ")
+----------------------------------------
+PC:10f6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1100 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 10a ("..")
+MEM WRITE: MEM[10a] = 2f ("/")
+MEM READ : MEM[10a] = 2f ("/")
+----------------------------------------
+PC:1106 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1110 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 10b ("..")
+MEM WRITE: MEM[10b] = 20 (" ")
+MEM READ : MEM[10b] = 20 (" ")
+----------------------------------------
+PC:1116 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1120 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 10c ("..")
+MEM WRITE: MEM[10c] = 5c ("\")
+MEM READ : MEM[10c] = 5c ("\")
+----------------------------------------
+PC:1126 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1130 OP:1a XOR              SP:3
+CALC XOR: f3 ^ fe = d (".")
+STACK[1] = d (".")
+STACK[0] = 10d ("..")
+MEM WRITE: MEM[10d] = d (".")
+MEM READ : MEM[10d] = d (".")
+----------------------------------------
+PC:1136 OP:26 PUTCHAR          SP:1
+13
+----------------------------------------
+PC:1140 OP:1a XOR              SP:3
+CALC XOR: d4 ^ de = a (".")
+STACK[1] = a (".")
+STACK[0] = 10e ("..")
+MEM WRITE: MEM[10e] = a (".")
+MEM READ : MEM[10e] = a (".")
+----------------------------------------
+PC:1146 OP:26 PUTCHAR          SP:1
+10
+----------------------------------------
+PC:1150 OP:1a XOR              SP:3
+CALC XOR: 85 ^ ad = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 10f ("..")
+MEM WRITE: MEM[10f] = 28 ("(")
+MEM READ : MEM[10f] = 28 ("(")
+----------------------------------------
+PC:1156 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:1160 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 110 ("..")
+MEM WRITE: MEM[110] = 20 (" ")
+MEM READ : MEM[110] = 20 (" ")
+----------------------------------------
+PC:1166 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1170 OP:1a XOR              SP:3
+CALC XOR: 9d ^ fe = 63 ("c")
+STACK[1] = 63 ("c")
+STACK[0] = 111 ("..")
+MEM WRITE: MEM[111] = 63 ("c")
+MEM READ : MEM[111] = 63 ("c")
+----------------------------------------
+PC:1176 OP:26 PUTCHAR          SP:1
+99
+----------------------------------------
+PC:1180 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 112 ("..")
+MEM WRITE: MEM[112] = 20 (" ")
+MEM READ : MEM[112] = 20 (" ")
+----------------------------------------
+PC:1186 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1190 OP:1a XOR              SP:3
+CALC XOR: 84 ^ ad = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 113 ("..")
+MEM WRITE: MEM[113] = 29 (")")
+MEM READ : MEM[113] = 29 (")")
+----------------------------------------
+PC:1196 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:11a0 OP:1a XOR              SP:3
+CALC XOR: e2 ^ ca = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 114 ("..")
+MEM WRITE: MEM[114] = 28 ("(")
+MEM READ : MEM[114] = 28 ("(")
+----------------------------------------
+PC:11a6 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:11b0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 115 ("..")
+MEM WRITE: MEM[115] = 20 (" ")
+MEM READ : MEM[115] = 20 (" ")
+----------------------------------------
+PC:11b6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:11c0 OP:1a XOR              SP:3
+CALC XOR: ee ^ de = 30 ("0")
+STACK[1] = 30 ("0")
+STACK[0] = 116 ("..")
+MEM WRITE: MEM[116] = 30 ("0")
+MEM READ : MEM[116] = 30 ("0")
+----------------------------------------
+PC:11c6 OP:26 PUTCHAR          SP:1
+48
+----------------------------------------
+PC:11d0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 117 ("..")
+MEM WRITE: MEM[117] = 20 (" ")
+MEM READ : MEM[117] = 20 (" ")
+----------------------------------------
+PC:11d6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:11e0 OP:1a XOR              SP:3
+CALC XOR: e3 ^ ca = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 118 ("..")
+MEM WRITE: MEM[118] = 29 (")")
+MEM READ : MEM[118] = 29 (")")
+----------------------------------------
+PC:11e6 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:11f0 OP:1a XOR              SP:3
+CALC XOR: d6 ^ fe = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 119 ("..")
+MEM WRITE: MEM[119] = 28 ("(")
+MEM READ : MEM[119] = 28 ("(")
+----------------------------------------
+PC:11f6 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:1200 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 11a ("..")
+MEM WRITE: MEM[11a] = 20 (" ")
+MEM READ : MEM[11a] = 20 (" ")
+----------------------------------------
+PC:1206 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1210 OP:1a XOR              SP:3
+CALC XOR: c3 ^ ad = 6e ("n")
+STACK[1] = 6e ("n")
+STACK[0] = 11b ("..")
+MEM WRITE: MEM[11b] = 6e ("n")
+MEM READ : MEM[11b] = 6e ("n")
+----------------------------------------
+PC:1216 OP:26 PUTCHAR          SP:1
+110
+----------------------------------------
+PC:1220 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 11c ("..")
+MEM WRITE: MEM[11c] = 20 (" ")
+MEM READ : MEM[11c] = 20 (" ")
+----------------------------------------
+PC:1226 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1230 OP:1a XOR              SP:3
+CALC XOR: d7 ^ fe = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 11d ("..")
+MEM WRITE: MEM[11d] = 29 (")")
+MEM READ : MEM[11d] = 29 (")")
+----------------------------------------
+PC:1236 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:1240 OP:1a XOR              SP:3
+CALC XOR: f6 ^ de = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 11e ("..")
+MEM WRITE: MEM[11e] = 28 ("(")
+MEM READ : MEM[11e] = 28 ("(")
+----------------------------------------
+PC:1246 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:1250 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 11f ("..")
+MEM WRITE: MEM[11f] = 20 (" ")
+MEM READ : MEM[11f] = 20 (" ")
+----------------------------------------
+PC:1256 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1260 OP:1a XOR              SP:3
+CALC XOR: b9 ^ ca = 73 ("s")
+STACK[1] = 73 ("s")
+STACK[0] = 120 (". ")
+MEM WRITE: MEM[120] = 73 ("s")
+MEM READ : MEM[120] = 73 ("s")
+----------------------------------------
+PC:1266 OP:26 PUTCHAR          SP:1
+115
+----------------------------------------
+PC:1270 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 121 (".!")
+MEM WRITE: MEM[121] = 20 (" ")
+MEM READ : MEM[121] = 20 (" ")
+----------------------------------------
+PC:1276 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1280 OP:1a XOR              SP:3
+CALC XOR: f7 ^ de = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 122 ("."")
+MEM WRITE: MEM[122] = 29 (")")
+MEM READ : MEM[122] = 29 (")")
+----------------------------------------
+PC:1286 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:1290 OP:1a XOR              SP:3
+CALC XOR: 85 ^ ad = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 123 (".#")
+MEM WRITE: MEM[123] = 28 ("(")
+MEM READ : MEM[123] = 28 ("(")
+----------------------------------------
+PC:1296 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:12a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 124 (".$")
+MEM WRITE: MEM[124] = 20 (" ")
+MEM READ : MEM[124] = 20 (" ")
+----------------------------------------
+PC:12a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:12b0 OP:1a XOR              SP:3
+CALC XOR: 8a ^ fe = 74 ("t")
+STACK[1] = 74 ("t")
+STACK[0] = 125 (".%")
+MEM WRITE: MEM[125] = 74 ("t")
+MEM READ : MEM[125] = 74 ("t")
+----------------------------------------
+PC:12b6 OP:26 PUTCHAR          SP:1
+116
+----------------------------------------
+PC:12c0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 126 (".&")
+MEM WRITE: MEM[126] = 20 (" ")
+MEM READ : MEM[126] = 20 (" ")
+----------------------------------------
+PC:12c6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:12d0 OP:1a XOR              SP:3
+CALC XOR: 84 ^ ad = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 127 (".'")
+MEM WRITE: MEM[127] = 29 (")")
+MEM READ : MEM[127] = 29 (")")
+----------------------------------------
+PC:12d6 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:12e0 OP:1a XOR              SP:3
+CALC XOR: e2 ^ ca = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 128 (".(")
+MEM WRITE: MEM[128] = 28 ("(")
+MEM READ : MEM[128] = 28 ("(")
+----------------------------------------
+PC:12e6 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:12f0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 129 (".)")
+MEM WRITE: MEM[129] = 20 (" ")
+MEM READ : MEM[129] = 20 (" ")
+----------------------------------------
+PC:12f6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1300 OP:1a XOR              SP:3
+CALC XOR: ac ^ de = 72 ("r")
+STACK[1] = 72 ("r")
+STACK[0] = 12a (".*")
+MEM WRITE: MEM[12a] = 72 ("r")
+MEM READ : MEM[12a] = 72 ("r")
+----------------------------------------
+PC:1306 OP:26 PUTCHAR          SP:1
+114
+----------------------------------------
+PC:1310 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 12b (".+")
+MEM WRITE: MEM[12b] = 20 (" ")
+MEM READ : MEM[12b] = 20 (" ")
+----------------------------------------
+PC:1316 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1320 OP:1a XOR              SP:3
+CALC XOR: e3 ^ ca = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 12c (".,")
+MEM WRITE: MEM[12c] = 29 (")")
+MEM READ : MEM[12c] = 29 (")")
+----------------------------------------
+PC:1326 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:1330 OP:1a XOR              SP:3
+CALC XOR: d6 ^ fe = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 12d (".-")
+MEM WRITE: MEM[12d] = 28 ("(")
+MEM READ : MEM[12d] = 28 ("(")
+----------------------------------------
+PC:1336 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:1340 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 12e ("..")
+MEM WRITE: MEM[12e] = 20 (" ")
+MEM READ : MEM[12e] = 20 (" ")
+----------------------------------------
+PC:1346 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1350 OP:1a XOR              SP:3
+CALC XOR: d8 ^ ad = 75 ("u")
+STACK[1] = 75 ("u")
+STACK[0] = 12f ("./")
+MEM WRITE: MEM[12f] = 75 ("u")
+MEM READ : MEM[12f] = 75 ("u")
+----------------------------------------
+PC:1356 OP:26 PUTCHAR          SP:1
+117
+----------------------------------------
+PC:1360 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 130 (".0")
+MEM WRITE: MEM[130] = 20 (" ")
+MEM READ : MEM[130] = 20 (" ")
+----------------------------------------
+PC:1366 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1370 OP:1a XOR              SP:3
+CALC XOR: d7 ^ fe = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 131 (".1")
+MEM WRITE: MEM[131] = 29 (")")
+MEM READ : MEM[131] = 29 (")")
+----------------------------------------
+PC:1376 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:1380 OP:1a XOR              SP:3
+CALC XOR: f6 ^ de = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 132 (".2")
+MEM WRITE: MEM[132] = 28 ("(")
+MEM READ : MEM[132] = 28 ("(")
+----------------------------------------
+PC:1386 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:1390 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 133 (".3")
+MEM WRITE: MEM[133] = 20 (" ")
+MEM READ : MEM[133] = 20 (" ")
+----------------------------------------
+PC:1396 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:13a0 OP:1a XOR              SP:3
+CALC XOR: a9 ^ ca = 63 ("c")
+STACK[1] = 63 ("c")
+STACK[0] = 134 (".4")
+MEM WRITE: MEM[134] = 63 ("c")
+MEM READ : MEM[134] = 63 ("c")
+----------------------------------------
+PC:13a6 OP:26 PUTCHAR          SP:1
+99
+----------------------------------------
+PC:13b0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 135 (".5")
+MEM WRITE: MEM[135] = 20 (" ")
+MEM READ : MEM[135] = 20 (" ")
+----------------------------------------
+PC:13b6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:13c0 OP:1a XOR              SP:3
+CALC XOR: f7 ^ de = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 136 (".6")
+MEM WRITE: MEM[136] = 29 (")")
+MEM READ : MEM[136] = 29 (")")
+----------------------------------------
+PC:13c6 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:13d0 OP:1a XOR              SP:3
+CALC XOR: 85 ^ ad = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 137 (".7")
+MEM WRITE: MEM[137] = 28 ("(")
+MEM READ : MEM[137] = 28 ("(")
+----------------------------------------
+PC:13d6 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:13e0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 138 (".8")
+MEM WRITE: MEM[138] = 20 (" ")
+MEM READ : MEM[138] = 20 (" ")
+----------------------------------------
+PC:13e6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:13f0 OP:1a XOR              SP:3
+CALC XOR: 8a ^ fe = 74 ("t")
+STACK[1] = 74 ("t")
+STACK[0] = 139 (".9")
+MEM WRITE: MEM[139] = 74 ("t")
+MEM READ : MEM[139] = 74 ("t")
+----------------------------------------
+PC:13f6 OP:26 PUTCHAR          SP:1
+116
+----------------------------------------
+PC:1400 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 13a (".:")
+MEM WRITE: MEM[13a] = 20 (" ")
+MEM READ : MEM[13a] = 20 (" ")
+----------------------------------------
+PC:1406 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1410 OP:1a XOR              SP:3
+CALC XOR: 84 ^ ad = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 13b (".;")
+MEM WRITE: MEM[13b] = 29 (")")
+MEM READ : MEM[13b] = 29 (")")
+----------------------------------------
+PC:1416 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:1420 OP:1a XOR              SP:3
+CALC XOR: e2 ^ ca = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 13c (".<")
+MEM WRITE: MEM[13c] = 28 ("(")
+MEM READ : MEM[13c] = 28 ("(")
+----------------------------------------
+PC:1426 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:1430 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 13d (".=")
+MEM WRITE: MEM[13d] = 20 (" ")
+MEM READ : MEM[13d] = 20 (" ")
+----------------------------------------
+PC:1436 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1440 OP:1a XOR              SP:3
+CALC XOR: b7 ^ de = 69 ("i")
+STACK[1] = 69 ("i")
+STACK[0] = 13e (".>")
+MEM WRITE: MEM[13e] = 69 ("i")
+MEM READ : MEM[13e] = 69 ("i")
+----------------------------------------
+PC:1446 OP:26 PUTCHAR          SP:1
+105
+----------------------------------------
+PC:1450 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 13f (".?")
+MEM WRITE: MEM[13f] = 20 (" ")
+MEM READ : MEM[13f] = 20 (" ")
+----------------------------------------
+PC:1456 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1460 OP:1a XOR              SP:3
+CALC XOR: e3 ^ ca = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 140 (".@")
+MEM WRITE: MEM[140] = 29 (")")
+MEM READ : MEM[140] = 29 (")")
+----------------------------------------
+PC:1466 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:1470 OP:1a XOR              SP:3
+CALC XOR: d6 ^ fe = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 141 (".A")
+MEM WRITE: MEM[141] = 28 ("(")
+MEM READ : MEM[141] = 28 ("(")
+----------------------------------------
+PC:1476 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:1480 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 142 (".B")
+MEM WRITE: MEM[142] = 20 (" ")
+MEM READ : MEM[142] = 20 (" ")
+----------------------------------------
+PC:1486 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1490 OP:1a XOR              SP:3
+CALC XOR: 9d ^ ad = 30 ("0")
+STACK[1] = 30 ("0")
+STACK[0] = 143 (".C")
+MEM WRITE: MEM[143] = 30 ("0")
+MEM READ : MEM[143] = 30 ("0")
+----------------------------------------
+PC:1496 OP:26 PUTCHAR          SP:1
+48
+----------------------------------------
+PC:14a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 144 (".D")
+MEM WRITE: MEM[144] = 20 (" ")
+MEM READ : MEM[144] = 20 (" ")
+----------------------------------------
+PC:14a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:14b0 OP:1a XOR              SP:3
+CALC XOR: d7 ^ fe = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 145 (".E")
+MEM WRITE: MEM[145] = 29 (")")
+MEM READ : MEM[145] = 29 (")")
+----------------------------------------
+PC:14b6 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:14c0 OP:1a XOR              SP:3
+CALC XOR: f6 ^ de = 28 ("(")
+STACK[1] = 28 ("(")
+STACK[0] = 146 (".F")
+MEM WRITE: MEM[146] = 28 ("(")
+MEM READ : MEM[146] = 28 ("(")
+----------------------------------------
+PC:14c6 OP:26 PUTCHAR          SP:1
+40
+----------------------------------------
+PC:14d0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 147 (".G")
+MEM WRITE: MEM[147] = 20 (" ")
+MEM READ : MEM[147] = 20 (" ")
+----------------------------------------
+PC:14d6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:14e0 OP:1a XOR              SP:3
+CALC XOR: a4 ^ ca = 6e ("n")
+STACK[1] = 6e ("n")
+STACK[0] = 148 (".H")
+MEM WRITE: MEM[148] = 6e ("n")
+MEM READ : MEM[148] = 6e ("n")
+----------------------------------------
+PC:14e6 OP:26 PUTCHAR          SP:1
+110
+----------------------------------------
+PC:14f0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 149 (".I")
+MEM WRITE: MEM[149] = 20 (" ")
+MEM READ : MEM[149] = 20 (" ")
+----------------------------------------
+PC:14f6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1500 OP:1a XOR              SP:3
+CALC XOR: f7 ^ de = 29 (")")
+STACK[1] = 29 (")")
+STACK[0] = 14a (".J")
+MEM WRITE: MEM[14a] = 29 (")")
+MEM READ : MEM[14a] = 29 (")")
+----------------------------------------
+PC:1506 OP:26 PUTCHAR          SP:1
+41
+----------------------------------------
+PC:1510 OP:1a XOR              SP:3
+CALC XOR: a0 ^ ad = d (".")
+STACK[1] = d (".")
+STACK[0] = 14b (".K")
+MEM WRITE: MEM[14b] = d (".")
+MEM READ : MEM[14b] = d (".")
+----------------------------------------
+PC:1516 OP:26 PUTCHAR          SP:1
+13
+----------------------------------------
+PC:1520 OP:1a XOR              SP:3
+CALC XOR: c0 ^ ca = a (".")
+STACK[1] = a (".")
+STACK[0] = 14c (".L")
+MEM WRITE: MEM[14c] = a (".")
+MEM READ : MEM[14c] = a (".")
+----------------------------------------
+PC:1526 OP:26 PUTCHAR          SP:1
+10
+----------------------------------------
+PC:1530 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 14d (".M")
+MEM WRITE: MEM[14d] = 20 (" ")
+MEM READ : MEM[14d] = 20 (" ")
+----------------------------------------
+PC:1536 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1540 OP:1a XOR              SP:3
+CALC XOR: 82 ^ de = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 14e (".N")
+MEM WRITE: MEM[14e] = 5c ("\")
+MEM READ : MEM[14e] = 5c ("\")
+----------------------------------------
+PC:1546 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1550 OP:1a XOR              SP:3
+CALC XOR: f2 ^ ad = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 14f (".O")
+MEM WRITE: MEM[14f] = 5f ("_")
+MEM READ : MEM[14f] = 5f ("_")
+----------------------------------------
+PC:1556 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:1560 OP:1a XOR              SP:3
+CALC XOR: e5 ^ ca = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 150 (".P")
+MEM WRITE: MEM[150] = 2f ("/")
+MEM READ : MEM[150] = 2f ("/")
+----------------------------------------
+PC:1566 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1570 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 151 (".Q")
+MEM WRITE: MEM[151] = 20 (" ")
+MEM READ : MEM[151] = 20 (" ")
+----------------------------------------
+PC:1576 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1580 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 152 (".R")
+MEM WRITE: MEM[152] = 20 (" ")
+MEM READ : MEM[152] = 20 (" ")
+----------------------------------------
+PC:1586 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1590 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 153 (".S")
+MEM WRITE: MEM[153] = 5c ("\")
+MEM READ : MEM[153] = 5c ("\")
+----------------------------------------
+PC:1596 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:15a0 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 154 (".T")
+MEM WRITE: MEM[154] = 5f ("_")
+MEM READ : MEM[154] = 5f ("_")
+----------------------------------------
+PC:15a6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:15b0 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 155 (".U")
+MEM WRITE: MEM[155] = 2f ("/")
+MEM READ : MEM[155] = 2f ("/")
+----------------------------------------
+PC:15b6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:15c0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 156 (".V")
+MEM WRITE: MEM[156] = 20 (" ")
+MEM READ : MEM[156] = 20 (" ")
+----------------------------------------
+PC:15c6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:15d0 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 157 (".W")
+MEM WRITE: MEM[157] = 20 (" ")
+MEM READ : MEM[157] = 20 (" ")
+----------------------------------------
+PC:15d6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:15e0 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 158 (".X")
+MEM WRITE: MEM[158] = 5c ("\")
+MEM READ : MEM[158] = 5c ("\")
+----------------------------------------
+PC:15e6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:15f0 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 159 (".Y")
+MEM WRITE: MEM[159] = 5f ("_")
+MEM READ : MEM[159] = 5f ("_")
+----------------------------------------
+PC:15f6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:1600 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 15a (".Z")
+MEM WRITE: MEM[15a] = 2f ("/")
+MEM READ : MEM[15a] = 2f ("/")
+----------------------------------------
+PC:1606 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1610 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 15b (".[")
+MEM WRITE: MEM[15b] = 20 (" ")
+MEM READ : MEM[15b] = 20 (" ")
+----------------------------------------
+PC:1616 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1620 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 15c (".\")
+MEM WRITE: MEM[15c] = 20 (" ")
+MEM READ : MEM[15c] = 20 (" ")
+----------------------------------------
+PC:1626 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1630 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 15d (".]")
+MEM WRITE: MEM[15d] = 5c ("\")
+MEM READ : MEM[15d] = 5c ("\")
+----------------------------------------
+PC:1636 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1640 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 15e (".^")
+MEM WRITE: MEM[15e] = 5f ("_")
+MEM READ : MEM[15e] = 5f ("_")
+----------------------------------------
+PC:1646 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:1650 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 15f ("._")
+MEM WRITE: MEM[15f] = 2f ("/")
+MEM READ : MEM[15f] = 2f ("/")
+----------------------------------------
+PC:1656 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1660 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 160 (".`")
+MEM WRITE: MEM[160] = 20 (" ")
+MEM READ : MEM[160] = 20 (" ")
+----------------------------------------
+PC:1666 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1670 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 161 (".a")
+MEM WRITE: MEM[161] = 20 (" ")
+MEM READ : MEM[161] = 20 (" ")
+----------------------------------------
+PC:1676 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1680 OP:1a XOR              SP:3
+CALC XOR: 82 ^ de = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 162 (".b")
+MEM WRITE: MEM[162] = 5c ("\")
+MEM READ : MEM[162] = 5c ("\")
+----------------------------------------
+PC:1686 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1690 OP:1a XOR              SP:3
+CALC XOR: f2 ^ ad = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 163 (".c")
+MEM WRITE: MEM[163] = 5f ("_")
+MEM READ : MEM[163] = 5f ("_")
+----------------------------------------
+PC:1696 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:16a0 OP:1a XOR              SP:3
+CALC XOR: e5 ^ ca = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 164 (".d")
+MEM WRITE: MEM[164] = 2f ("/")
+MEM READ : MEM[164] = 2f ("/")
+----------------------------------------
+PC:16a6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:16b0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 165 (".e")
+MEM WRITE: MEM[165] = 20 (" ")
+MEM READ : MEM[165] = 20 (" ")
+----------------------------------------
+PC:16b6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:16c0 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 166 (".f")
+MEM WRITE: MEM[166] = 20 (" ")
+MEM READ : MEM[166] = 20 (" ")
+----------------------------------------
+PC:16c6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:16d0 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 167 (".g")
+MEM WRITE: MEM[167] = 5c ("\")
+MEM READ : MEM[167] = 5c ("\")
+----------------------------------------
+PC:16d6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:16e0 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 168 (".h")
+MEM WRITE: MEM[168] = 5f ("_")
+MEM READ : MEM[168] = 5f ("_")
+----------------------------------------
+PC:16e6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:16f0 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 169 (".i")
+MEM WRITE: MEM[169] = 2f ("/")
+MEM READ : MEM[169] = 2f ("/")
+----------------------------------------
+PC:16f6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1700 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 16a (".j")
+MEM WRITE: MEM[16a] = 20 (" ")
+MEM READ : MEM[16a] = 20 (" ")
+----------------------------------------
+PC:1706 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1710 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 16b (".k")
+MEM WRITE: MEM[16b] = 20 (" ")
+MEM READ : MEM[16b] = 20 (" ")
+----------------------------------------
+PC:1716 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1720 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 16c (".l")
+MEM WRITE: MEM[16c] = 5c ("\")
+MEM READ : MEM[16c] = 5c ("\")
+----------------------------------------
+PC:1726 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1730 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 16d (".m")
+MEM WRITE: MEM[16d] = 5f ("_")
+MEM READ : MEM[16d] = 5f ("_")
+----------------------------------------
+PC:1736 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:1740 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 16e (".n")
+MEM WRITE: MEM[16e] = 2f ("/")
+MEM READ : MEM[16e] = 2f ("/")
+----------------------------------------
+PC:1746 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1750 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 16f (".o")
+MEM WRITE: MEM[16f] = 20 (" ")
+MEM READ : MEM[16f] = 20 (" ")
+----------------------------------------
+PC:1756 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1760 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 170 (".p")
+MEM WRITE: MEM[170] = 20 (" ")
+MEM READ : MEM[170] = 20 (" ")
+----------------------------------------
+PC:1766 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1770 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 171 (".q")
+MEM WRITE: MEM[171] = 5c ("\")
+MEM READ : MEM[171] = 5c ("\")
+----------------------------------------
+PC:1776 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1780 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 172 (".r")
+MEM WRITE: MEM[172] = 5f ("_")
+MEM READ : MEM[172] = 5f ("_")
+----------------------------------------
+PC:1786 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:1790 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 173 (".s")
+MEM WRITE: MEM[173] = 2f ("/")
+MEM READ : MEM[173] = 2f ("/")
+----------------------------------------
+PC:1796 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:17a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 174 (".t")
+MEM WRITE: MEM[174] = 20 (" ")
+MEM READ : MEM[174] = 20 (" ")
+----------------------------------------
+PC:17a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:17b0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 175 (".u")
+MEM WRITE: MEM[175] = 20 (" ")
+MEM READ : MEM[175] = 20 (" ")
+----------------------------------------
+PC:17b6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:17c0 OP:1a XOR              SP:3
+CALC XOR: 82 ^ de = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 176 (".v")
+MEM WRITE: MEM[176] = 5c ("\")
+MEM READ : MEM[176] = 5c ("\")
+----------------------------------------
+PC:17c6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:17d0 OP:1a XOR              SP:3
+CALC XOR: f2 ^ ad = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 177 (".w")
+MEM WRITE: MEM[177] = 5f ("_")
+MEM READ : MEM[177] = 5f ("_")
+----------------------------------------
+PC:17d6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:17e0 OP:1a XOR              SP:3
+CALC XOR: e5 ^ ca = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 178 (".x")
+MEM WRITE: MEM[178] = 2f ("/")
+MEM READ : MEM[178] = 2f ("/")
+----------------------------------------
+PC:17e6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:17f0 OP:1a XOR              SP:3
+CALC XOR: de ^ fe = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 179 (".y")
+MEM WRITE: MEM[179] = 20 (" ")
+MEM READ : MEM[179] = 20 (" ")
+----------------------------------------
+PC:17f6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1800 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 17a (".z")
+MEM WRITE: MEM[17a] = 20 (" ")
+MEM READ : MEM[17a] = 20 (" ")
+----------------------------------------
+PC:1806 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1810 OP:1a XOR              SP:3
+CALC XOR: f1 ^ ad = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 17b (".{")
+MEM WRITE: MEM[17b] = 5c ("\")
+MEM READ : MEM[17b] = 5c ("\")
+----------------------------------------
+PC:1816 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1820 OP:1a XOR              SP:3
+CALC XOR: 95 ^ ca = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 17c (".|")
+MEM WRITE: MEM[17c] = 5f ("_")
+MEM READ : MEM[17c] = 5f ("_")
+----------------------------------------
+PC:1826 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:1830 OP:1a XOR              SP:3
+CALC XOR: d1 ^ fe = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 17d (".}")
+MEM WRITE: MEM[17d] = 2f ("/")
+MEM READ : MEM[17d] = 2f ("/")
+----------------------------------------
+PC:1836 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1840 OP:1a XOR              SP:3
+CALC XOR: fe ^ de = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 17e (".~")
+MEM WRITE: MEM[17e] = 20 (" ")
+MEM READ : MEM[17e] = 20 (" ")
+----------------------------------------
+PC:1846 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1850 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 17f ("..")
+MEM WRITE: MEM[17f] = 20 (" ")
+MEM READ : MEM[17f] = 20 (" ")
+----------------------------------------
+PC:1856 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:1860 OP:1a XOR              SP:3
+CALC XOR: 96 ^ ca = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 180 ("..")
+MEM WRITE: MEM[180] = 5c ("\")
+MEM READ : MEM[180] = 5c ("\")
+----------------------------------------
+PC:1866 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:1870 OP:1a XOR              SP:3
+CALC XOR: a1 ^ fe = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 181 ("..")
+MEM WRITE: MEM[181] = 5f ("_")
+MEM READ : MEM[181] = 5f ("_")
+----------------------------------------
+PC:1876 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:1880 OP:1a XOR              SP:3
+CALC XOR: f1 ^ de = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 182 ("..")
+MEM WRITE: MEM[182] = 2f ("/")
+MEM READ : MEM[182] = 2f ("/")
+----------------------------------------
+PC:1886 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:1890 OP:1a XOR              SP:3
+CALC XOR: 8d ^ ad = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 183 ("..")
+MEM WRITE: MEM[183] = 20 (" ")
+MEM READ : MEM[183] = 20 (" ")
+----------------------------------------
+PC:1896 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:18a0 OP:1a XOR              SP:3
+CALC XOR: ea ^ ca = 20 (" ")
+STACK[1] = 20 (" ")
+STACK[0] = 184 ("..")
+MEM WRITE: MEM[184] = 20 (" ")
+MEM READ : MEM[184] = 20 (" ")
+----------------------------------------
+PC:18a6 OP:26 PUTCHAR          SP:1
+32
+----------------------------------------
+PC:18b0 OP:1a XOR              SP:3
+CALC XOR: a2 ^ fe = 5c ("\")
+STACK[1] = 5c ("\")
+STACK[0] = 185 ("..")
+MEM WRITE: MEM[185] = 5c ("\")
+MEM READ : MEM[185] = 5c ("\")
+----------------------------------------
+PC:18b6 OP:26 PUTCHAR          SP:1
+92
+----------------------------------------
+PC:18c0 OP:1a XOR              SP:3
+CALC XOR: 81 ^ de = 5f ("_")
+STACK[1] = 5f ("_")
+STACK[0] = 186 ("..")
+MEM WRITE: MEM[186] = 5f ("_")
+MEM READ : MEM[186] = 5f ("_")
+----------------------------------------
+PC:18c6 OP:26 PUTCHAR          SP:1
+95
+----------------------------------------
+PC:18d0 OP:1a XOR              SP:3
+CALC XOR: 82 ^ ad = 2f ("/")
+STACK[1] = 2f ("/")
+STACK[0] = 187 ("..")
+MEM WRITE: MEM[187] = 2f ("/")
+MEM READ : MEM[187] = 2f ("/")
+----------------------------------------
+PC:18d6 OP:26 PUTCHAR          SP:1
+47
+----------------------------------------
+PC:18e0 OP:1a XOR              SP:3
+CALC XOR: c7 ^ ca = d (".")
+STACK[1] = d (".")
+STACK[0] = 187 ("..")
+MEM WRITE: MEM[187] = d (".")
+MEM READ : MEM[187] = d (".")
+----------------------------------------
+PC:18e6 OP:26 PUTCHAR          SP:1
+13
+----------------------------------------
+PC:18f0 OP:1a XOR              SP:3
+CALC XOR: f4 ^ fe = a (".")
+STACK[1] = a (".")
+STACK[0] = 187 ("..")
+MEM WRITE: MEM[187] = a (".")
+MEM READ : MEM[187] = a (".")
+----------------------------------------
+PC:18f6 OP:26 PUTCHAR          SP:1
+10
+MEM READ : MEM[19] = 1 (".")
+----------------------------------------
+PC:18fb OP:19 POP_VM_RESULT    SP:1
+[*] VM RESULT set to 1
+----------------------------------------
+PC:18fc OP:18 EXIT             SP:0
